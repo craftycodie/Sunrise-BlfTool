@@ -41,6 +41,27 @@ namespace WarthogInc
             ((0x00000000000000FF & input) << 56)));
         }
 
+        public HopperDescriptions ReadHopperDescriptions(BitStream<StreamByteStream> hoppersStream)
+        {
+            HopperDescriptions descriptions = new HopperDescriptions();
+
+            descriptions.descriptionCount = hoppersStream.Read<byte>(6);
+            descriptions.descriptions = new HopperDescriptions.HopperDescription[descriptions.descriptionCount];
+
+            for (int i = 0; i < descriptions.descriptionCount; i++)
+            {
+                hoppersStream.Read<byte>(1);
+                HopperDescriptions.HopperDescription description = new HopperDescriptions.HopperDescription();
+                description.identifier = hoppersStream.Read<ushort>(16);
+                description.type = hoppersStream.Read<bool>(1);
+                description.description = hoppersStream.ReadString(256, Encoding.UTF8);
+
+                descriptions.descriptions[i] = description;
+            }
+
+            return descriptions;
+        }
+
         public Hoppers ReadHoppers(BitStream<StreamByteStream> hoppersStream)
         {
             Hoppers res = new Hoppers();
@@ -78,6 +99,8 @@ namespace WarthogInc
 
                 hoppersStream.Read<int>(160);
                 configuration.identifier =  swap(hoppersStream.Read<ushort>(16));
+                //hoppersStream.Read<int>(160);
+
                 configuration.category = swap(hoppersStream.Read<ushort>(16));
                 configuration.type = hoppersStream.Read<byte>(2);
                 configuration.imageIndex = hoppersStream.Read<byte>(6);
