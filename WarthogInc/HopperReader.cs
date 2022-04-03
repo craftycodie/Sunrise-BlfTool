@@ -71,18 +71,8 @@ namespace WarthogInc
 
                 Hoppers.HopperConfiguration configuration = new Hoppers.HopperConfiguration();
 
-                while (true)
-                {
-                    try
-                    {
-                        configuration.name = hoppersStream.ReadString(32, Encoding.UTF8);
-                        Console.WriteLine(configuration.name);
-                        break;
-                    }
-                    catch (Exception ex)
-                    {
-                    }
-                }
+                configuration.name = hoppersStream.ReadString(32, Encoding.UTF8);
+                Console.WriteLine(configuration.name);
                 //configuration.hashSet = hoppersStreriam.Read<string>(160);
                 //hoppersStream.SeekRelative(32);
 
