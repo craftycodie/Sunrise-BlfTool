@@ -47,8 +47,9 @@ namespace WarthogInc
 
             res.categoryCount = hoppersStream.Read<byte>(3);
             res.categories = new Hoppers.HopperCategory[res.categoryCount];
+            bool validCategoriesCount = res.categoryCount >= 0 && res.categoryCount <= 4;
 
-            for (int i = 0; i < res.categoryCount; i++) {
+            for (int i = 0; validCategoriesCount && i < res.categoryCount; i++) {
                 Hoppers.HopperCategory category = new Hoppers.HopperCategory();
 
                 category.identifier = hoppersStream.Read<short>(16);
@@ -58,16 +59,30 @@ namespace WarthogInc
                 res.categories[i] = category;
             }
 
+            bool validConfigurationsCount = res.configurationsCount >= 0 && res.configurationsCount <= 32;
+
+
             res.configurationsCount = hoppersStream.Read<byte>(6);
             res.configurations = new Hoppers.HopperConfiguration[res.configurationsCount];
 
-            for (int i = 0; i < res.configurationsCount; i++)
+            for (int i = 0; validConfigurationsCount && i < res.configurationsCount; i++)
             {
-                Console.WriteLine(hoppersStream.ByteOffset);
+                //Console.WriteLine(hoppersStream.ByteOffset);
 
                 Hoppers.HopperConfiguration configuration = new Hoppers.HopperConfiguration();
 
-                configuration.name = hoppersStream.ReadString(32, Encoding.UTF8);
+                while (true)
+                {
+                    try
+                    {
+                        configuration.name = hoppersStream.ReadString(32, Encoding.UTF8);
+                        Console.WriteLine(configuration.name);
+                        break;
+                    }
+                    catch (Exception ex)
+                    {
+                    }
+                }
                 //configuration.hashSet = hoppersStreriam.Read<string>(160);
                 //hoppersStream.SeekRelative(32);
 
@@ -160,32 +175,53 @@ namespace WarthogInc
                 configuration.quality_update_weight_q50 = hoppersStream.Read<byte>(7);
                 configuration.quality_update_weight_q75 = hoppersStream.Read<byte>(7);
                 configuration.quality_update_weight_q100 = hoppersStream.Read<byte>(7);
-                
 
-                //if (configuration.type == 1)
-                //{
+                //Console.WriteLine(configuration.type);
+
+                if (configuration.type <= 1)
+                {
                     configuration.minimum_player_count = hoppersStream.Read<byte>(4);
                     configuration.maximum_player_count = hoppersStream.Read<byte>(4);
 
-                //} 
-                //else if (configuration.type == 0)
-                //{
-                //    configuration.team_count = hoppersStream.Read<byte>(3);
-                //    configuration.minimum_team_size = hoppersStream.Read<byte>(3);
-                //    configuration.maximum_team_size = hoppersStream.Read<byte>(3);
-                //    configuration.maximum_team_imbalance = hoppersStream.Read<byte>(3);
-                //    configuration.big_squad_size_threshold = hoppersStream.Read<byte>(4);
-                //    configuration.maximum_big_squad_imbalance = hoppersStream.Read<byte>(3);
-                //    configuration.enable_big_squad_mixed_skill_restrictions = hoppersStream.Read<bool>(1);
-                //} 
-                //else
-                //{
-                //    configuration.team_count = hoppersStream.Read<byte>(3);
-                //    configuration.minimum_team_size = hoppersStream.Read<byte>(3);
-                //    configuration.maximum_team_size = hoppersStream.Read<byte>(3);
-                //    configuration.allow_uneven_teams = hoppersStream.Read<bool>(1);
-                //    configuration.allow_parties_to_split = hoppersStream.Read<bool>(1);
-                //}
+                }
+                else if (configuration.type == 2)
+                {
+                    configuration.team_count = hoppersStream.Read<byte>(3);
+                    configuration.minimum_team_size = hoppersStream.Read<byte>(3);
+                    configuration.maximum_team_size = hoppersStream.Read<byte>(3);
+                    configuration.maximum_team_imbalance = hoppersStream.Read<byte>(3);
+                    configuration.big_squad_size_threshold = hoppersStream.Read<byte>(4);
+                    configuration.maximum_big_squad_imbalance = hoppersStream.Read<byte>(3);
+                    configuration.enable_big_squad_mixed_skill_restrictions = hoppersStream.Read<bool>(1);
+                }
+                else
+                {
+                    configuration.team_count = hoppersStream.Read<byte>(3);
+                    configuration.minimum_team_size = hoppersStream.Read<byte>(3);
+                    configuration.maximum_team_size = hoppersStream.Read<byte>(3);
+                    configuration.allow_uneven_teams = hoppersStream.Read<bool>(1);
+                    configuration.allow_parties_to_split = hoppersStream.Read<bool>(1);
+                }
+
+                // TODO:
+                // Reading is currently incorrect but this fixes the size.
+                // Different hopper types have different data!
+
+                switch (configuration.type)
+                {
+                    case 0:
+                    case 1:
+                        hoppersStream.Read<int>(8 + 7);
+                        break;
+                    case 2:
+                        hoppersStream.Read<int>(7);
+                        break;
+                    case 3:
+                        hoppersStream.Read<int>(8 + 2 + 8 + 8);
+                        break;
+                    default:
+                        break;
+                }
 
 
                 res.configurations[i] = configuration;
@@ -193,10 +229,10 @@ namespace WarthogInc
                 //hoppersStream.SeekRelative(64);
 
 
-                Console.WriteLine(hoppersStream.ByteOffset);
+                //Console.WriteLine(hoppersStream.ByteOffset);
+
             }
 
-            Console.WriteLine(hoppersStream.ByteOffset);
 
             return res;
         }

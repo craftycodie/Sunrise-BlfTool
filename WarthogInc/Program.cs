@@ -11,8 +11,6 @@ namespace WarthogInc
         {
             BitStream<StreamByteStream> streamHelper = new BitStream<StreamByteStream>(new StreamByteStream(new FileStream("C:\\Users\\codie\\Desktop\\hoppers", FileMode.Open)));
             Hoppers hoppers = new HopperReader().ReadHoppers(streamHelper);
-            Console.WriteLine(hoppers.categoryCount);
-            Console.WriteLine(hoppers.configurationsCount);
         }
     }
 }
