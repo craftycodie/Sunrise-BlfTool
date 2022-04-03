@@ -24,7 +24,7 @@ namespace WarthogInc
         public class HopperConfiguration
         {
             public string name;
-            public string hashSet;
+            public byte[] hashSet;
             public ushort identifier;
             public ushort category;
             public byte type;
@@ -74,11 +74,11 @@ namespace WarthogInc
             public ushort maximum_total_matchmaking_seconds;
             public ushort gather_start_game_early_seconds;
             public ushort gather_give_up_seconds;
-            public byte chance_of_gathering;
+            public byte[] chance_of_gathering;
             public byte experience_points_per_win;
             public byte experience_penalty_per_drop;
-            public uint minimum_mu_per_level;
-            public byte maximum_skill_level_match_delta;
+            public uint[] minimum_mu_per_level;
+            public byte[] maximum_skill_level_match_delta;
             public uint trueskill_sigma_multiplier;
             public uint trueskill_beta_performance_variation;
             public uint trueskill_tau_dynamics_factor;
