@@ -180,12 +180,18 @@ namespace WarthogInc
 
                 if (configuration.type <= 1)
                 {
+                    hoppersStream.Read<int>(8 + 7);
+
+
                     configuration.minimum_player_count = hoppersStream.Read<byte>(4);
                     configuration.maximum_player_count = hoppersStream.Read<byte>(4);
 
                 }
                 else if (configuration.type == 2)
                 {
+                    hoppersStream.Read<int>(7);
+
+
                     configuration.team_count = hoppersStream.Read<byte>(3);
                     configuration.minimum_team_size = hoppersStream.Read<byte>(3);
                     configuration.maximum_team_size = hoppersStream.Read<byte>(3);
@@ -196,6 +202,9 @@ namespace WarthogInc
                 }
                 else
                 {
+                    hoppersStream.Read<int>(8 + 2 + 8 + 8);
+
+
                     configuration.team_count = hoppersStream.Read<byte>(3);
                     configuration.minimum_team_size = hoppersStream.Read<byte>(3);
                     configuration.maximum_team_size = hoppersStream.Read<byte>(3);
@@ -203,36 +212,8 @@ namespace WarthogInc
                     configuration.allow_parties_to_split = hoppersStream.Read<bool>(1);
                 }
 
-                // TODO:
-                // Reading is currently incorrect but this fixes the size.
-                // Different hopper types have different data!
-
-                switch (configuration.type)
-                {
-                    case 0:
-                    case 1:
-                        hoppersStream.Read<int>(8 + 7);
-                        break;
-                    case 2:
-                        hoppersStream.Read<int>(7);
-                        break;
-                    case 3:
-                        hoppersStream.Read<int>(8 + 2 + 8 + 8);
-                        break;
-                    default:
-                        break;
-                }
-
-
                 res.configurations[i] = configuration;
-
-                //hoppersStream.SeekRelative(64);
-
-
-                //Console.WriteLine(hoppersStream.ByteOffset);
-
             }
-
 
             return res;
         }
