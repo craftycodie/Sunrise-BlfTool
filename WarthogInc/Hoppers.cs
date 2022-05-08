@@ -8,15 +8,15 @@ namespace WarthogInc
 {
     class Hoppers
     {
+        public byte configurationsCount;
         public byte categoryCount;
         public HopperCategory[] categories;
-        public byte configurationsCount;
         public HopperConfiguration[] configurations;
 
 
         public class HopperCategory
         {
-            public short identifier;
+            public ushort identifier;
             public byte image;
             public string name;
         }
