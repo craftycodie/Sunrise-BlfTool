@@ -10,7 +10,7 @@ namespace WarthogInc.BlfChunks
 {
     class _eof : IBLFChunk
     {
-        public short GetAuthentication()
+        public ushort GetAuthentication()
         {
             return 1;
         }
@@ -20,31 +20,31 @@ namespace WarthogInc.BlfChunks
             return "_eof";
         }
 
-        public short GetVersion()
+        public ushort GetVersion()
         {
             return 1;
         }
 
-        public int GetLength()
+        public uint GetLength()
         {
             return 5;
         }
-
-        public void WriteChunk(BitStream<StreamByteStream> hoppersStream)
+            
+        public void WriteChunk(ref BitStream<StreamByteStream> hoppersStream)
         {
             hoppersStream.Write(lengthUpToEOF, 32);
             hoppersStream.Write(unknown, 8);
         }
 
-        public void ReadChunk(BitStream<StreamByteStream> hoppersStream)
+        public void ReadChunk(ref BitStream<StreamByteStream> hoppersStream)
         {
             throw new NotImplementedException();
         }
 
-        int lengthUpToEOF;
+        uint lengthUpToEOF;
         byte unknown;
 
-        public _eof(int _lengthUpToEOF)
+        public _eof(uint _lengthUpToEOF)
         {
             lengthUpToEOF = _lengthUpToEOF;
         }

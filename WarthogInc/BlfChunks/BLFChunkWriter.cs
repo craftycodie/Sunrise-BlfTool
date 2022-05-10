@@ -11,11 +11,11 @@ namespace WarthogInc.BlfChunks
 {
     class BLFChunkWriter
     {
-        public void WriteChunk(BitStream<StreamByteStream> outputStream, IBLFChunk blfChunk)
+        public void WriteChunk(ref BitStream<StreamByteStream> outputStream, IBLFChunk blfChunk)
         {
             BLFChunkHeader header = new BLFChunkHeader(blfChunk);
-            header.WriteHeader(outputStream);
-            blfChunk.WriteChunk(outputStream);
+            header.WriteHeader(ref outputStream);
+            blfChunk.WriteChunk(ref outputStream);
         }
     }
 }

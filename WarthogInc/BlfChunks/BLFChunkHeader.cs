@@ -11,9 +11,9 @@ namespace WarthogInc.BlfChunks
     class BLFChunkHeader
     {
         string blfChunkName; // 4 characters
-        int chunkLength;
-        short version;
-        short authentication;
+        uint chunkLength;
+        ushort version;
+        ushort authentication;
 
         public BLFChunkHeader(IBLFChunk blfChunk)
         {
@@ -23,14 +23,15 @@ namespace WarthogInc.BlfChunks
             authentication = blfChunk.GetAuthentication();
         }
 
-        public int GetLength()
+        public uint GetLength()
         {
-            return 0xB;
+            return 0xC;
         }
 
-        public void WriteHeader(BitStream<StreamByteStream> hoppersStream)
+        public void WriteHeader(ref BitStream<StreamByteStream> hoppersStream)
         {
-            hoppersStream.WriteString(blfChunkName, 4);
+            hoppersStream.WriteString(blfChunkName, 4 * 8);
+            hoppersStream.SeekRelative(-1);
             hoppersStream.Write(chunkLength, 32);
             hoppersStream.Write(version, 16);
             hoppersStream.Write(authentication, 16);

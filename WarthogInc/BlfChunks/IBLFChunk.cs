@@ -10,11 +10,11 @@ namespace WarthogInc.BlfChunks
 {
     interface IBLFChunk
     {
-        public short GetVersion();
-        public short GetAuthentication();
+        public ushort GetVersion();
+        public ushort GetAuthentication();
         public string GetName();
-        public int GetLength();
-        public void WriteChunk(BitStream<StreamByteStream> hoppersStream);
-        public void ReadChunk(BitStream<StreamByteStream> hoppersStream);
+        public uint GetLength();
+        public void WriteChunk(ref BitStream<StreamByteStream> hoppersStream);
+        public void ReadChunk(ref BitStream<StreamByteStream> hoppersStream);
     }
 }
