@@ -10,7 +10,7 @@ namespace WarthogInc.BlfChunks
 {
     class ServiceRecordIdentity : IBLFChunk
     {
-        public short GetAuthentication()
+        public ushort GetAuthentication()
         {
             return 1;
         }
@@ -20,17 +20,17 @@ namespace WarthogInc.BlfChunks
             return "srid";
         }
 
-        public short GetVersion()
+        public ushort GetVersion()
         {
             return 2;
         }
 
-        public int GetLength()
+        public uint GetLength()
         {
             return 0x5C;
         }
 
-        public void ReadChunk(BitStream<StreamByteStream> hoppersStream)
+        public void ReadChunk(ref BitStream<StreamByteStream> hoppersStream)
         {
             throw new NotImplementedException();
         }
@@ -149,35 +149,58 @@ namespace WarthogInc.BlfChunks
             KHAKI
         }
 
-        public void WriteChunk(BitStream<StreamByteStream> hoppersStream)
+        public void WriteChunk(ref BitStream<StreamByteStream> hoppersStream)
         {
-            hoppersStream.WriteString(playerName, 32, Encoding.Unicode);
+            byte[] playerNameOut = Encoding.BigEndianUnicode.GetBytes(playerName);
+
+            for (int i = 0; i < 32; i++)
+            {
+                if (i < playerNameOut.Length)
+                    hoppersStream.Write(playerNameOut[i], 8);
+                else
+                    hoppersStream.Write(0, 8);
+            }
+
+            //hoppersStream.WriteString(playerName, 32, Encoding.Unicode);
             hoppersStream.Write(appearanceFlags, 8);
-            hoppersStream.Write(primaryColor, 8);
-            hoppersStream.Write(secondaryColor, 8);
-            hoppersStream.Write(tertiaryColor, 8);
-            hoppersStream.Write(isElite, 8);
+            hoppersStream.Write((byte)primaryColor, 8);
+            hoppersStream.Write((byte)secondaryColor, 8);
+            hoppersStream.Write((byte)tertiaryColor, 8);
+            hoppersStream.Write((byte)isElite, 8);
             hoppersStream.Write(foregroundEmblem, 8);
             hoppersStream.Write(backgroundEmblem, 8);
             hoppersStream.Write(emblemFlags, 8);
-            hoppersStream.Write(emblemPrimaryColor, 8);
-            hoppersStream.Write(emblemSecondaryColor, 8);
-            hoppersStream.Write(emblemBackgroundColor, 8);
-            hoppersStream.Write(spartanHelmet, 8);
-            hoppersStream.Write(spartanLeftShounder, 8);
-            hoppersStream.Write(spartanRightShoulder, 8);
-            hoppersStream.Write(spartanBody, 8);
-            hoppersStream.Write(eliteHelmet, 8);
-            hoppersStream.Write(eliteLeftShoulder, 8);
-            hoppersStream.Write(eliteRightShoulder, 8);
-            hoppersStream.Write(eliteBody, 8);
-            hoppersStream.WriteString(serviceTag, 10, Encoding.Unicode);
+            hoppersStream.Write(0, 8);
+            hoppersStream.Write((byte)emblemPrimaryColor, 8);
+            hoppersStream.Write((byte)emblemSecondaryColor, 8);
+            hoppersStream.Write((byte)emblemBackgroundColor, 8);
+            hoppersStream.Write(0, 16);
+            hoppersStream.Write((byte)spartanHelmet, 8);
+            hoppersStream.Write((byte)spartanLeftShounder, 8);
+            hoppersStream.Write((byte)spartanRightShoulder, 8);
+            hoppersStream.Write((byte)spartanBody, 8);
+            hoppersStream.Write((byte)eliteHelmet, 8);
+            hoppersStream.Write((byte)eliteLeftShoulder, 8);
+            hoppersStream.Write((byte)eliteRightShoulder, 8);
+            hoppersStream.Write((byte)eliteBody, 8);
+            //hoppersStream.WriteString(serviceTag, 10, Encoding.BigEndianUnicode);
+
+            byte[] serviceTagOut = Encoding.BigEndianUnicode.GetBytes(playerName);
+
+            for (int i = 0; i < 10; i++)
+            {
+                if (i < serviceTagOut.Length)
+                    hoppersStream.Write(serviceTagOut[i], 8);
+                else
+                    hoppersStream.Write(0, 8);
+            }
+
             hoppersStream.Write(campaignProgress, 32);
             hoppersStream.Write(highestSkill, 32);
             hoppersStream.Write(totalEXP, 32);
             hoppersStream.Write(unknownInsignia, 32);
-            hoppersStream.Write(rank, 32);
-            hoppersStream.Write(grade, 32);
+            hoppersStream.Write((byte)rank, 32);
+            hoppersStream.Write((byte)grade, 32);
             hoppersStream.Write(unknownInsignia2, 32);
         }
 

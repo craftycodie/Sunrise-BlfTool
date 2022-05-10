@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WarthogInc
 {
-    class Hoppers
+    class HopperConfigurationTable
     {
         public byte configurationsCount;
         public byte categoryCount;

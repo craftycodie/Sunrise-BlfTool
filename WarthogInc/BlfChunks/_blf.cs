@@ -1,5 +1,6 @@
 ﻿using Sewer56.BitStream;
 using Sewer56.BitStream.ByteStreams;
+using Sunrise.BlfTool.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,7 @@ namespace WarthogInc.BlfChunks
 {
     class _blf : IBLFChunk
     {
-        public short GetAuthentication()
+        public ushort GetAuthentication()
         {
             return 2;
         }
@@ -20,40 +21,41 @@ namespace WarthogInc.BlfChunks
             return "_blf";
         }
 
-        public short GetVersion()
+        public ushort GetVersion()
         {
             return 1;
         }
 
-        public enum ByteOrder
+        public enum ByteOrder : ushort
         {
             BIG = 0xFFFE,
             LITTLE = 0xFEFF
         }
 
         ByteOrder byteOrder;
-        byte[] unknown = new byte[0x22];
+        char[] unknown = new char[0x22];
 
-        public static _blf GetDefaultHeader()
+        public _blf()
         {
-            _blf blf = new _blf();
-            blf.byteOrder = ByteOrder.BIG;
-            blf.unknown = new byte[0x22];
-            return blf;
+            byteOrder = ByteOrder.BIG;
+            unknown = new char[0x22];
         }
 
-        public int GetLength()
+        public uint GetLength()
         {
             return 0x24;
         }
 
-        public void WriteChunk(BitStream<StreamByteStream> hoppersStream)
+        public void WriteChunk(ref BitStream<StreamByteStream> hoppersStream)
         {
-            hoppersStream.Write(byteOrder, 16);
-            hoppersStream.Write(unknown, 0x22 * 8);
+            hoppersStream.Write((ushort)byteOrder, 16);
+            foreach (byte item in unknown)
+            {
+                hoppersStream.Write(item, 8);
+            }
         }
 
-        public void ReadChunk(BitStream<StreamByteStream> hoppersStream)
+        public void ReadChunk(ref BitStream<StreamByteStream> hoppersStream)
         {
             throw new NotImplementedException();
         }
