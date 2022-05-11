@@ -1,0 +1,247 @@
+{
+  "gameEntryCount": 22,
+  "gameEntries": [
+    {
+      "gameEntryWeight": 5,
+      "minimumPlayerCount": 8,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 390,
+      "gameVariantHash": "9640E302E7F844349351E2CE545A51D0998FA6CF",
+      "gameVariantFileName": "big_team_multiflag",
+      "mapVariantHash": "13D7F1F04CE2B1C5CC80392E5165E2B7BF68CF6D",
+      "mapVariantFileName": "default_the_pit"
+    },
+    {
+      "gameEntryWeight": 3,
+      "minimumPlayerCount": 8,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 330,
+      "gameVariantHash": "9640E302E7F844349351E2CE545A51D0998FA6CF",
+      "gameVariantFileName": "big_team_multiflag",
+      "mapVariantHash": "B6DEAA72D639B132DDF746D78CE941A46F6CE844",
+      "mapVariantFileName": "default_isolation"
+    },
+    {
+      "gameEntryWeight": 3,
+      "minimumPlayerCount": 8,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 380,
+      "gameVariantHash": "9640E302E7F844349351E2CE545A51D0998FA6CF",
+      "gameVariantFileName": "big_team_multiflag",
+      "mapVariantHash": "FC6378500A9E422F079B33F21BEDD1EDE29DB0D3",
+      "mapVariantFileName": "default_narrows"
+    },
+    {
+      "gameEntryWeight": 5,
+      "minimumPlayerCount": 8,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 500,
+      "gameVariantHash": "9640E302E7F844349351E2CE545A51D0998FA6CF",
+      "gameVariantFileName": "big_team_multiflag",
+      "mapVariantHash": "2F504CE3BF1B5BF7D1906354BCD347674598BE8F",
+      "mapVariantFileName": "default_orbital"
+    },
+    {
+      "gameEntryWeight": 7,
+      "minimumPlayerCount": 8,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 730,
+      "gameVariantHash": "9640E302E7F844349351E2CE545A51D0998FA6CF",
+      "gameVariantFileName": "big_team_multiflag",
+      "mapVariantHash": "D8A4761DFBBDC73AAE2DE947E0F5F0D7F1A12ABC",
+      "mapVariantFileName": "default_sandbox"
+    },
+    {
+      "gameEntryWeight": 5,
+      "minimumPlayerCount": 8,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 340,
+      "gameVariantHash": "149CB3B685D5153A9945FD7D0B08699D285177D6",
+      "gameVariantFileName": "big_team_multiflag_tanks",
+      "mapVariantHash": "7D0EF50D32469570BFC8954AE18208B90928DFA8",
+      "mapVariantFileName": "default_valhalla"
+    },
+    {
+      "gameEntryWeight": 5,
+      "minimumPlayerCount": 8,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 410,
+      "gameVariantHash": "149CB3B685D5153A9945FD7D0B08699D285177D6",
+      "gameVariantFileName": "big_team_multiflag_tanks",
+      "mapVariantHash": "D54E8EB030ACCCE2B5C39FBCD7F4F4B2AD347CC1",
+      "mapVariantFileName": "default_standoff"
+    },
+    {
+      "gameEntryWeight": 7,
+      "minimumPlayerCount": 8,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 470,
+      "gameVariantHash": "149CB3B685D5153A9945FD7D0B08699D285177D6",
+      "gameVariantFileName": "big_team_multiflag_tanks",
+      "mapVariantHash": "6072A7C324844ED407E7162CBE045A19730E7766",
+      "mapVariantFileName": "default_avalanche"
+    },
+    {
+      "gameEntryWeight": 3,
+      "minimumPlayerCount": 6,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 390,
+      "gameVariantHash": "D1DBCA66D8D56D768C9600E40A9CB478FF2844FC",
+      "gameVariantFileName": "big_team_1_flag",
+      "mapVariantHash": "13D7F1F04CE2B1C5CC80392E5165E2B7BF68CF6D",
+      "mapVariantFileName": "default_the_pit"
+    },
+    {
+      "gameEntryWeight": 7,
+      "minimumPlayerCount": 6,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 310,
+      "gameVariantHash": "D1DBCA66D8D56D768C9600E40A9CB478FF2844FC",
+      "gameVariantFileName": "big_team_1_flag",
+      "mapVariantHash": "71329DDB245E039E52A69E69DC026BA3647EE655",
+      "mapVariantFileName": "default_high_ground"
+    },
+    {
+      "gameEntryWeight": 2,
+      "minimumPlayerCount": 6,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 380,
+      "gameVariantHash": "D1DBCA66D8D56D768C9600E40A9CB478FF2844FC",
+      "gameVariantFileName": "big_team_1_flag",
+      "mapVariantHash": "FC6378500A9E422F079B33F21BEDD1EDE29DB0D3",
+      "mapVariantFileName": "default_narrows"
+    },
+    {
+      "gameEntryWeight": 8,
+      "minimumPlayerCount": 6,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 30,
+      "gameVariantHash": "D1DBCA66D8D56D768C9600E40A9CB478FF2844FC",
+      "gameVariantFileName": "big_team_1_flag",
+      "mapVariantHash": "6729A81D496BEE1610117176009F0CBBAC2B9695",
+      "mapVariantFileName": "default_last_resort"
+    },
+    {
+      "gameEntryWeight": 5,
+      "minimumPlayerCount": 6,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 410,
+      "gameVariantHash": "04B02F05588842228AC1DB64F5D436D76327A966",
+      "gameVariantFileName": "big_team_1_flag_tanks",
+      "mapVariantHash": "D54E8EB030ACCCE2B5C39FBCD7F4F4B2AD347CC1",
+      "mapVariantFileName": "default_standoff"
+    },
+    {
+      "gameEntryWeight": 7,
+      "minimumPlayerCount": 6,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 590,
+      "gameVariantHash": "D1DBCA66D8D56D768C9600E40A9CB478FF2844FC",
+      "gameVariantFileName": "big_team_1_flag",
+      "mapVariantHash": "1F3A4C9A55DD41B894A8BB4445B1DD953E6CE9B5",
+      "mapVariantFileName": "default_ghost_town"
+    },
+    {
+      "gameEntryWeight": 7,
+      "minimumPlayerCount": 6,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 470,
+      "gameVariantHash": "04B02F05588842228AC1DB64F5D436D76327A966",
+      "gameVariantFileName": "big_team_1_flag_tanks",
+      "mapVariantHash": "6072A7C324844ED407E7162CBE045A19730E7766",
+      "mapVariantFileName": "default_avalanche"
+    },
+    {
+      "gameEntryWeight": 5,
+      "minimumPlayerCount": 6,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 500,
+      "gameVariantHash": "D1DBCA66D8D56D768C9600E40A9CB478FF2844FC",
+      "gameVariantFileName": "big_team_1_flag",
+      "mapVariantHash": "2F504CE3BF1B5BF7D1906354BCD347674598BE8F",
+      "mapVariantFileName": "default_orbital"
+    },
+    {
+      "gameEntryWeight": 7,
+      "minimumPlayerCount": 6,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 730,
+      "gameVariantHash": "D1DBCA66D8D56D768C9600E40A9CB478FF2844FC",
+      "gameVariantFileName": "big_team_1_flag",
+      "mapVariantHash": "D8A4761DFBBDC73AAE2DE947E0F5F0D7F1A12ABC",
+      "mapVariantFileName": "default_sandbox"
+    },
+    {
+      "gameEntryWeight": 7,
+      "minimumPlayerCount": 6,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 730,
+      "gameVariantHash": "D1DBCA66D8D56D768C9600E40A9CB478FF2844FC",
+      "gameVariantFileName": "big_team_1_flag",
+      "mapVariantHash": "7BD4FB61BCD4B9FA2BC74914E59B744778F40B11",
+      "mapVariantFileName": "sandbox_utahmambo"
+    },
+    {
+      "gameEntryWeight": 7,
+      "minimumPlayerCount": 6,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 440,
+      "gameVariantHash": "D1DBCA66D8D56D768C9600E40A9CB478FF2844FC",
+      "gameVariantFileName": "big_team_1_flag",
+      "mapVariantHash": "F25F5C22310B2BBF48B898DF6B07F5D68CD31E99",
+      "mapVariantFileName": "default_longshore"
+    },
+    {
+      "gameEntryWeight": 7,
+      "minimumPlayerCount": 8,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 340,
+      "gameVariantHash": "E68CA26488296146F24B12C14FE4F5B020D41BA3",
+      "gameVariantFileName": "two_flag_heavy",
+      "mapVariantHash": "6EC31DB068F96AC648AA439C662696170EFBF692",
+      "mapVariantFileName": "heavy_valhalla"
+    },
+    {
+      "gameEntryWeight": 7,
+      "minimumPlayerCount": 8,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 410,
+      "gameVariantHash": "E68CA26488296146F24B12C14FE4F5B020D41BA3",
+      "gameVariantFileName": "two_flag_heavy",
+      "mapVariantHash": "3320F2A6C4DA60D0DDD8ECCBEE254361BF27441B",
+      "mapVariantFileName": "heavy_standoff"
+    },
+    {
+      "gameEntryWeight": 7,
+      "minimumPlayerCount": 8,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 470,
+      "gameVariantHash": "E68CA26488296146F24B12C14FE4F5B020D41BA3",
+      "gameVariantFileName": "two_flag_heavy",
+      "mapVariantHash": "24AB5C88E91B11F651372DDB42C1DEA1A8181084",
+      "mapVariantFileName": "heavy_avalanche"
+    }
+  ]
+}

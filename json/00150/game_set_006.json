@@ -1,0 +1,181 @@
+{
+  "gameEntryCount": 16,
+  "gameEntries": [
+    {
+      "gameEntryWeight": 6,
+      "minimumPlayerCount": 6,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 310,
+      "gameVariantHash": "FB39B431901710F760FA66D86F7A86DAB25F8FD9",
+      "gameVariantFileName": "lukems_1flag",
+      "mapVariantHash": "71329DDB245E039E52A69E69DC026BA3647EE655",
+      "mapVariantFileName": "default_high_ground"
+    },
+    {
+      "gameEntryWeight": 3,
+      "minimumPlayerCount": 8,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 30,
+      "gameVariantHash": "FB39B431901710F760FA66D86F7A86DAB25F8FD9",
+      "gameVariantFileName": "lukems_1flag",
+      "mapVariantHash": "6729A81D496BEE1610117176009F0CBBAC2B9695",
+      "mapVariantFileName": "default_last_resort"
+    },
+    {
+      "gameEntryWeight": 2,
+      "minimumPlayerCount": 8,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 590,
+      "gameVariantHash": "FB39B431901710F760FA66D86F7A86DAB25F8FD9",
+      "gameVariantFileName": "lukems_1flag",
+      "mapVariantHash": "1F3A4C9A55DD41B894A8BB4445B1DD953E6CE9B5",
+      "mapVariantFileName": "default_ghost_town"
+    },
+    {
+      "gameEntryWeight": 3,
+      "minimumPlayerCount": 6,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 520,
+      "gameVariantHash": "FB39B431901710F760FA66D86F7A86DAB25F8FD9",
+      "gameVariantFileName": "lukems_1flag",
+      "mapVariantHash": "4E88C7200A816A9D72B8A926A978CF2546F901B3",
+      "mapVariantFileName": "default_blackout"
+    },
+    {
+      "gameEntryWeight": 6,
+      "minimumPlayerCount": 6,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 390,
+      "gameVariantHash": "91DC961697118647B6FFD98317204D191C5FC148",
+      "gameVariantFileName": "multi_flag_ctf_br",
+      "mapVariantHash": "10ACFDB7307D4D3B42F291A1EAC3BD9ADCFBD015",
+      "mapVariantFileName": "year2_the_pit_pitstop"
+    },
+    {
+      "gameEntryWeight": 6,
+      "minimumPlayerCount": 8,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 410,
+      "gameVariantHash": "91DC961697118647B6FFD98317204D191C5FC148",
+      "gameVariantFileName": "multi_flag_ctf_br",
+      "mapVariantHash": "D54E8EB030ACCCE2B5C39FBCD7F4F4B2AD347CC1",
+      "mapVariantFileName": "default_standoff"
+    },
+    {
+      "gameEntryWeight": 6,
+      "minimumPlayerCount": 8,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 340,
+      "gameVariantHash": "91DC961697118647B6FFD98317204D191C5FC148",
+      "gameVariantFileName": "multi_flag_ctf_br",
+      "mapVariantHash": "7D0EF50D32469570BFC8954AE18208B90928DFA8",
+      "mapVariantFileName": "default_valhalla"
+    },
+    {
+      "gameEntryWeight": 4,
+      "minimumPlayerCount": 8,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 340,
+      "gameVariantHash": "BD47921012ED5247555140258C6D3D94AC8D46B2",
+      "gameVariantFileName": "lukems_multi_flag",
+      "mapVariantHash": "7D0EF50D32469570BFC8954AE18208B90928DFA8",
+      "mapVariantFileName": "default_valhalla"
+    },
+    {
+      "gameEntryWeight": 4,
+      "minimumPlayerCount": 8,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 410,
+      "gameVariantHash": "BD47921012ED5247555140258C6D3D94AC8D46B2",
+      "gameVariantFileName": "lukems_multi_flag",
+      "mapVariantHash": "D54E8EB030ACCCE2B5C39FBCD7F4F4B2AD347CC1",
+      "mapVariantFileName": "default_standoff"
+    },
+    {
+      "gameEntryWeight": 5,
+      "minimumPlayerCount": 6,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 390,
+      "gameVariantHash": "BD47921012ED5247555140258C6D3D94AC8D46B2",
+      "gameVariantFileName": "lukems_multi_flag",
+      "mapVariantHash": "10ACFDB7307D4D3B42F291A1EAC3BD9ADCFBD015",
+      "mapVariantFileName": "year2_the_pit_pitstop"
+    },
+    {
+      "gameEntryWeight": 6,
+      "minimumPlayerCount": 6,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 740,
+      "gameVariantHash": "BD47921012ED5247555140258C6D3D94AC8D46B2",
+      "gameVariantFileName": "lukems_multi_flag",
+      "mapVariantHash": "0E031332C25D11C42E313F46BC52A31C351A7FC7",
+      "mapVariantFileName": "noequip_citadel"
+    },
+    {
+      "gameEntryWeight": 5,
+      "minimumPlayerCount": 6,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 720,
+      "gameVariantHash": "BD47921012ED5247555140258C6D3D94AC8D46B2",
+      "gameVariantFileName": "lukems_multi_flag",
+      "mapVariantHash": "7EEB042845286DD9A26DFC8F1E4E04BADE995F56",
+      "mapVariantFileName": "noequip_heretic"
+    },
+    {
+      "gameEntryWeight": 3,
+      "minimumPlayerCount": 6,
+      "skipAfterVeto": true,
+      "optional": false,
+      "mapID": 520,
+      "gameVariantHash": "BA7CB4DDC28D44C5424A14C454DF13BF7E9C7E6F",
+      "gameVariantFileName": "lukems_oddball",
+      "mapVariantHash": "4E88C7200A816A9D72B8A926A978CF2546F901B3",
+      "mapVariantFileName": "default_blackout"
+    },
+    {
+      "gameEntryWeight": 3,
+      "minimumPlayerCount": 6,
+      "skipAfterVeto": true,
+      "optional": false,
+      "mapID": 320,
+      "gameVariantHash": "BA7CB4DDC28D44C5424A14C454DF13BF7E9C7E6F",
+      "gameVariantFileName": "lukems_oddball",
+      "mapVariantHash": "AA99BD465C39E9D5683EEE366C6F2A727C76ECAC",
+      "mapVariantFileName": "default_guardian"
+    },
+    {
+      "gameEntryWeight": 3,
+      "minimumPlayerCount": 6,
+      "skipAfterVeto": true,
+      "optional": false,
+      "mapID": 720,
+      "gameVariantHash": "BA7CB4DDC28D44C5424A14C454DF13BF7E9C7E6F",
+      "gameVariantFileName": "lukems_oddball",
+      "mapVariantHash": "7EEB042845286DD9A26DFC8F1E4E04BADE995F56",
+      "mapVariantFileName": "noequip_heretic"
+    },
+    {
+      "gameEntryWeight": 3,
+      "minimumPlayerCount": 6,
+      "skipAfterVeto": true,
+      "optional": false,
+      "mapID": 740,
+      "gameVariantHash": "BA7CB4DDC28D44C5424A14C454DF13BF7E9C7E6F",
+      "gameVariantFileName": "lukems_oddball",
+      "mapVariantHash": "0E031332C25D11C42E313F46BC52A31C351A7FC7",
+      "mapVariantFileName": "noequip_citadel"
+    }
+  ]
+}

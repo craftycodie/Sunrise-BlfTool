@@ -44,8 +44,12 @@ namespace WarthogInc.BlfChunks
 
         public void ReadHeader(ref BitStream<StreamByteStream> hoppersStream)
         {
-            blfChunkName = hoppersStream.ReadString(5);
-            hoppersStream.SeekRelative(-1);
+            byte[] chunkName = new byte[4];
+            for (int i = 0; i < 4; i++)
+            {
+                 chunkName[i] = hoppersStream.Read<byte>(8);
+            }
+            blfChunkName = Encoding.UTF8.GetString(chunkName);
             chunkLength = hoppersStream.Read<uint>(32);
             version = hoppersStream.Read<ushort>(16);
             authentication = hoppersStream.Read<ushort>(16);

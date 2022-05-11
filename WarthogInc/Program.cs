@@ -79,17 +79,34 @@ namespace WarthogInc
             //bLFChunkWriter.WriteChunk(ref descriptionsOut, new EndOfFile(blfFileHeader.GetLength() + mhdf.GetLength() + (0xC * 2)));
             //descriptionsOut.Write(0, 8);
 
+            int hopper = 101;
+
+            //while (true)
+            //{
+                //try
+                //{
+                    BlfFile blfFile = new BlfFile();
+                    blfFile.ReadFile($"D:\\Projects\\Local\\Halo 3 Matchmaking\\title storage\\title\\default_hoppers\\{hopper.ToString("D5")}\\game_set_006.bin");
+                    var gset = blfFile.GetChunk<GameSet>();
+                    string output = JsonConvert.SerializeObject(gset, setting);
+                    Directory.CreateDirectory($"../../../../json/{hopper.ToString("D5")}/");
+                    File.WriteAllText($"../../../../json/{hopper.ToString("D5")}/game_set_006.json", output);
+                //} catch (Exception ex)
+                //{
+
+                //}
+
+                //hopper++;
+
+                //if (hopper > 778) 
+                //    break;
+            //}
+
             //BlfFile blfFile = new BlfFile();
             //blfFile.ReadFile(@"D:\Projects\Local\Halo 3 Matchmaking\title storage\title\default_hoppers\en\motd_popup.bin");
             //var motd = blfFile.GetChunk<MessageOfTheDayPopup>();
             //string output = JsonConvert.SerializeObject(motd, setting);
             //File.WriteAllText("../../../../json/en/motd_popup.json", output);
-
-            BlfFile blfFile = new BlfFile();
-            blfFile.ReadFile(@"D:\Projects\Local\Halo 3 Matchmaking\title storage\title\default_hoppers\en\motd_popup.bin");
-            var motd = blfFile.GetChunk<MessageOfTheDayPopup>();
-            string output = JsonConvert.SerializeObject(motd, setting);
-            File.WriteAllText("../../../../json/en/motd_popup.json", output);
 
 
 

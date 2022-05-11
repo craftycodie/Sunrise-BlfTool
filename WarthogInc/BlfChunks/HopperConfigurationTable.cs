@@ -75,7 +75,7 @@ namespace Sunrise.BlfTool
 
                 //configuration.hashSet = hoppersStream.Read<byte[]>(160);
                 for (int j = 0; j < 20; j++)
-                    hoppersStream.Write<byte>(configuration.hashSet[j], 8);
+                    hoppersStream.Write<byte>(configuration.gameSetHash[j], 8);
                 hoppersStream.Write<ushort>(configuration.identifier, 16);
 
                 hoppersStream.Write<ushort>(configuration.category, 16);
@@ -199,7 +199,7 @@ namespace Sunrise.BlfTool
         {
             public string name;
             [JsonConverter(typeof(HexStringConverter))]
-            public byte[] hashSet;
+            public byte[] gameSetHash;
             public ushort identifier;
             public ushort category;
             public byte type;

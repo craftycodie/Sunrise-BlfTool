@@ -1,0 +1,313 @@
+{
+  "gameEntryCount": 28,
+  "gameEntries": [
+    {
+      "gameEntryWeight": 3,
+      "minimumPlayerCount": 2,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 380,
+      "gameVariantHash": "3FC260DFADF54453A8F3392B52A1C6E3125C7DAE",
+      "gameVariantFileName": "team_snipers",
+      "mapVariantHash": "FC6378500A9E422F079B33F21BEDD1EDE29DB0D3",
+      "mapVariantFileName": "default_narrows"
+    },
+    {
+      "gameEntryWeight": 3,
+      "minimumPlayerCount": 2,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 310,
+      "gameVariantHash": "3FC260DFADF54453A8F3392B52A1C6E3125C7DAE",
+      "gameVariantFileName": "team_snipers",
+      "mapVariantHash": "71329DDB245E039E52A69E69DC026BA3647EE655",
+      "mapVariantFileName": "default_high_ground"
+    },
+    {
+      "gameEntryWeight": 3,
+      "minimumPlayerCount": 2,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 30,
+      "gameVariantHash": "3FC260DFADF54453A8F3392B52A1C6E3125C7DAE",
+      "gameVariantFileName": "team_snipers",
+      "mapVariantHash": "FA305B3D4061382E89BC4ABB46ED8F428E9830CB",
+      "mapVariantFileName": "default_last_resort"
+    },
+    {
+      "gameEntryWeight": 4,
+      "minimumPlayerCount": 2,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 340,
+      "gameVariantHash": "3FC260DFADF54453A8F3392B52A1C6E3125C7DAE",
+      "gameVariantFileName": "team_snipers",
+      "mapVariantHash": "8971538E364EF73F6E1A95AFAEBC9CEEED077A59",
+      "mapVariantFileName": "default_valhalla"
+    },
+    {
+      "gameEntryWeight": 4,
+      "minimumPlayerCount": 2,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 410,
+      "gameVariantHash": "3FC260DFADF54453A8F3392B52A1C6E3125C7DAE",
+      "gameVariantFileName": "team_snipers",
+      "mapVariantHash": "D54E8EB030ACCCE2B5C39FBCD7F4F4B2AD347CC1",
+      "mapVariantFileName": "default_standoff"
+    },
+    {
+      "gameEntryWeight": 5,
+      "minimumPlayerCount": 2,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 590,
+      "gameVariantHash": "3FC260DFADF54453A8F3392B52A1C6E3125C7DAE",
+      "gameVariantFileName": "team_snipers",
+      "mapVariantHash": "1F3A4C9A55DD41B894A8BB4445B1DD953E6CE9B5",
+      "mapVariantFileName": "default_ghost_town"
+    },
+    {
+      "gameEntryWeight": 3,
+      "minimumPlayerCount": 2,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 520,
+      "gameVariantHash": "3FC260DFADF54453A8F3392B52A1C6E3125C7DAE",
+      "gameVariantFileName": "team_snipers",
+      "mapVariantHash": "D13F1E1F43F127CEA39504BF8F8668F33E4E5B1A",
+      "mapVariantFileName": "default_blackout"
+    },
+    {
+      "gameEntryWeight": 3,
+      "minimumPlayerCount": 2,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 380,
+      "gameVariantHash": "3A3648877A6641AECA2885C1BE3B097880EC4287",
+      "gameVariantFileName": "team_shotty_snipers",
+      "mapVariantHash": "FC6378500A9E422F079B33F21BEDD1EDE29DB0D3",
+      "mapVariantFileName": "default_narrows"
+    },
+    {
+      "gameEntryWeight": 3,
+      "minimumPlayerCount": 2,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 310,
+      "gameVariantHash": "3A3648877A6641AECA2885C1BE3B097880EC4287",
+      "gameVariantFileName": "team_shotty_snipers",
+      "mapVariantHash": "71329DDB245E039E52A69E69DC026BA3647EE655",
+      "mapVariantFileName": "default_high_ground"
+    },
+    {
+      "gameEntryWeight": 2,
+      "minimumPlayerCount": 2,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 30,
+      "gameVariantHash": "3A3648877A6641AECA2885C1BE3B097880EC4287",
+      "gameVariantFileName": "team_shotty_snipers",
+      "mapVariantHash": "FA305B3D4061382E89BC4ABB46ED8F428E9830CB",
+      "mapVariantFileName": "default_last_resort"
+    },
+    {
+      "gameEntryWeight": 2,
+      "minimumPlayerCount": 2,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 340,
+      "gameVariantHash": "3A3648877A6641AECA2885C1BE3B097880EC4287",
+      "gameVariantFileName": "team_shotty_snipers",
+      "mapVariantHash": "8971538E364EF73F6E1A95AFAEBC9CEEED077A59",
+      "mapVariantFileName": "default_valhalla"
+    },
+    {
+      "gameEntryWeight": 2,
+      "minimumPlayerCount": 2,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 390,
+      "gameVariantHash": "3A3648877A6641AECA2885C1BE3B097880EC4287",
+      "gameVariantFileName": "team_shotty_snipers",
+      "mapVariantHash": "13D7F1F04CE2B1C5CC80392E5165E2B7BF68CF6D",
+      "mapVariantFileName": "default_the_pit"
+    },
+    {
+      "gameEntryWeight": 2,
+      "minimumPlayerCount": 2,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 360,
+      "gameVariantHash": "3A3648877A6641AECA2885C1BE3B097880EC4287",
+      "gameVariantFileName": "team_shotty_snipers",
+      "mapVariantHash": "07CFECDF87BC024A242E770F386BA62A1B3E57B1",
+      "mapVariantFileName": "default_snowbound"
+    },
+    {
+      "gameEntryWeight": 3,
+      "minimumPlayerCount": 2,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 410,
+      "gameVariantHash": "3A3648877A6641AECA2885C1BE3B097880EC4287",
+      "gameVariantFileName": "team_shotty_snipers",
+      "mapVariantHash": "D54E8EB030ACCCE2B5C39FBCD7F4F4B2AD347CC1",
+      "mapVariantFileName": "default_standoff"
+    },
+    {
+      "gameEntryWeight": 3,
+      "minimumPlayerCount": 2,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 520,
+      "gameVariantHash": "3A3648877A6641AECA2885C1BE3B097880EC4287",
+      "gameVariantFileName": "team_shotty_snipers",
+      "mapVariantHash": "D13F1E1F43F127CEA39504BF8F8668F33E4E5B1A",
+      "mapVariantFileName": "default_blackout"
+    },
+    {
+      "gameEntryWeight": 3,
+      "minimumPlayerCount": 2,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 590,
+      "gameVariantHash": "3A3648877A6641AECA2885C1BE3B097880EC4287",
+      "gameVariantFileName": "team_shotty_snipers",
+      "mapVariantHash": "1F3A4C9A55DD41B894A8BB4445B1DD953E6CE9B5",
+      "mapVariantFileName": "default_ghost_town"
+    },
+    {
+      "gameEntryWeight": 2,
+      "minimumPlayerCount": 2,
+      "skipAfterVeto": true,
+      "optional": false,
+      "mapID": 390,
+      "gameVariantHash": "95875358C1768A4A7747D92F26E8462FA8EB33FE",
+      "gameVariantFileName": "team_sniper_hill",
+      "mapVariantHash": "13D7F1F04CE2B1C5CC80392E5165E2B7BF68CF6D",
+      "mapVariantFileName": "default_the_pit"
+    },
+    {
+      "gameEntryWeight": 2,
+      "minimumPlayerCount": 2,
+      "skipAfterVeto": true,
+      "optional": false,
+      "mapID": 320,
+      "gameVariantHash": "95875358C1768A4A7747D92F26E8462FA8EB33FE",
+      "gameVariantFileName": "team_sniper_hill",
+      "mapVariantHash": "AA99BD465C39E9D5683EEE366C6F2A727C76ECAC",
+      "mapVariantFileName": "default_guardian"
+    },
+    {
+      "gameEntryWeight": 2,
+      "minimumPlayerCount": 2,
+      "skipAfterVeto": true,
+      "optional": false,
+      "mapID": 520,
+      "gameVariantHash": "95875358C1768A4A7747D92F26E8462FA8EB33FE",
+      "gameVariantFileName": "team_sniper_hill",
+      "mapVariantHash": "D13F1E1F43F127CEA39504BF8F8668F33E4E5B1A",
+      "mapVariantFileName": "default_blackout"
+    },
+    {
+      "gameEntryWeight": 1,
+      "minimumPlayerCount": 2,
+      "skipAfterVeto": true,
+      "optional": false,
+      "mapID": 300,
+      "gameVariantHash": "95875358C1768A4A7747D92F26E8462FA8EB33FE",
+      "gameVariantFileName": "team_sniper_hill",
+      "mapVariantHash": "DF277C0AE3E2B2FC0CA3FD8BA58112806D96F3F9",
+      "mapVariantFileName": "default_construct"
+    },
+    {
+      "gameEntryWeight": 2,
+      "minimumPlayerCount": 2,
+      "skipAfterVeto": true,
+      "optional": false,
+      "mapID": 590,
+      "gameVariantHash": "95875358C1768A4A7747D92F26E8462FA8EB33FE",
+      "gameVariantFileName": "team_sniper_hill",
+      "mapVariantHash": "1F3A4C9A55DD41B894A8BB4445B1DD953E6CE9B5",
+      "mapVariantFileName": "default_ghost_town"
+    },
+    {
+      "gameEntryWeight": 1,
+      "minimumPlayerCount": 2,
+      "skipAfterVeto": true,
+      "optional": false,
+      "mapID": 360,
+      "gameVariantHash": "95875358C1768A4A7747D92F26E8462FA8EB33FE",
+      "gameVariantFileName": "team_sniper_hill",
+      "mapVariantHash": "07CFECDF87BC024A242E770F386BA62A1B3E57B1",
+      "mapVariantFileName": "default_snowbound"
+    },
+    {
+      "gameEntryWeight": 1,
+      "minimumPlayerCount": 2,
+      "skipAfterVeto": true,
+      "optional": false,
+      "mapID": 360,
+      "gameVariantHash": "D3ADEF984DF40E3995770407688E11F001D03F4E",
+      "gameVariantFileName": "team_splasers",
+      "mapVariantHash": "07CFECDF87BC024A242E770F386BA62A1B3E57B1",
+      "mapVariantFileName": "default_snowbound"
+    },
+    {
+      "gameEntryWeight": 2,
+      "minimumPlayerCount": 2,
+      "skipAfterVeto": true,
+      "optional": false,
+      "mapID": 590,
+      "gameVariantHash": "D3ADEF984DF40E3995770407688E11F001D03F4E",
+      "gameVariantFileName": "team_splasers",
+      "mapVariantHash": "1F3A4C9A55DD41B894A8BB4445B1DD953E6CE9B5",
+      "mapVariantFileName": "default_ghost_town"
+    },
+    {
+      "gameEntryWeight": 2,
+      "minimumPlayerCount": 2,
+      "skipAfterVeto": true,
+      "optional": false,
+      "mapID": 410,
+      "gameVariantHash": "D3ADEF984DF40E3995770407688E11F001D03F4E",
+      "gameVariantFileName": "team_splasers",
+      "mapVariantHash": "D54E8EB030ACCCE2B5C39FBCD7F4F4B2AD347CC1",
+      "mapVariantFileName": "default_standoff"
+    },
+    {
+      "gameEntryWeight": 2,
+      "minimumPlayerCount": 2,
+      "skipAfterVeto": true,
+      "optional": false,
+      "mapID": 340,
+      "gameVariantHash": "D3ADEF984DF40E3995770407688E11F001D03F4E",
+      "gameVariantFileName": "team_splasers",
+      "mapVariantHash": "8971538E364EF73F6E1A95AFAEBC9CEEED077A59",
+      "mapVariantFileName": "default_valhalla"
+    },
+    {
+      "gameEntryWeight": 1,
+      "minimumPlayerCount": 2,
+      "skipAfterVeto": true,
+      "optional": false,
+      "mapID": 330,
+      "gameVariantHash": "D3ADEF984DF40E3995770407688E11F001D03F4E",
+      "gameVariantFileName": "team_splasers",
+      "mapVariantHash": "B6DEAA72D639B132DDF746D78CE941A46F6CE844",
+      "mapVariantFileName": "default_isolation"
+    },
+    {
+      "gameEntryWeight": 1,
+      "minimumPlayerCount": 2,
+      "skipAfterVeto": true,
+      "optional": false,
+      "mapID": 400,
+      "gameVariantHash": "D3ADEF984DF40E3995770407688E11F001D03F4E",
+      "gameVariantFileName": "team_splasers",
+      "mapVariantHash": "E0E49FA29EB06D69190D4010B2BFC83360C96842",
+      "mapVariantFileName": "default_sandtrap"
+    }
+  ]
+}
