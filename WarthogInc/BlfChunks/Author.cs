@@ -9,21 +9,21 @@ using System.Threading.Tasks;
 
 namespace WarthogInc.BlfChunks
 {
-    class _blf : IBLFChunk
+    class Author : IBLFChunk
     {
         public ushort GetAuthentication()
         {
-            return 2;
+            return 1;
         }
 
         public string GetName()
         {
-            return "_blf";
+            return "athr";
         }
 
         public ushort GetVersion()
         {
-            return 1;
+            return 3;
         }
 
         public enum ByteOrder : ushort
@@ -32,23 +32,20 @@ namespace WarthogInc.BlfChunks
             LITTLE = 0xFEFF
         }
 
-        ByteOrder byteOrder;
-        byte[] unknown = new byte[0x22];
+        byte[] unknown = new byte[0x44];
 
-        public _blf()
+        public Author()
         {
-            byteOrder = ByteOrder.BIG;
-            unknown = new byte[0x22];
+            unknown = new byte[0x44];
         }
 
         public uint GetLength()
         {
-            return 0x24;
+            return 0x50;
         }
 
         public void WriteChunk(ref BitStream<StreamByteStream> hoppersStream)
         {
-            hoppersStream.Write((ushort)byteOrder, 16);
             foreach (byte item in unknown)
             {
                 hoppersStream.Write(item, 8);
@@ -57,8 +54,7 @@ namespace WarthogInc.BlfChunks
 
         public void ReadChunk(ref BitStream<StreamByteStream> hoppersStream)
         {
-            byteOrder = (ByteOrder)hoppersStream.Read<ushort>(16);
-            for (int i = 0; i < 0x22; i++)
+            for (int i = 0; i < 0x44; i++)
             {
                 unknown[i] = hoppersStream.Read<byte>(8);
             }

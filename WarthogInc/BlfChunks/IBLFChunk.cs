@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace WarthogInc.BlfChunks
 {
-    interface IBLFChunk
+    public interface IBLFChunk
     {
         public ushort GetVersion();
         public ushort GetAuthentication();

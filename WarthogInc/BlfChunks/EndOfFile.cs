@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace WarthogInc.BlfChunks
 {
-    class _eof : IBLFChunk
+    class EndOfFile : IBLFChunk
     {
         public ushort GetAuthentication()
         {
@@ -38,13 +38,19 @@ namespace WarthogInc.BlfChunks
 
         public void ReadChunk(ref BitStream<StreamByteStream> hoppersStream)
         {
-            throw new NotImplementedException();
+            lengthUpToEOF = hoppersStream.Read<uint>(32);
+            unknown = hoppersStream.Read<byte>(8);
         }
 
         uint lengthUpToEOF;
         byte unknown;
 
-        public _eof(uint _lengthUpToEOF)
+        public EndOfFile()
+        {
+
+        }
+
+        public EndOfFile(uint _lengthUpToEOF)
         {
             lengthUpToEOF = _lengthUpToEOF;
         }
