@@ -1,0 +1,302 @@
+{
+  "gameEntryCount": 27,
+  "gameEntries": [
+    {
+      "gameEntryWeight": 5,
+      "minimumPlayerCount": 6,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 300,
+      "gameVariantHash": "7545CFA41A3433C44927BDDBE791E014FEA89334",
+      "gameVariantFileName": "team_snipers",
+      "mapVariantHash": "CE680B52883F7E503894A399538E228B17A03472",
+      "mapVariantFileName": "sniper_construct_snipestruct"
+    },
+    {
+      "gameEntryWeight": 2,
+      "minimumPlayerCount": 8,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 330,
+      "gameVariantHash": "7545CFA41A3433C44927BDDBE791E014FEA89334",
+      "gameVariantFileName": "team_snipers",
+      "mapVariantHash": "F8C052E18B7D99ED72BB206D38C5E8C7E84E983B",
+      "mapVariantFileName": "sniper_isolation_sniperlation"
+    },
+    {
+      "gameEntryWeight": 4,
+      "minimumPlayerCount": 6,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 320,
+      "gameVariantHash": "7545CFA41A3433C44927BDDBE791E014FEA89334",
+      "gameVariantFileName": "team_snipers",
+      "mapVariantHash": "CED819EBD5F5B9E6C1E22F72E767C34DE084CDB5",
+      "mapVariantFileName": "sniper_guardian_sniper_guardian"
+    },
+    {
+      "gameEntryWeight": 5,
+      "minimumPlayerCount": 6,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 380,
+      "gameVariantHash": "7545CFA41A3433C44927BDDBE791E014FEA89334",
+      "gameVariantFileName": "team_snipers",
+      "mapVariantHash": "4828641F88653A344D3AA3699CFB993B22A61BB7",
+      "mapVariantFileName": "sniper_narrows_sniper_bridge"
+    },
+    {
+      "gameEntryWeight": 6,
+      "minimumPlayerCount": 6,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 310,
+      "gameVariantHash": "7545CFA41A3433C44927BDDBE791E014FEA89334",
+      "gameVariantFileName": "team_snipers",
+      "mapVariantHash": "BB0106E5EBE3F8FE93524BDC3856EF6B4057320C",
+      "mapVariantFileName": "sniper_high_ground_sniperground"
+    },
+    {
+      "gameEntryWeight": 7,
+      "minimumPlayerCount": 8,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 340,
+      "gameVariantHash": "7545CFA41A3433C44927BDDBE791E014FEA89334",
+      "gameVariantFileName": "team_snipers",
+      "mapVariantHash": "A25B0AC07E72A72F86D6C56CE4AAB591FED770B9",
+      "mapVariantFileName": "sniper_valhalla_sniper_canyon"
+    },
+    {
+      "gameEntryWeight": 5,
+      "minimumPlayerCount": 6,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 400,
+      "gameVariantHash": "7545CFA41A3433C44927BDDBE791E014FEA89334",
+      "gameVariantFileName": "team_snipers",
+      "mapVariantHash": "C1420423CE4D6FAE2579A8F60F31060F14D2D4B2",
+      "mapVariantFileName": "sniper_sandtrap_snipe_trap"
+    },
+    {
+      "gameEntryWeight": 4,
+      "minimumPlayerCount": 6,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 360,
+      "gameVariantHash": "7545CFA41A3433C44927BDDBE791E014FEA89334",
+      "gameVariantFileName": "team_snipers",
+      "mapVariantHash": "6810961804C0C6BE4888AEDDA60F4EA3B6B6389C",
+      "mapVariantFileName": "sniper_snowbound_snipebound"
+    },
+    {
+      "gameEntryWeight": 4,
+      "minimumPlayerCount": 6,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 390,
+      "gameVariantHash": "7545CFA41A3433C44927BDDBE791E014FEA89334",
+      "gameVariantFileName": "team_snipers",
+      "mapVariantHash": "6534A9C1C6D9F72B64F87B145146FB613402D6E6",
+      "mapVariantFileName": "sniper_the_pit_sniper_stop"
+    },
+    {
+      "gameEntryWeight": 5,
+      "minimumPlayerCount": 8,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 580,
+      "gameVariantHash": "7545CFA41A3433C44927BDDBE791E014FEA89334",
+      "gameVariantFileName": "team_snipers",
+      "mapVariantHash": "756ED98EFE14B0D73100A9F1D99F9F49AC622611",
+      "mapVariantFileName": "sniper_rats_nest_snipers_nest"
+    },
+    {
+      "gameEntryWeight": 6,
+      "minimumPlayerCount": 8,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 470,
+      "gameVariantHash": "7545CFA41A3433C44927BDDBE791E014FEA89334",
+      "gameVariantFileName": "team_snipers",
+      "mapVariantHash": "55BE5A7C329CC3A42DBC56FD65061959572118BD",
+      "mapVariantFileName": "sniper_avalanche_sniperlanche"
+    },
+    {
+      "gameEntryWeight": 4,
+      "minimumPlayerCount": 6,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 520,
+      "gameVariantHash": "7545CFA41A3433C44927BDDBE791E014FEA89334",
+      "gameVariantFileName": "team_snipers",
+      "mapVariantHash": "ADF29665B530BA7014E04B266C72D50FD8DFF90A",
+      "mapVariantFileName": "sniper_blackout_snipeout"
+    },
+    {
+      "gameEntryWeight": 6,
+      "minimumPlayerCount": 6,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 590,
+      "gameVariantHash": "7545CFA41A3433C44927BDDBE791E014FEA89334",
+      "gameVariantFileName": "team_snipers",
+      "mapVariantHash": "FB627F2F3CD896BD95807C4915B036DDA2B100EB",
+      "mapVariantFileName": "sniper_ghost_town_sniper_town"
+    },
+    {
+      "gameEntryWeight": 4,
+      "minimumPlayerCount": 6,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 490,
+      "gameVariantHash": "7545CFA41A3433C44927BDDBE791E014FEA89334",
+      "gameVariantFileName": "team_snipers",
+      "mapVariantHash": "5A1A31676B949E5089CD56FDDC2BEDDDBA35F544",
+      "mapVariantFileName": "sniper_assembly"
+    },
+    {
+      "gameEntryWeight": 2,
+      "minimumPlayerCount": 8,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 500,
+      "gameVariantHash": "7545CFA41A3433C44927BDDBE791E014FEA89334",
+      "gameVariantFileName": "team_snipers",
+      "mapVariantHash": "4453E768A58E3941B99BC4645FB46D9442505B63",
+      "mapVariantFileName": "sniper_orbital"
+    },
+    {
+      "gameEntryWeight": 3,
+      "minimumPlayerCount": 6,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 740,
+      "gameVariantHash": "7545CFA41A3433C44927BDDBE791E014FEA89334",
+      "gameVariantFileName": "team_snipers",
+      "mapVariantHash": "09FF5C728E29C9FF68585759C63F1F99C4CF4E77",
+      "mapVariantFileName": "sniper_citadel"
+    },
+    {
+      "gameEntryWeight": 3,
+      "minimumPlayerCount": 6,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 720,
+      "gameVariantHash": "7545CFA41A3433C44927BDDBE791E014FEA89334",
+      "gameVariantFileName": "team_snipers",
+      "mapVariantHash": "F571AF64CEAD0B4DD25EBB09A5C920FDFBF8C32F",
+      "mapVariantFileName": "sniper_heretic"
+    },
+    {
+      "gameEntryWeight": 5,
+      "minimumPlayerCount": 8,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 440,
+      "gameVariantHash": "7545CFA41A3433C44927BDDBE791E014FEA89334",
+      "gameVariantFileName": "team_snipers",
+      "mapVariantHash": "8227495B5A8ED9F4BEE33F97FC9A8D0A8FB10051",
+      "mapVariantFileName": "sniper_longshore"
+    },
+    {
+      "gameEntryWeight": 2,
+      "minimumPlayerCount": 6,
+      "skipAfterVeto": true,
+      "optional": false,
+      "mapID": 380,
+      "gameVariantHash": "FD254598A9C7B747E9C775EC620B6B2BBDF9C02F",
+      "gameVariantFileName": "team_shotty_snipers",
+      "mapVariantHash": "4828641F88653A344D3AA3699CFB993B22A61BB7",
+      "mapVariantFileName": "sniper_narrows_sniper_bridge"
+    },
+    {
+      "gameEntryWeight": 2,
+      "minimumPlayerCount": 6,
+      "skipAfterVeto": true,
+      "optional": false,
+      "mapID": 310,
+      "gameVariantHash": "FD254598A9C7B747E9C775EC620B6B2BBDF9C02F",
+      "gameVariantFileName": "team_shotty_snipers",
+      "mapVariantHash": "BB0106E5EBE3F8FE93524BDC3856EF6B4057320C",
+      "mapVariantFileName": "sniper_high_ground_sniperground"
+    },
+    {
+      "gameEntryWeight": 2,
+      "minimumPlayerCount": 8,
+      "skipAfterVeto": true,
+      "optional": false,
+      "mapID": 340,
+      "gameVariantHash": "FD254598A9C7B747E9C775EC620B6B2BBDF9C02F",
+      "gameVariantFileName": "team_shotty_snipers",
+      "mapVariantHash": "A25B0AC07E72A72F86D6C56CE4AAB591FED770B9",
+      "mapVariantFileName": "sniper_valhalla_sniper_canyon"
+    },
+    {
+      "gameEntryWeight": 3,
+      "minimumPlayerCount": 6,
+      "skipAfterVeto": true,
+      "optional": false,
+      "mapID": 390,
+      "gameVariantHash": "FD254598A9C7B747E9C775EC620B6B2BBDF9C02F",
+      "gameVariantFileName": "team_shotty_snipers",
+      "mapVariantHash": "6534A9C1C6D9F72B64F87B145146FB613402D6E6",
+      "mapVariantFileName": "sniper_the_pit_sniper_stop"
+    },
+    {
+      "gameEntryWeight": 2,
+      "minimumPlayerCount": 6,
+      "skipAfterVeto": true,
+      "optional": false,
+      "mapID": 360,
+      "gameVariantHash": "FD254598A9C7B747E9C775EC620B6B2BBDF9C02F",
+      "gameVariantFileName": "team_shotty_snipers",
+      "mapVariantHash": "6810961804C0C6BE4888AEDDA60F4EA3B6B6389C",
+      "mapVariantFileName": "sniper_snowbound_snipebound"
+    },
+    {
+      "gameEntryWeight": 1,
+      "minimumPlayerCount": 6,
+      "skipAfterVeto": true,
+      "optional": false,
+      "mapID": 520,
+      "gameVariantHash": "FD254598A9C7B747E9C775EC620B6B2BBDF9C02F",
+      "gameVariantFileName": "team_shotty_snipers",
+      "mapVariantHash": "ADF29665B530BA7014E04B266C72D50FD8DFF90A",
+      "mapVariantFileName": "sniper_blackout_snipeout"
+    },
+    {
+      "gameEntryWeight": 3,
+      "minimumPlayerCount": 6,
+      "skipAfterVeto": true,
+      "optional": false,
+      "mapID": 590,
+      "gameVariantHash": "FD254598A9C7B747E9C775EC620B6B2BBDF9C02F",
+      "gameVariantFileName": "team_shotty_snipers",
+      "mapVariantHash": "FB627F2F3CD896BD95807C4915B036DDA2B100EB",
+      "mapVariantFileName": "sniper_ghost_town_sniper_town"
+    },
+    {
+      "gameEntryWeight": 2,
+      "minimumPlayerCount": 6,
+      "skipAfterVeto": true,
+      "optional": false,
+      "mapID": 740,
+      "gameVariantHash": "FD254598A9C7B747E9C775EC620B6B2BBDF9C02F",
+      "gameVariantFileName": "team_shotty_snipers",
+      "mapVariantHash": "09FF5C728E29C9FF68585759C63F1F99C4CF4E77",
+      "mapVariantFileName": "sniper_citadel"
+    },
+    {
+      "gameEntryWeight": 2,
+      "minimumPlayerCount": 6,
+      "skipAfterVeto": true,
+      "optional": false,
+      "mapID": 720,
+      "gameVariantHash": "FD254598A9C7B747E9C775EC620B6B2BBDF9C02F",
+      "gameVariantFileName": "team_shotty_snipers",
+      "mapVariantHash": "F571AF64CEAD0B4DD25EBB09A5C920FDFBF8C32F",
+      "mapVariantFileName": "sniper_heretic"
+    }
+  ]
+}

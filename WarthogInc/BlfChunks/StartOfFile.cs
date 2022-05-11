@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace WarthogInc.BlfChunks
 {
-    class _blf : IBLFChunk
+    class StartOfFile : IBLFChunk
     {
         public ushort GetAuthentication()
         {
@@ -35,7 +35,7 @@ namespace WarthogInc.BlfChunks
         ByteOrder byteOrder;
         byte[] unknown = new byte[0x22];
 
-        public _blf()
+        public StartOfFile()
         {
             byteOrder = ByteOrder.BIG;
             unknown = new byte[0x22];

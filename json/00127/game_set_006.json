@@ -1,0 +1,126 @@
+{
+  "gameEntryCount": 11,
+  "gameEntries": [
+    {
+      "gameEntryWeight": 1,
+      "minimumPlayerCount": 2,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 480,
+      "gameVariantHash": "39A81E1F1B319EA564E8150B49FC631458325127",
+      "gameVariantFileName": "mlg_team_slayer",
+      "mapVariantHash": "2E5D474373B38F171AF0D119E07DA51CA9A035C6",
+      "mapVariantFileName": "mlg_amplified_v8"
+    },
+    {
+      "gameEntryWeight": 1,
+      "minimumPlayerCount": 2,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 300,
+      "gameVariantHash": "2D4F39A098EC4098E389E56AC5075B7FC604199A",
+      "gameVariantFileName": "mlg_cstruct_ts8",
+      "mapVariantHash": "150ED98C03EA538B5AFFE3A50E43BDDA8756E4D3",
+      "mapVariantFileName": "mlg_construct_ts8"
+    },
+    {
+      "gameEntryWeight": 1,
+      "minimumPlayerCount": 2,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 720,
+      "gameVariantHash": "39A81E1F1B319EA564E8150B49FC631458325127",
+      "gameVariantFileName": "mlg_team_slayer",
+      "mapVariantHash": "768CF866DB6D4E9F9B27BE34CECCC6B979F38D2D",
+      "mapVariantFileName": "mlg_heretic_v8"
+    },
+    {
+      "gameEntryWeight": 1,
+      "minimumPlayerCount": 2,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 380,
+      "gameVariantHash": "39A81E1F1B319EA564E8150B49FC631458325127",
+      "gameVariantFileName": "mlg_team_slayer",
+      "mapVariantHash": "435B6588CBAAB640325A78F44B50D4A1983616DB",
+      "mapVariantFileName": "mlg_narrows_v8"
+    },
+    {
+      "gameEntryWeight": 1,
+      "minimumPlayerCount": 2,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 390,
+      "gameVariantHash": "39A81E1F1B319EA564E8150B49FC631458325127",
+      "gameVariantFileName": "mlg_team_slayer",
+      "mapVariantHash": "B864237EEDCC0C786978870B0E1527E3E478F77D",
+      "mapVariantFileName": "mlg_the_pit_v8"
+    },
+    {
+      "gameEntryWeight": 1,
+      "minimumPlayerCount": 2,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 380,
+      "gameVariantHash": "FDBB0A1A0E168819E56050BBB53E978529440E42",
+      "gameVariantFileName": "mlg_multiflag_narrows",
+      "mapVariantHash": "435B6588CBAAB640325A78F44B50D4A1983616DB",
+      "mapVariantFileName": "mlg_narrows_v8"
+    },
+    {
+      "gameEntryWeight": 1,
+      "minimumPlayerCount": 2,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 480,
+      "gameVariantHash": "38A7DA1968319C51AE7AF5B819F01F676B4E0164",
+      "gameVariantFileName": "mlg_multiflag_onslaught",
+      "mapVariantHash": "F8479BA47FA4F906C735460160C89778D5C2026A",
+      "mapVariantFileName": "mlg_onslaught_v8"
+    },
+    {
+      "gameEntryWeight": 1,
+      "minimumPlayerCount": 2,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 720,
+      "gameVariantHash": "38A7DA1968319C51AE7AF5B819F01F676B4E0164",
+      "gameVariantFileName": "mlg_multiflag_onslaught",
+      "mapVariantHash": "768CF866DB6D4E9F9B27BE34CECCC6B979F38D2D",
+      "mapVariantFileName": "mlg_heretic_v8"
+    },
+    {
+      "gameEntryWeight": 1,
+      "minimumPlayerCount": 2,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 390,
+      "gameVariantHash": "13605BCE50DA1C3EFD1B06CEBC17985ECFAF6CE9",
+      "gameVariantFileName": "mlg_multiflag_the_pit",
+      "mapVariantHash": "B864237EEDCC0C786978870B0E1527E3E478F77D",
+      "mapVariantFileName": "mlg_the_pit_v8"
+    },
+    {
+      "gameEntryWeight": 1,
+      "minimumPlayerCount": 2,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 320,
+      "gameVariantHash": "1FF5254EAEB215D50207BA1A60201040189B0BFF",
+      "gameVariantFileName": "mlg_team_oddball",
+      "mapVariantHash": "A96E0BFD6318F05165BF8D403CDFFCA0E21C42D4",
+      "mapVariantFileName": "mlg_guardian_v8"
+    },
+    {
+      "gameEntryWeight": 1,
+      "minimumPlayerCount": 2,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 300,
+      "gameVariantHash": "85F7A7BD567F5BA435E6AECBAC199426C223B13D",
+      "gameVariantFileName": "mlg_team_king",
+      "mapVariantHash": "713B747A09AEAC8939C26C5AC49C2A265BCC384E",
+      "mapVariantFileName": "mlg_construct_v8"
+    }
+  ]
+}

@@ -46,7 +46,7 @@ namespace Sunrise.BlfTool
 
                 if (chunk is EndOfFile)
                     break;
-                if (chunk is _blf)
+                if (chunk is StartOfFile)
                     continue;
 
                 chunks.AddLast(chunk);
@@ -59,7 +59,7 @@ namespace Sunrise.BlfTool
             var blfFileOut = new BitStream<StreamByteStream>(new StreamByteStream(new FileStream(path, FileMode.Create)));
 
             BLFChunkWriter blfChunkWriter = new BLFChunkWriter();
-            blfChunkWriter.WriteChunk(ref blfFileOut, new _blf());
+            blfChunkWriter.WriteChunk(ref blfFileOut, new StartOfFile());
 
             foreach (IBLFChunk chunk in chunks)
             {

@@ -1,0 +1,93 @@
+{
+  "gameEntryCount": 8,
+  "gameEntries": [
+    {
+      "gameEntryWeight": 7,
+      "minimumPlayerCount": 5,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 600,
+      "gameVariantHash": "5643BD82D9732F6C6A5B76873F4ABB242835283A",
+      "gameVariantFileName": "10_min_slayer",
+      "mapVariantHash": "0A047365873652324270AB5CA54A1516A989C788",
+      "mapVariantFileName": "default_cold_storage"
+    },
+    {
+      "gameEntryWeight": 6,
+      "minimumPlayerCount": 5,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 600,
+      "gameVariantHash": "122EC97A62B75C898E10215EC834E302732EDC9B",
+      "gameVariantFileName": "10_min_slayer_br",
+      "mapVariantHash": "0A047365873652324270AB5CA54A1516A989C788",
+      "mapVariantFileName": "default_cold_storage"
+    },
+    {
+      "gameEntryWeight": 5,
+      "minimumPlayerCount": 5,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 600,
+      "gameVariantHash": "052A907C87D7FE68BCDDAF4102F4CE3ED3EECD3A",
+      "gameVariantFileName": "ffa_rockets",
+      "mapVariantHash": "0A047365873652324270AB5CA54A1516A989C788",
+      "mapVariantFileName": "default_cold_storage"
+    },
+    {
+      "gameEntryWeight": 5,
+      "minimumPlayerCount": 5,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 600,
+      "gameVariantHash": "76DD6414D4272C2D9BAE6CCFF8669A78F4D60D38",
+      "gameVariantFileName": "rumble_swords",
+      "mapVariantHash": "0A047365873652324270AB5CA54A1516A989C788",
+      "mapVariantFileName": "default_cold_storage"
+    },
+    {
+      "gameEntryWeight": 5,
+      "minimumPlayerCount": 5,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 600,
+      "gameVariantHash": "259EBFF2FE21B1878D11EF9ABD92BD509242A429",
+      "gameVariantFileName": "fiesta_slayer",
+      "mapVariantHash": "0A047365873652324270AB5CA54A1516A989C788",
+      "mapVariantFileName": "default_cold_storage"
+    },
+    {
+      "gameEntryWeight": 5,
+      "minimumPlayerCount": 5,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 600,
+      "gameVariantHash": "290F1D1630E4DAF2F4D2F51B13F6905C5EBA1532",
+      "gameVariantFileName": "braaaains",
+      "mapVariantHash": "B55F0CB1885CADCE161B5DBE4660E6550437F546",
+      "mapVariantFileName": "inf_cold_storage_rigor_mortis"
+    },
+    {
+      "gameEntryWeight": 5,
+      "minimumPlayerCount": 5,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 600,
+      "gameVariantHash": "9665DB39352542E02E57AC9A1DAB8EF5E84A11D0",
+      "gameVariantFileName": "rumble_oddball",
+      "mapVariantHash": "0A047365873652324270AB5CA54A1516A989C788",
+      "mapVariantFileName": "default_cold_storage"
+    },
+    {
+      "gameEntryWeight": 5,
+      "minimumPlayerCount": 5,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 600,
+      "gameVariantHash": "981D77518721ED78FC9404977B9D674D5A773A24",
+      "gameVariantFileName": "rumble_crazy_king",
+      "mapVariantHash": "0A047365873652324270AB5CA54A1516A989C788",
+      "mapVariantFileName": "default_cold_storage"
+    }
+  ]
+}

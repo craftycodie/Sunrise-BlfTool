@@ -1,0 +1,27 @@
+{
+  "gameEntryCount": 2,
+  "gameEntries": [
+    {
+      "gameEntryWeight": 1,
+      "minimumPlayerCount": 4,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 320,
+      "gameVariantHash": "ECC93DD10B8EF013BDAACB14CF4198C129978D52",
+      "gameVariantFileName": "newbie_slayer",
+      "mapVariantHash": "AA99BD465C39E9D5683EEE366C6F2A727C76ECAC",
+      "mapVariantFileName": "default_guardian"
+    },
+    {
+      "gameEntryWeight": 1,
+      "minimumPlayerCount": 4,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 360,
+      "gameVariantHash": "ECC93DD10B8EF013BDAACB14CF4198C129978D52",
+      "gameVariantFileName": "newbie_slayer",
+      "mapVariantHash": "5C5FDDF864A1B8D6A298A520759C88BED406B1B6",
+      "mapVariantFileName": "ffa_snowbound"
+    }
+  ]
+}

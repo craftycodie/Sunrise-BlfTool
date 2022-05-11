@@ -1,0 +1,126 @@
+{
+  "gameEntryCount": 11,
+  "gameEntries": [
+    {
+      "gameEntryWeight": 6,
+      "minimumPlayerCount": 6,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 300,
+      "gameVariantHash": "863246B080FB91363D5FC588E4A7F2091BA96829",
+      "gameVariantFileName": "team_slayer_odst",
+      "mapVariantHash": "DF4CE38BB2415FD6A809F6EF17EAAC867C1C3E64",
+      "mapVariantFileName": "odst_construct"
+    },
+    {
+      "gameEntryWeight": 7,
+      "minimumPlayerCount": 6,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 320,
+      "gameVariantHash": "863246B080FB91363D5FC588E4A7F2091BA96829",
+      "gameVariantFileName": "team_slayer_odst",
+      "mapVariantHash": "76BD2B1EEC02989D60CFD5388EBA7515E4B0B099",
+      "mapVariantFileName": "odst_guardian"
+    },
+    {
+      "gameEntryWeight": 6,
+      "minimumPlayerCount": 6,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 360,
+      "gameVariantHash": "863246B080FB91363D5FC588E4A7F2091BA96829",
+      "gameVariantFileName": "team_slayer_odst",
+      "mapVariantHash": "DD923B8C7E186D8E2B758CE165836A7E74F36788",
+      "mapVariantFileName": "odst_snowbound"
+    },
+    {
+      "gameEntryWeight": 8,
+      "minimumPlayerCount": 6,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 390,
+      "gameVariantHash": "863246B080FB91363D5FC588E4A7F2091BA96829",
+      "gameVariantFileName": "team_slayer_odst",
+      "mapVariantHash": "738B690F8212AE3D7B247023FAB18505B3A3777C",
+      "mapVariantFileName": "odst_the_pit"
+    },
+    {
+      "gameEntryWeight": 8,
+      "minimumPlayerCount": 6,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 520,
+      "gameVariantHash": "863246B080FB91363D5FC588E4A7F2091BA96829",
+      "gameVariantFileName": "team_slayer_odst",
+      "mapVariantHash": "E7F1606DE2C97E63B4557E71D37D854E3951FFB6",
+      "mapVariantFileName": "odst_blackout"
+    },
+    {
+      "gameEntryWeight": 6,
+      "minimumPlayerCount": 6,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 590,
+      "gameVariantHash": "863246B080FB91363D5FC588E4A7F2091BA96829",
+      "gameVariantFileName": "team_slayer_odst",
+      "mapVariantHash": "126A199F8A6FB5A3D707A806E6CAB63C17ED8934",
+      "mapVariantFileName": "odst_ghost_town"
+    },
+    {
+      "gameEntryWeight": 8,
+      "minimumPlayerCount": 6,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 490,
+      "gameVariantHash": "863246B080FB91363D5FC588E4A7F2091BA96829",
+      "gameVariantFileName": "team_slayer_odst",
+      "mapVariantHash": "8A20DE1932FF6A3F135697677F5A838D75DEAD22",
+      "mapVariantFileName": "odst_assembly"
+    },
+    {
+      "gameEntryWeight": 8,
+      "minimumPlayerCount": 6,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 740,
+      "gameVariantHash": "863246B080FB91363D5FC588E4A7F2091BA96829",
+      "gameVariantFileName": "team_slayer_odst",
+      "mapVariantHash": "1E53F8C12621355210434F0C10CA4B5CA3FF5C51",
+      "mapVariantFileName": "odst_citadel"
+    },
+    {
+      "gameEntryWeight": 8,
+      "minimumPlayerCount": 6,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 720,
+      "gameVariantHash": "863246B080FB91363D5FC588E4A7F2091BA96829",
+      "gameVariantFileName": "team_slayer_odst",
+      "mapVariantHash": "C43FEB632CD3EA1716C9C3B38B9C897377FE74D7",
+      "mapVariantFileName": "odst_heretic"
+    },
+    {
+      "gameEntryWeight": 5,
+      "minimumPlayerCount": 8,
+      "skipAfterVeto": true,
+      "optional": false,
+      "mapID": 400,
+      "gameVariantHash": "A766E2FB575615E67E6E14850EE45413E86E83D3",
+      "gameVariantFileName": "odst_escort_large",
+      "mapVariantHash": "78D75E86B8E7C1CB9939197CE515FFBD17579154",
+      "mapVariantFileName": "odst_sandtrap"
+    },
+    {
+      "gameEntryWeight": 5,
+      "minimumPlayerCount": 6,
+      "skipAfterVeto": true,
+      "optional": false,
+      "mapID": 580,
+      "gameVariantHash": "E09A733638714AA8DDDCA39FDC6BCFD7A587BEC6",
+      "gameVariantFileName": "odst_escort",
+      "mapVariantHash": "5F1BB46C9288796B4A63BDA551B529EE347D0F40",
+      "mapVariantFileName": "odst_rats_nest"
+    }
+  ]
+}

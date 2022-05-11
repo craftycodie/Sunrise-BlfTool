@@ -15,7 +15,7 @@ namespace SunriseBlfTool.BlfChunks
             switch (chunkName)
             {
                 case "_blf":
-                    return new _blf();
+                    return new StartOfFile();
                 case "_eof":
                     return new EndOfFile();
                 case "mhcf":
@@ -32,6 +32,8 @@ namespace SunriseBlfTool.BlfChunks
                     return new ServiceRecordIdentity();
                 case "mtdp":
                     return new MessageOfTheDayPopup();
+                case "gset":
+                    return new GameSet();
                 default:
                     throw new KeyNotFoundException("Chunk not found.");
             }
