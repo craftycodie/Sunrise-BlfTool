@@ -15,7 +15,6 @@ namespace Sunrise.BlfTool.Extensions
             foreach(T item in array)
             {
                 bitStream.Write(item, bitLength);
-                bitStream.SeekRelative((int)Math.Floor((decimal)(bitLength / 8)), (byte)(bitLength % 8));
             }
         }
     }
