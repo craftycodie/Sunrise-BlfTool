@@ -52,7 +52,18 @@ namespace WarthogInc
             //streamHelper.Write(0, 8);
 
 
-            //var mhcf = JsonConvert.DeserializeObject<Sunrise.BlfTool.HopperConfigurationTable>(File.ReadAllText("../../../../json/matchmaking_hopper_011.json"));
+            //var mhcf = JsonConvert.DeserializeObject<HopperConfigurationTable>(File.ReadAllText("../../../../json/matchmaking_hopper_011.json"));
+            //var hopperFile = new BlfFile();
+            //hopperFile.AddChunk(mhcf);
+            //hopperFile.WriteFile("../../../../blf/matchmaking_hopper_011.bin");
+
+            //var onfm = JsonConvert.DeserializeObject<Manifest>(File.ReadAllText("../../../../json/manifest_001.json"));
+            //onfm.SetFileHash("/title/default_hoppers/matchmaking_hopper_011.bin", hopperFile.ComputeHash());
+            //var manifestFile = new BlfFile();
+            //manifestFile.AddChunk(onfm);
+            //manifestFile.WriteFile("../../../../blf/manifest_001.bin");
+
+
 
             ////hoppersIn.Seek(0);
             ////File.Delete("C:\\Users\\codie\\Desktop\\matchmaking_hopper_011.bin");
@@ -79,12 +90,12 @@ namespace WarthogInc
             //bLFChunkWriter.WriteChunk(ref descriptionsOut, new EndOfFile(blfFileHeader.GetLength() + mhdf.GetLength() + (0xC * 2)));
             //descriptionsOut.Write(0, 8);
 
-            BlfFile blfFile = new BlfFile();
-            blfFile.ReadFile(@"D:\Projects\Local\Halo 3 Matchmaking\title storage\title\default_hoppers\rsa_manifest.bin");
-            var mapm = blfFile.GetChunk<MapManifest>();
-            string output = JsonConvert.SerializeObject(mapm, setting);
-            //Directory.CreateDirectory("../../../../json/00101/");
-            File.WriteAllText("../../../../json/rsa_manifest.json", output);
+            //BlfFile blfFile = new BlfFile();
+            //blfFile.ReadFile(@"D:\Projects\Local\Halo 3 Matchmaking\title storage\title\default_hoppers\network_configuration_135.bin");
+            //var netc = blfFile.GetChunk<NetworkConfiguration>();
+            //string output = JsonConvert.SerializeObject(netc, setting);
+            ////Directory.CreateDirectory("../../../../json/00101/");
+            //File.WriteAllText("../../../../json/network_configuration_135.json", output);
 
             //BlfFile blfFile = new BlfFile();
             //blfFile.ReadFile(@"D:\Projects\Local\Halo 3 Matchmaking\title storage\title\default_hoppers\en\motd_popup.bin");

@@ -37,6 +37,18 @@ namespace Sunrise.BlfTool
             return 1;
         }
 
+        public void SetFileHash(string filePath, byte[] hash)
+        {
+            foreach(FileEntry file in files)
+            {
+                if (file.filePath == filePath)
+                {
+                    file.fileHash = hash;
+                    return;
+                }
+            }
+        }
+
         public void ReadChunk(ref BitStream<StreamByteStream> hoppersStream)
         {
             int fileCount = hoppersStream.Read<int>(32);
@@ -74,17 +86,27 @@ namespace Sunrise.BlfTool
 
         public void WriteChunk(ref BitStream<StreamByteStream> hoppersStream)
         {
-            //hoppersStream.Write<byte>(gameEntryCount, 6);
+            hoppersStream.Write(files.Length, 32);
+            foreach (FileEntry file in files)
+            {
+                byte[] filePathBytes = Encoding.UTF8.GetBytes(file.filePath);
+                for (int j = 0; j < 0x50; j++)
+                {
+                    if (j < filePathBytes.Length)
+                    {
+                        hoppersStream.Write(filePathBytes[j], 8);
+                    }
+                    else
+                    {
+                        hoppersStream.Write(0, 8);
+                    }
+                }
 
-            //for (int i = 0; i < gameEntryCount; i++)
-            //{
-            //    FileEntry entry = gameEntries[i];
-            //    //hoppersStream.Write<ushort>(entry.identifier, 16);
-            //    //hoppersStream.Write<byte>(description.type ? (byte)1 : (byte)0, 1);
-            //    //hoppersStream.WriteString(description.description, 256, Encoding.UTF8);
-            //}
-
-            //hoppersStream.Seek(hoppersStream.NextByteIndex, 0);
+                foreach (byte hashByte in file.fileHash)
+                {
+                    hoppersStream.Write(hashByte, 8);
+                }
+            }
         }
 
         public class FileEntry
