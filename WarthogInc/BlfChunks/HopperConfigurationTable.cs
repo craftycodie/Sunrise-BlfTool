@@ -13,8 +13,10 @@ namespace Sunrise.BlfTool
 {
     class HopperConfigurationTable : IBLFChunk
     {
-        public byte configurationsCount;
-        public byte categoryCount;
+        [JsonIgnore]
+        public byte configurationsCount { get { return (byte)configurations.Length; } }
+        [JsonIgnore]
+        public byte categoryCount { get { return (byte)categories.Length; } }
         public HopperCategory[] categories;
         public HopperConfiguration[] configurations;
 
@@ -42,7 +44,147 @@ namespace Sunrise.BlfTool
 
         public void ReadChunk(ref BitStream<StreamByteStream> hoppersStream)
         {
-            throw new NotImplementedException();
+            byte categoryCount = hoppersStream.Read<byte>(3);
+            categories = new HopperCategory[categoryCount];
+
+            for (int i = 0; i < categoryCount; i++)
+            {
+                HopperCategory category = new HopperCategory();
+
+                category.identifier = hoppersStream.Read<ushort>(16);
+                category.image = hoppersStream.Read<byte>(6);
+                category.name = hoppersStream.ReadString(32);
+
+                categories[i] = category;
+            }
+
+            byte configurationsCount = hoppersStream.Read<byte>(6);
+            configurations = new HopperConfiguration[configurationsCount];
+
+            for (int i = 0; i < configurationsCount; i++)
+            {
+                HopperConfiguration configuration = new HopperConfiguration();
+
+                configuration.name = hoppersStream.ReadString(32, Encoding.UTF8);
+
+                configuration.gameSetHash = new byte[20];
+                for (int j = 0; j < 20; j++)
+                    configuration.gameSetHash[j] = hoppersStream.Read<byte>(8);
+                configuration.identifier = hoppersStream.Read<ushort>(16);
+
+                configuration.category = hoppersStream.Read<ushort>(16);
+                configuration.type = hoppersStream.Read<byte>(2);
+                configuration.imageIndex = hoppersStream.Read<byte>(6);
+                configuration.xLastIndex = hoppersStream.Read<byte>(5);
+                configuration.richPresenceId = hoppersStream.Read<ushort>(16);
+                configuration.startTime = hoppersStream.Read<ulong>(64);
+                configuration.endTime = hoppersStream.Read<ulong>(64);
+                configuration.regions = hoppersStream.Read<uint>(32);
+                configuration.minimumBaseXp = hoppersStream.Read<uint>(17);
+                configuration.maximumBaseXp = hoppersStream.Read<uint>(17);
+                configuration.minimumGamesPlayed = hoppersStream.Read<uint>(17);
+                configuration.maximumGamesPlayed = hoppersStream.Read<uint>(17);
+                configuration.minimumPartySize = hoppersStream.Read<byte>(4);
+                configuration.maximumPartySize = hoppersStream.Read<byte>(4); //ok
+                configuration.hopperAccessBit = hoppersStream.Read<byte>(4);
+                configuration.accountTypeAccess = hoppersStream.Read<byte>(2);
+                configuration.require_all_party_members_meet_games_played_requirements = hoppersStream.Read<byte>(1) > 0;
+                configuration.require_all_party_members_meet_base_xp_requirements = hoppersStream.Read<byte>(1) > 0;
+                configuration.require_all_party_members_meet_access_requirements = hoppersStream.Read<byte>(1) > 0;
+                configuration.require_all_party_members_meet_live_account_access_requirements = hoppersStream.Read<byte>(1) > 0; // seems wrong
+                configuration.hide_hopper_from_games_played_restricted_players = hoppersStream.Read<byte>(1) > 0;
+                configuration.hide_hopper_from_xp_restricted_players = hoppersStream.Read<byte>(1) > 0;
+                configuration.hide_hopper_from_access_restricted_players = hoppersStream.Read<byte>(1) > 0;
+                configuration.hide_hopper_from_live_account_access_restricted_players = hoppersStream.Read<byte>(1) > 0;
+                configuration.hide_hopper_due_to_time_restriction = hoppersStream.Read<byte>(1) > 0;
+                configuration.preMatchVoice = hoppersStream.Read<byte>(2);
+                configuration.inMatchVoice = hoppersStream.Read<byte>(2);
+                configuration.postMatchVoice = hoppersStream.Read<byte>(2);
+                configuration.restrictOpenChannel = hoppersStream.Read<byte>(1) > 0;
+                configuration.requires_all_downloadable_maps = hoppersStream.Read<byte>(1) > 0;
+                configuration.veto_enabled = hoppersStream.Read<byte>(1) > 0;
+                configuration.guests_allowed = hoppersStream.Read<byte>(1) > 0;
+                configuration.require_hosts_on_multiple_teams = hoppersStream.Read<byte>(1) > 0;
+                configuration.stats_write = hoppersStream.Read<byte>(2);
+                configuration.language_filter = hoppersStream.Read<byte>(2);
+                configuration.country_code_filter = hoppersStream.Read<byte>(2);
+                configuration.gamerzone_filter = hoppersStream.Read<byte>(2);
+                configuration.quitter_filter_percentage = hoppersStream.Read<byte>(7);
+                configuration.quitter_filter_maximum_party_size = hoppersStream.Read<byte>(4);
+                configuration.rematch_countdown_timer = hoppersStream.Read<ushort>(10);
+                configuration.rematch_group_formation = hoppersStream.Read<byte>(2);
+                configuration.repeated_opponents_to_consider_for_penalty = hoppersStream.Read<byte>(7);
+                configuration.repeated_opponents_experience_threshold = hoppersStream.Read<byte>(4);
+                configuration.repeated_opponents_skill_throttle_start = hoppersStream.Read<byte>(4);
+                configuration.repeated_opponents_skill_throttle_stop = hoppersStream.Read<byte>(4);
+                configuration.maximum_total_matchmaking_seconds = hoppersStream.Read<ushort>(10);
+                configuration.gather_start_game_early_seconds = hoppersStream.Read<ushort>(10);
+                configuration.gather_give_up_seconds = hoppersStream.Read<ushort>(10);
+
+                configuration.chance_of_gathering = new byte[16];
+                for (int k = 0; k < 16; k++)
+                    configuration.chance_of_gathering[k] = hoppersStream.Read<byte>(7);
+
+                configuration.experience_points_per_win = hoppersStream.Read<byte>(2);
+                configuration.experience_penalty_per_drop = hoppersStream.Read<byte>(2);
+
+                configuration.minimum_mu_per_level = new uint[49];
+                for (int l = 0; l < 49; l++)
+                    configuration.minimum_mu_per_level[l] = hoppersStream.Read<uint>(32);
+
+                configuration.maximum_skill_level_match_delta = new byte[50];
+                for (int m = 0; m < 50; m++)
+                    configuration.maximum_skill_level_match_delta[m] = hoppersStream.Read<byte>(6);
+
+                configuration.trueskill_sigma_multiplier = hoppersStream.Read<uint>(32);
+                configuration.trueskill_beta_performance_variation = hoppersStream.Read<uint>(32);
+                configuration.trueskill_tau_dynamics_factor = hoppersStream.Read<uint>(32);
+                configuration.trueskill_adjust_tau_with_update_weight = hoppersStream.Read<byte>(1) > 0;
+                configuration.trueskill_draw_probability = hoppersStream.Read<byte>(7);
+                configuration.trueskill_hillclimb_w0 = hoppersStream.Read<byte>(7);
+                configuration.trueskill_hillclimb_w50 = hoppersStream.Read<byte>(7);
+                configuration.trueskill_hillclimb_w100 = hoppersStream.Read<byte>(7);
+                configuration.trueskill_hillclimb_w150 = hoppersStream.Read<byte>(7);
+                configuration.skill_update_weight_s0 = hoppersStream.Read<byte>(7);
+                configuration.skill_update_weight_s10 = hoppersStream.Read<byte>(7);
+                configuration.skill_update_weight_s20 = hoppersStream.Read<byte>(7);
+                configuration.skill_update_weight_s30 = hoppersStream.Read<byte>(7);
+                configuration.skill_update_weight_s40 = hoppersStream.Read<byte>(7);
+                configuration.skill_update_weight_s50 = hoppersStream.Read<byte>(7);
+                configuration.quality_update_weight_q0 = hoppersStream.Read<byte>(7);
+                configuration.quality_update_weight_q25 = hoppersStream.Read<byte>(7);
+                configuration.quality_update_weight_q50 = hoppersStream.Read<byte>(7);
+                configuration.quality_update_weight_q75 = hoppersStream.Read<byte>(7);
+                configuration.quality_update_weight_q100 = hoppersStream.Read<byte>(7);
+
+                if (configuration.type <= 1)
+                {
+                    configuration.minimum_player_count = hoppersStream.Read<byte>(4);
+                    configuration.maximum_player_count = hoppersStream.Read<byte>(4);
+
+                }
+                else if (((configuration.type - 1) & 0xFFFFFFFD) == 0)
+                {
+                    configuration.team_count = hoppersStream.Read<byte>(3);
+                    configuration.minimum_team_size = hoppersStream.Read<byte>(3);
+                    configuration.maximum_team_size = hoppersStream.Read<byte>(3);
+                    configuration.maximum_team_imbalance = hoppersStream.Read<byte>(3);
+                    configuration.big_squad_size_threshold = hoppersStream.Read<byte>(4);
+                    configuration.maximum_big_squad_imbalance = hoppersStream.Read<byte>(3);
+                    configuration.enable_big_squad_mixed_skill_restrictions = hoppersStream.Read<byte>(1) > 0;
+                }
+                else
+                {
+                    configuration.team_count = hoppersStream.Read<byte>(3);
+                    configuration.minimum_team_size = hoppersStream.Read<byte>(3);
+                    configuration.maximum_team_size = hoppersStream.Read<byte>(3);
+                    configuration.allow_uneven_teams = hoppersStream.Read<byte>(1) > 0;
+                    configuration.allow_parties_to_split = hoppersStream.Read<byte>(1) > 0;
+                }
+
+                configurations[i] = configuration;
+            }
+            hoppersStream.Seek(hoppersStream.NextByteIndex, 0);
         }
 
         public void WriteChunk(ref BitStream<StreamByteStream> hoppersStream)

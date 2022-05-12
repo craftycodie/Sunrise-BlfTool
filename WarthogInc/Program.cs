@@ -110,7 +110,46 @@ namespace WarthogInc
 
 
 
+            ConvertBlfToJson("D:\\Projects\\Local\\Halo 3 Matchmaking\\title storage\\title\\default_hoppers\\", "../../../../json/");
+        }
 
+        public static void ConvertBlfToJson(string titleStorageFolder, string jsonFolder)
+        {
+            var titleDirectoryEnumerator = Directory.EnumerateFiles(titleStorageFolder, "*.*", SearchOption.AllDirectories).GetEnumerator();
+
+            var jsonSettings = new JsonSerializerSettings { Converters = { new ByteArrayConverter(), new HexStringConverter() },  Formatting = Formatting.Indented };
+
+            while (titleDirectoryEnumerator.MoveNext())
+            {
+                // We remake the manifest on conversion back to BLF.
+                if (titleDirectoryEnumerator.Current.EndsWith("manifest_001.bin"))
+                    continue;
+
+                if (titleDirectoryEnumerator.Current.EndsWith(".bin"))
+                {
+                    try
+                    {
+                        BlfFile blfFile = new BlfFile();
+                        blfFile.ReadFile(titleDirectoryEnumerator.Current);
+                        var blfChunk = blfFile.GetChunk(1);
+                        string output = JsonConvert.SerializeObject((object)blfChunk, jsonSettings);
+
+
+                        string fileRelativePath = titleDirectoryEnumerator.Current.Replace(titleStorageFolder, "");
+                        if (fileRelativePath.Contains("\\"))
+                        {
+                            string fileDirectoryRelativePath = fileRelativePath.Substring(0, fileRelativePath.LastIndexOf("\\"));
+                            Directory.CreateDirectory(jsonFolder + fileDirectoryRelativePath);
+                        }
+                        File.WriteAllText(jsonFolder + fileRelativePath.Replace(".bin", ".json"), output);
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("Failed to convert file: " + titleDirectoryEnumerator.Current);
+                        //Console.WriteLine(ex.ToString());
+                    }
+                }
+            }
         }
     }
 }
