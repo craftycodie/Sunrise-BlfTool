@@ -11,11 +11,11 @@ using WarthogInc.BlfChunks;
 
 namespace Sunrise.BlfTool
 {
-    class Manifest : IBLFChunk
+    class MatchmakingTips : IBLFChunk
     {
         [JsonIgnore]
-        public uint fileCount { get { return (uint)files.Length; } }
-        public FileEntry[] files;
+        public uint tipCount { get { return (uint)tips.Length; } }
+        public string[] tips;
 
         public ushort GetAuthentication()
         {
@@ -24,12 +24,12 @@ namespace Sunrise.BlfTool
 
         public uint GetLength()
         {
-            return (uint)(fileCount * 0x64) + 4;
+            return (uint)(tipCount * 0x100) + 4;
         }
 
         public string GetName()
         {
-            return "onfm";
+            return "mmtp";
         }
 
         public ushort GetVersion()
@@ -39,36 +39,28 @@ namespace Sunrise.BlfTool
 
         public void ReadChunk(ref BitStream<StreamByteStream> hoppersStream)
         {
-            int fileCount = hoppersStream.Read<int>(32);
-            files = new FileEntry[fileCount];
-            for (int i = 0; i < fileCount; i++)
+            int tipCount = hoppersStream.Read<int>(32);
+            tips = new string[tipCount];
+            for (int i = 0; i < tipCount; i++)
             {
-                FileEntry entry = new FileEntry();
-
-                byte[] fileNameBytes = new byte[0x50];
-                int filePathLength = fileNameBytes.Length;
-                for (int j = 0; j < fileNameBytes.Length; j++)
+                byte[] tipBytes = new byte[0x100];
+                int tipLength = tipBytes.Length;
+                for (int j = 0; j < tipBytes.Length; j++)
                 {
-                    byte filePathByte = hoppersStream.Read<byte>(8);
-                    if (filePathByte == 0)
+                    byte tipByte = hoppersStream.Read<byte>(8);
+                    if (tipByte == 0)
                     {
-                        filePathLength = j;
-                        hoppersStream.SeekRelative(fileNameBytes.Length - j - 1);
+                        tipLength = j;
+                        hoppersStream.SeekRelative(tipBytes.Length - j - 1);
                         break;
                     } 
                     else
                     {
-                        fileNameBytes[j] = filePathByte;
+                        tipBytes[j] = tipByte;
                     }
                 }
 
-                entry.filePath = Encoding.UTF8.GetString(fileNameBytes.Take(filePathLength).ToArray());
-
-                entry.fileHash = new byte[20];
-                for (int j = 0; j < 20; j++)
-                    entry.fileHash[j] = hoppersStream.Read<byte>(8);
-
-                files[i] = entry;
+                tips[i] = Encoding.UTF8.GetString(tipBytes.Take(tipLength).ToArray());
             }
         }
 
@@ -85,13 +77,6 @@ namespace Sunrise.BlfTool
             //}
 
             //hoppersStream.Seek(hoppersStream.NextByteIndex, 0);
-        }
-
-        public class FileEntry
-        {
-            public string filePath;
-            [JsonConverter(typeof(HexStringConverter))]
-            public byte[] fileHash;
         }
     }
 }
