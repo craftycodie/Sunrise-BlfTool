@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using WarthogInc.BlfChunks;
@@ -68,6 +69,32 @@ namespace Sunrise.BlfTool
 
             blfChunkWriter.WriteChunk(ref blfFileOut, new EndOfFile((uint)(CHUNK_HEAD_SIZE * (chunks.Count + 1))));
             blfFileOut.Write(0, 8);
+        }
+
+        byte[] halo3salt = Convert.FromHexString("EDD43009666D5C4A5C3657FAB40E022F535AC6C9EE471F01F1A44756B7714F1C36EC");
+
+        public byte[] ComputeHash()
+        {
+
+            var memoryStream = new MemoryStream();
+            var blfFileOut = new BitStream<StreamByteStream>(new StreamByteStream(memoryStream));
+            foreach(byte saltByte in halo3salt) {
+                blfFileOut.Write(saltByte, 8);
+            }
+
+            BLFChunkWriter blfChunkWriter = new BLFChunkWriter();
+            blfChunkWriter.WriteChunk(ref blfFileOut, new StartOfFile());
+
+            foreach (IBLFChunk chunk in chunks)
+            {
+                blfChunkWriter.WriteChunk(ref blfFileOut, chunk);
+            }
+
+            blfChunkWriter.WriteChunk(ref blfFileOut, new EndOfFile((uint)(CHUNK_HEAD_SIZE * (chunks.Count + 1))));
+            blfFileOut.Write(0, 8);
+
+            byte[] saltedBlf = memoryStream.ToArray();
+            return new SHA1Managed().ComputeHash(saltedBlf);
         }
     }
 }
