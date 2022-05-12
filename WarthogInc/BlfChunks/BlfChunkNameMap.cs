@@ -40,6 +40,8 @@ namespace SunriseBlfTool.BlfChunks
                     return new MatchmakingTips();
                 case "bhms":
                     return new MatchmakingBanhammerMessages();
+                case "mapm":
+                    return new MapManifest();
                 default:
                     throw new KeyNotFoundException("Chunk not found.");
             }
