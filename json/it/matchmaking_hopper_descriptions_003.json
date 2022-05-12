@@ -1,0 +1,144 @@
+{
+  "descriptions": [
+    {
+      "identifier": 108,
+      "type": false,
+      "description": "<color argb=#FF8692d4>Un insieme di partite Massacro e Tutti contro tutti. Dovrai cavartela da solo.</color>|r|nDimensione massima gruppo: 1"
+    },
+    {
+      "identifier": 109,
+      "type": false,
+      "description": "<color argb=#FF8692d4>Partite Massacro a squadre su diverse mappe.</color>|r|nDim. squadra: 3-4|r|nDim. max gruppo: 4"
+    },
+    {
+      "identifier": 112,
+      "type": false,
+      "description": "<color argb=#FF8692d4>Partite assortite per squadre formate da due giocatori.</color>|r|nTutti i CSC ric.|r|nDim. squadra: 2|r|nDimensione massima gruppo: 2"
+    },
+    {
+      "identifier": 139,
+      "type": false,
+      "description": "<color argb=#FF8692d4>Distanza visiva elevata e fucili di precisione. Elenco partite adatto a squadre.</color>|r|nTutti i CSC ric.|r|nDim. squadra: 3-4|r|nDim. max gruppo: 4"
+    },
+    {
+      "identifier": 127,
+      "type": false,
+      "description": "<color argb=#FF8692d4>Regole MLG e varianti di gioco in partite Massacro a squadre e a obbiettivi. Visita mlgpro.com/playlist per i dettagli.</color> Tutti i CSC ric. Dim. squadra: 3-4. Dim. max gruppo: 4"
+    },
+    {
+      "identifier": 123,
+      "type": false,
+      "description": "<color argb=#FF8692d4>Niente scudi e sensori. Solo tu, il tuo fucile e colpi alla testa.</color>|r|nTutti i CSC ric.|r|nDim. squadra: 3-4|r|nDim. max gruppo: 4"
+    },
+    {
+      "identifier": 102,
+      "type": false,
+      "description": "<color argb=#FF8692d4>Un mix di partite massacro e Tutti contro tutti. Entra da solo, oppure come parte di un gruppo e combatti.</color>|r|nTutti i CSC ric.|r|nDim. max gruppo: 8"
+    },
+    {
+      "identifier": 103,
+      "type": false,
+      "description": "<color argb=#FF8692d4>Partite Massacro a squadre su diverse mappe. Fai gioco di squadra per sbaragliare gli avversari</color>|r|n|r|nDim. squadra: 5|r|nDim. max gruppo: 10"
+    },
+    {
+      "identifier": 104,
+      "type": false,
+      "description": "<color argb=#FF8692d4>Un vasto assortimento di partite non-Massacro.</color>|r|nTutti i CSC ric.|r|nDim. squadra: 3-4|r|nDim. max gruppo: 8"
+    },
+    {
+      "identifier": 147,
+      "type": false,
+      "description": "<color argb=#FF8692d4>Action Sack è tornato, con ben 0 ESP e un bel po' di pazzo divertimento.</color>|r|nTutti i CSC ric.|r|nDim. squadra: 3-4|r|nDim. max gruppo: 8"
+    },
+    {
+      "identifier": 106,
+      "type": false,
+      "description": "<color argb=#FF8692d4>Una varietà di partite per più di due squadre.</color>|r|nDim. squadra: 2|r|nDim. max gruppo: 8"
+    },
+    {
+      "identifier": 143,
+      "type": false,
+      "description": "<color argb=#FF8692d4>Hai preso Mythic? Allora datti da fare in partite Massacro a squadre e a obiettivi su tutte le sei mappe Mythic.</color> Tutti i CSC ric. Dim. squadra: 3-4.|r|nDim. Max gruppo: 8"
+    },
+    {
+      "identifier": 125,
+      "type": false,
+      "description": "<color argb=#FF8692d4>Un accattivante mix tra le partite Massacro e a obiettivi. Squadre numerose e tanto divertimento.</color>|r|nTutti i CSC ric.|r|nDim. squadra: 6-8|r|nDim. max gruppo: 16"
+    },
+    {
+      "identifier": 150,
+      "type": false,
+      "description": "<color argb=#FF8692d4>Bandiera a squadre e Teschio direttamente dai giorni felici di Halo.  Entra in questi classici e comincia il massacro.</color> Tutti i CSC ric. Dim. squadra: 3-4|r|nDim. Max gruppo: 4"
+    },
+    {
+      "identifier": 777,
+      "type": false,
+      "description": "<color argb=#FF8692d4>Non sei ancora soddisfatto?  Ottieni 7 EXP in questo elenco FFA con mappe Mythic e avrai fatto un passo avanti.</color>|r|nTutti i CSC ric.|r|nDim. max gruppo: 7"
+    },
+    {
+      "identifier": 153,
+      "type": false,
+      "description": "<color argb=#FF8692d4>Un mix di partite Massacro e a obiettivi Doppia ESP 4 contro 4  su mappe create dalla community.</color>|r|nCSC Heroic\\Mythic ric.|r|nDim. squadra: 3-4"
+    },
+    {
+      "identifier": 113,
+      "type": false,
+      "description": "<color argb=#FF8692d4>I morti si risvegliano! Gli artigli dei morti viventi tornano ancora una volta!</color>|r|nTutti i CSC ric.|r|nDim. max gruppo: 13"
+    },
+    {
+      "identifier": 114,
+      "type": false,
+      "description": "<color argb=#FF8692d4>La precisione passa in secondo piano rispetto a una guida veloce.</color>|r|nCSC Heroic- Mythic ric.|r|nDim. squadra: 2|r|nDim. max gruppo: 8"
+    },
+    {
+      "identifier": 151,
+      "type": false,
+      "description": "<color argb=#FF8692d4>Weekend 4 contro 4 e Doppia-XP, ispirato a ODST.  Niente modalità VISR, ma tante partite Massacro e a obiettivi.</color> Tutti i CSC ric. Dim. squadra: 3-4. Dim. Max gruppo: 8"
+    },
+    {
+      "identifier": 145,
+      "type": false,
+      "description": "<color argb=#FF8692d4>Modalità di gioco che prevede il controllo della mappa. Occupa il territorio e proteggilo.</color> Tutti i CSC ric.|r|nDim. squadra: 3-4|r|nDim. max gruppo: 8"
+    },
+    {
+      "identifier": 152,
+      "type": false,
+      "description": "<color argb=#FF8692d4>È arrivato il momento di martellare nelle partite classificate! Gioca per vincere o, perché no, solo per divertirti.</color> CSC Heroic- Mythic ric. Dim. squadra: 3-4. Dim. Max gruppo: 4"
+    },
+    {
+      "identifier": 140,
+      "type": false,
+      "description": "<color argb=#FF8692d4> 5 contro 5, lavoro di squadra richiesto: solo CLB, sempre e comunque.</color>|r|nTutti i CSC ric.|r|nDimensione squadra: 3-5|r|nDim. max gruppo: 10"
+    },
+    {
+      "identifier": 126,
+      "type": false,
+      "description": "<color argb=#FF8692d4>Sport contagioso di Red vs. Blue simile ad Assalto.</color>|r|nCSC Heroic\\Mythic ric.|r|nDimensione squadra: 4|r|nDim. Max gruppo: 8"
+    },
+    {
+      "identifier": 132,
+      "type": false,
+      "description": "<color argb=#FF8692d4>Quattro squadre di tre elementi. Tre teschi. Vittorie infinite.</color>|r|nTutti i CSC ric.|r|nDim. squadra: 3|r|nDim. max gruppo: 12"
+    },
+    {
+      "identifier": 129,
+      "type": false,
+      "description": "<color argb=#FF8692d4>Tipi di partite Fiesta non classificate. Con quale arma ti materializzerai?</color>|r|nTutti i CSC ric.|r|nDim. max gruppo: 8 "
+    },
+    {
+      "identifier": 146,
+      "type": false,
+      "description": "<color argb=#FF8692d4>Mythic unisce mappe classiche, Leggendarie ed Eroiche per una sana azione FFA a Doppia-XP (doppia esperienza).</color>|r|nTutti i CSC ric.|r|nDim. Max gruppo: 1"
+    },
+    {
+      "identifier": 8,
+      "type": false,
+      "description": "7 LUGLIO|r|nFesteggia il numero preferito di Bungie con questo elenco partite."
+    },
+    {
+      "identifier": 11,
+      "type": false,
+      "description": "Weekend Doppia-XP|r|nIncursioni del fine settimana in vari scenari di battaglia. I vincitori ricevono il doppio dei punti esperienza."
+    }
+  ]
+}

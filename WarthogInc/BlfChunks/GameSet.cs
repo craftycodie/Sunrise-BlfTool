@@ -11,9 +11,10 @@ using WarthogInc.BlfChunks;
 
 namespace Sunrise.BlfTool
 {
-    class GameSet : IBLFChunk
+    public class GameSet : IBLFChunk
     {
-        public byte gameEntryCount;
+        [JsonIgnore]
+        public byte gameEntryCount { get { return (byte)gameEntries.Length; } }
         public GameEntry[] gameEntries;
 
         public ushort GetAuthentication()
@@ -40,7 +41,7 @@ namespace Sunrise.BlfTool
 
         public void ReadChunk(ref BitStream<StreamByteStream> hoppersStream)
         {
-            gameEntryCount = hoppersStream.Read<byte>(6);
+            int gameEntryCount = hoppersStream.Read<byte>(6);
             gameEntries = new GameEntry[gameEntryCount];
             for (int i = 0; i < gameEntryCount; i++)
             {

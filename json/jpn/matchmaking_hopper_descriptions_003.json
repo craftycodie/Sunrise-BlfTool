@@ -1,0 +1,144 @@
+{
+  "descriptions": [
+    {
+      "identifier": 108,
+      "type": false,
+      "description": "<color argb=#FF8692d4>スレイヤーおよび各種個人戦に個人で参加</color>|r|n|r|nパーティーの上限： 1"
+    },
+    {
+      "identifier": 109,
+      "type": false,
+      "description": "<color argb=#FF8692d4>各種マップでチーム スレイヤー三昧</color>|r|n|r|nチーム サイズ： 3-4|r|nパーティーの上限： 4"
+    },
+    {
+      "identifier": 112,
+      "type": false,
+      "description": "<color argb=#FF8692d4>各種対戦にパートナーと参加。チームワークが勝利へのカギとなる</color>|r|nすべての追加マップが必要|r|nチーム サイズ： 2|r|nパーティーの上限： 2"
+    },
+    {
+      "identifier": 139,
+      "type": false,
+      "description": "<color argb=#FF8692d4>遠距離射撃の精度がカギとなるチーム戦向けプレイリスト</color>|r|nすべての追加マップが必要|r|nチーム サイズ： 3-4|r|nパーティーの上限： 4"
+    },
+    {
+      "identifier": 127,
+      "type": false,
+      "description": "<color argb=#FF8692d4>MLG オリジナルの各種対戦。詳細は www.mlgpro.com/playlist (英語サイト) を参照</color>|r|nすべての追加マップが必要|r|nチーム サイズ： 3-4|r|nパーティーの上限： 4"
+    },
+    {
+      "identifier": 123,
+      "type": false,
+      "description": "<color argb=#FF8692d4>シールド、トラッカー共に無効。バトルライフルで大量ヘッドショットを狙え !</color>|r|nすべての追加マップが必要|r|nチーム サイズ： 3-4|r|nパーティーの上限： 4"
+    },
+    {
+      "identifier": 102,
+      "type": false,
+      "description": "<color argb=#FF8692d4>スレイヤーとその他個人戦のミックスに個人またはグループで参加</color>|r|nすべての追加マップが必要|r|nパーティーの上限： 8"
+    },
+    {
+      "identifier": 103,
+      "type": false,
+      "description": "<color argb=#FF8692d4>バラエティに富んだ数々のマップで各種スレイヤー対戦。チームワークが勝利へのカギとなる</color>|r|n|r|nチーム サイズ： 5|r|nパーティーの上限： 10"
+    },
+    {
+      "identifier": 104,
+      "type": false,
+      "description": "<color argb=#FF8692d4>スレイヤー以外の|n各種ゲームにチームまたは|nパーティー全員で参加</color>|r|nすべての追加マップが必要|r|nチーム サイズ： 3-4|r|nパーティーの上限： 8"
+    },
+    {
+      "identifier": 147,
+      "type": false,
+      "description": "<color argb=#FF8692d4>Action Sack が復活。EXP は 0 からスタート。大勢で興奮を味わえること間違いなし</color>|r|nすべての追加マップが必要|r|nチーム サイズ： 3-4|r|nパーティーの上限： 8"
+    },
+    {
+      "identifier": 106,
+      "type": false,
+      "description": "<color argb=#FF8692d4>2 チーム以上の各種対戦にパートナーと参加</color>|r|n|r|nチーム サイズ： 2|r|nパーティーの上限： 8"
+    },
+    {
+      "identifier": 143,
+      "type": false,
+      "description": "<color argb=#FF8692d4>Mythic の全 6 マップによる各種対戦で熱く盛り上がろう</color>|r|nすべての追加マップが必要|r|nチーム サイズ： 3-4|r|nパーティーの上限： 8"
+    },
+    {
+      "identifier": 125,
+      "type": false,
+      "description": "<color argb=#FF8692d4>チーム メンバーが多いほど盛り上がるスレイヤーを含む各種対戦</color>|r|nすべての追加マップが必要|r|nチーム サイズ： 6-8|r|nパーティーの上限： 16"
+    },
+    {
+      "identifier": 150,
+      "type": false,
+      "description": "<color argb=#FF8692d4>Halo 黄金時代の、フラッグとオッドボールを使ったチーム戦</color>|r|nすべての追加マップが必要|r|nチーム サイズ： 3-4|r|nパーティーの上限： 4"
+    },
+    {
+      "identifier": 777,
+      "type": false,
+      "description": "<color argb=#FF8692d4>Mythic マップの個人戦で 7 EXP を獲得し、次の階級へと一歩近づこう</color>|r|nすべての追加マップが必要|r|nパーティーの上限： 7"
+    },
+    {
+      "identifier": 153,
+      "type": false,
+      "description": "<color argb=#FF8692d4>コミュニティー マップでの 4 対 4 の各種対戦</color>|r|nHeroic/Mythic マップ パックが必要|r|nチーム サイズ： 3-4"
+    },
+    {
+      "identifier": 113,
+      "type": false,
+      "description": "<color argb=#FF8692d4>人間対ゾンビの熾烈な戦いが再び登場</color>|r|nすべての追加マップが必要|r|nパーティーの上限： 13"
+    },
+    {
+      "identifier": 114,
+      "type": false,
+      "description": "<color argb=#FF8692d4>射撃の腕よりスピードが重要。目的地に到達すれば勝利</color>|r|nHeroic/Legendary マップ パックが必要|r|nチーム サイズ： 2|r|nパーティーの上限： 8"
+    },
+    {
+      "identifier": 151,
+      "type": false,
+      "description": "<color argb=#FF8692d4>ODST に近い感覚でプレイできる 4 対 4 の各種対戦</color>|r|nすべての追加マップが必要|r|nチーム サイズ： 3-4|r|nパーティーの上限： 8"
+    },
+    {
+      "identifier": 145,
+      "type": false,
+      "description": "<color argb=#FF8692d4>エリアを制圧してマップの覇者になろう</color>|r|nすべての追加マップが必要|r|nチーム サイズ： 3-4|r|nパーティーの上限： 8"
+    },
+    {
+      "identifier": 152,
+      "type": false,
+      "description": "<color argb=#FF8692d4>イッツ ハンマー タイム! 高ランクを目指そう</color>|r|nHeroic/Mythic マップ パックが必要|r|nチーム サイズ： 3-4|r|nパーティーの上限： 4"
+    },
+    {
+      "identifier": 140,
+      "type": false,
+      "description": "<color argb=#FF8692d4>チームワークがためされる 5 対 5 の CTF</color>|r|nすべての追加マップが必要|r|nチーム サイズ： 3-5|r|nパーティーの上限： 10"
+    },
+    {
+      "identifier": 126,
+      "type": false,
+      "description": "<color argb=#FF8692d4>Red vs. Blue のアサルト タイプの対戦。病みつきになること間違いなし</color>|r|nHeroic/Mythic マップ パックが必要|r|nチーム サイズ： 4|r|nパーティーの上限： 8"
+    },
+    {
+      "identifier": 132,
+      "type": false,
+      "description": "<color argb=#FF8692d4>プレイヤー 3 人ずつの 4 チームで 3 つのオッドボールをめぐる熾烈な攻防</color>|r|nすべての追加マップが必要|r|nチーム サイズ： 3|r|nパーティーの上限： 12"
+    },
+    {
+      "identifier": 129,
+      "type": false,
+      "description": "<color argb=#FF8692d4>ランキング対象外のお祭り対戦。復活時の武器は毎回異なる</color>|r|nすべての追加マップが必要|r|nパーティーの上限： 8 "
+    },
+    {
+      "identifier": 146,
+      "type": false,
+      "description": "<color argb=#FF8692d4>Mythic、Legendary、Heroic マップ パックおよび従来のマップでの各種対戦で、EXP を通常の 2 倍獲得しよう</color>|r|nすべての追加マップが必要|r|nパーティーの上限： 1"
+    },
+    {
+      "identifier": 8,
+      "type": false,
+      "description": "7 ON THE 7TH|r|nBungie のお気に入りナンバーがつけられたスペシャル プレイリスト"
+    },
+    {
+      "identifier": 11,
+      "type": false,
+      "description": "DoubleXPWeekend|r|n週末限定のスペシャル プレイリスト。勝者は経験値 (EXP) を通常の二倍獲得できる"
+    }
+  ]
+}

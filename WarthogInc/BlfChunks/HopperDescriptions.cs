@@ -13,7 +13,8 @@ namespace Sunrise.BlfTool
 {
     class HopperDescriptions : IBLFChunk
     {
-        public byte descriptionCount;
+        [JsonIgnore]
+        public byte descriptionCount { get { return (byte)descriptions.Length; } }
         public HopperDescription[] descriptions;
 
         public ushort GetAuthentication()
@@ -40,7 +41,19 @@ namespace Sunrise.BlfTool
 
         public void ReadChunk(ref BitStream<StreamByteStream> hoppersStream)
         {
-            throw new NotImplementedException();
+            byte descriptionCount = hoppersStream.Read<byte>(6);
+            descriptions = new HopperDescription[descriptionCount];
+
+            for (int i = 0; i < descriptionCount; i++)
+            {
+                HopperDescription description = new HopperDescription();
+                description.identifier = hoppersStream.Read<ushort>(16);
+                description.type = hoppersStream.Read<byte>(1) > 0;
+                description.description = hoppersStream.ReadString(256, Encoding.UTF8);
+                descriptions[i] = description;
+            }
+
+            hoppersStream.Seek(hoppersStream.NextByteIndex, 0);
         }
 
         public void WriteChunk(ref BitStream<StreamByteStream> hoppersStream)

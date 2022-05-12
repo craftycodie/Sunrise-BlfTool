@@ -36,6 +36,11 @@ namespace Sunrise.BlfTool
             throw new Exception("Chunk not found.");
         }
 
+        public IBLFChunk GetChunk(int index)
+        {
+            return chunks.ElementAt(index);
+        }
+
         public void ReadFile(string path)
         {
             var blfFileIn = new BitStream<StreamByteStream>(new StreamByteStream(new FileStream(path, FileMode.Open)));

@@ -1,0 +1,144 @@
+{
+  "descriptions": [
+    {
+      "identifier": 108,
+      "type": false,
+      "description": "<color argb=#FF8692d4>殺戮之王和其他自由參賽類型的混合遊戲，在這裡，您只能靠自己！</color>|r|n|r|n夥伴人數上限：1"
+    },
+    {
+      "identifier": 109,
+      "type": false,
+      "description": "<color argb=#FF8692d4>不同地圖上的團隊殺戮遊戲，一起和隊友合作殺敵。</color>|r|n|r|n隊伍人數：3-4|r|n夥伴人數上限：4"
+    },
+    {
+      "identifier": 112,
+      "type": false,
+      "description": "<color argb=#FF8692d4>僅兩個隊伍的各種遊戲，合則生、分則死，團結才是力量。</color>|r|n需要所有下載地圖套件。|r|n隊伍人數：2|r|n夥伴人數上限：2"
+    },
+    {
+      "identifier": 139,
+      "type": false,
+      "description": "<color argb=#FF8692d4>需精準長距離射擊技巧，這是團隊遊戲清單。</color>|r|n需要所有下載地圖套件。|r|n隊伍人數：3-4|r|n夥伴人數上限：4"
+    },
+    {
+      "identifier": 127,
+      "type": false,
+      "description": "<color argb=#FF8692d4>團隊殺戮及目標模式遊戲的 MLG 規則和類型 (www.mlgpro.com/playlist)。</color>|r|n需要所有下載地圖套件。|r|n隊伍人數：3-4|r|n夥伴人數上限：4"
+    },
+    {
+      "identifier": 123,
+      "type": false,
+      "description": "<color argb=#FF8692d4>沒有能源護盾及感應器，只有您和您的攻擊步槍，及一堆爆頭攻擊。</color>|r|n需要所有下載地圖套件。|r|n隊伍人數：3-4|r|n夥伴人數上限：4"
+    },
+    {
+      "identifier": 102,
+      "type": false,
+      "description": "<color argb=#FF8692d4>殺戮之王和其他自由參賽類型的混合遊戲，以個人或與夥伴一起加入競技戰鬥。</color>|r|n需要所有下載地圖套件。|r|n夥伴人數上限：8"
+    },
+    {
+      "identifier": 103,
+      "type": false,
+      "description": "<color argb=#FF8692d4>在各種地圖上多變化的團隊殺戮遊戲，和您的隊友一起英勇殺敵吧。</color>|r|n|r|n隊伍人數：5|r|n夥伴人數上限：10"
+    },
+    {
+      "identifier": 104,
+      "type": false,
+      "description": "<color argb=#FF8692d4>各種非殺戮之王目標的遊戲，可以隊伍或團隊參加。</color>|r|n需要所有下載地圖套件。|r|n隊伍人數：3-4|r|n夥伴人數上限：8"
+    },
+    {
+      "identifier": 147,
+      "type": false,
+      "description": "<color argb=#FF8692d4>純動作鉅獻，不打不相識，來場混戰交交朋友吧。</color>|r|n需要所有下載地圖套件。|r|n隊伍人數：3-4|r|n夥伴人數上限：8"
+    },
+    {
+      "identifier": 106,
+      "type": false,
+      "description": "<color argb=#FF8692d4>兩組以上隊伍參加的混合遊戲，似自由參賽模式但有隊友並肩作戰。</color>|r|n|r|n隊伍人數：2|r|n夥伴人數上限：8"
+    },
+    {
+      "identifier": 143,
+      "type": false,
+      "description": "<color argb=#FF8692d4>想玩神話地圖嗎？快來試試看 6 個新的神話地圖，殺戮之王及目標模式遊戲。</color>|r|n需要所有下載地圖套件。|r|n隊伍人數：3-4|r|n夥伴人數上限： 8"
+    },
+    {
+      "identifier": 125,
+      "type": false,
+      "description": "<color argb=#FF8692d4>令人血脈賁張的大陣仗，就在殺戮之王及目標模式的遊戲組合中。</color>|r|n需要所有下載地圖套件。|r|n隊伍人數：6-8|r|n夥伴人數上限：16"
+    },
+    {
+      "identifier": 150,
+      "type": false,
+      "description": "<color argb=#FF8692d4>Halo 全盛時期的團隊旗幟和聖骸遊戲，準備好你的手榴彈再來重溫舊夢吧！</color>|r|n需要所有下載地圖套件。|r|n隊伍人數：3-4|r|n夥伴人數上限：4"
+    },
+    {
+      "identifier": 777,
+      "type": false,
+      "description": "<color argb=#FF8692d4>玩過 Recon 遊戲沒？在神話地圖的 FFA 遊戲清單中，獲得 7 倍經驗值 ，你的夢想就更近囉。</color>|r|n需要所有下載地圖套件。|r|n夥伴人數上限：7"
+    },
+    {
+      "identifier": 153,
+      "type": false,
+      "description": "<color argb=#FF8692d4>可以在你的社群自創地圖上進行的 4 對 4 雙經驗值殺戮之王和目標模式遊戲類型。</color>|r|n需要英雄及神話地圖套件。|r|n隊伍人數：3-4"
+    },
+    {
+      "identifier": 113,
+      "type": false,
+      "description": "<color argb=#FF8692d4>殭屍正在蠢蠢欲動。</color>|r|n需要所有下載地圖套件。|r|n夥伴人數上限：13"
+    },
+    {
+      "identifier": 114,
+      "type": false,
+      "description": "<color argb=#FF8692d4>看看誰的駕駛技術好，先到終點的獲勝！</color>|r|n需要英雄及傳奇地圖套件。|r|n隊伍人數：2|r|n夥伴人數上限：8"
+    },
+    {
+      "identifier": 151,
+      "type": false,
+      "description": "<color argb=#FF8692d4>這是 ODST 型態的 4 對 4 雙經驗值週末，不能用 VISR，但是有一堆殺戮和目標模式遊戲。</color>|r|n需要所有下載地圖套件。|r|n隊伍人數：3-4|r|n夥伴人數上限：8"
+    },
+    {
+      "identifier": 145,
+      "type": false,
+      "description": "<color argb=#FF8692d4>地圖控制遊戲類型，掌控堅守你的領地。</color>|r|n需要所有下載地圖套件。|r|n隊伍人數：3-4|r|n夥伴人數上限：8"
+    },
+    {
+      "identifier": 152,
+      "type": false,
+      "description": "<color argb=#FF8692d4>砸砸樂時間囉！也有排名喔，說真的，要嘛就要贏，不然當好玩也可以啦。</color>|r|n需要英雄及神話地圖套件。|r|n隊伍人數：3-4|r|n夥伴人數上限：4"
+    },
+    {
+      "identifier": 140,
+      "type": false,
+      "description": "<color argb=#FF8692d4>5 人的團隊合作遊戲：所有搶旗戰，所有時間。</color>|r|n需要所有下載地圖套件。|r|n隊伍人數：3-5|r|n夥伴人數上限：10"
+    },
+    {
+      "identifier": 126,
+      "type": false,
+      "description": "<color argb=#FF8692d4>令人著迷的紅藍大對決攻擊型遊戲。小心上癮哦！</color>|r|n需要英雄及神話地圖套件。|r|n隊伍人數：4|r|n夥伴人數上限：8"
+    },
+    {
+      "identifier": 132,
+      "type": false,
+      "description": "<color argb=#FF8692d4>三人四隊、三個聖骸，超好玩喔！</color>|r|n需要所有下載地圖套件。|r|n隊伍人數：3|r|n夥伴人數上限：12"
+    },
+    {
+      "identifier": 129,
+      "type": false,
+      "description": "<color argb=#FF8692d4>八人共樂遊戲，您會用什麼武器再生呢？每次都不一樣。</color>|r|n需要所有下載地圖套件。|r|n夥伴人數上限：8"
+    },
+    {
+      "identifier": 146,
+      "type": false,
+      "description": "<color argb=#FF8692d4>神話套件混合傳奇、英雄套件和傳統地圖，玩玩 FFA 雙經驗值模式遊戲。</color>|r|n需要所有下載地圖套件。|r|n夥伴人數上限：1"
+    },
+    {
+      "identifier": 8,
+      "type": false,
+      "description": "7 號 7 點|r|n就用這份特別的遊戲清單，一起慶祝 Bungie 的幸運數字吧！"
+    },
+    {
+      "identifier": 11,
+      "type": false,
+      "description": "瘋狂週末|r|n讓激烈的戰鬥陪您度過週末吧，贏家獲得兩倍的 EXP 點數。"
+    }
+  ]
+}
