@@ -34,6 +34,8 @@ namespace SunriseBlfTool.BlfChunks
                     return new MessageOfTheDayPopup();
                 case "gset":
                     return new GameSet();
+                case "onfm":
+                    return new Manifest();
                 default:
                     throw new KeyNotFoundException("Chunk not found.");
             }

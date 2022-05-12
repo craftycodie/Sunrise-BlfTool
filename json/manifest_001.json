@@ -1,0 +1,136 @@
+{
+  "files": [
+    {
+      "filePath": "/title/default_hoppers/matchmaking_hopper_011.bin",
+      "fileHash": "50C7EB94AB336486F5AABD15DA3C094956A91BD9"
+    },
+    {
+      "filePath": "/title/default_hoppers/network_configuration_135.bin",
+      "fileHash": "007363A22710976CCF6FB32593EA8F1B68517122"
+    },
+    {
+      "filePath": "/title/default_hoppers/rsa_manifest.bin",
+      "fileHash": "8EEC7F2151761BDDBE5EA42E0CA643F61C675815"
+    },
+    {
+      "filePath": "/title/default_hoppers/en/matchmaking_banhammer_messages.bin",
+      "fileHash": "47FA4D898A8B5DBDD638843254577762CBF297CA"
+    },
+    {
+      "filePath": "/title/default_hoppers/en/matchmaking_hopper_descriptions_003.bin",
+      "fileHash": "BAE9F06FAF59F3A61ED9587ECA9B606EE125930A"
+    },
+    {
+      "filePath": "/title/default_hoppers/en/matchmaking_tips.bin",
+      "fileHash": "E94F241ADA704D9C6ACF1394C940AB30BD7FF543"
+    },
+    {
+      "filePath": "/title/default_hoppers/jpn/matchmaking_banhammer_messages.bin",
+      "fileHash": "32CEA29CA9AC5E0161E5456A05DFC360671C2420"
+    },
+    {
+      "filePath": "/title/default_hoppers/jpn/matchmaking_hopper_descriptions_003.bin",
+      "fileHash": "E30493BA799874C3A214C92ADFD5681143BDF279"
+    },
+    {
+      "filePath": "/title/default_hoppers/jpn/matchmaking_tips.bin",
+      "fileHash": "6340B4DCA872310D6334A68A83DC51889B63E95A"
+    },
+    {
+      "filePath": "/title/default_hoppers/de/matchmaking_banhammer_messages.bin",
+      "fileHash": "AC90D2ABA7E5F0D59D0A6FAA425A9C0C28465EB2"
+    },
+    {
+      "filePath": "/title/default_hoppers/de/matchmaking_hopper_descriptions_003.bin",
+      "fileHash": "01C2C4AC0BDE7492AD864837B04F348C440EFB28"
+    },
+    {
+      "filePath": "/title/default_hoppers/de/matchmaking_tips.bin",
+      "fileHash": "B6BD6F620B61789C309CB200A83F06D4A100DBB3"
+    },
+    {
+      "filePath": "/title/default_hoppers/fr/matchmaking_banhammer_messages.bin",
+      "fileHash": "FCE425EA566C80D202B4FA27FEA0DFE74ACD720D"
+    },
+    {
+      "filePath": "/title/default_hoppers/fr/matchmaking_hopper_descriptions_003.bin",
+      "fileHash": "1C413E2C6D01448667E67B5FD66F2473E5BD20F6"
+    },
+    {
+      "filePath": "/title/default_hoppers/fr/matchmaking_tips.bin",
+      "fileHash": "2E35A9D80ACDEF2D112BAC3F3AB812BFAC4BF062"
+    },
+    {
+      "filePath": "/title/default_hoppers/sp/matchmaking_banhammer_messages.bin",
+      "fileHash": "4A20A472FA7FAF56C0153D57483B6C61E5C233A1"
+    },
+    {
+      "filePath": "/title/default_hoppers/sp/matchmaking_hopper_descriptions_003.bin",
+      "fileHash": "91F5535815DEE6603756B65BE75D22C41AAB7730"
+    },
+    {
+      "filePath": "/title/default_hoppers/sp/matchmaking_tips.bin",
+      "fileHash": "720D727B04B16176478C291FF0A02BF742A751D6"
+    },
+    {
+      "filePath": "/title/default_hoppers/mx/matchmaking_banhammer_messages.bin",
+      "fileHash": "4A20A472FA7FAF56C0153D57483B6C61E5C233A1"
+    },
+    {
+      "filePath": "/title/default_hoppers/mx/matchmaking_hopper_descriptions_003.bin",
+      "fileHash": "91F5535815DEE6603756B65BE75D22C41AAB7730"
+    },
+    {
+      "filePath": "/title/default_hoppers/mx/matchmaking_tips.bin",
+      "fileHash": "720D727B04B16176478C291FF0A02BF742A751D6"
+    },
+    {
+      "filePath": "/title/default_hoppers/it/matchmaking_banhammer_messages.bin",
+      "fileHash": "3C6EA3D820B7EF3FD3D5D3A35E228365E4D274AC"
+    },
+    {
+      "filePath": "/title/default_hoppers/it/matchmaking_hopper_descriptions_003.bin",
+      "fileHash": "87DBCEBF71AFBFCE2743109083743CF52E887BC7"
+    },
+    {
+      "filePath": "/title/default_hoppers/it/matchmaking_tips.bin",
+      "fileHash": "85BD0418D8C5DA079C28166651E25975B8205EB5"
+    },
+    {
+      "filePath": "/title/default_hoppers/kor/matchmaking_banhammer_messages.bin",
+      "fileHash": "CD326F0BF84D0DED2ED88649AC565FA985F4BF39"
+    },
+    {
+      "filePath": "/title/default_hoppers/kor/matchmaking_hopper_descriptions_003.bin",
+      "fileHash": "A62720F3AFB570F48261EC24D97CB808B1B722CA"
+    },
+    {
+      "filePath": "/title/default_hoppers/kor/matchmaking_tips.bin",
+      "fileHash": "C637135BF5E23E5CD26F503609BB54FDE1D48E77"
+    },
+    {
+      "filePath": "/title/default_hoppers/cht/matchmaking_banhammer_messages.bin",
+      "fileHash": "D93CA1E13DF2F20D748ADD7596F5A831CFFBD1F0"
+    },
+    {
+      "filePath": "/title/default_hoppers/cht/matchmaking_hopper_descriptions_003.bin",
+      "fileHash": "30F32E1AE3223D0F8BAC09F2FABFF4B4BBC48319"
+    },
+    {
+      "filePath": "/title/default_hoppers/cht/matchmaking_tips.bin",
+      "fileHash": "583E9A133E1D7AF69C58F21AC4FF649FB777949C"
+    },
+    {
+      "filePath": "/title/default_hoppers/pt/matchmaking_banhammer_messages.bin",
+      "fileHash": "FE3C771A5203E14764D2762AC8B8F72AD7AAD78F"
+    },
+    {
+      "filePath": "/title/default_hoppers/pt/matchmaking_hopper_descriptions_003.bin",
+      "fileHash": "4D6688BC59C26718DF9A317F5C1EA86A864F2AB1"
+    },
+    {
+      "filePath": "/title/default_hoppers/pt/matchmaking_tips.bin",
+      "fileHash": "A2C74239383662E29C106F5EC22517C904C14CC6"
+    }
+  ]
+}
