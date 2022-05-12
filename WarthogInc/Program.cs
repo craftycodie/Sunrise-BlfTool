@@ -80,11 +80,11 @@ namespace WarthogInc
             //descriptionsOut.Write(0, 8);
 
             BlfFile blfFile = new BlfFile();
-            blfFile.ReadFile(@"D:\Projects\Local\Halo 3 Matchmaking\title storage\title\default_hoppers\en\matchmaking_tips.bin");
-            var mmtp = blfFile.GetChunk<MatchmakingTips>();
-            string output = JsonConvert.SerializeObject(mmtp, setting);
+            blfFile.ReadFile(@"D:\Projects\Local\Halo 3 Matchmaking\title storage\title\default_hoppers\en\matchmaking_banhammer_messages.bin");
+            var bhms = blfFile.GetChunk<MatchmakingBanhammerMessages>();
+            string output = JsonConvert.SerializeObject(bhms, setting);
             //Directory.CreateDirectory("../../../../json/00101/");
-            File.WriteAllText("../../../../json/en/matchmaking_tips.json", output);
+            File.WriteAllText("../../../../json/en/matchmaking_banhammer_messages.json", output);
 
             //BlfFile blfFile = new BlfFile();
             //blfFile.ReadFile(@"D:\Projects\Local\Halo 3 Matchmaking\title storage\title\default_hoppers\en\motd_popup.bin");

@@ -11,11 +11,11 @@ using WarthogInc.BlfChunks;
 
 namespace Sunrise.BlfTool
 {
-    class MatchmakingBanhammerMessages : IBLFChunk
+    class MatchmakingTips : IBLFChunk
     {
         [JsonIgnore]
-        public uint banMessagesCount { get { return (uint)banMessages.Length; } }
-        public string[] banMessages;
+        public uint tipCount { get { return (uint)tips.Length; } }
+        public string[] tips;
 
         public ushort GetAuthentication()
         {
@@ -24,12 +24,12 @@ namespace Sunrise.BlfTool
 
         public uint GetLength()
         {
-            return (uint)(banMessagesCount * 0x100) + 4;
+            return (uint)(tipCount * 0x100) + 4;
         }
 
         public string GetName()
         {
-            return "bhms";
+            return "mmtp";
         }
 
         public ushort GetVersion()
@@ -40,7 +40,7 @@ namespace Sunrise.BlfTool
         public void ReadChunk(ref BitStream<StreamByteStream> hoppersStream)
         {
             int tipCount = hoppersStream.Read<int>(32);
-            banMessages = new string[tipCount];
+            tips = new string[tipCount];
             for (int i = 0; i < tipCount; i++)
             {
                 byte[] tipBytes = new byte[0x100];
@@ -60,7 +60,7 @@ namespace Sunrise.BlfTool
                     }
                 }
 
-                banMessages[i] = Encoding.UTF8.GetString(tipBytes.Take(tipLength).ToArray());
+                tips[i] = Encoding.UTF8.GetString(tipBytes.Take(tipLength).ToArray());
             }
         }
 
