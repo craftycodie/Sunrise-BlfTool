@@ -78,20 +78,16 @@ namespace Sunrise.BlfTool
 
                 hoppersStream.Write(entry.gameEntryWeight, 32);
                 hoppersStream.Write(entry.minimumPlayerCount, 4);
-                hoppersStream.Write(entry.skipAfterVeto, 1);
-                hoppersStream.Write(entry.optional, 1);
+                hoppersStream.Write(entry.skipAfterVeto ? (byte) 1 : (byte) 0, 1);
+                hoppersStream.Write(entry.optional ? (byte)1 : (byte)0, 1);
                 hoppersStream.Write(entry.mapID, 32);
 
                 hoppersStream.WriteString(entry.gameVariantFileName, 32, Encoding.UTF8);
-                if (entry.gameVariantFileName.Length == 32)
-                    hoppersStream.SeekRelative(-1);
 
                 for (int j = 0; j < 20; j++)
                     hoppersStream.Write<byte>(entry.gameVariantHash[j], 8);
 
                 hoppersStream.WriteString(entry.mapVariantFileName, 32, Encoding.UTF8);
-                if (entry.mapVariantFileName.Length == 32)
-                    hoppersStream.SeekRelative(-1);
 
                 for (int j = 0; j < 20; j++)
                     hoppersStream.Write<byte>(entry.mapVariantHash[j], 8);
