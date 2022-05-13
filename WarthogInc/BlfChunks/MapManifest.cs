@@ -54,17 +54,15 @@ namespace Sunrise.BlfTool
 
         public void WriteChunk(ref BitStream<StreamByteStream> hoppersStream)
         {
-            //hoppersStream.Write<byte>(gameEntryCount, 6);
-
-            //for (int i = 0; i < gameEntryCount; i++)
-            //{
-            //    FileEntry entry = gameEntries[i];
-            //    //hoppersStream.Write<ushort>(entry.identifier, 16);
-            //    //hoppersStream.Write<byte>(description.type ? (byte)1 : (byte)0, 1);
-            //    //hoppersStream.WriteString(description.description, 256, Encoding.UTF8);
-            //}
-
-            //hoppersStream.Seek(hoppersStream.NextByteIndex, 0);
+            hoppersStream.Write(mapCount, 32);
+            for (int i = 0; i < mapCount; i++)
+            {
+                byte[] rsaBytes = mapRSAs[i].rsaKey;
+                for (int j = 0; j < 0x100; j++)
+                {
+                    hoppersStream.Write<byte>(rsaBytes[j], 8);
+                }
+            }
         }
 
         public class MapEntry

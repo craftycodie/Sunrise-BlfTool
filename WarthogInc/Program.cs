@@ -3,6 +3,7 @@ using Sewer56.BitStream;
 using Sewer56.BitStream.ByteStreams;
 using Sunrise.BlfTool;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using WarthogInc.BlfChunks;
 
@@ -12,105 +13,123 @@ namespace WarthogInc
     {
         static void Main(string[] args)
         {
-            //File.Delete("C:\\Users\\codie\\Desktop\\user.bin");
-            //var streamHelper = new BitStream<StreamByteStream>(new StreamByteStream(new FileStream("C:\\Users\\codie\\Desktop\\user.bin", FileMode.CreateNew)));
 
-            //_blf blfFileHeader = new _blf();
-            //ServiceRecordIdentity srid = new ServiceRecordIdentity()
-            //{
-            //    appearanceFlags = 0xFF,
-            //    primaryColor = ServiceRecordIdentity.Color.SILVER,
-            //    secondaryColor = ServiceRecordIdentity.Color.SILVER,
-            //    tertiaryColor = ServiceRecordIdentity.Color.SILVER,
-            //    isElite = ServiceRecordIdentity.PlayerModel.SPARTAN,
-            //    foregroundEmblem = 2,
-            //    backgroundEmblem = 2,
-            //    emblemFlags = 0,
-            //    playerName = "codietest",
-            //    serviceTag = "CODIE",
-            //    rank = ServiceRecordIdentity.Rank.GENERAL,
-            //    grade = ServiceRecordIdentity.Grade.GRADE_4,
-            //    totalEXP = 50000,
-            //    campaignProgress = 5,
-            //};
+            //ConvertBlfToJson("D:\\Projects\\Local\\Halo 3 Matchmaking\\title storage\\title\\default_hoppers\\", "../../../../json/");
+            ConvertJsonToBlf(@"D:\Projects\Local\Halo 3 Matchmaking\BlfWorker\json\", @"D:\Projects\Local\Halo 3 Matchmaking\BlfWorker\blf\");
 
-            //fupd fupd = new fupd()
-            //{
-            //    bungieUserRole = 1,
-            //    highestSkill = 1,
-            //    unknown0 = 1,
-            //    hopperDirectory = "default_hoppers"
-            //};
+        }
 
-            //// This chunk should be refactored into a "BLF File Writer" which writes an array of chunks.
-            //BLFChunkWriter bLFChunkWriter = new BLFChunkWriter();
-            //bLFChunkWriter.WriteChunk(ref streamHelper, blfFileHeader);
+        public static void ConvertJsonToBlf(string jsonFolder, string blfFolder)
+        {
+            var jsonFileEnumerator = Directory.EnumerateFiles(jsonFolder, "*.*", SearchOption.AllDirectories).GetEnumerator();
 
-            //bLFChunkWriter.WriteChunk(ref streamHelper, srid);
-            //bLFChunkWriter.WriteChunk(ref streamHelper, fupd);
-            //bLFChunkWriter.WriteChunk(ref streamHelper, new EndOfFile(blfFileHeader.GetLength() + srid.GetLength() + fupd.GetLength() + (0xC * 3)));
-            //streamHelper.Write(0, 8);
+            var fileHashes = new Dictionary<string, byte[]>();
 
+            while (jsonFileEnumerator.MoveNext())
+            {
+                string fileName = jsonFileEnumerator.Current;
+                if (fileName.Contains("\\"))
+                    fileName = fileName.Substring(fileName.LastIndexOf("\\") + 1);
 
-            //var mhcf = JsonConvert.DeserializeObject<HopperConfigurationTable>(File.ReadAllText("../../../../json/matchmaking_hopper_011.json"));
-            //var hopperFile = new BlfFile();
-            //hopperFile.AddChunk(mhcf);
-            //hopperFile.WriteFile("../../../../blf/matchmaking_hopper_011.bin");
+                string fileRelativePath = jsonFileEnumerator.Current.Replace(jsonFolder, "");
+                if (fileRelativePath.Contains("\\"))
+                {
+                    string fileDirectoryRelativePath = fileRelativePath.Substring(0, fileRelativePath.LastIndexOf("\\"));
+                    Directory.CreateDirectory(blfFolder + fileDirectoryRelativePath);
+                }
 
-            //var onfm = JsonConvert.DeserializeObject<Manifest>(File.ReadAllText("../../../../json/manifest_001.json"));
-            //onfm.SetFileHash("/title/default_hoppers/matchmaking_hopper_011.bin", hopperFile.ComputeHash());
-            //var manifestFile = new BlfFile();
-            //manifestFile.AddChunk(onfm);
-            //manifestFile.WriteFile("../../../../blf/manifest_001.bin");
+                IBLFChunk blfChunk = null;
 
+                switch(fileName)
+                {
+                    case "game_set_006.json":
+                        blfChunk = JsonConvert.DeserializeObject<GameSet>(File.ReadAllText(jsonFileEnumerator.Current));
+                        break;
+                    case "rsa_manifest.json":
+                        blfChunk = JsonConvert.DeserializeObject<MapManifest>(File.ReadAllText(jsonFileEnumerator.Current));
+                        break;
+                    case "matchmaking_hopper_011.json":
+                        break; // Handle manually last.
+                    case "dynamic_hopper_statistics.json":
+                        blfChunk = JsonConvert.DeserializeObject<MatchmakingHopperStatistics>(File.ReadAllText(jsonFileEnumerator.Current));
+                        break;
+                    case "motd.json":
+                    case "black_motd.json":
+                    case "blue_motd.json":
+                        blfChunk = JsonConvert.DeserializeObject<MessageOfTheDay>(File.ReadAllText(jsonFileEnumerator.Current));
+                        break;
+                    case "motd_popup.json":
+                    case "black_motd_popup.json":
+                    case "blue_motd_popup.json":
+                        blfChunk = JsonConvert.DeserializeObject<MessageOfTheDayPopup>(File.ReadAllText(jsonFileEnumerator.Current));
+                        break;
+                    case "matchmaking_banhammer_messages.json":
+                        blfChunk = JsonConvert.DeserializeObject<MatchmakingBanhammerMessages>(File.ReadAllText(jsonFileEnumerator.Current));
+                        break;
+                    case "matchmaking_hopper_descriptions_003.json":
+                        blfChunk = JsonConvert.DeserializeObject<MatchmakingHopperDescriptions>(File.ReadAllText(jsonFileEnumerator.Current));
+                        break;
+                    case "matchmaking_tips.json":
+                        blfChunk = JsonConvert.DeserializeObject<MatchmakingTips>(File.ReadAllText(jsonFileEnumerator.Current));
+                        break;
+                }
 
+                if (blfChunk != null) {
+                    BlfFile blfFile = new BlfFile();
+                    blfFile.AddChunk(blfChunk);
+                    blfFile.WriteFile(blfFolder + fileRelativePath.Replace(".json", ".bin"));
 
-            ////hoppersIn.Seek(0);
-            ////File.Delete("C:\\Users\\codie\\Desktop\\matchmaking_hopper_011.bin");
-            //var hoppersOut = new BitStream<StreamByteStream>(new StreamByteStream(new FileStream("../../../../blf/matchmaking_hopper_011.bin", FileMode.Create)));
-            ////mhcf.configurations[4].name = "Hello, World!";
-            //bLFChunkWriter.WriteChunk(ref hoppersOut, blfFileHeader);
-            //bLFChunkWriter.WriteChunk(ref hoppersOut, mhcf);
-            //bLFChunkWriter.WriteChunk(ref hoppersOut, new EndOfFile(blfFileHeader.GetLength() + mhcf.GetLength() + (0xC * 2)));
-            //hoppersOut.Write(0, 8);
+                    if (blfChunk is MatchmakingHopperDescriptions 
+                        || blfChunk is MatchmakingTips
+                        || blfChunk is MapManifest
+                        || blfChunk is MatchmakingTips)
+                    {
+                        fileHashes.Add("/title/default_hoppers/" + fileRelativePath.Replace("\\", "/"), blfFile.ComputeHash());
+                    }
+                } else if (fileName != "matchmaking_hopper_011.json")
+                {
+                    Console.WriteLine("Unrecognized JSON file: " + fileRelativePath);
+                }
+            }
 
-            var setting = new JsonSerializerSettings { Converters = { new ByteArrayConverter(), new HexStringConverter() }, Formatting = Formatting.Indented };
-            //string output = JsonConvert.SerializeObject(mhcf, setting);
+            // And now for the manual ones!
+            // First up, matchmaking playlists.
+            var mhcf = JsonConvert.DeserializeObject<HopperConfigurationTable>(File.ReadAllText(jsonFolder + "matchmaking_hopper_011.json"));
 
-            ////File.WriteAllText("./out/matchmaking_hopper_011.json", output);
-            ////streamHelper.Write(0, 8);
+            //We need to calculate the hash of every gameset.
+            foreach (HopperConfigurationTable.HopperConfiguration hopperConfiguration in mhcf.configurations)
+            {
+                BlfFile gameSetFile = new BlfFile();
+                gameSetFile.ReadFile(blfFolder + hopperConfiguration.identifier.ToString("D5") + "\\game_set_006.bin");
+                hopperConfiguration.gameSetHash = gameSetFile.ComputeHash();
+            }
 
-            //var mhdf = JsonConvert.DeserializeObject<Sunrise.BlfTool.HopperDescriptions>(File.ReadAllText("../../../../json/en/matchmaking_hopper_descriptions_003.json"));
-            //var mhdf = new HopperReader().ReadNewHopperDescriptions(new BitStream<StreamByteStream>(new StreamByteStream(new FileStream("C:\\Users\\codie\\Desktop\\descriptions", FileMode.Open))));
+            BlfFile hoppersFile = new BlfFile();
+            hoppersFile.AddChunk(mhcf);
+            hoppersFile.WriteFile(blfFolder + "\\matchmaking_hopper_011.bin");
 
+            fileHashes.Add("/title/default_hoppers/matchmaking_hopper_011.bin", hoppersFile.ComputeHash());
+            fileHashes.Add("/title/default_hoppers/network_configuration_135.bin", Convert.FromHexString("9D5AF6BC38270765C429F4776A9639D1A0E87319"));
+            Manifest.FileEntry[] fileEntries = new Manifest.FileEntry[fileHashes.Count];
+            int i = 0;
+            foreach (KeyValuePair<string, byte[]> fileEntry in fileHashes)
+            {
+                fileEntries[i] = new Manifest.FileEntry()
+                {
+                    filePath = fileEntry.Key,
+                    fileHash = fileEntry.Value
+                };
+                i++;
+            }
 
-            //var descriptionsOut = new BitStream<StreamByteStream>(new StreamByteStream(new FileStream("../../../../blf/en/matchmaking_hopper_descriptions_03.bin", FileMode.Create)));
-            //bLFChunkWriter.WriteChunk(ref descriptionsOut, blfFileHeader);
-            //bLFChunkWriter.WriteChunk(ref descriptionsOut, mhdf);
-            //bLFChunkWriter.WriteChunk(ref descriptionsOut, new EndOfFile(blfFileHeader.GetLength() + mhdf.GetLength() + (0xC * 2)));
-            //descriptionsOut.Write(0, 8);
+            var onfm = new Manifest()
+            {
+                files = fileEntries
+            };
 
-            //BlfFile blfFile = new BlfFile();
-            //blfFile.ReadFile(@"D:\Projects\Local\Halo 3 Matchmaking\title storage\title\default_hoppers\network_configuration_135.bin");
-            //var netc = blfFile.GetChunk<NetworkConfiguration>();
-            //string output = JsonConvert.SerializeObject(netc, setting);
-            ////Directory.CreateDirectory("../../../../json/00101/");
-            //File.WriteAllText("../../../../json/network_configuration_135.json", output);
-
-            //BlfFile blfFile = new BlfFile();
-            //blfFile.ReadFile(@"D:\Projects\Local\Halo 3 Matchmaking\title storage\title\default_hoppers\en\motd_popup.bin");
-            //var motd = blfFile.GetChunk<MessageOfTheDayPopup>();
-            //string output = JsonConvert.SerializeObject(motd, setting);
-            //File.WriteAllText("../../../../json/en/motd_popup.json", output);
-
-
-
-            //output = JsonConvert.SerializeObject(mhdf, setting);
-            //File.WriteAllText("../../../../json/en/matchmaking_hopper_descriptions_003.json", output);
-
-
-
-            ConvertBlfToJson("D:\\Projects\\Local\\Halo 3 Matchmaking\\title storage\\title\\default_hoppers\\", "../../../../json/");
+            BlfFile manifestFile = new BlfFile();
+            manifestFile.AddChunk(onfm);
+            manifestFile.WriteFile(blfFolder + "\\manifest_001.bin");
         }
 
         public static void ConvertBlfToJson(string titleStorageFolder, string jsonFolder)

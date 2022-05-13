@@ -11,11 +11,11 @@ using WarthogInc.BlfChunks;
 
 namespace Sunrise.BlfTool
 {
-    class MatchmakingTips : IBLFChunk
+    class MatchmakingBanhammerMessages : IBLFChunk
     {
         [JsonIgnore]
-        public uint tipCount { get { return (uint)tips.Length; } }
-        public string[] tips;
+        public uint messageCount { get { return (uint)messages.Length; } }
+        public string[] messages;
 
         public ushort GetAuthentication()
         {
@@ -24,12 +24,12 @@ namespace Sunrise.BlfTool
 
         public uint GetLength()
         {
-            return (uint)(tipCount * 0x100) + 4;
+            return (uint)(messageCount * 0x100) + 4;
         }
 
         public string GetName()
         {
-            return "mmtp";
+            return "bhms";
         }
 
         public ushort GetVersion()
@@ -40,7 +40,7 @@ namespace Sunrise.BlfTool
         public void ReadChunk(ref BitStream<StreamByteStream> hoppersStream)
         {
             int tipCount = hoppersStream.Read<int>(32);
-            tips = new string[tipCount];
+            messages = new string[tipCount];
             for (int i = 0; i < tipCount; i++)
             {
                 byte[] tipBytes = new byte[0x100];
@@ -60,23 +60,29 @@ namespace Sunrise.BlfTool
                     }
                 }
 
-                tips[i] = Encoding.UTF8.GetString(tipBytes.Take(tipLength).ToArray());
+                messages[i] = Encoding.UTF8.GetString(tipBytes.Take(tipLength).ToArray());
             }
         }
 
         public void WriteChunk(ref BitStream<StreamByteStream> hoppersStream)
         {
-            //hoppersStream.Write<byte>(gameEntryCount, 6);
-
-            //for (int i = 0; i < gameEntryCount; i++)
-            //{
-            //    FileEntry entry = gameEntries[i];
-            //    //hoppersStream.Write<ushort>(entry.identifier, 16);
-            //    //hoppersStream.Write<byte>(description.type ? (byte)1 : (byte)0, 1);
-            //    //hoppersStream.WriteString(description.description, 256, Encoding.UTF8);
-            //}
-
-            //hoppersStream.Seek(hoppersStream.NextByteIndex, 0);
+            hoppersStream.Write(messageCount, 32);
+            for (int i = 0; i < messageCount; i++)
+            {
+                byte[] messageBytes = Encoding.UTF8.GetBytes(messages[i]);
+                int messageLength = messages[i].Length;
+                for (int j = 0; j < messageBytes.Length; j++)
+                {
+                    if (j < messageLength)
+                    {
+                        hoppersStream.Write(messageBytes[j], 8);
+                    }
+                    else
+                    {
+                        hoppersStream.Write(0, 8);
+                    }
+                }
+            }
         }
     }
 }

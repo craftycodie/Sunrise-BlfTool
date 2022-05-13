@@ -54,17 +54,15 @@ namespace Sunrise.BlfTool
 
         public void WriteChunk(ref BitStream<StreamByteStream> hoppersStream)
         {
-            //hoppersStream.Write<byte>(gameEntryCount, 6);
+            hoppersStream.Write<uint>(totalPlayers, 32);
+            for (int i = 0; i < 32; i++)
+            {
+                HopperPopulation entry = statistics[i];
 
-            //for (int i = 0; i < gameEntryCount; i++)
-            //{
-            //    HopperPopulation entry = gameEntries[i];
-            //    //hoppersStream.Write<ushort>(entry.identifier, 16);
-            //    //hoppersStream.Write<byte>(description.type ? (byte)1 : (byte)0, 1);
-            //    //hoppersStream.WriteString(description.description, 256, Encoding.UTF8);
-            //}
-
-            //hoppersStream.Seek(hoppersStream.NextByteIndex, 0);
+                hoppersStream.Write<uint>(entry.hopperIdentifier, 32);
+                hoppersStream.Write<uint>(entry.playerCount, 32);
+            }
+            hoppersStream.Seek(hoppersStream.NextByteIndex, 0);
         }
 
         public class HopperPopulation
