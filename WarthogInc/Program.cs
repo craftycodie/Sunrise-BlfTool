@@ -15,10 +15,10 @@ namespace WarthogInc
         {
 
             //ConvertBlfToJson("D:\\Projects\\Local\\Halo 3 Matchmaking\\title storage\\title\\default_hoppers\\", "../../../../json/");
-            ConvertBlfToJson("D:\\Projects\\Local\\Halo 3 Matchmaking\\sunrise pre blf tool\\", "../../../../sunrise/");
+            //ConvertBlfToJson("D:\\Projects\\Local\\Halo 3 Matchmaking\\sunrise pre blf tool\\", "../../../../sunrise/");
 
             //ConvertJsonToBlf(@"D:\Projects\Local\Halo 3 Matchmaking\BlfWorker\json\", @"D:\Projects\Local\Halo 3 Matchmaking\BlfWorker\blf\");
-            //ConvertJsonToBlf(@"D:\Projects\Local\Halo 3 Matchmaking\BlfWorker\sunrise\", @"D:\Projects\Local\Halo 3 Matchmaking\BlfWorker\blf\");
+            ConvertJsonToBlf(@"D:\Projects\GitHub\Sunrise-Content\Title Storage\json\", @"D:\Projects\GitHub\Sunrise-Content\Title Storage\blf\");
         }
 
         public static void ConvertJsonToBlf(string jsonFolder, string blfFolder)
@@ -178,7 +178,7 @@ namespace WarthogInc
                     {
                         Console.WriteLine("Failed to convert file: " + titleDirectoryEnumerator.Current);
                         File.Copy(titleDirectoryEnumerator.Current, jsonFolder + fileRelativePath);
-                        //Console.WriteLine(ex.ToString());
+                        Console.WriteLine(ex.ToString());
                     }
                 }
                 else if (titleDirectoryEnumerator.Current.EndsWith(".jpg"))
