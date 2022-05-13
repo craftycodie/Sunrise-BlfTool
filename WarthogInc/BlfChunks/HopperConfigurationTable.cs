@@ -340,7 +340,8 @@ namespace Sunrise.BlfTool
         public class HopperConfiguration
         {
             public string name;
-            [JsonConverter(typeof(HexStringConverter))]
+            [JsonIgnore] // We calculate this when writing all files as blf.
+            // [JsonConverter(typeof(HexStringConverter))]
             public byte[] gameSetHash;
             public ushort identifier;
             public ushort category;

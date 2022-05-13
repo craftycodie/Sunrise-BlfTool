@@ -1,0 +1,37 @@
+{
+  "gameEntries": [
+    {
+      "gameEntryWeight": 3,
+      "minimumPlayerCount": 6,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 480,
+      "gameVariantHash": "1B99810B9E34946AD733A9987E9D291DA8DF7988",
+      "gameVariantFileName": "ranked_grifball",
+      "mapVariantHash": "C05D3FDD126DAFC087BD30EA8D27B92E973C12A7",
+      "mapVariantFileName": "agla_foundry"
+    },
+    {
+      "gameEntryWeight": 3,
+      "minimumPlayerCount": 6,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 730,
+      "gameVariantHash": "1B99810B9E34946AD733A9987E9D291DA8DF7988",
+      "gameVariantFileName": "ranked_grifball",
+      "mapVariantHash": "2609C00D49E2F4D85E109E522D5B18E6A704FBCF",
+      "mapVariantFileName": "agla_fl09"
+    },
+    {
+      "gameEntryWeight": 10,
+      "minimumPlayerCount": 6,
+      "skipAfterVeto": true,
+      "optional": false,
+      "mapID": 730,
+      "gameVariantHash": "1B99810B9E34946AD733A9987E9D291DA8DF7988",
+      "gameVariantFileName": "ranked_grifball",
+      "mapVariantHash": "8A2BCE38E31D9F574A928CFEB3AA0A156DFFFA65",
+      "mapVariantFileName": "agla_ranked_cave"
+    }
+  ]
+}

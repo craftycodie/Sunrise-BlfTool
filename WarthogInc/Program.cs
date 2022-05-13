@@ -15,12 +15,16 @@ namespace WarthogInc
         {
 
             //ConvertBlfToJson("D:\\Projects\\Local\\Halo 3 Matchmaking\\title storage\\title\\default_hoppers\\", "../../../../json/");
-            ConvertJsonToBlf(@"D:\Projects\Local\Halo 3 Matchmaking\BlfWorker\json\", @"D:\Projects\Local\Halo 3 Matchmaking\BlfWorker\blf\");
+            ConvertBlfToJson("D:\\Projects\\Local\\Halo 3 Matchmaking\\sunrise pre blf tool\\", "../../../../sunrise/");
 
+            //ConvertJsonToBlf(@"D:\Projects\Local\Halo 3 Matchmaking\BlfWorker\json\", @"D:\Projects\Local\Halo 3 Matchmaking\BlfWorker\blf\");
+            //ConvertJsonToBlf(@"D:\Projects\Local\Halo 3 Matchmaking\BlfWorker\sunrise\", @"D:\Projects\Local\Halo 3 Matchmaking\BlfWorker\blf\");
         }
 
         public static void ConvertJsonToBlf(string jsonFolder, string blfFolder)
         {
+            Console.WriteLine("Converting JSON files to BLF...");
+
             var jsonFileEnumerator = Directory.EnumerateFiles(jsonFolder, "*.*", SearchOption.AllDirectories).GetEnumerator();
 
             var fileHashes = new Dictionary<string, byte[]>();
@@ -38,6 +42,12 @@ namespace WarthogInc
                     Directory.CreateDirectory(blfFolder + fileDirectoryRelativePath);
                 }
 
+                if (fileName.EndsWith(".bin") || fileName.EndsWith(".jpg"))
+                {
+                    File.Copy(jsonFileEnumerator.Current, blfFolder + fileRelativePath);
+                    continue;
+                }
+
                 IBLFChunk blfChunk = null;
 
                 switch(fileName)
@@ -49,7 +59,7 @@ namespace WarthogInc
                         blfChunk = JsonConvert.DeserializeObject<MapManifest>(File.ReadAllText(jsonFileEnumerator.Current));
                         break;
                     case "matchmaking_hopper_011.json":
-                        break; // Handle manually last.
+                        continue; // Handle manually last.
                     case "dynamic_hopper_statistics.json":
                         blfChunk = JsonConvert.DeserializeObject<MatchmakingHopperStatistics>(File.ReadAllText(jsonFileEnumerator.Current));
                         break;
@@ -82,11 +92,11 @@ namespace WarthogInc
                     if (blfChunk is MatchmakingHopperDescriptions 
                         || blfChunk is MatchmakingTips
                         || blfChunk is MapManifest
-                        || blfChunk is MatchmakingTips)
+                        || blfChunk is MatchmakingBanhammerMessages)
                     {
-                        fileHashes.Add("/title/default_hoppers/" + fileRelativePath.Replace("\\", "/"), blfFile.ComputeHash());
+                        fileHashes.Add("/title/default_hoppers/" + fileRelativePath.Replace("\\", "/").Replace(".json", ".bin"), blfFile.ComputeHash());
                     }
-                } else if (fileName != "matchmaking_hopper_011.json")
+                } else
                 {
                     Console.WriteLine("Unrecognized JSON file: " + fileRelativePath);
                 }
@@ -134,6 +144,8 @@ namespace WarthogInc
 
         public static void ConvertBlfToJson(string titleStorageFolder, string jsonFolder)
         {
+            Console.WriteLine("Converting BLF files to JSON...");
+
             var titleDirectoryEnumerator = Directory.EnumerateFiles(titleStorageFolder, "*.*", SearchOption.AllDirectories).GetEnumerator();
 
             var jsonSettings = new JsonSerializerSettings { Converters = { new ByteArrayConverter(), new HexStringConverter() },  Formatting = Formatting.Indented };
@@ -144,6 +156,13 @@ namespace WarthogInc
                 if (titleDirectoryEnumerator.Current.EndsWith("manifest_001.bin"))
                     continue;
 
+                string fileRelativePath = titleDirectoryEnumerator.Current.Replace(titleStorageFolder, "");
+                if (fileRelativePath.Contains("\\"))
+                {
+                    string fileDirectoryRelativePath = fileRelativePath.Substring(0, fileRelativePath.LastIndexOf("\\"));
+                    Directory.CreateDirectory(jsonFolder + fileDirectoryRelativePath);
+                }
+
                 if (titleDirectoryEnumerator.Current.EndsWith(".bin"))
                 {
                     try
@@ -153,20 +172,18 @@ namespace WarthogInc
                         var blfChunk = blfFile.GetChunk(1);
                         string output = JsonConvert.SerializeObject((object)blfChunk, jsonSettings);
 
-
-                        string fileRelativePath = titleDirectoryEnumerator.Current.Replace(titleStorageFolder, "");
-                        if (fileRelativePath.Contains("\\"))
-                        {
-                            string fileDirectoryRelativePath = fileRelativePath.Substring(0, fileRelativePath.LastIndexOf("\\"));
-                            Directory.CreateDirectory(jsonFolder + fileDirectoryRelativePath);
-                        }
                         File.WriteAllText(jsonFolder + fileRelativePath.Replace(".bin", ".json"), output);
                     }
                     catch (Exception ex)
                     {
                         Console.WriteLine("Failed to convert file: " + titleDirectoryEnumerator.Current);
+                        File.Copy(titleDirectoryEnumerator.Current, jsonFolder + fileRelativePath);
                         //Console.WriteLine(ex.ToString());
                     }
+                }
+                else if (titleDirectoryEnumerator.Current.EndsWith(".jpg"))
+                {
+                    File.Copy(titleDirectoryEnumerator.Current, jsonFolder + fileRelativePath);
                 }
             }
         }

@@ -1,0 +1,144 @@
+{
+  "descriptions": [
+    {
+      "identifier": 108,
+      "type": false,
+      "description": "<color argb=#FF8692d4>Eine Mischung aus Showdown und anderen 'Jeder gegen jeden'- Spielen. Hier sind Sie auf sich allein gestellt.</color>|r|nMax. Gruppengröße: 1"
+    },
+    {
+      "identifier": 109,
+      "type": false,
+      "description": "<color argb=#FF8692d4>Geradlinige Team-Showdown-Spiele auf verschiedenen Karten.</color>|r|nMax. Teamgröße: 3-4|r|nMax. Gruppengröße: 4"
+    },
+    {
+      "identifier": 112,
+      "type": false,
+      "description": "<color argb=#FF8692d4>Gemischte Spiele für Zweierteams. Arbeiten Sie zusammen oder sterben Sie allein.</color>|r|nAlle DLC erf.|r|nTeamgröße: 2|r|nMax. Gruppengröße: 2"
+    },
+    {
+      "identifier": 139,
+      "type": false,
+      "description": "<color argb=#FF8692d4>Gute Sicht und lange Gewehre. Präzisionskampf über große Entfernungen. Dies ist eine teambasierte Spielliste.</color> Alle DLC erf.|r|nTeamgröße: 3-4|r|nMax. Gruppengröße: 4"
+    },
+    {
+      "identifier": 127,
+      "type": false,
+      "description": "<color argb=#FF8692d4>MLG-Spielvarianten von Team-Showdown- und Ziel-Spielen. Weitere Info gibt es auf mlgpro.com/playlist.</color>|r|nAlle DLC erforderlich|r|nTeamgröße: 3-4|r|nMax. Gruppengröße: 4"
+    },
+    {
+      "identifier": 123,
+      "type": false,
+      "description": "<color argb=#FF8692d4>Keine Schilde, keine Sensoren. Nur Sie und Ihre Waffe.</color>|r|nAlle DLC erf.|r|nTeamgröße: 3-4|r|nMax. Gruppengröße: 4"
+    },
+    {
+      "identifier": 102,
+      "type": false,
+      "description": "<color argb=#FF8692d4>Eine Mischung aus Showdown- und JgJ-Spielen. Gehen Sie's allein oder im Team an.</color>|r|nAlle DLC erf.|r|nMax. Gruppengröße: 8"
+    },
+    {
+      "identifier": 103,
+      "type": false,
+      "description": "<color argb=#FF8692d4>Gemischte Team-Showdown-Spiele auf verschiedenen Karten.</color>|r|nTeamgröße: 5|r|nMax. Gruppengröße: 10"
+    },
+    {
+      "identifier": 104,
+      "type": false,
+      "description": "<color argb=#FF8692d4>Ein breites Sortiment an Nicht-Showdown-Ziel-Spielen mit einem Team oder einer ganzen Gruppe.</color> Alle DLC erf. Teamgröße: 3-4|r|nMax. Gruppengröße: 8"
+    },
+    {
+      "identifier": 147,
+      "type": false,
+      "description": "<color argb=#FF8692d4>Action Sack ist zurück mit unglaublichen 0 EP und dem üblichen Wahnsinn.</color>|r|nAlle DLC erf.|r|nTeamgröße: 3-4|r|nMax. Gruppengröße: 8"
+    },
+    {
+      "identifier": 106,
+      "type": false,
+      "description": "<color argb=#FF8692d4>Eine Mischung aus Spielen für mehr als zwei Teams. Wie 'Jeder gegen jeden'. </color>|r|nTeamgröße: 2|r|nMax. Gruppengröße: 8"
+    },
+    {
+      "identifier": 143,
+      "type": false,
+      "description": "<color argb=#FF8692d4>Habt ihr Mythic? Dann holt euch den Kick mit Team-Showdown und Ziel auf allen 6 Mythic-Karten.</color>|r|nAlle DLC erf.|r|nTeamgröße: 3-4|r|nMax. Gruppengröße: 8"
+    },
+    {
+      "identifier": 125,
+      "type": false,
+      "description": "<color argb=#FF8692d4>Tolle Mischung aus Showdown- und Ziel-Modi. Große Teams, großes Gemetzel, großer Spaß.</color>|r|nAlle DLC erf.|r|nTeamgröße: 6-8|r|nMax. Gruppengröße: 16"
+    },
+    {
+      "identifier": 150,
+      "type": false,
+      "description": "<color argb=#FF8692d4>Team-Flagge und Oddball aus der guten alten Halo-Zeit.</color>|r|nAlle DLC erf.|r|nTeamgröße: 3-4|r|nMax. Gruppengröße: 4"
+    },
+    {
+      "identifier": 777,
+      "type": false,
+      "description": "<color argb=#FF8692d4>Haben Sie die Recon schon? Sichern Sie sich 7 EP in dieser JGJ-Spielliste und kommen Sie ihr ein Stück näher.</color>|r|nAlle DLC erf.|r|nMax. Gruppengröße: 7"
+    },
+    {
+      "identifier": 153,
+      "type": false,
+      "description": "<color argb=#FF8692d4>Ein 4v4-Mix aus Doppel-EP-Showdown- und Ziel-Spieltypen auf Ihrer eigenen Zusammenstellung von Community-Karten.</color> Heroic-\\ Mythic-DLC erf. Teamgröße: 3-4."
+    },
+    {
+      "identifier": 113,
+      "type": false,
+      "description": "<color argb=#FF8692d4>Die Toten stehen auf und strecken erneut die Klauen nach Ihnen aus!</color>|r|nAlle DLC erf.|r|nMax. Gruppengröße: 13"
+    },
+    {
+      "identifier": 114,
+      "type": false,
+      "description": "<color argb=#FF8692d4>Schnelles Fahren ist wichtiger als Treffsicherheit.</color>|r|n'Heroic'-\\'Mythic'-DLC erf.|r|nTeamgröße: 2|r|nMax. Gruppengröße: 8"
+    },
+    {
+      "identifier": 151,
+      "type": false,
+      "description": "<color argb=#FF8692d4>ODST-inspiriertes 4v4-Doppel-EP-Wochenende. Kein VISR-Modus, aber viele Showdown- und Ziel-Spiele.</color>|r|nAlle DLC erf.|r|nTeamgröße: 3-4|r|nMax. Gruppengröße: 8"
+    },
+    {
+      "identifier": 145,
+      "type": false,
+      "description": "<color argb=#FF8692d4>Kartenkontrolle-Spieltypen. Übernehmen Sie die Kontrolle über das Gelände und halten Sie durch.</color>|r|nAlle DLC erf.|r|nMax. Teamgröße: 3-4|r|nMax. Gruppengröße: 8"
+    },
+    {
+      "identifier": 152,
+      "type": false,
+      "description": "<color argb=#FF8692d4>Das ist der Hammer! Und sogar mit Rangliste! Spielen Sie um Punkte oder nur zum Spaß.</color>|r|n'Heroic'-\\'Mythic'-DLC erf.|r|nTeamgröße: 3-4|r|nMax. Gruppengröße: 4"
+    },
+    {
+      "identifier": 140,
+      "type": false,
+      "description": "<color argb=#FF8692d4>Ein fünf gegen fünf Teamwork-Test: Nur CTF, die ganze Zeit.</color>|r|nAlle DLC erf.|r|nTeamgröße: 3-5|r|nMax. Gruppengröße: 10"
+    },
+    {
+      "identifier": 126,
+      "type": false,
+      "description": "<color argb=#FF8692d4>Rot gegen Blau in ansteckenden Angriffen.</color>|r|nHeroic-\\Mythic-DLC erf.|r|nTeamgröße: 4|r|nMax. Gruppengröße: 8"
+    },
+    {
+      "identifier": 132,
+      "type": false,
+      "description": "<color argb=#FF8692d4>Ein Zahlenspiel: Vier Dreierteams. Drei Oddballs.</color>|r|nAlle DLC erf.|r|nTeamgröße: 3|r|nMax. Gruppengröße: 12"
+    },
+    {
+      "identifier": 129,
+      "type": false,
+      "description": "<color argb=#FF8692d4>Fiesta-Spiele ohne Rangliste. Mit welcher Waffe generieren Sie?</color>|r|nAlle DLC erf.|r|nMax. Gruppengröße: 8"
+    },
+    {
+      "identifier": 146,
+      "type": false,
+      "description": "<color argb=#FF8692d4>Mythic vermischt mit Legendär-, Heldenhaft- und Klassik-Karten für doppelte JGJ-ERF.</color>|r|nAlle DLC erf.|r|nMax. Gruppengröße: 1"
+    },
+    {
+      "identifier": 8,
+      "type": false,
+      "description": "7 ON THE 7TH|r|nFeiern Sie Bungies Lieblingszahl in dieser besonderen Spielliste."
+    },
+    {
+      "identifier": 11,
+      "type": false,
+      "description": "Doppel-EP-Wochenende|r|nDie Gewinner erhalten doppelte Erfahrungspunkte."
+    }
+  ]
+}
