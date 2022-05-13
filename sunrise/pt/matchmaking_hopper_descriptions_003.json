@@ -1,0 +1,144 @@
+{
+  "descriptions": [
+    {
+      "identifier": 108,
+      "type": false,
+      "description": "<color argb=#FF8692d4>Uma mistura de Assassino e jogos Liberados para todos. Aqui, você deve se virar sozinho.</color> Tamanho máx. do Grupo: 1"
+    },
+    {
+      "identifier": 109,
+      "type": false,
+      "description": "<color argb=#FF8692d4>Jogos de Assassino em equipe diretos em mapas variados. Colabore com sua equipe.</color>|r|nTam. da equipe: 3-4|r|nTam. máx. do grupo: 4"
+    },
+    {
+      "identifier": 112,
+      "type": false,
+      "description": "<color argb=#FF8692d4>Jogos variados para equipes de dois.</color>|r|nReq. todos os DLC|r|nTamanho da equipe: 2|r|nTamanho máx. do grupo: 2"
+    },
+    {
+      "identifier": 139,
+      "type": false,
+      "description": "<color argb=#FF8692d4>Linhas de visão longas e rifles longos. Combate de precisão em longas distâncias.</color>|r|nReq. todos os DLC.|r|nTamanho da Equipe: 3-4|r|nTam. máx. do grupo: 4"
+    },
+    {
+      "identifier": 127,
+      "type": false,
+      "description": "<color argb=#FF8692d4>Regras e variantes MLG para jogos Assassino e de objetivo. Acesse www.mlgpro.com/playlist</color>|r|nReq. todos os DLC |r|nTam. da equipe: 3-4|r|nTam. máx. do grupo: 4"
+    },
+    {
+      "identifier": 123,
+      "type": false,
+      "description": "<color argb=#FF8692d4>Sem escudos, sem sensores. Só você, o seu BR, e muitos tiros na cabeça.</color>|r|nReq. todos os DLC.|r|nTamanho da Equipe: 3-4|r|nTam. máx. do grupo: 4"
+    },
+    {
+      "identifier": 102,
+      "type": false,
+      "description": "<color argb=#FF8692d4>Uma mistura de Assassino e outros jogos Gratis para Todos. Jogue sozinho, ou entre num grupo, num combate aleatório .</color>|r|nReq. todos os DLC.|r|nTamanho máx. do grupo: 8"
+    },
+    {
+      "identifier": 103,
+      "type": false,
+      "description": "<color argb=#FF8692d4>Jogos variados de Assassino em equipe em mapas variados.</color> Tamanho da equipe: 5|r|nTamanho máx. do grupo: 10"
+    },
+    {
+      "identifier": 104,
+      "type": false,
+      "description": "<color argb=#FF8692d4>Uma grande variedade de jogos de objetivo sem ser Assassino.</color>|r|nReq. todos os DLC.|r|nTamanho da equipe: 3-4|r|nTamanho máx. do grupo: 8"
+    },
+    {
+      "identifier": 147,
+      "type": false,
+      "description": "<color argb=#FF8692d4>O Action Sack voltou, oferecendo fantásticos 0 EXP e uma confusa e louca diversão social.</color>|r|nReq. todos os DLC|r|nTamanho da Equipe: 3-4|r|nTam. máx. do grupo: 8"
+    },
+    {
+      "identifier": 106,
+      "type": false,
+      "description": "<color argb=#FF8692d4>Uma mistura de jogos para mais de duas equipes.</color> Tamanho da equipe: 2|r|nTamanho máx. do grupo: 8"
+    },
+    {
+      "identifier": 143,
+      "type": false,
+      "description": "<color argb=#FF8692d4>Tem o Mítico?  Entre no jogo com mais Assassino da Equipe e Objetivo em todos os seis Mapas Míticos</color>|r|nReq. todos os DLC.|r|nTamanho da Equipe: 3-4|r|nTam. máx. do grupo: 8"
+    },
+    {
+      "identifier": 125,
+      "type": false,
+      "description": "<color argb=#FF8692d4>Uma ótima mistura de modos Assassino e Objetivo. Equipes grandes, massacre grande, grande diversão.</color>|r|nReq. todos os DLC|r|nTamanho da Equipe: 6-8|r|nTam. máx. do grupo: 16"
+    },
+    {
+      "identifier": 150,
+      "type": false,
+      "description": "<color argb=#FF8692d4>Bandeira da Equipe e Estranho dos tempos do halcyon do Halo. </color>|r|nReq. todos os DLC.|r|nTam. da equipe: 3-4|r|nTam. máx. do grupo: 4"
+    },
+    {
+      "identifier": 777,
+      "type": false,
+      "description": "<color argb=#FF8692d4>Já está abalando o Recon?  Pegue 7 EXP nesta lista de jogos FFA com Mapas Míticos, e você estará um passo mais perto.</color>|r|nReq. todos os DLC.|r|nTam. máx. do grupo: 7"
+    },
+    {
+      "identifier": 153,
+      "type": false,
+      "description": "<color argb=#FF8692d4>Uma mistura de dois tipos de jogos Assassino Duplo EXP e Objetivo nos seus mapas criados pela comunidade.</color> Requer DLC Heróico\\Mítico. Tam. da Equipe: 3-4."
+    },
+    {
+      "identifier": 113,
+      "type": false,
+      "description": "<color argb=#FF8692d4>Os mortos despertam! As frias garras dos morto-vivos saem das tumbas mais uma vez!</color>|r|nReq. todos os DLC|r|nTam. máx. do grupo: 13"
+    },
+    {
+      "identifier": 114,
+      "type": false,
+      "description": "<color argb=#FF8692d4>A velocidade é mais importante do que a pontaria. Chegue ao destino para ganhar!</color>|r|nHeroic\\Requer DLC Mítico.|r|nTam. da equipe: 2|r|nTam. máx. do grupo: 8"
+    },
+    {
+      "identifier": 151,
+      "type": false,
+      "description": "<color argb=#FF8692d4>Um Fim de Semana Social Duplo EXP Inspirado no ODST. Sem modo VISR, mas muitos jogos Assassino e Objetivo.</color> Req. todos os DLC.|r|nTam. da equipe: 3-4|r|nTam. máx. do grupo: 8"
+    },
+    {
+      "identifier": 145,
+      "type": false,
+      "description": "<color argb=#FF8692d4>Tipos de jogo que controlam o mapa. Controle o terreno e mantenha-se firme.</color>|r|nReq. todos os DLC|r|nTamanho da equipe: 3-4|r|nTamanho máx. do grupo: 8"
+    },
+    {
+      "identifier": 152,
+      "type": false,
+      "description": "<color argb=#FF8692d4>É hora de botar a mão na massa! Ele também tem ranks.  É sério. Jogue para vencer, ou apenas para se divertir.</color> Heroic\\Requer DLC Mítico. Tam. da Equipe: 3-4|r|nTam. Máx. do Grupo: 4"
+    },
+    {
+      "identifier": 140,
+      "type": false,
+      "description": "<color argb=#FF8692d4> Teste o trabalho de equipe em jogos de cinco a cinco: Todos CAB, o tempo todo.</color>|r|nReq. todos os DLC|r|nTam. da equipe: 3-5|r|nTam. máx. do grupo: 10"
+    },
+    {
+      "identifier": 126,
+      "type": false,
+      "description": "<color argb=#FF8692d4>O contagioso esporte estilo Assalto do Vermelho contra Azul. Pegue essa doença!</color>|r|nRequer  DLC Heróico\\Mítico|r|nTamanho da Equipe: 4|r|nTam. máx. do grupo: 8"
+    },
+    {
+      "identifier": 132,
+      "type": false,
+      "description": "<color argb=#FF8692d4>Quatro equipes de três. Três bolas malucas. Ganhos infinitos.</color>|r|nReq. todos os DLC|r|nTam. da equipe: 3|r|nTam. máx. do grupo: 12"
+    },
+    {
+      "identifier": 129,
+      "type": false,
+      "description": "<color argb=#FF8692d4>Jogos sem ranking do tipo Fiesta para 8 jogadores. Com que arma você surgirá? Muda o tempo todo.</color>|r|nReq. todos os DLC|r|nTam. máx. do grupo: 8 "
+    },
+    {
+      "identifier": 146,
+      "type": false,
+      "description": "<color argb=#FF8692d4>Misturas Míticas com mapas Lendário, Heróico, e clássicos para lutas FFA Duplo EXP.</color>|r|nReq. todos os DLC.|r|nTam. máx. do grupo: 1"
+    },
+    {
+      "identifier": 8,
+      "type": false,
+      "description": "7 DO 7|r|nComemore o número preferido da Bungie nesta lista de jogos especial."
+    },
+    {
+      "identifier": 11,
+      "type": false,
+      "description": "Fim de semanaXPDuplo|r|nIncursões que duram todo o fim de semana em  diversos cenários de combate. Os ganhadores recebem pontos de EXP dobrados."
+    }
+  ]
+}

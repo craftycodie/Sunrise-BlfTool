@@ -22,7 +22,7 @@ namespace WarthogInc.BlfChunks
 
         public uint GetLength()
         {
-            return (uint)(motdText.Length * 8) + 4;
+            return (uint)motdText.Length + 4;
         }
 
         public string GetName()

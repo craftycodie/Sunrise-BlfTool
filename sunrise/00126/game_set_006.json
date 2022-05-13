@@ -1,0 +1,103 @@
+{
+  "gameEntries": [
+    {
+      "gameEntryWeight": 5,
+      "minimumPlayerCount": 6,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 480,
+      "gameVariantHash": "E28639BCDBAE687D3040426BDDB426FD85DFED05",
+      "gameVariantFileName": "grifball",
+      "mapVariantHash": "8A4F0101ED4019DA6D11E076E305731A3486D799",
+      "mapVariantFileName": "grifball_agla_foundry"
+    },
+    {
+      "gameEntryWeight": 5,
+      "minimumPlayerCount": 6,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 730,
+      "gameVariantHash": "E28639BCDBAE687D3040426BDDB426FD85DFED05",
+      "gameVariantFileName": "grifball",
+      "mapVariantHash": "5AC0B30F705847EBE5FDDB30D2D7A39FD1FE4720",
+      "mapVariantFileName": "grifball_agla_sandbox"
+    },
+    {
+      "gameEntryWeight": 2,
+      "minimumPlayerCount": 6,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 730,
+      "gameVariantHash": "E28639BCDBAE687D3040426BDDB426FD85DFED05",
+      "gameVariantFileName": "grifball",
+      "mapVariantHash": "2EB94E220042C1D1CD243BB5627B9B7F3D8A5334",
+      "mapVariantFileName": "grifball_noxy_court"
+    },
+    {
+      "gameEntryWeight": 1,
+      "minimumPlayerCount": 6,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 730,
+      "gameVariantHash": "E28639BCDBAE687D3040426BDDB426FD85DFED05",
+      "gameVariantFileName": "grifball",
+      "mapVariantHash": "C0E16A1497CB2954B62957CA2877BFAE8EA26EC5",
+      "mapVariantFileName": "grifball_blockdrop_court"
+    },
+    {
+      "gameEntryWeight": 3,
+      "minimumPlayerCount": 6,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 730,
+      "gameVariantHash": "5732F9DEFCFA49789B120A463F64C8269616B46C",
+      "gameVariantFileName": "grifball_upthere",
+      "mapVariantHash": "182755B6095BD3B248718F3E6FA3F8C149C1BB66",
+      "mapVariantFileName": "GBL_high"
+    },
+    {
+      "gameEntryWeight": 1,
+      "minimumPlayerCount": 6,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 730,
+      "gameVariantHash": "32F0FF69E6714A821910EC8E691BC6D55AC65032",
+      "gameVariantFileName": "grifball_aerial",
+      "mapVariantHash": "66AE0BAC59435506B844DF1C3F625C8CD2FFC22A",
+      "mapVariantFileName": "grifball_grifball_naught"
+    },
+    {
+      "gameEntryWeight": 1,
+      "minimumPlayerCount": 6,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 730,
+      "gameVariantHash": "32F0FF69E6714A821910EC8E691BC6D55AC65032",
+      "gameVariantFileName": "grifball_aerial",
+      "mapVariantHash": "AB27C0572AE1120DB0EF1CFC1815C4E97D1EE40D",
+      "mapVariantFileName": "grifball_grifball_club"
+    },
+    {
+      "gameEntryWeight": 1,
+      "minimumPlayerCount": 6,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 730,
+      "gameVariantHash": "91C5B749C2E7575F404CBCA3CAB2A2B9E7A3EDC1",
+      "gameVariantFileName": "grifball_mayan",
+      "mapVariantHash": "94E23D0B30D200F644923112522E973A6155B319",
+      "mapVariantFileName": "GBL_ultim8"
+    },
+    {
+      "gameEntryWeight": 1,
+      "minimumPlayerCount": 6,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 730,
+      "gameVariantHash": "91C5B749C2E7575F404CBCA3CAB2A2B9E7A3EDC1",
+      "gameVariantFileName": "grifball_mayan",
+      "mapVariantHash": "E1BDCA78FF4AB577370E7C9DFACA83BBD88E63CD",
+      "mapVariantFileName": "GBL_chichenitza"
+    }
+  ]
+}

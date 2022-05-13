@@ -1,0 +1,59 @@
+{
+  "gameEntries": [
+    {
+      "gameEntryWeight": 4,
+      "minimumPlayerCount": 2,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 720,
+      "gameVariantHash": "F3F7FA155954933413C4F7F4293D6C539ABE405E",
+      "gameVariantFileName": "mlg_ffa",
+      "mapVariantHash": "5DBEF7EA30F9FBCA46D3DD4EE6776A329698ED4A",
+      "mapVariantFileName": "mlg_ffa_heretic"
+    },
+    {
+      "gameEntryWeight": 1,
+      "minimumPlayerCount": 2,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 740,
+      "gameVariantHash": "F3F7FA155954933413C4F7F4293D6C539ABE405E",
+      "gameVariantFileName": "mlg_ffa",
+      "mapVariantHash": "6FE402CD4B79AF00BA034A377214418A799BCAC9",
+      "mapVariantFileName": "mlg_ffa_citadel"
+    },
+    {
+      "gameEntryWeight": 1,
+      "minimumPlayerCount": 2,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 320,
+      "gameVariantHash": "F3F7FA155954933413C4F7F4293D6C539ABE405E",
+      "gameVariantFileName": "mlg_ffa",
+      "mapVariantHash": "BD2C632017668648DBB80854EB54AEA5A690163C",
+      "mapVariantFileName": "mlg_ffa_guard"
+    },
+    {
+      "gameEntryWeight": 1,
+      "minimumPlayerCount": 2,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 480,
+      "gameVariantHash": "F3F7FA155954933413C4F7F4293D6C539ABE405E",
+      "gameVariantFileName": "mlg_ffa",
+      "mapVariantHash": "50C8971F1D3FB516D248D4515879BA0DCC320067",
+      "mapVariantFileName": "mlg_ffa_ldown"
+    },
+    {
+      "gameEntryWeight": 1,
+      "minimumPlayerCount": 2,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 490,
+      "gameVariantHash": "F3F7FA155954933413C4F7F4293D6C539ABE405E",
+      "gameVariantFileName": "mlg_ffa",
+      "mapVariantHash": "B939543EB9A443432058C76A0021F98C3D969DB8",
+      "mapVariantFileName": "mlg_ffa_reactor"
+    }
+  ]
+}

@@ -1,0 +1,279 @@
+{
+  "gameEntries": [
+    {
+      "gameEntryWeight": 10,
+      "minimumPlayerCount": 4,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 580,
+      "gameVariantHash": "AE627ACB92BCCA6D1CA9BA087F6C39429E71EAE8",
+      "gameVariantFileName": "brawl_slayer",
+      "mapVariantHash": "C1819FC1366F2E9FE41497198D5C46D24F3B734E",
+      "mapVariantFileName": "default_rats_nest"
+    },
+    {
+      "gameEntryWeight": 10,
+      "minimumPlayerCount": 4,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 410,
+      "gameVariantHash": "AE627ACB92BCCA6D1CA9BA087F6C39429E71EAE8",
+      "gameVariantFileName": "brawl_slayer",
+      "mapVariantHash": "D54E8EB030ACCCE2B5C39FBCD7F4F4B2AD347CC1",
+      "mapVariantFileName": "default_standoff"
+    },
+    {
+      "gameEntryWeight": 16,
+      "minimumPlayerCount": 4,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 470,
+      "gameVariantHash": "AE627ACB92BCCA6D1CA9BA087F6C39429E71EAE8",
+      "gameVariantFileName": "brawl_slayer",
+      "mapVariantHash": "6072A7C324844ED407E7162CBE045A19730E7766",
+      "mapVariantFileName": "default_avalanche"
+    },
+    {
+      "gameEntryWeight": 16,
+      "minimumPlayerCount": 4,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 590,
+      "gameVariantHash": "AE627ACB92BCCA6D1CA9BA087F6C39429E71EAE8",
+      "gameVariantFileName": "brawl_slayer",
+      "mapVariantHash": "1F3A4C9A55DD41B894A8BB4445B1DD953E6CE9B5",
+      "mapVariantFileName": "default_ghost_town"
+    },
+    {
+      "gameEntryWeight": 6,
+      "minimumPlayerCount": 4,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 400,
+      "gameVariantHash": "AE627ACB92BCCA6D1CA9BA087F6C39429E71EAE8",
+      "gameVariantFileName": "brawl_slayer",
+      "mapVariantHash": "14E4FBE467E88F9A327778828F52474AA4A2F272",
+      "mapVariantFileName": "ffa_sandtrap"
+    },
+    {
+      "gameEntryWeight": 2,
+      "minimumPlayerCount": 4,
+      "skipAfterVeto": true,
+      "optional": false,
+      "mapID": 580,
+      "gameVariantHash": "E7029F67376E4D6B184CD4AF5D7E40A2A17B3E08",
+      "gameVariantFileName": "brawl_shotty_snipers",
+      "mapVariantHash": "C1819FC1366F2E9FE41497198D5C46D24F3B734E",
+      "mapVariantFileName": "default_rats_nest"
+    },
+    {
+      "gameEntryWeight": 3,
+      "minimumPlayerCount": 4,
+      "skipAfterVeto": true,
+      "optional": false,
+      "mapID": 590,
+      "gameVariantHash": "E7029F67376E4D6B184CD4AF5D7E40A2A17B3E08",
+      "gameVariantFileName": "brawl_shotty_snipers",
+      "mapVariantHash": "1F3A4C9A55DD41B894A8BB4445B1DD953E6CE9B5",
+      "mapVariantFileName": "default_ghost_town"
+    },
+    {
+      "gameEntryWeight": 2,
+      "minimumPlayerCount": 4,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 580,
+      "gameVariantHash": "78FD19AF412B61BDD18F0CDE0D78F9AE1880D5C9",
+      "gameVariantFileName": "brawl_rockets",
+      "mapVariantHash": "C1819FC1366F2E9FE41497198D5C46D24F3B734E",
+      "mapVariantFileName": "default_rats_nest"
+    },
+    {
+      "gameEntryWeight": 2,
+      "minimumPlayerCount": 4,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 410,
+      "gameVariantHash": "78FD19AF412B61BDD18F0CDE0D78F9AE1880D5C9",
+      "gameVariantFileName": "brawl_rockets",
+      "mapVariantHash": "D54E8EB030ACCCE2B5C39FBCD7F4F4B2AD347CC1",
+      "mapVariantFileName": "default_standoff"
+    },
+    {
+      "gameEntryWeight": 2,
+      "minimumPlayerCount": 4,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 470,
+      "gameVariantHash": "78FD19AF412B61BDD18F0CDE0D78F9AE1880D5C9",
+      "gameVariantFileName": "brawl_rockets",
+      "mapVariantHash": "6072A7C324844ED407E7162CBE045A19730E7766",
+      "mapVariantFileName": "default_avalanche"
+    },
+    {
+      "gameEntryWeight": 4,
+      "minimumPlayerCount": 4,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 590,
+      "gameVariantHash": "78FD19AF412B61BDD18F0CDE0D78F9AE1880D5C9",
+      "gameVariantFileName": "brawl_rockets",
+      "mapVariantHash": "1F3A4C9A55DD41B894A8BB4445B1DD953E6CE9B5",
+      "mapVariantFileName": "default_ghost_town"
+    },
+    {
+      "gameEntryWeight": 1,
+      "minimumPlayerCount": 4,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 400,
+      "gameVariantHash": "78FD19AF412B61BDD18F0CDE0D78F9AE1880D5C9",
+      "gameVariantFileName": "brawl_rockets",
+      "mapVariantHash": "14E4FBE467E88F9A327778828F52474AA4A2F272",
+      "mapVariantFileName": "ffa_sandtrap"
+    },
+    {
+      "gameEntryWeight": 2,
+      "minimumPlayerCount": 4,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 580,
+      "gameVariantHash": "84B55D07DA1E7CF748079E379972BEBD612B5D61",
+      "gameVariantFileName": "brawl_mosh_pit",
+      "mapVariantHash": "C1819FC1366F2E9FE41497198D5C46D24F3B734E",
+      "mapVariantFileName": "default_rats_nest"
+    },
+    {
+      "gameEntryWeight": 2,
+      "minimumPlayerCount": 4,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 410,
+      "gameVariantHash": "84B55D07DA1E7CF748079E379972BEBD612B5D61",
+      "gameVariantFileName": "brawl_mosh_pit",
+      "mapVariantHash": "D54E8EB030ACCCE2B5C39FBCD7F4F4B2AD347CC1",
+      "mapVariantFileName": "default_standoff"
+    },
+    {
+      "gameEntryWeight": 3,
+      "minimumPlayerCount": 4,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 470,
+      "gameVariantHash": "84B55D07DA1E7CF748079E379972BEBD612B5D61",
+      "gameVariantFileName": "brawl_mosh_pit",
+      "mapVariantHash": "6072A7C324844ED407E7162CBE045A19730E7766",
+      "mapVariantFileName": "default_avalanche"
+    },
+    {
+      "gameEntryWeight": 3,
+      "minimumPlayerCount": 4,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 590,
+      "gameVariantHash": "84B55D07DA1E7CF748079E379972BEBD612B5D61",
+      "gameVariantFileName": "brawl_mosh_pit",
+      "mapVariantHash": "1F3A4C9A55DD41B894A8BB4445B1DD953E6CE9B5",
+      "mapVariantFileName": "default_ghost_town"
+    },
+    {
+      "gameEntryWeight": 1,
+      "minimumPlayerCount": 4,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 400,
+      "gameVariantHash": "84B55D07DA1E7CF748079E379972BEBD612B5D61",
+      "gameVariantFileName": "brawl_mosh_pit",
+      "mapVariantHash": "14E4FBE467E88F9A327778828F52474AA4A2F272",
+      "mapVariantFileName": "ffa_sandtrap"
+    },
+    {
+      "gameEntryWeight": 2,
+      "minimumPlayerCount": 4,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 580,
+      "gameVariantHash": "C1F7311751DD66C9E2C3F97DEA0D904E4E35BF0E",
+      "gameVariantFileName": "brawl_laser_tag",
+      "mapVariantHash": "C1819FC1366F2E9FE41497198D5C46D24F3B734E",
+      "mapVariantFileName": "default_rats_nest"
+    },
+    {
+      "gameEntryWeight": 2,
+      "minimumPlayerCount": 4,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 410,
+      "gameVariantHash": "C1F7311751DD66C9E2C3F97DEA0D904E4E35BF0E",
+      "gameVariantFileName": "brawl_laser_tag",
+      "mapVariantHash": "D54E8EB030ACCCE2B5C39FBCD7F4F4B2AD347CC1",
+      "mapVariantFileName": "default_standoff"
+    },
+    {
+      "gameEntryWeight": 3,
+      "minimumPlayerCount": 4,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 470,
+      "gameVariantHash": "C1F7311751DD66C9E2C3F97DEA0D904E4E35BF0E",
+      "gameVariantFileName": "brawl_laser_tag",
+      "mapVariantHash": "6072A7C324844ED407E7162CBE045A19730E7766",
+      "mapVariantFileName": "default_avalanche"
+    },
+    {
+      "gameEntryWeight": 3,
+      "minimumPlayerCount": 4,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 590,
+      "gameVariantHash": "C1F7311751DD66C9E2C3F97DEA0D904E4E35BF0E",
+      "gameVariantFileName": "brawl_laser_tag",
+      "mapVariantHash": "1F3A4C9A55DD41B894A8BB4445B1DD953E6CE9B5",
+      "mapVariantFileName": "default_ghost_town"
+    },
+    {
+      "gameEntryWeight": 1,
+      "minimumPlayerCount": 4,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 400,
+      "gameVariantHash": "C1F7311751DD66C9E2C3F97DEA0D904E4E35BF0E",
+      "gameVariantFileName": "brawl_laser_tag",
+      "mapVariantHash": "14E4FBE467E88F9A327778828F52474AA4A2F272",
+      "mapVariantFileName": "ffa_sandtrap"
+    },
+    {
+      "gameEntryWeight": 2,
+      "minimumPlayerCount": 4,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 410,
+      "gameVariantHash": "DF2DF93D28F8ACAB35E9BD56413CCEA2DA20712A",
+      "gameVariantFileName": "brawl_snipers",
+      "mapVariantHash": "D54E8EB030ACCCE2B5C39FBCD7F4F4B2AD347CC1",
+      "mapVariantFileName": "default_standoff"
+    },
+    {
+      "gameEntryWeight": 3,
+      "minimumPlayerCount": 4,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 470,
+      "gameVariantHash": "DF2DF93D28F8ACAB35E9BD56413CCEA2DA20712A",
+      "gameVariantFileName": "brawl_snipers",
+      "mapVariantHash": "6072A7C324844ED407E7162CBE045A19730E7766",
+      "mapVariantFileName": "default_avalanche"
+    },
+    {
+      "gameEntryWeight": 1,
+      "minimumPlayerCount": 4,
+      "skipAfterVeto": false,
+      "optional": false,
+      "mapID": 400,
+      "gameVariantHash": "DF2DF93D28F8ACAB35E9BD56413CCEA2DA20712A",
+      "gameVariantFileName": "brawl_snipers",
+      "mapVariantHash": "14E4FBE467E88F9A327778828F52474AA4A2F272",
+      "mapVariantFileName": "ffa_sandtrap"
+    }
+  ]
+}
