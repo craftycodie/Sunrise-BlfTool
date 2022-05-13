@@ -21,7 +21,7 @@ namespace SunriseBlfTool.BlfChunks
                 case "mhcf":
                     return new HopperConfigurationTable();
                 case "mhdf":
-                    return new HopperDescriptions();
+                    return new MatchmakingHopperDescriptions();
                 case "fupd":
                     return new fupd();
                 case "motd":

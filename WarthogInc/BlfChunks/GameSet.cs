@@ -53,47 +53,16 @@ namespace Sunrise.BlfTool
                 entry.optional = hoppersStream.Read<byte>(1) > 0;
                 entry.mapID = hoppersStream.Read<int>(32);
 
-
                 entry.gameVariantFileName = hoppersStream.ReadString(32);
-                //hoppersStream.SeekRelative(-1);
                 entry.gameVariantHash = new byte[20];
                 for (int j = 0; j < 20; j++)
                     entry.gameVariantHash[j] = hoppersStream.Read<byte>(8);
 
                 entry.mapVariantFileName = hoppersStream.ReadString(32);
-                //hoppersStream.SeekRelative(-1);
                 entry.mapVariantHash = new byte[20];
                 for (int j = 0; j < 20; j++)
                     entry.mapVariantHash[j] = hoppersStream.Read<byte>(8);
 
-
-
-
-                //byte[] unknown = new byte[200];
-                //for (int j = 0; j < 200; j++)
-                //    unknown[j] = hoppersStream.Read<byte>(8);
-
-                //entry.gameVariantHash = new byte[32];
-                //for (int j = 0; j < 32; j++)
-                //{
-                //    entry.gameVariantHash[j] = hoppersStream.Read<byte>(8);
-                //    if (entry.gameVariantHash[j] == 0)
-                //        break;
-                //}
-
-                //entry.gameVariantFileName = hoppersStream.ReadString(160);
-
-                //entry.mapVariantHash = new byte[32];
-                //for (int j = 0; j < 32; j++)
-                //{
-                //    entry.mapVariantHash[j] = hoppersStream.Read<byte>(8);
-                //    if (entry.mapVariantHash[j] == 0)
-                //        break;
-                //}
-
-                //entry.mapVariantFileName = hoppersStream.ReadString(160);
-
-                //var tmp = Convert.ToHexString(unknown);
                 gameEntries[i] = entry;
             }
             hoppersStream.Seek(hoppersStream.NextByteIndex, 0);
@@ -106,9 +75,26 @@ namespace Sunrise.BlfTool
             for (int i = 0; i < gameEntryCount; i++)
             {
                 GameEntry entry = gameEntries[i];
-                //hoppersStream.Write<ushort>(entry.identifier, 16);
-                //hoppersStream.Write<byte>(description.type ? (byte)1 : (byte)0, 1);
-                //hoppersStream.WriteString(description.description, 256, Encoding.UTF8);
+
+                hoppersStream.Write(entry.gameEntryWeight, 32);
+                hoppersStream.Write(entry.minimumPlayerCount, 4);
+                hoppersStream.Write(entry.skipAfterVeto, 1);
+                hoppersStream.Write(entry.optional, 1);
+                hoppersStream.Write(entry.mapID, 32);
+
+                hoppersStream.WriteString(entry.gameVariantFileName, 32, Encoding.UTF8);
+                if (entry.gameVariantFileName.Length == 32)
+                    hoppersStream.SeekRelative(-1);
+
+                for (int j = 0; j < 20; j++)
+                    hoppersStream.Write<byte>(entry.gameVariantHash[j], 8);
+
+                hoppersStream.WriteString(entry.mapVariantFileName, 32, Encoding.UTF8);
+                if (entry.mapVariantFileName.Length == 32)
+                    hoppersStream.SeekRelative(-1);
+
+                for (int j = 0; j < 20; j++)
+                    hoppersStream.Write<byte>(entry.mapVariantHash[j], 8);
             }
 
             hoppersStream.Seek(hoppersStream.NextByteIndex, 0);
