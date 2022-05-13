@@ -71,7 +71,7 @@ namespace Sunrise.BlfTool
             {
                 byte[] messageBytes = Encoding.UTF8.GetBytes(messages[i]);
                 int messageLength = messages[i].Length;
-                for (int j = 0; j < messageBytes.Length; j++)
+                for (int j = 0; j < 0x100; j++)
                 {
                     if (j < messageLength)
                     {

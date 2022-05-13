@@ -103,10 +103,12 @@ namespace Sunrise.BlfTool
             public bool skipAfterVeto;
             public bool optional; // not in the beta!
             public int mapID;
-            [JsonConverter(typeof(HexStringConverter))]
+            [JsonIgnore]
+            //[JsonConverter(typeof(HexStringConverter))]
             public byte[] gameVariantHash;
             public string gameVariantFileName;
-            [JsonConverter(typeof(HexStringConverter))]
+            [JsonIgnore]
+            //[JsonConverter(typeof(HexStringConverter))]
             public byte[] mapVariantHash;
             public string mapVariantFileName;
         }

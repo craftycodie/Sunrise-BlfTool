@@ -5,6 +5,7 @@ using Sunrise.BlfTool;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Security.Cryptography;
 using WarthogInc.BlfChunks;
 
 namespace WarthogInc
@@ -36,15 +37,18 @@ namespace WarthogInc
                     fileName = fileName.Substring(fileName.LastIndexOf("\\") + 1);
 
                 string fileRelativePath = jsonFileEnumerator.Current.Replace(jsonFolder, "");
+                string fileDirectoryRelativePath = "";
                 if (fileRelativePath.Contains("\\"))
                 {
-                    string fileDirectoryRelativePath = fileRelativePath.Substring(0, fileRelativePath.LastIndexOf("\\"));
+                    fileDirectoryRelativePath = fileRelativePath.Substring(0, fileRelativePath.LastIndexOf("\\"));
                     Directory.CreateDirectory(blfFolder + fileDirectoryRelativePath);
                 }
 
                 if (fileName.EndsWith(".bin") || fileName.EndsWith(".jpg"))
                 {
-                    File.Copy(jsonFileEnumerator.Current, blfFolder + fileRelativePath);
+                    File.Copy(jsonFileEnumerator.Current, blfFolder + fileRelativePath, true);
+                    Console.WriteLine("Copied file: " + fileRelativePath);
+
                     continue;
                 }
 
@@ -85,9 +89,21 @@ namespace WarthogInc
                 }
 
                 if (blfChunk != null) {
+
+                    if (blfChunk is GameSet)
+                    {
+                        foreach (GameSet.GameEntry entry in (blfChunk as GameSet).gameEntries)
+                        {
+                            entry.gameVariantHash = ComputeHash(jsonFolder + fileDirectoryRelativePath + "\\" + entry.gameVariantFileName + "_010.bin");
+                            entry.mapVariantHash = ComputeHash(jsonFolder + fileDirectoryRelativePath + "\\map_variants\\" + entry.mapVariantFileName + "_012.bin");
+                        }
+                    }
+
                     BlfFile blfFile = new BlfFile();
                     blfFile.AddChunk(blfChunk);
                     blfFile.WriteFile(blfFolder + fileRelativePath.Replace(".json", ".bin"));
+
+                    Console.WriteLine("Converted file: " + fileRelativePath);
 
                     if (blfChunk is MatchmakingHopperDescriptions 
                         || blfChunk is MatchmakingTips
@@ -118,6 +134,8 @@ namespace WarthogInc
             hoppersFile.AddChunk(mhcf);
             hoppersFile.WriteFile(blfFolder + "\\matchmaking_hopper_011.bin");
 
+            Console.WriteLine("Converted file: matchmaking_hopper_011.json");
+
             fileHashes.Add("/title/default_hoppers/matchmaking_hopper_011.bin", hoppersFile.ComputeHash());
             fileHashes.Add("/title/default_hoppers/network_configuration_135.bin", Convert.FromHexString("9D5AF6BC38270765C429F4776A9639D1A0E87319"));
             Manifest.FileEntry[] fileEntries = new Manifest.FileEntry[fileHashes.Count];
@@ -140,6 +158,8 @@ namespace WarthogInc
             BlfFile manifestFile = new BlfFile();
             manifestFile.AddChunk(onfm);
             manifestFile.WriteFile(blfFolder + "\\manifest_001.bin");
+
+            Console.WriteLine("Created file: manifest_001.bin");
         }
 
         public static void ConvertBlfToJson(string titleStorageFolder, string jsonFolder)
@@ -185,6 +205,40 @@ namespace WarthogInc
                 {
                     File.Copy(titleDirectoryEnumerator.Current, jsonFolder + fileRelativePath);
                 }
+            }
+        }
+
+        static byte[] halo3salt = Convert.FromHexString("EDD43009666D5C4A5C3657FAB40E022F535AC6C9EE471F01F1A44756B7714F1C36EC");
+
+        public static byte[] ComputeHash(string path)
+        {
+
+            var memoryStream = new MemoryStream();
+            var blfFileOut = new BitStream<StreamByteStream>(new StreamByteStream(memoryStream));
+            foreach (byte saltByte in halo3salt)
+            {
+                blfFileOut.Write(saltByte, 8);
+            }
+
+            try
+            {
+                byte[] blfBytes = File.ReadAllBytes(path);
+                foreach (byte blfByte in blfBytes)
+                {
+                    blfFileOut.Write(blfByte, 8);
+                }
+
+                byte[] saltedBlf = memoryStream.ToArray();
+                return new SHA1Managed().ComputeHash(saltedBlf);
+            } catch (FileNotFoundException)
+            {
+                Console.WriteLine("File Not Found: " + path);
+                return new byte[20];
+            }
+            catch (DirectoryNotFoundException)
+            {
+                Console.WriteLine("File Not Found: " + path);
+                return new byte[20];
             }
         }
     }
