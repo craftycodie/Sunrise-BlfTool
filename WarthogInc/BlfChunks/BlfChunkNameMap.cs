@@ -32,6 +32,8 @@ namespace SunriseBlfTool.BlfChunks
                     return new ServiceRecordIdentity();
                 case "mtdp":
                     return new MessageOfTheDayPopup();
+                case "nagm":
+                    return new NagMessage();
                 case "gset":
                     return new GameSet();
                 case "onfm":
@@ -48,6 +50,9 @@ namespace SunriseBlfTool.BlfChunks
                     return new NetworkConfiguration();
                 case "fubh":
                 case "funs":
+                case "fcma":
+                case "fpre":
+                case "dlcd":
                 default:
                     throw new KeyNotFoundException("Chunk not found.");
             }
