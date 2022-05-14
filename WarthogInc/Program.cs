@@ -17,6 +17,9 @@ namespace WarthogInc
 
             //ConvertBlfToJson("D:\\Projects\\Local\\Halo 3 Matchmaking\\title storage\\title\\default_hoppers\\", "../../../../json/");
             //ConvertBlfToJson("D:\\Projects\\Local\\Halo 3 Matchmaking\\sunrise pre blf tool\\", "../../../../sunrise/");
+            //ConvertBlfToJson(@"C:\Users\codie\Downloads\RawGames-Halo\RawGames-Halo\Halo Reach\00095.11.04.09.1509.demo\Title\4d5389d8\default_hoppers\", "../../../../reach_demo/");
+            //ConvertBlfToJson(@"C:\Users\codie\Downloads\RawGames-Halo\RawGames-Halo\Halo Reach\11860.10.07.24.0147.omaha_relea\title storage\", "../../../../reach/");
+
 
             //ConvertJsonToBlf(@"D:\Projects\Local\Halo 3 Matchmaking\BlfWorker\json\", @"D:\Projects\Local\Halo 3 Matchmaking\BlfWorker\blf\");
             ConvertJsonToBlf(@"D:\Projects\GitHub\Sunrise-Content\Title Storage\json\", @"D:\Projects\GitHub\Sunrise-Content\Title Storage\blf\");
@@ -25,7 +28,7 @@ namespace WarthogInc
         public static void ConvertJsonToBlf(string jsonFolder, string blfFolder)
         {
             Console.WriteLine("Converting JSON files to BLF...");
-
+            
             var jsonFileEnumerator = Directory.EnumerateFiles(jsonFolder, "*.*", SearchOption.AllDirectories).GetEnumerator();
 
             var fileHashes = new Dictionary<string, byte[]>();
@@ -142,63 +145,14 @@ namespace WarthogInc
             fileHashes.Add("/title/default_hoppers/matchmaking_hopper_011.bin", ComputeHash(blfFolder + "\\matchmaking_hopper_011.bin"));
             fileHashes.Add("/title/default_hoppers/network_configuration_135.bin", Convert.FromHexString("9D5AF6BC38270765C429F4776A9639D1A0E87319"));
 
-            // Maybe the order matters?
-
-            string[] manifestFiles = new string[]
-            {
-                "/title/default_hoppers/matchmaking_hopper_011.bin",
-                "/title/default_hoppers/network_configuration_135.bin",
-                "/title/default_hoppers/rsa_manifest.bin",
-
-                "/title/default_hoppers/en/matchmaking_banhammer_messages.bin",
-                "/title/default_hoppers/en/matchmaking_hopper_descriptions_003.bin",
-                "/title/default_hoppers/en/matchmaking_tips.bin",
-
-                "/title/default_hoppers/jpn/matchmaking_banhammer_messages.bin",
-                "/title/default_hoppers/jpn/matchmaking_hopper_descriptions_003.bin",
-                "/title/default_hoppers/jpn/matchmaking_tips.bin",
-
-                "/title/default_hoppers/de/matchmaking_banhammer_messages.bin",
-                "/title/default_hoppers/de/matchmaking_hopper_descriptions_003.bin",
-                "/title/default_hoppers/de/matchmaking_tips.bin",
-
-                "/title/default_hoppers/fr/matchmaking_banhammer_messages.bin",
-                "/title/default_hoppers/fr/matchmaking_hopper_descriptions_003.bin",
-                "/title/default_hoppers/fr/matchmaking_tips.bin",
-
-                "/title/default_hoppers/sp/matchmaking_banhammer_messages.bin",
-                "/title/default_hoppers/sp/matchmaking_hopper_descriptions_003.bin",
-                "/title/default_hoppers/sp/matchmaking_tips.bin",
-
-                "/title/default_hoppers/mx/matchmaking_banhammer_messages.bin",
-                "/title/default_hoppers/mx/matchmaking_hopper_descriptions_003.bin",
-                "/title/default_hoppers/mx/matchmaking_tips.bin",
-
-                "/title/default_hoppers/it/matchmaking_banhammer_messages.bin",
-                "/title/default_hoppers/it/matchmaking_hopper_descriptions_003.bin",
-                "/title/default_hoppers/it/matchmaking_tips.bin",
-
-                "/title/default_hoppers/kor/matchmaking_banhammer_messages.bin",
-                "/title/default_hoppers/kor/matchmaking_hopper_descriptions_003.bin",
-                "/title/default_hoppers/kor/matchmaking_tips.bin",
-
-                "/title/default_hoppers/cht/matchmaking_banhammer_messages.bin",
-                "/title/default_hoppers/cht/matchmaking_hopper_descriptions_003.bin",
-                "/title/default_hoppers/cht/matchmaking_tips.bin",
-
-                "/title/default_hoppers/pt/matchmaking_banhammer_messages.bin",
-                "/title/default_hoppers/pt/matchmaking_hopper_descriptions_003.bin",
-                "/title/default_hoppers/pt/matchmaking_tips.bin"
-            };
-
             Manifest.FileEntry[] fileEntries = new Manifest.FileEntry[fileHashes.Count];
             int i = 0;
-            foreach (string fileName in manifestFiles)
+            foreach (KeyValuePair<string, byte[]> fileNameHash in fileHashes)
             {
                 fileEntries[i] = new Manifest.FileEntry()
                 {
-                    filePath = fileName,
-                    fileHash = fileHashes[fileName]
+                    filePath = fileNameHash.Key,
+                    fileHash = fileNameHash.Value
                 };
                 i++;
             }
@@ -252,7 +206,6 @@ namespace WarthogInc
                     {
                         Console.WriteLine("Failed to convert file: " + titleDirectoryEnumerator.Current);
                         File.Copy(titleDirectoryEnumerator.Current, jsonFolder + fileRelativePath, true);
-                        //Console.WriteLine(ex.ToString());
                     }
                 }
                 else if (titleDirectoryEnumerator.Current.EndsWith(".jpg"))
