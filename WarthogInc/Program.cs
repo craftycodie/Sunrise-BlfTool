@@ -110,7 +110,7 @@ namespace WarthogInc
                         || blfChunk is MapManifest
                         || blfChunk is MatchmakingBanhammerMessages)
                     {
-                        fileHashes.Add("/title/default_hoppers/" + fileRelativePath.Replace("\\", "/").Replace(".json", ".bin"), blfFile.ComputeHash());
+                        fileHashes.Add("/title/default_hoppers/" + fileRelativePath.Replace("\\", "/").Replace(".json", ".bin"), ComputeHash(blfFolder + fileRelativePath.Replace(".json", ".bin")));
                     }
                 } else
                 {
@@ -125,9 +125,12 @@ namespace WarthogInc
             //We need to calculate the hash of every gameset.
             foreach (HopperConfigurationTable.HopperConfiguration hopperConfiguration in mhcf.configurations)
             {
-                BlfFile gameSetFile = new BlfFile();
-                gameSetFile.ReadFile(blfFolder + hopperConfiguration.identifier.ToString("D5") + "\\game_set_006.bin");
-                hopperConfiguration.gameSetHash = gameSetFile.ComputeHash();
+                hopperConfiguration.gameSetHash = ComputeHash(blfFolder + hopperConfiguration.identifier.ToString("D5") + "\\game_set_006.bin");
+
+                //hopperConfiguration.hide_hopper_due_to_time_restriction = false;
+                //hopperConfiguration.startTime = 0;
+                //hopperConfiguration.endTime = 0;
+                //hopperConfiguration.maximumPartySize = 15;
             }
 
             BlfFile hoppersFile = new BlfFile();
@@ -136,16 +139,66 @@ namespace WarthogInc
 
             Console.WriteLine("Converted file: matchmaking_hopper_011.json");
 
-            fileHashes.Add("/title/default_hoppers/matchmaking_hopper_011.bin", hoppersFile.ComputeHash());
+            fileHashes.Add("/title/default_hoppers/matchmaking_hopper_011.bin", ComputeHash(blfFolder + "\\matchmaking_hopper_011.bin"));
             fileHashes.Add("/title/default_hoppers/network_configuration_135.bin", Convert.FromHexString("9D5AF6BC38270765C429F4776A9639D1A0E87319"));
+
+            // Maybe the order matters?
+
+            string[] manifestFiles = new string[]
+            {
+                "/title/default_hoppers/matchmaking_hopper_011.bin",
+                "/title/default_hoppers/network_configuration_135.bin",
+                "/title/default_hoppers/rsa_manifest.bin",
+
+                "/title/default_hoppers/en/matchmaking_banhammer_messages.bin",
+                "/title/default_hoppers/en/matchmaking_hopper_descriptions_003.bin",
+                "/title/default_hoppers/en/matchmaking_tips.bin",
+
+                "/title/default_hoppers/jpn/matchmaking_banhammer_messages.bin",
+                "/title/default_hoppers/jpn/matchmaking_hopper_descriptions_003.bin",
+                "/title/default_hoppers/jpn/matchmaking_tips.bin",
+
+                "/title/default_hoppers/de/matchmaking_banhammer_messages.bin",
+                "/title/default_hoppers/de/matchmaking_hopper_descriptions_003.bin",
+                "/title/default_hoppers/de/matchmaking_tips.bin",
+
+                "/title/default_hoppers/fr/matchmaking_banhammer_messages.bin",
+                "/title/default_hoppers/fr/matchmaking_hopper_descriptions_003.bin",
+                "/title/default_hoppers/fr/matchmaking_tips.bin",
+
+                "/title/default_hoppers/sp/matchmaking_banhammer_messages.bin",
+                "/title/default_hoppers/sp/matchmaking_hopper_descriptions_003.bin",
+                "/title/default_hoppers/sp/matchmaking_tips.bin",
+
+                "/title/default_hoppers/mx/matchmaking_banhammer_messages.bin",
+                "/title/default_hoppers/mx/matchmaking_hopper_descriptions_003.bin",
+                "/title/default_hoppers/mx/matchmaking_tips.bin",
+
+                "/title/default_hoppers/it/matchmaking_banhammer_messages.bin",
+                "/title/default_hoppers/it/matchmaking_hopper_descriptions_003.bin",
+                "/title/default_hoppers/it/matchmaking_tips.bin",
+
+                "/title/default_hoppers/kor/matchmaking_banhammer_messages.bin",
+                "/title/default_hoppers/kor/matchmaking_hopper_descriptions_003.bin",
+                "/title/default_hoppers/kor/matchmaking_tips.bin",
+
+                "/title/default_hoppers/cht/matchmaking_banhammer_messages.bin",
+                "/title/default_hoppers/cht/matchmaking_hopper_descriptions_003.bin",
+                "/title/default_hoppers/cht/matchmaking_tips.bin",
+
+                "/title/default_hoppers/pt/matchmaking_banhammer_messages.bin",
+                "/title/default_hoppers/pt/matchmaking_hopper_descriptions_003.bin",
+                "/title/default_hoppers/pt/matchmaking_tips.bin"
+            };
+
             Manifest.FileEntry[] fileEntries = new Manifest.FileEntry[fileHashes.Count];
             int i = 0;
-            foreach (KeyValuePair<string, byte[]> fileEntry in fileHashes)
+            foreach (string fileName in manifestFiles)
             {
                 fileEntries[i] = new Manifest.FileEntry()
                 {
-                    filePath = fileEntry.Key,
-                    fileHash = fileEntry.Value
+                    filePath = fileName,
+                    fileHash = fileHashes[fileName]
                 };
                 i++;
             }
@@ -190,20 +243,21 @@ namespace WarthogInc
                         BlfFile blfFile = new BlfFile();
                         blfFile.ReadFile(titleDirectoryEnumerator.Current);
                         var blfChunk = blfFile.GetChunk(1);
-                        string output = JsonConvert.SerializeObject((object)blfChunk, jsonSettings);
+                        string output = JsonConvert.SerializeObject(blfChunk, jsonSettings);
 
                         File.WriteAllText(jsonFolder + fileRelativePath.Replace(".bin", ".json"), output);
+                        Console.WriteLine("Converted file: " + fileRelativePath);
                     }
                     catch (Exception ex)
                     {
                         Console.WriteLine("Failed to convert file: " + titleDirectoryEnumerator.Current);
-                        File.Copy(titleDirectoryEnumerator.Current, jsonFolder + fileRelativePath);
-                        Console.WriteLine(ex.ToString());
+                        File.Copy(titleDirectoryEnumerator.Current, jsonFolder + fileRelativePath, true);
+                        //Console.WriteLine(ex.ToString());
                     }
                 }
                 else if (titleDirectoryEnumerator.Current.EndsWith(".jpg"))
                 {
-                    File.Copy(titleDirectoryEnumerator.Current, jsonFolder + fileRelativePath);
+                    File.Copy(titleDirectoryEnumerator.Current, jsonFolder + fileRelativePath, true);
                 }
             }
         }
@@ -219,7 +273,6 @@ namespace WarthogInc
             {
                 blfFileOut.Write(saltByte, 8);
             }
-
             try
             {
                 byte[] blfBytes = File.ReadAllBytes(path);
@@ -227,10 +280,13 @@ namespace WarthogInc
                 {
                     blfFileOut.Write(blfByte, 8);
                 }
+                memoryStream.Flush();
 
                 byte[] saltedBlf = memoryStream.ToArray();
+                memoryStream.Close();
                 return new SHA1Managed().ComputeHash(saltedBlf);
-            } catch (FileNotFoundException)
+            } 
+            catch (FileNotFoundException)
             {
                 Console.WriteLine("File Not Found: " + path);
                 return new byte[20];

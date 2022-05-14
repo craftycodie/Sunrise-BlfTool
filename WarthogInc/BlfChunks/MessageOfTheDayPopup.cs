@@ -44,7 +44,7 @@ namespace WarthogInc.BlfChunks
         {
             var ms = new BitStream<StreamByteStream>(new StreamByteStream(new MemoryStream()));
             WriteChunk(ref ms);
-            return (uint)ms.ByteOffset;
+            return (uint)ms.NextByteIndex;
         }
 
         public string GetName()

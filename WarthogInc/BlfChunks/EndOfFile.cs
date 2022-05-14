@@ -34,15 +34,16 @@ namespace WarthogInc.BlfChunks
         {
             hoppersStream.Write(lengthUpToEOF, 32);
             hoppersStream.Write(unknown, 8);
+            //hoppersStream.Seek(hoppersStream.NextByteIndex);
         }
 
         public void ReadChunk(ref BitStream<StreamByteStream> hoppersStream)
         {
-            lengthUpToEOF = hoppersStream.Read<uint>(32);
+            lengthUpToEOF = hoppersStream.Read<int>(32);
             unknown = hoppersStream.Read<byte>(8);
         }
 
-        uint lengthUpToEOF;
+        int lengthUpToEOF;
         byte unknown;
 
         public EndOfFile()
@@ -50,7 +51,7 @@ namespace WarthogInc.BlfChunks
 
         }
 
-        public EndOfFile(uint _lengthUpToEOF)
+        public EndOfFile(int _lengthUpToEOF)
         {
             lengthUpToEOF = _lengthUpToEOF;
         }

@@ -26,7 +26,7 @@ namespace Sunrise.BlfTool
         {
             var ms = new BitStream<StreamByteStream>(new StreamByteStream(new MemoryStream()));
             WriteChunk(ref ms);
-            return (uint)ms.ByteOffset;
+            return (uint)ms.NextByteIndex;
         }
 
         public string GetName()
@@ -92,8 +92,6 @@ namespace Sunrise.BlfTool
                 for (int j = 0; j < 20; j++)
                     hoppersStream.Write<byte>(entry.mapVariantHash[j], 8);
             }
-
-            hoppersStream.Seek(hoppersStream.NextByteIndex, 0);
         }
 
         public class GameEntry

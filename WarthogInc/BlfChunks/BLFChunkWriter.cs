@@ -16,6 +16,9 @@ namespace WarthogInc.BlfChunks
             BLFChunkHeader header = new BLFChunkHeader(blfChunk);
             header.WriteHeader(ref outputStream);
             blfChunk.WriteChunk(ref outputStream);
+
+            if (outputStream.BitIndex % 8 != 0)
+                outputStream.Write((byte)0, 8 - (outputStream.BitIndex % 8));
         }
     }
 }

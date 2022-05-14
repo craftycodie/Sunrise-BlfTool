@@ -29,7 +29,7 @@ namespace Sunrise.BlfTool
         {
             var ms = new BitStream<StreamByteStream>(new StreamByteStream(new MemoryStream()));
             WriteChunk(ref ms);
-            return (uint)ms.ByteOffset;
+            return (uint)ms.NextByteIndex;
         }
 
         public string GetName()
@@ -327,7 +327,6 @@ namespace Sunrise.BlfTool
                     hoppersStream.Write<byte>(configuration.allow_parties_to_split ? (byte)1 : (byte)0, 1);
                 }
             }
-            hoppersStream.Seek(hoppersStream.NextByteIndex, 0);
         }
 
         public class HopperCategory
