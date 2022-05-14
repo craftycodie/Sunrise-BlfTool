@@ -26,12 +26,6 @@ namespace WarthogInc.BlfChunks
             return 3;
         }
 
-        public enum ByteOrder : ushort
-        {
-            BIG = 0xFFFE,
-            LITTLE = 0xFEFF
-        }
-
         byte[] unknown = new byte[0x44];
 
         public Author()
@@ -41,7 +35,7 @@ namespace WarthogInc.BlfChunks
 
         public uint GetLength()
         {
-            return 0x50;
+            return 0x44;
         }
 
         public void WriteChunk(ref BitStream<StreamByteStream> hoppersStream)

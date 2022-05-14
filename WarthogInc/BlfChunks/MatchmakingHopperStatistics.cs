@@ -62,7 +62,6 @@ namespace Sunrise.BlfTool
                 hoppersStream.Write<uint>(entry.hopperIdentifier, 32);
                 hoppersStream.Write<uint>(entry.playerCount, 32);
             }
-            hoppersStream.Seek(hoppersStream.NextByteIndex, 0);
         }
 
         public class HopperPopulation

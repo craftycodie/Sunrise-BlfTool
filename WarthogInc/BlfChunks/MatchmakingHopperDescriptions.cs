@@ -26,7 +26,7 @@ namespace Sunrise.BlfTool
         {
             var ms = new BitStream<StreamByteStream>(new StreamByteStream(new MemoryStream()));
             WriteChunk(ref ms);
-            return (uint)ms.ByteOffset;
+            return (uint)ms.NextByteIndex;
         }
 
         public string GetName()
@@ -67,8 +67,6 @@ namespace Sunrise.BlfTool
                 hoppersStream.Write<byte>(description.type ? (byte)1 : (byte)0, 1);
                 hoppersStream.WriteString(description.description, 256, Encoding.UTF8);
             }
-
-            hoppersStream.Seek(hoppersStream.NextByteIndex, 0);
         }
 
         public class HopperDescription
