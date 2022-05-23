@@ -70,7 +70,7 @@ namespace Sunrise.BlfTool
             for (int i = 0; i < tipCount; i++)
             {
                 byte[] messageBytes = Encoding.UTF8.GetBytes(tips[i]);
-                int messageLength = tips[i].Length;
+                int messageLength = messageBytes.Length;
                 for (int j = 0; j < 0x100; j++)
                 {
                     if (j < messageLength)

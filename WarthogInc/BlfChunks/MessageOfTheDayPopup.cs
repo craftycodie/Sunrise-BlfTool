@@ -123,23 +123,23 @@ namespace WarthogInc.BlfChunks
             hoppersStream.Write(motdIdentifier, 32);
             hoppersStream.Write(acceptWaitMilliseconds, 32);
 
-            hoppersStream.Write(titleLength, 32);
+            hoppersStream.Write(titleLength * 2, 32);
             hoppersStream.WriteString(title, (int)titleLength * 2, Encoding.BigEndianUnicode);
             hoppersStream.SeekRelative((int)(0x60 - (titleLength * 2)) - 1);
 
-            hoppersStream.Write(headingLength, 32);
+            hoppersStream.Write(headingLength * 2, 32);
             hoppersStream.WriteString(heading, (int)headingLength * 2, Encoding.BigEndianUnicode);
             hoppersStream.SeekRelative((int)(0x60 - (headingLength * 2)) - 1);
 
-            hoppersStream.Write(acceptLength, 32);
+            hoppersStream.Write(acceptLength * 2, 32);
             hoppersStream.WriteString(accept, (int)acceptLength * 2, Encoding.BigEndianUnicode);
             hoppersStream.SeekRelative((int)(0x60 - (acceptLength * 2)) - 1);
 
-            hoppersStream.Write(waitLength, 32);
+            hoppersStream.Write(waitLength * 2, 32);
             hoppersStream.WriteString(wait, (int)waitLength * 2, Encoding.BigEndianUnicode);
             hoppersStream.SeekRelative((int)(0x60 - (waitLength * 2)) - 1);
 
-            hoppersStream.Write(bodyLength, 32);
+            hoppersStream.Write(bodyLength * 2, 32);
             hoppersStream.WriteString(body, (int)bodyLength * 2, Encoding.BigEndianUnicode);
             hoppersStream.SeekRelative((int)(0x800 - (bodyLength * 2)) - 1);
         }
