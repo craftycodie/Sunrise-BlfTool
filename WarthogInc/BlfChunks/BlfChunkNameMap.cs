@@ -48,6 +48,9 @@ namespace SunriseBlfTool.BlfChunks
                     return new MatchmakingHopperStatistics();
                 case "netc":
                     return new NetworkConfiguration();
+                case "gvar":
+                    return new PackedGameVariant();
+                case "mvar":
                 case "fubh":
                 case "funs":
                 case "fcma":

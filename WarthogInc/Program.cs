@@ -17,12 +17,15 @@ namespace WarthogInc
 
             //ConvertBlfToJson("D:\\Projects\\Local\\Halo 3 Matchmaking\\title storage\\title\\default_hoppers\\", "../../../../json/");
             //ConvertBlfToJson("D:\\Projects\\Local\\Halo 3 Matchmaking\\sunrise pre blf tool\\", "../../../../sunrise/");
+            //ConvertBlfToJson(@"D:\Projects\Local\Halo 3 Matchmaking\all_variant_blfs\", @"D:\Projects\Local\Halo 3 Matchmaking\all_variant_jsons\");
+
             //ConvertBlfToJson(@"C:\Users\codie\Downloads\RawGames-Halo\RawGames-Halo\Halo Reach\00095.11.04.09.1509.demo\Title\4d5389d8\default_hoppers\", "../../../../reach_demo/");
             //ConvertBlfToJson(@"C:\Users\codie\Downloads\RawGames-Halo\RawGames-Halo\Halo Reach\11860.10.07.24.0147.omaha_relea\title storage\", "../../../../reach/");
 
 
             //ConvertJsonToBlf(@"D:\Projects\Local\Halo 3 Matchmaking\BlfWorker\json\", @"D:\Projects\Local\Halo 3 Matchmaking\BlfWorker\blf\");
             ConvertJsonToBlf(@"D:\Projects\GitHub\Sunrise-Content\Title Storage\json\", @"D:\Projects\GitHub\Sunrise-Content\Title Storage\blf\");
+
         }
 
         public static void ConvertJsonToBlf(string jsonFolder, string blfFolder)
@@ -60,8 +63,7 @@ namespace WarthogInc
                 switch(fileName)
                 {
                     case "game_set_006.json":
-                        blfChunk = JsonConvert.DeserializeObject<GameSet>(File.ReadAllText(jsonFileEnumerator.Current));
-                        break;
+                        continue; // handle after variants
                     case "rsa_manifest.json":
                         blfChunk = JsonConvert.DeserializeObject<MapManifest>(File.ReadAllText(jsonFileEnumerator.Current));
                         break;
@@ -91,16 +93,11 @@ namespace WarthogInc
                         break;
                 }
 
-                if (blfChunk != null) {
+                // Game variants are the only file that end like this normally.
+                if (fileName.EndsWith("_010.json"))
+                    blfChunk = JsonConvert.DeserializeObject<PackedGameVariant>(File.ReadAllText(jsonFileEnumerator.Current));
 
-                    if (blfChunk is GameSet)
-                    {
-                        foreach (GameSet.GameEntry entry in (blfChunk as GameSet).gameEntries)
-                        {
-                            entry.gameVariantHash = ComputeHash(jsonFolder + fileDirectoryRelativePath + "\\" + entry.gameVariantFileName + "_010.bin");
-                            entry.mapVariantHash = ComputeHash(jsonFolder + fileDirectoryRelativePath + "\\map_variants\\" + entry.mapVariantFileName + "_012.bin");
-                        }
-                    }
+                if (blfChunk != null) {
 
                     BlfFile blfFile = new BlfFile();
                     blfFile.AddChunk(blfChunk);
@@ -118,6 +115,56 @@ namespace WarthogInc
                 } else
                 {
                     Console.WriteLine("Unrecognized JSON file: " + fileRelativePath);
+                }
+            }
+
+            jsonFileEnumerator = Directory.EnumerateFiles(jsonFolder, "*.*", SearchOption.AllDirectories).GetEnumerator();
+
+            while (jsonFileEnumerator.MoveNext())
+            {
+                string fileName = jsonFileEnumerator.Current;
+                if (fileName.Contains("\\"))
+                    fileName = fileName.Substring(fileName.LastIndexOf("\\") + 1);
+
+                string fileRelativePath = jsonFileEnumerator.Current.Replace(jsonFolder, "");
+                string fileDirectoryRelativePath = "";
+                if (fileRelativePath.Contains("\\"))
+                {
+                    fileDirectoryRelativePath = fileRelativePath.Substring(0, fileRelativePath.LastIndexOf("\\"));
+                    Directory.CreateDirectory(blfFolder + fileDirectoryRelativePath);
+                }
+
+                if (fileName.EndsWith(".bin") || fileName.EndsWith(".jpg"))
+                {
+                    File.Copy(jsonFileEnumerator.Current, blfFolder + fileRelativePath, true);
+                    Console.WriteLine("Copied file: " + fileRelativePath);
+
+                    continue;
+                }
+
+                IBLFChunk blfChunk = null;
+
+                switch (fileName)
+                {
+                    case "game_set_006.json":
+                        blfChunk = JsonConvert.DeserializeObject<GameSet>(File.ReadAllText(jsonFileEnumerator.Current));
+                        break;
+                }
+
+                if (blfChunk != null)
+                {
+
+                    foreach (GameSet.GameEntry entry in (blfChunk as GameSet).gameEntries)
+                    {
+                        entry.gameVariantHash = ComputeHash(blfFolder + fileDirectoryRelativePath + "\\" + entry.gameVariantFileName + "_010.bin");
+                        entry.mapVariantHash = ComputeHash(blfFolder + fileDirectoryRelativePath + "\\map_variants\\" + entry.mapVariantFileName + "_012.bin");
+                    }
+
+                    BlfFile blfFile = new BlfFile();
+                    blfFile.AddChunk(blfChunk);
+                    blfFile.WriteFile(blfFolder + fileRelativePath.Replace(".json", ".bin"));
+
+                    Console.WriteLine("Converted file: " + fileRelativePath);
                 }
             }
 
@@ -205,7 +252,7 @@ namespace WarthogInc
                     catch (Exception ex)
                     {
                         Console.WriteLine("Failed to convert file: " + titleDirectoryEnumerator.Current);
-                        File.Copy(titleDirectoryEnumerator.Current, jsonFolder + fileRelativePath, true);
+                        //File.Copy(titleDirectoryEnumerator.Current, jsonFolder + fileRelativePath, true);
                     }
                 }
                 else if (titleDirectoryEnumerator.Current.EndsWith(".jpg"))
