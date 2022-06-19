@@ -1,5 +1,6 @@
 version: 1.0.{build}
 configuration: Release
+platform: x64
 before_build:
 - nuget restore Sunrise-BlfTool.sln
 build:
