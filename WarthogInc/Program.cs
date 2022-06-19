@@ -14,22 +14,27 @@ namespace WarthogInc
     {
         static void Main(string[] args)
         {
-
-            //ConvertBlfToJson("D:\\Projects\\Local\\Halo 3 Matchmaking\\title storage\\title\\default_hoppers\\", "../../../../json/");
-            //ConvertBlfToJson("D:\\Projects\\Local\\Halo 3 Matchmaking\\sunrise pre blf tool\\", "../../../../sunrise/");
-            //ConvertBlfToJson(@"D:\Projects\Local\Halo 3 Matchmaking\all_variant_blfs\", @"D:\Projects\Local\Halo 3 Matchmaking\all_variant_jsons\");
-
-            //ConvertBlfToJson(@"C:\Users\codie\Downloads\RawGames-Halo\RawGames-Halo\Halo Reach\00095.11.04.09.1509.demo\Title\4d5389d8\default_hoppers\", "../../../../reach_demo/");
-            //ConvertBlfToJson(@"C:\Users\codie\Downloads\RawGames-Halo\RawGames-Halo\Halo Reach\11860.10.07.24.0147.omaha_relea\title storage\", "../../../../reach/");
-
-
-            //ConvertJsonToBlf(@"D:\Projects\Local\Halo 3 Matchmaking\BlfWorker\json\", @"D:\Projects\Local\Halo 3 Matchmaking\BlfWorker\blf\");
-            ConvertJsonToBlf(@"D:\Projects\GitHub\Sunrise-Content\Title Storage\json\", @"D:\Projects\GitHub\Sunrise-Content\Title Storage\blf\");
-
+            if (args.Length == 3) {
+                if (args[0].Equals("json"))
+                {
+                    ConvertBlfToJson(args[1], args[2]);
+                }
+                if (args[0].Equals("blf"))
+                {
+                    ConvertJsonToBlf(args[1], args[2]);
+                }
+            }
+            else
+            {
+                //ConvertJsonToBlf(@"D:\Projects\GitHub\Sunrise-Content\Title Storage\json\", @"D:\Projects\GitHub\Sunrise-Content\Title Storage\blf\");
+            }
         }
 
         public static void ConvertJsonToBlf(string jsonFolder, string blfFolder)
         {
+            jsonFolder += "\\";
+            blfFolder += "\\";
+
             Console.WriteLine("Converting JSON files to BLF...");
             
             var jsonFileEnumerator = Directory.EnumerateFiles(jsonFolder, "*.*", SearchOption.AllDirectories).GetEnumerator();
@@ -43,7 +48,7 @@ namespace WarthogInc
                     fileName = fileName.Substring(fileName.LastIndexOf("\\") + 1);
 
                 string fileRelativePath = jsonFileEnumerator.Current.Replace(jsonFolder, "");
-                string fileDirectoryRelativePath = "";
+                string fileDirectoryRelativePath;
                 if (fileRelativePath.Contains("\\"))
                 {
                     fileDirectoryRelativePath = fileRelativePath.Substring(0, fileRelativePath.LastIndexOf("\\"));
