@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Sunrise-BlfTool": {
+      "commandName": "Project",
+      "commandLineArgs": "blf \"D:\\Projects\\GitHub\\Sunrise-Content\\Title Storage\\json\" \"D:\\Projects\\GitHub\\Sunrise-Content\\Title Storage\\blf\""
+    }
+  }
+}

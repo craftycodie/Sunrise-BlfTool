@@ -670,8 +670,7 @@ namespace Sunrise.BlfTool.BlfChunks.GameEngineVariants
 
             public enum VehicleSet : byte
             {
-                MAP_DEFAULT,
-                NO_VEHICLES,
+                NO_VEHICLES = 1,
                 MONGOOSES_ONLY,
                 LIGHT_GROUND_ONLY,
                 TANKS_ONLY,
@@ -679,7 +678,8 @@ namespace Sunrise.BlfTool.BlfChunks.GameEngineVariants
                 NO_LIGHT_GROUND,
                 NO_TANKS,
                 NO_AIRCRAFT,
-                ALL_VEHICLES
+                ALL_VEHICLES,
+                MAP_DEFAULT = 255,
             }
         }
 
