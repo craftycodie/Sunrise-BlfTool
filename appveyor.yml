@@ -1,6 +1,14 @@
+version: 1.0.{build}
 configuration: Release
 before_build:
 - nuget restore Sunrise-BlfTool.sln
+build:
+  publish_core_console: true
 artifacts:
 - path: "**/Sunrise-BlfTool.exe"
   name: BlfTool
+
+on_success:
+  - ps: if ($env:APPVEYOR_REPO_BRANCH -eq "main") {C:\projects\Sunrise-BlfTool\build_scripts\discord-webhook.ps1 success $env:DISCORD_WEBHOOK_URL}
+on_failure:
+  - ps: if ($env:APPVEYOR_REPO_BRANCH -eq "main") {C:\projects\Sunrise-BlfTool\build_scripts\discord-webhook.ps1 failure $env:DISCORD_WEBHOOK_URL}
