@@ -9,3 +9,8 @@ The launch arguments are as follows:
 
 For example<br>
 `blf ".\title storage\json" ".\title stoage\blf"`
+
+## How it works
+The tool will convert files to and from json using the Newtonsoft json library.
+Hashes are ommitted from the JSON files, instead these are couputed as the tool converts to BLF.
+The online manifest fime (onmf) is not converted, instead it is rebuilt as it only contains hashes.
