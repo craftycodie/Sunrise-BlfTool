@@ -51,6 +51,7 @@ namespace SunriseBlfTool.BlfChunks
                 case "gvar":
                     return new PackedGameVariant();
                 case "mvar":
+                    return new PackedMapVariant();
                 case "fubh":
                 case "funs":
                 case "fcma":
