@@ -1,10 +1,6 @@
 ﻿using Sewer56.BitStream;
 using Sewer56.BitStream.ByteStreams;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Sunrise.BlfTool.Extensions
 {
@@ -16,6 +12,16 @@ namespace Sunrise.BlfTool.Extensions
             {
                 bitStream.Write(item, bitLength);
             }
+        }
+
+        public static float ReadFloat(this BitStream<StreamByteStream> bitStream, int length)
+        {
+            return BitConverter.ToSingle(BitConverter.GetBytes(bitStream.Read<int>(length)), 0);
+        }
+
+        public static void WriteFloat(this BitStream<StreamByteStream> bitStream, float value, int length)
+        {
+            bitStream.Write(BitConverter.ToInt32(BitConverter.GetBytes(value)), length);
         }
     }
 }
