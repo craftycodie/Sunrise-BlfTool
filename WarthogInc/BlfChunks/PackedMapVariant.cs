@@ -6,6 +6,7 @@ using System;
 using System.IO;
 using WarthogInc.BlfChunks;
 using Sunrise.BlfTool.Extensions;
+using System.Linq;
 
 namespace Sunrise.BlfTool
 {
@@ -21,8 +22,8 @@ namespace Sunrise.BlfTool
         public bool builtIn;
         public WorldBounds worldBounds;
         public byte gameEngineSubtype;
-        public float maximumBudget;
-        public float spentBudget;
+        public int maximumBudget;
+        public int spentBudget;
         public VariantObject[] objects; // * 640
         public short[] objectTypes; // 9 * 14
         public VariantBudgetEntry[] budget; // * 256
@@ -61,17 +62,20 @@ namespace Sunrise.BlfTool
             builtIn = hoppersStream.Read<byte>(1) > 0;
             worldBounds = new WorldBounds(ref hoppersStream);
             gameEngineSubtype = hoppersStream.Read<byte>(4);
-            maximumBudget = hoppersStream.ReadFloat(32);
-            spentBudget = hoppersStream.ReadFloat(32);
+            maximumBudget = hoppersStream.Read<int>(32);
+            spentBudget = hoppersStream.Read<int>(32);
 
             objects = new VariantObject[numberOfVariantObjects];
             for (int i = 0; i < numberOfVariantObjects; i++)
             {
+                bool objectExists = hoppersStream.Read<byte>(1) > 0;
+                if (!objectExists)
+                    continue;
                 objects[i] = new VariantObject(ref hoppersStream);
             }
 
             objectTypes = new short[14];
-            for (int i = 0; i < 14; i++)
+            for (int i = 0; i < 14; ++i)
             {
                 objectTypes[i] = hoppersStream.Read<short>(9);
             }
@@ -92,12 +96,12 @@ namespace Sunrise.BlfTool
 
         public class WorldBounds
         {
-            public float xMin;
-            public float xMax;
-            public float yMin;
-            public float yMax;
-            public float zMin;
-            public float zMax;
+            public int xMin;
+            public int xMax;
+            public int yMin;
+            public int yMax;
+            public int zMin;
+            public int zMax;
 
             public WorldBounds() { }
 
@@ -108,22 +112,22 @@ namespace Sunrise.BlfTool
 
             public void Read(ref BitStream<StreamByteStream> hoppersStream)
             {
-                xMin = hoppersStream.ReadFloat(32);
-                xMax = hoppersStream.ReadFloat(32);
-                yMin = hoppersStream.ReadFloat(32);
-                yMax = hoppersStream.ReadFloat(32);
-                zMin = hoppersStream.ReadFloat(32);
-                zMax = hoppersStream.ReadFloat(32);
+                xMin = hoppersStream.Read<int>(32);
+                xMax = hoppersStream.Read<int>(32);
+                yMin = hoppersStream.Read<int>(32);
+                yMax = hoppersStream.Read<int>(32);
+                zMin = hoppersStream.Read<int>(32);
+                zMax = hoppersStream.Read<int>(32);
             }
 
             public void Write(ref BitStream<StreamByteStream> hoppersStream)
             {
-                hoppersStream.WriteFloat(xMin, 32);
-                hoppersStream.WriteFloat(xMax, 32);
-                hoppersStream.WriteFloat(yMin, 32);
-                hoppersStream.WriteFloat(yMax, 32);
-                hoppersStream.WriteFloat(zMin, 32);
-                hoppersStream.WriteFloat(zMax, 32);
+                hoppersStream.Write(xMin, 32);
+                hoppersStream.Write(xMax, 32);
+                hoppersStream.Write(yMin, 32);
+                hoppersStream.Write(yMax, 32);
+                hoppersStream.Write(zMin, 32);
+                hoppersStream.Write(zMax, 32);
             }
         }
         public class VariantObject {
@@ -134,8 +138,7 @@ namespace Sunrise.BlfTool
                 UNKNOWN_3,
             }
 
-            public bool objectExists;
-            public ushort flags;
+            public short flags;
             public int definitionIndex;
             public bool parentObjectExists;
             public long parentObjectIdentifier;
@@ -149,10 +152,10 @@ namespace Sunrise.BlfTool
             public byte propertiesSpawnTime;
             public byte propertiesTeamAffiliation;
             public SHAPE_TYPE propertiesShapeType;
-            public float propertiesShapeRadiusWidth;
-            public float propertiesShapeDepth;
-            public float propertiesShapeTop;
-            public float propertiesShapeBottom;
+            public short propertiesShapeRadiusWidth;
+            public short propertiesShapeDepth;
+            public short propertiesShapeTop;
+            public short propertiesShapeBottom;
 
             public VariantObject() { }
 
@@ -163,8 +166,7 @@ namespace Sunrise.BlfTool
 
             public void Read(ref BitStream<StreamByteStream> hoppersStream)
             {
-                objectExists = hoppersStream.Read<byte>(1) > 0;
-                flags = hoppersStream.Read<ushort>(16);
+                flags = hoppersStream.Read<short>(16);
                 definitionIndex = hoppersStream.Read<int>(32);
                 parentObjectExists = hoppersStream.Read<byte>(1) > 0;
 
@@ -189,18 +191,18 @@ namespace Sunrise.BlfTool
                     switch(propertiesShapeType)
                     {
                         case SHAPE_TYPE.UNKNOWN_1:
-                            propertiesShapeRadiusWidth = hoppersStream.ReadFloat(16);
+                            propertiesShapeRadiusWidth = hoppersStream.Read<short>(16);
                             break;
                         case SHAPE_TYPE.UNKNOWN_2:
-                            propertiesShapeRadiusWidth = hoppersStream.ReadFloat(16);
-                            propertiesShapeDepth = hoppersStream.ReadFloat(16);
-                            propertiesShapeTop = hoppersStream.ReadFloat(16);
+                            propertiesShapeRadiusWidth = hoppersStream.Read<short>(16);
+                            propertiesShapeDepth = hoppersStream.Read<short>(16);
+                            propertiesShapeTop = hoppersStream.Read<short>(16);
                             break;
                         case SHAPE_TYPE.UNKNOWN_3:
-                            propertiesShapeRadiusWidth = hoppersStream.ReadFloat(16);
-                            propertiesShapeDepth = hoppersStream.ReadFloat(16);
-                            propertiesShapeTop = hoppersStream.ReadFloat(16);
-                            propertiesShapeBottom = hoppersStream.ReadFloat(16);
+                            propertiesShapeRadiusWidth = hoppersStream.Read<short>(16);
+                            propertiesShapeDepth = hoppersStream.Read<short>(16);
+                            propertiesShapeTop = hoppersStream.Read<short>(16);
+                            propertiesShapeBottom = hoppersStream.Read<short>(16);
                             break;
                     }
                 }
@@ -214,7 +216,7 @@ namespace Sunrise.BlfTool
             public byte maximumCount;
             public byte placedOnMap;
             public byte maximumAllowed;
-            public float pricePerItem;
+            public int pricePerItem;
 
             public VariantBudgetEntry() { }
 
@@ -230,15 +232,15 @@ namespace Sunrise.BlfTool
                 maximumCount = hoppersStream.Read<byte>(8);
                 placedOnMap = hoppersStream.Read<byte>(8);
                 maximumAllowed = hoppersStream.Read<byte>(8);
-                pricePerItem = hoppersStream.Read<float>(32);
+                pricePerItem = hoppersStream.Read<int>(32);
             }
         }
 
         public class Position
         {
-            public float x;
-            public float y;
-            public float z;
+            public short x;
+            public short y;
+            public short z;
 
             public Position() { }
 
@@ -249,9 +251,9 @@ namespace Sunrise.BlfTool
 
             public void Read(ref BitStream<StreamByteStream> hoppersStream)
             {
-                x = hoppersStream.ReadFloat(16);
-                y = hoppersStream.ReadFloat(16);
-                z = hoppersStream.ReadFloat(16);
+                x = hoppersStream.Read<short>(16);
+                y = hoppersStream.Read<short>(16);
+                z = hoppersStream.Read<short>(16);
             }
         }
 
@@ -259,7 +261,7 @@ namespace Sunrise.BlfTool
         {
             public bool upIsGlobalUp3d;
             public int upQuantization;
-            public float forwardAngle;
+            public byte forwardAngle;
 
             public Axes() { }
 
@@ -276,7 +278,7 @@ namespace Sunrise.BlfTool
                 {
                     upQuantization = hoppersStream.Read<int>(19);
                 }
-                forwardAngle = hoppersStream.ReadFloat(8);
+                forwardAngle = hoppersStream.Read<byte>(8);
             }
         }
     }
