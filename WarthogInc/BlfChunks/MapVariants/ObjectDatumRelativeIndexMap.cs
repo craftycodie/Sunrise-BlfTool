@@ -9,7 +9,7 @@ namespace Sunrise.BlfTool
         public Dictionary<string, RelativeIndex> objectDatumRelativeIndexMap;
         public class RelativeIndex
         {
-            public enum ObjectGroup : short
+            public enum EObjectGroup : short
             {
                 VEHICLES = 1,
                 WEAPONS,
@@ -27,12 +27,12 @@ namespace Sunrise.BlfTool
 
             public RelativeIndex(short objectGroup, short objectIndex)
             {
-                this.objectGroup = (ObjectGroup)objectGroup;
+                this.objectGroup = (EObjectGroup)objectGroup;
                 this.objectIndex = objectIndex;
             }
 
             [JsonConverter(typeof(StringEnumConverter))]
-            public ObjectGroup objectGroup;
+            public EObjectGroup objectGroup;
             public short objectIndex;
 
             public override bool Equals(System.Object obj)

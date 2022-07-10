@@ -166,8 +166,19 @@ namespace WarthogInc
                     {
                         entry.gameVariantHash = ComputeHash(blfFolder + fileDirectoryRelativePath + "\\" + entry.gameVariantFileName + "_010.bin");
                         entry.mapVariantHash = ComputeHash(blfFolder + fileDirectoryRelativePath + "\\map_variants\\" + entry.mapVariantFileName + "_012.bin");
-                        var map = JsonConvert.DeserializeObject<PackedMapVariant>(File.ReadAllText(jsonFolder + fileDirectoryRelativePath + "\\map_variants\\" + entry.mapVariantFileName + "_012.bin"));
-                        entry.mapID = map.mapID;
+
+                        string mapJsonPath = jsonFolder + fileDirectoryRelativePath + "\\map_variants\\" + entry.mapVariantFileName + "_012.json";
+                        try
+                        {
+                            var map = JsonConvert.DeserializeObject<PackedMapVariant>(File.ReadAllText(mapJsonPath));
+                            entry.mapID = map.mapID;
+                        }
+                        catch (FileNotFoundException)
+                        {
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.WriteLine("File Not Found: " + mapJsonPath, ConsoleColor.Red);
+                            Console.ResetColor();
+                        }
                     }
 
                     BlfFile blfFile = new BlfFile();
@@ -301,12 +312,16 @@ namespace WarthogInc
             } 
             catch (FileNotFoundException)
             {
+                Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("File Not Found: " + path);
+                Console.ResetColor();
                 return new byte[20];
             }
             catch (DirectoryNotFoundException)
             {
+                Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("File Not Found: " + path);
+                Console.ResetColor();
                 return new byte[20];
             }
         }

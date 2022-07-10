@@ -6,8 +6,7 @@ using System;
 using System.IO;
 using WarthogInc.BlfChunks;
 using Sunrise.BlfTool.Extensions;
-using System.Linq;
-using System.Collections.Generic;
+using Newtonsoft.Json.Converters;
 
 namespace Sunrise.BlfTool
 {
@@ -15,7 +14,8 @@ namespace Sunrise.BlfTool
     {
         public BaseGameVariant.VariantMetadata metadata;
         public byte mapVariantVersion;
-        public int mapVariantChecksum; // 32
+        [JsonConverter(typeof(ObjectIndexConverter))]
+        public uint mapVariantChecksum; // 32
         public short numberOfScenarioObjects; // 10
         [JsonIgnore]
         public short numberOfVariantObjects { get { return (short)objects.Length; } } // 10
@@ -57,7 +57,7 @@ namespace Sunrise.BlfTool
         {
             metadata = new BaseGameVariant.VariantMetadata(ref hoppersStream);
             mapVariantVersion = hoppersStream.Read<byte>(8);
-            mapVariantChecksum = hoppersStream.Read<int>(32);
+            mapVariantChecksum = hoppersStream.Read<uint>(32);
             numberOfScenarioObjects = hoppersStream.Read<short>(10);
             short numberOfVariantObjects = hoppersStream.Read<short>(10);
             short numberOfPlacableObjectQuotas = hoppersStream.Read<short>(9);
@@ -68,16 +68,11 @@ namespace Sunrise.BlfTool
             maximumBudget = hoppersStream.ReadFloat(32);
             spentBudget = hoppersStream.ReadFloat(32);
 
-            List<VariantObject> objectsList = new List<VariantObject>();
+            objects = new VariantObject[numberOfVariantObjects];
             for (int i = 0; i < numberOfVariantObjects; i++)
             {
-                bool objectExists = hoppersStream.Read<byte>(1) > 0;
-                if (!objectExists)
-                    continue;
-                objectsList.Add(new VariantObject(ref hoppersStream));
+                objects[i] = new VariantObject(ref hoppersStream);
             }
-
-            objects = objectsList.ToArray();
 
             objectTypes = new short[14];
             for (int i = 0; i < 14; ++i)
@@ -99,7 +94,33 @@ namespace Sunrise.BlfTool
 
         public void WriteChunk(ref BitStream<StreamByteStream> hoppersStream)
         {
-            throw new NotImplementedException();
+            metadata.Write(ref hoppersStream);
+            hoppersStream.Write(mapVariantVersion, 8);
+            hoppersStream.Write(mapVariantChecksum, 32);
+            hoppersStream.Write(numberOfScenarioObjects, 10);
+            hoppersStream.Write(numberOfVariantObjects, 10);
+            hoppersStream.Write(numberOfPlacableObjectQuotas, 9);
+            hoppersStream.Write(mapID, 32);
+            hoppersStream.Write(builtIn ? 1 : 0, 1);
+            worldBounds.Write(ref hoppersStream);
+            hoppersStream.Write(gameEngineSubtype, 4);
+            hoppersStream.WriteFloat(maximumBudget, 32);
+            hoppersStream.WriteFloat(spentBudget, 32);
+
+            foreach (var variantObject in objects)
+            {
+                variantObject.Write(ref hoppersStream);
+            }
+
+            foreach (var objectType in objectTypes)
+            {
+                hoppersStream.Write(objectType, 9);
+            }
+
+            foreach (var budgetEntry in budget)
+            {
+                budgetEntry.Write(ref hoppersStream);
+            }
         }
 
         public class WorldBounds
@@ -139,15 +160,17 @@ namespace Sunrise.BlfTool
             }
         }
         public class VariantObject {
-            public enum SHAPE_TYPE : byte
+            public enum EShapeType : byte
             {
                 UNKNOWN_1 = 1,
-                UNKNOWN_2,
-                UNKNOWN_3,
+                CYLINDER,
+                BOX,
             }
 
-            public short flags;
-            public int definitionIndex;
+            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
+            public short? flags;
+            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
+            public int? definitionIndex;
             [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
             public long? parentObjectIdentifier;
             [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
@@ -167,7 +190,8 @@ namespace Sunrise.BlfTool
             [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
             public byte? propertiesTeamAffiliation;
             [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-            public SHAPE_TYPE? propertiesShapeType;
+            [JsonConverter(typeof(StringEnumConverter))]
+            public EShapeType? propertiesShapeType;
             [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
             public short? propertiesShapeRadiusWidth;
             [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
@@ -186,6 +210,9 @@ namespace Sunrise.BlfTool
 
             public void Read(ref BitStream<StreamByteStream> hoppersStream)
             {
+                if (hoppersStream.Read<byte>(1) == 0)
+                    return;
+
                 flags = hoppersStream.Read<short>(16);
                 definitionIndex = hoppersStream.Read<int>(32);
                 bool parentObjectExists = hoppersStream.Read<byte>(1) > 0;
@@ -205,22 +232,76 @@ namespace Sunrise.BlfTool
                     propertiesSharedStorage = hoppersStream.Read<byte>(8);
                     propertiesSpawnTime = hoppersStream.Read<byte>(8);
                     propertiesTeamAffiliation = hoppersStream.Read<byte>(8);
-                    propertiesShapeType = (SHAPE_TYPE)hoppersStream.Read<byte>(8);
+                    propertiesShapeType = (EShapeType)hoppersStream.Read<byte>(8);
+
+                    if (propertiesShapeType == 0)
+                        propertiesShapeType = null;
+
                     switch(propertiesShapeType)
                     {
-                        case SHAPE_TYPE.UNKNOWN_1:
+                        case EShapeType.UNKNOWN_1:
                             propertiesShapeRadiusWidth = hoppersStream.Read<short>(16);
                             break;
-                        case SHAPE_TYPE.UNKNOWN_2:
+                        case EShapeType.CYLINDER:
                             propertiesShapeRadiusWidth = hoppersStream.Read<short>(16);
                             propertiesShapeDepth = hoppersStream.Read<short>(16);
                             propertiesShapeTop = hoppersStream.Read<short>(16);
                             break;
-                        case SHAPE_TYPE.UNKNOWN_3:
+                        case EShapeType.BOX:
                             propertiesShapeRadiusWidth = hoppersStream.Read<short>(16);
                             propertiesShapeDepth = hoppersStream.Read<short>(16);
                             propertiesShapeTop = hoppersStream.Read<short>(16);
                             propertiesShapeBottom = hoppersStream.Read<short>(16);
+                            break;
+                    }
+                }
+            }
+
+            public void Write(ref BitStream<StreamByteStream> hoppersStream)
+            {
+
+                hoppersStream.Write(flags == null ? 0 : 1, 1);
+
+                if (flags == null)
+                    return;
+
+                hoppersStream.Write(flags.Value, 16);
+                hoppersStream.Write(definitionIndex.Value, 32);
+
+                hoppersStream.Write(parentObjectIdentifier != null ? 1 : 0, 1);
+
+                if (parentObjectIdentifier != null)
+                    hoppersStream.Write(parentObjectIdentifier.Value, 64);
+
+                hoppersStream.Write(position != null ? 1 : 0, 1);
+
+                if (position != null)
+                {
+                    position.Write(ref hoppersStream);
+                    axis.Write(ref hoppersStream);
+                    hoppersStream.Write(propertiesCachedObjectType.Value, 8);
+                    hoppersStream.Write(propertiesFlags.Value, 8);
+                    hoppersStream.Write(propertiesGameEngineFlags.Value, 16);
+                    hoppersStream.Write(propertiesSharedStorage.Value, 8);
+                    hoppersStream.Write(propertiesSpawnTime.Value, 8);
+                    hoppersStream.Write(propertiesTeamAffiliation.Value, 8);
+                    hoppersStream.Write(((byte?)propertiesShapeType ?? 0), 8);
+
+                    switch (propertiesShapeType)
+                    {
+                        case EShapeType.UNKNOWN_1:
+                            hoppersStream.Write(propertiesShapeRadiusWidth.Value, 16);
+                            break;
+                        case EShapeType.CYLINDER:
+                            hoppersStream.Write(propertiesShapeRadiusWidth.Value, 16);
+                            hoppersStream.Write(propertiesShapeDepth.Value, 16);
+                            hoppersStream.Write(propertiesShapeTop.Value, 16);
+                            break;
+                        case EShapeType.BOX:
+                            hoppersStream.Write(propertiesShapeRadiusWidth.Value, 16);
+                            hoppersStream.Write(propertiesShapeDepth.Value, 16);
+                            hoppersStream.Write(propertiesShapeTop.Value, 16);
+                            hoppersStream.Write(propertiesShapeBottom.Value, 16);
                             break;
                     }
                 }
@@ -253,6 +334,16 @@ namespace Sunrise.BlfTool
                 maximumAllowed = hoppersStream.Read<byte>(8);
                 pricePerItem = hoppersStream.ReadFloat(32);
             }
+
+            public void Write(ref BitStream<StreamByteStream> hoppersStream)
+            {
+                hoppersStream.Write(objectDefinitionIndex, 32);
+                hoppersStream.Write(minimumCount, 8);
+                hoppersStream.Write(maximumCount, 8);
+                hoppersStream.Write(placedOnMap, 8);
+                hoppersStream.Write(maximumAllowed, 8);
+                hoppersStream.WriteFloat(pricePerItem, 32);
+            }
         }
 
         public class Position
@@ -274,12 +365,19 @@ namespace Sunrise.BlfTool
                 y = hoppersStream.Read<short>(16);
                 z = hoppersStream.Read<short>(16);
             }
+
+            public void Write(ref BitStream<StreamByteStream> hoppersStream)
+            {
+                hoppersStream.Write(x, 16);
+                hoppersStream.Write(y, 16);
+                hoppersStream.Write(z, 16);
+            }
         }
 
         public class Axes
         {
-            public bool upIsGlobalUp3d;
-            public int upQuantization;
+            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
+            public int? upQuantization;
             public byte forwardAngle;
 
             public Axes() { }
@@ -291,21 +389,31 @@ namespace Sunrise.BlfTool
 
             public void Read(ref BitStream<StreamByteStream> hoppersStream)
             {
-                upIsGlobalUp3d = hoppersStream.Read<byte>(1) > 0;
+                bool upIsGlobalUp3d = hoppersStream.Read<byte>(1) > 0;
 
                 if (!upIsGlobalUp3d)
-                {
                     upQuantization = hoppersStream.Read<int>(19);
-                }
+
                 forwardAngle = hoppersStream.Read<byte>(8);
+            }
+
+            public void Write(ref BitStream<StreamByteStream> hoppersStream)
+            {
+                if (upQuantization == null)
+                    hoppersStream.Write(1, 1);
+                else
+                {
+                    hoppersStream.Write(0, 1);
+                    hoppersStream.Write(upQuantization.Value, 19);
+                }
+
+                hoppersStream.Write(forwardAngle, 8);
             }
         }
 
         private void ConvertMCCMap()
         {
             BudgetObjectIndexConverter objectIndexMap = new BudgetObjectIndexConverter(mapID);
-
-            List<VariantBudgetEntry> newBudget = new List<VariantBudgetEntry>();
 
             foreach(VariantBudgetEntry entry in budget) {
                 short objectGroup = (short)(entry.objectDefinitionIndex >> 16);
@@ -322,11 +430,8 @@ namespace Sunrise.BlfTool
                     Console.WriteLine(ex);
                     Console.WriteLine($"Unknown 360 object index for [{objectGroup},{objectIndex}]");
                 }
-
-                newBudget.Add(entry);
             }
 
-            budget = newBudget.ToArray();
             mapVariantVersion = 12;
         }
     }
