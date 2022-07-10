@@ -437,7 +437,7 @@ namespace Sunrise.BlfTool
                 catch (Exception ex)
                 {
                     //Console.WriteLine(ex);
-                    Console.WriteLine($"Unknown 360 object index for [{objectGroup},{objectIndex}], removing placed objects.");
+                    Console.WriteLine($"Unknown 360 object definition index for {(ObjectDatumRelativeIndexMap.RelativeIndex.EObjectGroup)objectGroup} {objectIndex}, removing placed objects.");
                     newObjects = newObjects.Where(variantObject => variantObject.definitionIndex != i + 1).ToList();
                     entry.objectDefinitionIndex = 0;
                     entry.placedOnMap = 0;
