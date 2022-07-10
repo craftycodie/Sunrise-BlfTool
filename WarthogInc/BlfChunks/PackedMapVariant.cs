@@ -7,6 +7,8 @@ using System.IO;
 using WarthogInc.BlfChunks;
 using Sunrise.BlfTool.Extensions;
 using Newtonsoft.Json.Converters;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Sunrise.BlfTool
 {
@@ -415,7 +417,12 @@ namespace Sunrise.BlfTool
         {
             BudgetObjectIndexConverter objectIndexMap = new BudgetObjectIndexConverter(mapID);
 
-            foreach(VariantBudgetEntry entry in budget) {
+            List<VariantBudgetEntry> newBudget = new List<VariantBudgetEntry>();
+            List<VariantObject> newObjects = new List<VariantObject>(objects);
+
+            for (int i = 0; i < budget.Length; i++)
+            {
+                VariantBudgetEntry entry = budget[i];
                 short objectGroup = (short)(entry.objectDefinitionIndex >> 16);
                 short objectIndex = (short)(entry.objectDefinitionIndex & 0xffff);
 
@@ -425,12 +432,18 @@ namespace Sunrise.BlfTool
                 try
                 {
                     entry.objectDefinitionIndex = objectIndexMap.Get360ObjectIndex(objectGroup, objectIndex);
-                } catch (Exception ex)
+                    newBudget.Add(entry);
+                }
+                catch (Exception ex)
                 {
                     Console.WriteLine(ex);
-                    Console.WriteLine($"Unknown 360 object index for [{objectGroup},{objectIndex}]");
+                    Console.WriteLine($"Unknown 360 object index for [{objectGroup},{objectIndex}], removing placed objects.");
+                    newObjects = newObjects.Where(variantObject => variantObject.definitionIndex != i + 1).ToList();
                 }
             }
+
+            budget = newBudget.ToArray();
+            objects = newObjects.ToArray();
 
             mapVariantVersion = 12;
         }
