@@ -437,11 +437,16 @@ namespace Sunrise.BlfTool
                 catch (Exception ex)
                 {
                     //Console.WriteLine(ex);
+                    if (entry.placedOnMap > 0)
+                        Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine($"Unknown 360 object definition index for {(ObjectDatumRelativeIndexMap.RelativeIndex.EObjectGroup)objectGroup} {objectIndex}, removing {entry.placedOnMap} placed objects.");
+                    Console.ResetColor();
                     newObjects = newObjects.Where(variantObject => variantObject.definitionIndex != i + 1).ToList();
-                    entry.objectDefinitionIndex = 0;
-                    entry.placedOnMap = 0;
-                    newBudget.Add(entry);
+                    foreach(VariantObject variantObject in newObjects)
+                    {
+                        if (variantObject.definitionIndex > i + 1)
+                            variantObject.definitionIndex -= 1;
+                    }
                 }
             }
 
