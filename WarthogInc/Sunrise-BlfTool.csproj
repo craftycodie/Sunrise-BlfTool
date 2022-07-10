@@ -30,6 +30,7 @@
     <None Remove="ObjectTables\490.json" />
     <None Remove="ObjectTables\500.json" />
     <None Remove="ObjectTables\520.json" />
+    <None Remove="ObjectTables\580.json" />
     <None Remove="ObjectTables\590.json" />
     <None Remove="ObjectTables\600.json" />
     <None Remove="ObjectTables\720.json" />
@@ -57,6 +58,7 @@
     <EmbeddedResource Include="ObjectTables\490.json" />
     <EmbeddedResource Include="ObjectTables\500.json" />
     <EmbeddedResource Include="ObjectTables\520.json" />
+    <EmbeddedResource Include="ObjectTables\580.json" />
     <EmbeddedResource Include="ObjectTables\590.json" />
     <EmbeddedResource Include="ObjectTables\600.json" />
     <EmbeddedResource Include="ObjectTables\720.json" />
