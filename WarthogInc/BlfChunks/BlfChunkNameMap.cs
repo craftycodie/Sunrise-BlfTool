@@ -57,6 +57,7 @@ namespace SunriseBlfTool.BlfChunks
                 case "fcma":
                 case "fpre":
                 case "dlcd":
+                case "_fsm":
                 default:
                     throw new KeyNotFoundException("Chunk not found.");
             }
