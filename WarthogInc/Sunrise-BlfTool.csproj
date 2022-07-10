@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
@@ -11,11 +11,63 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="BlfChunks\PackedMapVariant.cs~RF2844fded.TMP" />
+    <None Remove="ObjectTables\30.json" />
+    <None Remove="ObjectTables\300.json" />
+    <None Remove="ObjectTables\310.json" />
+    <None Remove="ObjectTables\320.json" />
+    <None Remove="ObjectTables\330.json" />
+    <None Remove="ObjectTables\340.json" />
+    <None Remove="ObjectTables\350.json" />
+    <None Remove="ObjectTables\360.json" />
+    <None Remove="ObjectTables\380.json" />
+    <None Remove="ObjectTables\390.json" />
+    <None Remove="ObjectTables\400.json" />
+    <None Remove="ObjectTables\410.json" />
+    <None Remove="ObjectTables\440.json" />
+    <None Remove="ObjectTables\470.json" />
+    <None Remove="ObjectTables\480.json" />
+    <None Remove="ObjectTables\490.json" />
+    <None Remove="ObjectTables\500.json" />
+    <None Remove="ObjectTables\520.json" />
+    <None Remove="ObjectTables\580.json" />
+    <None Remove="ObjectTables\590.json" />
+    <None Remove="ObjectTables\600.json" />
+    <None Remove="ObjectTables\720.json" />
+    <None Remove="ObjectTables\730.json" />
+    <None Remove="ObjectTables\740.json" />
     <None Remove="Program.cs~RF6562653.TMP" />
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="ObjectTables\30.json" />
+    <EmbeddedResource Include="ObjectTables\300.json" />
+    <EmbeddedResource Include="ObjectTables\310.json" />
+    <EmbeddedResource Include="ObjectTables\320.json" />
+    <EmbeddedResource Include="ObjectTables\330.json" />
+    <EmbeddedResource Include="ObjectTables\340.json" />
+    <EmbeddedResource Include="ObjectTables\350.json" />
+    <EmbeddedResource Include="ObjectTables\360.json" />
+    <EmbeddedResource Include="ObjectTables\380.json" />
+    <EmbeddedResource Include="ObjectTables\390.json" />
+    <EmbeddedResource Include="ObjectTables\400.json" />
+    <EmbeddedResource Include="ObjectTables\410.json" />
+    <EmbeddedResource Include="ObjectTables\440.json" />
+    <EmbeddedResource Include="ObjectTables\470.json" />
+    <EmbeddedResource Include="ObjectTables\480.json" />
+    <EmbeddedResource Include="ObjectTables\490.json" />
+    <EmbeddedResource Include="ObjectTables\500.json" />
+    <EmbeddedResource Include="ObjectTables\520.json" />
+    <EmbeddedResource Include="ObjectTables\580.json" />
+    <EmbeddedResource Include="ObjectTables\590.json" />
+    <EmbeddedResource Include="ObjectTables\600.json" />
+    <EmbeddedResource Include="ObjectTables\720.json" />
+    <EmbeddedResource Include="ObjectTables\730.json" />
+    <EmbeddedResource Include="ObjectTables\740.json" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-    <PackageReference Include="Sewer56.BitStream" Version="1.1.0" />
+    <PackageReference Include="Sewer56.BitStream" Version="1.2.1" />
   </ItemGroup>
 </Project>

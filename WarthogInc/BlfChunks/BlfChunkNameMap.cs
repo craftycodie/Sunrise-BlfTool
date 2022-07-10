@@ -51,11 +51,13 @@ namespace SunriseBlfTool.BlfChunks
                 case "gvar":
                     return new PackedGameVariant();
                 case "mvar":
+                    return new PackedMapVariant();
                 case "fubh":
                 case "funs":
                 case "fcma":
                 case "fpre":
                 case "dlcd":
+                case "_fsm":
                 default:
                     throw new KeyNotFoundException("Chunk not found.");
             }

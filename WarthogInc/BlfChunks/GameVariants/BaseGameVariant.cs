@@ -2,6 +2,7 @@
 using Newtonsoft.Json.Converters;
 using Sewer56.BitStream;
 using Sewer56.BitStream.ByteStreams;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -76,7 +77,7 @@ namespace Sunrise.BlfTool.BlfChunks.GameEngineVariants
                 author = hoppersStream.ReadString(16);
                 fileType = (FileType)hoppersStream.Read<byte>(5);
                 authorIsXuidOnline = hoppersStream.Read<byte>(1) > 0;
-                authorXuid = hoppersStream.Read<long>(64);
+                authorXuid = hoppersStream.Read<ulong>(64);
                 sizeInBytes = hoppersStream.Read<long>(64);
                 date = hoppersStream.Read<long>(64);
                 lengthSeconds = hoppersStream.Read<int>(32);
@@ -88,6 +89,13 @@ namespace Sunrise.BlfTool.BlfChunks.GameEngineVariants
                 gameId = hoppersStream.Read<long>(64);
             }
 
+            static uint[] long2doubleInt(ulong a)
+            {
+                uint a1 = (uint)(a & uint.MaxValue);
+                uint a2 = (uint)(a >> 32);
+                return new uint[] { a1, a2 };
+            }
+
             public void Write(ref BitStream<StreamByteStream> hoppersStream)
             {
                 hoppersStream.Write(uniqueId, 64);
@@ -97,7 +105,9 @@ namespace Sunrise.BlfTool.BlfChunks.GameEngineVariants
                 hoppersStream.WriteString(author, 16);
                 hoppersStream.Write((byte)fileType, 5);
                 hoppersStream.Write(authorIsXuidOnline ? 1 : 0, 1);
-                hoppersStream.Write(authorXuid, 64);
+                // I don't know why this is necessary and I've given up on trying to work out.
+                hoppersStream.Write(long2doubleInt(authorXuid)[1], 32);
+                hoppersStream.Write(long2doubleInt(authorXuid)[0], 32);
                 hoppersStream.Write(sizeInBytes, 64);
                 hoppersStream.Write(date, 64);
                 hoppersStream.Write(lengthSeconds, 32);
@@ -116,7 +126,8 @@ namespace Sunrise.BlfTool.BlfChunks.GameEngineVariants
             [JsonConverter(typeof(StringEnumConverter))]
             public FileType fileType;
             public bool authorIsXuidOnline;
-            public long authorXuid;
+            [JsonConverter(typeof(XUIDConverter))]
+            public ulong authorXuid;
             public long sizeInBytes;
             public long date;
             public int lengthSeconds;

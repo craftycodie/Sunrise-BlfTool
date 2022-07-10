@@ -1,0 +1,364 @@
+{
+  "objectDatumRelativeIndexMap": {
+    "0xE2AC0136": {
+      "objectGroup": "VEHICLES",
+      "objectIndex": 0
+    },
+    "0xEBF30A7D": {
+      "objectGroup": "WEAPONS",
+      "objectIndex": 0
+    },
+    "0xEC3E0AC8": {
+      "objectGroup": "WEAPONS",
+      "objectIndex": 1
+    },
+    "0xED150B9F": {
+      "objectGroup": "WEAPONS",
+      "objectIndex": 2
+    },
+    "0xEDED0C77": {
+      "objectGroup": "WEAPONS",
+      "objectIndex": 3
+    },
+    "0xED680BF2": {
+      "objectGroup": "WEAPONS",
+      "objectIndex": 4
+    },
+    "0xEDAD0C37": {
+      "objectGroup": "WEAPONS",
+      "objectIndex": 5
+    },
+    "0xE9ED0877": {
+      "objectGroup": "WEAPONS",
+      "objectIndex": 6
+    },
+    "0xEB2609B0": {
+      "objectGroup": "WEAPONS",
+      "objectIndex": 7
+    },
+    "0xECC60B50": {
+      "objectGroup": "WEAPONS",
+      "objectIndex": 8
+    },
+    "0xEAA90933": {
+      "objectGroup": "WEAPONS",
+      "objectIndex": 9
+    },
+    "0xEE950D1F": {
+      "objectGroup": "WEAPONS",
+      "objectIndex": 10
+    },
+    "0xEEF80D82": {
+      "objectGroup": "WEAPONS",
+      "objectIndex": 11
+    },
+    "0xEFBA0E44": {
+      "objectGroup": "WEAPONS",
+      "objectIndex": 12
+    },
+    "0xEE4A0CD4": {
+      "objectGroup": "WEAPONS",
+      "objectIndex": 13
+    },
+    "0xE44602D0": {
+      "objectGroup": "WEAPONS",
+      "objectIndex": 14
+    },
+    "0xEF970E21": {
+      "objectGroup": "WEAPONS",
+      "objectIndex": 15
+    },
+    "0xEC770B01": {
+      "objectGroup": "WEAPONS",
+      "objectIndex": 16
+    },
+    "0xEF670DF1": {
+      "objectGroup": "WEAPONS",
+      "objectIndex": 17
+    },
+    "0xE691051B": {
+      "objectGroup": "WEAPONS",
+      "objectIndex": 18
+    },
+    "0xF0530EDD": {
+      "objectGroup": "WEAPONS",
+      "objectIndex": 19
+    },
+    "0xF09E0F28": {
+      "objectGroup": "WEAPONS",
+      "objectIndex": 20
+    },
+    "0xF0EC0F76": {
+      "objectGroup": "WEAPONS",
+      "objectIndex": 21
+    },
+    "0xF1300FBA": {
+      "objectGroup": "WEAPONS",
+      "objectIndex": 22
+    },
+    "0xE82206AC": {
+      "objectGroup": "EQUIPMENT",
+      "objectIndex": 0
+    },
+    "0xE783060D": {
+      "objectGroup": "EQUIPMENT",
+      "objectIndex": 1
+    },
+    "0xE85006DA": {
+      "objectGroup": "EQUIPMENT",
+      "objectIndex": 2
+    },
+    "0xF1600FEA": {
+      "objectGroup": "EQUIPMENT",
+      "objectIndex": 3
+    },
+    "0xE94D07D7": {
+      "objectGroup": "EQUIPMENT",
+      "objectIndex": 4
+    },
+    "0xE98C0816": {
+      "objectGroup": "EQUIPMENT",
+      "objectIndex": 5
+    },
+    "0xE8F80782": {
+      "objectGroup": "EQUIPMENT",
+      "objectIndex": 6
+    },
+    "0xF16F0FF9": {
+      "objectGroup": "EQUIPMENT",
+      "objectIndex": 7
+    },
+    "0xF1A3102D": {
+      "objectGroup": "EQUIPMENT",
+      "objectIndex": 8
+    },
+    "0xF1CA1054": {
+      "objectGroup": "EQUIPMENT",
+      "objectIndex": 9
+    },
+    "0xF1DD1067": {
+      "objectGroup": "EQUIPMENT",
+      "objectIndex": 10
+    },
+    "0xF1FC1086": {
+      "objectGroup": "EQUIPMENT",
+      "objectIndex": 11
+    },
+    "0xE9D90863": {
+      "objectGroup": "EQUIPMENT",
+      "objectIndex": 12
+    },
+    "0xE9E3086D": {
+      "objectGroup": "EQUIPMENT",
+      "objectIndex": 13
+    },
+    "0xE9C60850": {
+      "objectGroup": "EQUIPMENT",
+      "objectIndex": 14
+    },
+    "0xF23B10C5": {
+      "objectGroup": "SCENERY",
+      "objectIndex": 0
+    },
+    "0xF24410CE": {
+      "objectGroup": "SCENERY",
+      "objectIndex": 1
+    },
+    "0xF26F10F9": {
+      "objectGroup": "SCENERY",
+      "objectIndex": 2
+    },
+    "0xF29E1128": {
+      "objectGroup": "SCENERY",
+      "objectIndex": 3
+    },
+    "0xF2B4113E": {
+      "objectGroup": "SCENERY",
+      "objectIndex": 4
+    },
+    "0xF2BE1148": {
+      "objectGroup": "SCENERY",
+      "objectIndex": 5
+    },
+    "0xF2DC1166": {
+      "objectGroup": "SCENERY",
+      "objectIndex": 6
+    },
+    "0xF2EC1176": {
+      "objectGroup": "SCENERY",
+      "objectIndex": 7
+    },
+    "0xF32011AA": {
+      "objectGroup": "SCENERY",
+      "objectIndex": 8
+    },
+    "0xF33311BD": {
+      "objectGroup": "SCENERY",
+      "objectIndex": 9
+    },
+    "0xF34C11D6": {
+      "objectGroup": "SCENERY",
+      "objectIndex": 10
+    },
+    "0xF35511DF": {
+      "objectGroup": "SCENERY",
+      "objectIndex": 11
+    },
+    "0xF36D11F7": {
+      "objectGroup": "SCENERY",
+      "objectIndex": 12
+    },
+    "0xF392121C": {
+      "objectGroup": "SCENERY",
+      "objectIndex": 13
+    },
+    "0xF39F1229": {
+      "objectGroup": "SCENERY",
+      "objectIndex": 14
+    },
+    "0xF3A4122E": {
+      "objectGroup": "SCENERY",
+      "objectIndex": 15
+    },
+    "0xF3A91233": {
+      "objectGroup": "SCENERY",
+      "objectIndex": 16
+    },
+    "0xF3AF1239": {
+      "objectGroup": "SCENERY",
+      "objectIndex": 17
+    },
+    "0xF3B4123E": {
+      "objectGroup": "SCENERY",
+      "objectIndex": 18
+    },
+    "0xF3C81252": {
+      "objectGroup": "SCENERY",
+      "objectIndex": 19
+    },
+    "0xF3CD1257": {
+      "objectGroup": "TELEPORTERS",
+      "objectIndex": 0
+    },
+    "0xF3E1126B": {
+      "objectGroup": "TELEPORTERS",
+      "objectIndex": 1
+    },
+    "0xF3E81272": {
+      "objectGroup": "TELEPORTERS",
+      "objectIndex": 2
+    },
+    "0xF3E91273": {
+      "objectGroup": "GOALS",
+      "objectIndex": 0
+    },
+    "0xF41D12A7": {
+      "objectGroup": "GOALS",
+      "objectIndex": 1
+    },
+    "0xF42612B0": {
+      "objectGroup": "GOALS",
+      "objectIndex": 2
+    },
+    "0xF44D12D7": {
+      "objectGroup": "GOALS",
+      "objectIndex": 3
+    },
+    "0xF44E12D8": {
+      "objectGroup": "GOALS",
+      "objectIndex": 4
+    },
+    "0xF45712E1": {
+      "objectGroup": "GOALS",
+      "objectIndex": 5
+    },
+    "0xF45812E2": {
+      "objectGroup": "GOALS",
+      "objectIndex": 6
+    },
+    "0xF46812F2": {
+      "objectGroup": "GOALS",
+      "objectIndex": 7
+    },
+    "0xF46A12F4": {
+      "objectGroup": "GOALS",
+      "objectIndex": 8
+    },
+    "0xE20A0094": {
+      "objectGroup": "SPAWNS",
+      "objectIndex": 0
+    },
+    "0xE24100CB": {
+      "objectGroup": "SPAWNS",
+      "objectIndex": 1
+    },
+    "0xE22800B2": {
+      "objectGroup": "SPAWNS",
+      "objectIndex": 2
+    },
+    "0xE24700D1": {
+      "objectGroup": "SPAWNS",
+      "objectIndex": 3
+    },
+    "0xE23E00C8": {
+      "objectGroup": "SPAWNS",
+      "objectIndex": 4
+    },
+    "0xE23F00C9": {
+      "objectGroup": "SPAWNS",
+      "objectIndex": 5
+    },
+    "0xE24500CF": {
+      "objectGroup": "SPAWNS",
+      "objectIndex": 6
+    },
+    "0xE24300CD": {
+      "objectGroup": "SPAWNS",
+      "objectIndex": 7
+    },
+    "0xE24200CC": {
+      "objectGroup": "SPAWNS",
+      "objectIndex": 8
+    },
+    "0xE24000CA": {
+      "objectGroup": "SPAWNS",
+      "objectIndex": 9
+    },
+    "0xE22900B3": {
+      "objectGroup": "SPAWNS",
+      "objectIndex": 10
+    },
+    "0xE23C00C6": {
+      "objectGroup": "SPAWNS",
+      "objectIndex": 11
+    },
+    "0xF46B12F5": {
+      "objectGroup": "SPAWNS",
+      "objectIndex": 12
+    },
+    "0xE23D00C7": {
+      "objectGroup": "SPAWNS",
+      "objectIndex": 13
+    },
+    "0xF46C12F6": {
+      "objectGroup": "SPAWNS",
+      "objectIndex": 14
+    },
+    "0xE24600D0": {
+      "objectGroup": "SPAWNS",
+      "objectIndex": 15
+    },
+    "0xE24400CE": {
+      "objectGroup": "SPAWNS",
+      "objectIndex": 16
+    },
+    "0xE2AA0134": {
+      "objectGroup": "SPAWNS",
+      "objectIndex": 17
+    },
+    "0xE2AB0135": {
+      "objectGroup": "SPAWNS",
+      "objectIndex": 18
+    }
+  }
+}
