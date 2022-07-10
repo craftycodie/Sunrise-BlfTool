@@ -50,7 +50,7 @@ namespace Sunrise.BlfTool
 
         public ushort GetVersion()
         {
-            return 10;
+            return 12;
         }
 
         public void ReadChunk(ref BitStream<StreamByteStream> hoppersStream)
