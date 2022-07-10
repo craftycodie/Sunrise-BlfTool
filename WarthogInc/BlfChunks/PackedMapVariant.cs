@@ -439,6 +439,9 @@ namespace Sunrise.BlfTool
                     //Console.WriteLine(ex);
                     Console.WriteLine($"Unknown 360 object index for [{objectGroup},{objectIndex}], removing placed objects.");
                     newObjects = newObjects.Where(variantObject => variantObject.definitionIndex != i + 1).ToList();
+                    entry.objectDefinitionIndex = 0;
+                    entry.placedOnMap = 0;
+                    newBudget.Add(entry);
                 }
             }
 
