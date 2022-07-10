@@ -101,6 +101,9 @@ namespace WarthogInc
                 // Game variants are the only file that end like this normally.
                 if (fileName.EndsWith("_010.json"))
                     blfChunk = JsonConvert.DeserializeObject<PackedGameVariant>(File.ReadAllText(jsonFileEnumerator.Current));
+                // Map variants are the only file that end like this normally.
+                if (fileName.EndsWith("_012.json"))
+                    blfChunk = JsonConvert.DeserializeObject<PackedMapVariant>(File.ReadAllText(jsonFileEnumerator.Current));
 
                 if (blfChunk != null) {
 
@@ -163,6 +166,8 @@ namespace WarthogInc
                     {
                         entry.gameVariantHash = ComputeHash(blfFolder + fileDirectoryRelativePath + "\\" + entry.gameVariantFileName + "_010.bin");
                         entry.mapVariantHash = ComputeHash(blfFolder + fileDirectoryRelativePath + "\\map_variants\\" + entry.mapVariantFileName + "_012.bin");
+                        var map = JsonConvert.DeserializeObject<PackedMapVariant>(File.ReadAllText(jsonFolder + fileDirectoryRelativePath + "\\map_variants\\" + entry.mapVariantFileName + "_012.bin"));
+                        entry.mapID = map.mapID;
                     }
 
                     BlfFile blfFile = new BlfFile();
@@ -242,7 +247,7 @@ namespace WarthogInc
                     Directory.CreateDirectory(jsonFolder + fileDirectoryRelativePath);
                 }
 
-                if (titleDirectoryEnumerator.Current.EndsWith(".bin"))
+                if (titleDirectoryEnumerator.Current.EndsWith(".bin") || titleDirectoryEnumerator.Current.EndsWith(".mvar"))
                 {
                     try
                     {
@@ -251,17 +256,20 @@ namespace WarthogInc
                         var blfChunk = blfFile.GetChunk(1);
                         string output = JsonConvert.SerializeObject(blfChunk, jsonSettings);
 
-                        File.WriteAllText(jsonFolder + fileRelativePath.Replace(".bin", ".json"), output);
+                        File.WriteAllText(jsonFolder + fileRelativePath.Replace(".bin", ".json").Replace(".mvar", ".json"), output);
                         Console.WriteLine("Converted file: " + fileRelativePath);
                     }
                     catch (Exception ex)
                     {
                         Console.WriteLine("Failed to convert file: " + titleDirectoryEnumerator.Current);
+                        Console.WriteLine(ex.Message);
                         //File.Copy(titleDirectoryEnumerator.Current, jsonFolder + fileRelativePath, true);
                     }
                 }
                 else if (titleDirectoryEnumerator.Current.EndsWith(".jpg"))
                 {
+                    if (titleDirectoryEnumerator.Current.Equals(jsonFolder + fileRelativePath))
+                        continue;
                     File.Copy(titleDirectoryEnumerator.Current, jsonFolder + fileRelativePath, true);
                 }
             }

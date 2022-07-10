@@ -7,26 +7,23 @@ using System.IO;
 using WarthogInc.BlfChunks;
 using Sunrise.BlfTool.Extensions;
 using System.Linq;
-using System.Collections.Generic;
 
 namespace Sunrise.BlfTool
 {
-    public class PackedMapVariant : IBLFChunk
+    public class MapVariant : IBLFChunk
     {
         public BaseGameVariant.VariantMetadata metadata;
         public byte mapVariantVersion;
         public int mapVariantChecksum; // 32
         public short numberOfScenarioObjects; // 10
-        [JsonIgnore]
-        public short numberOfVariantObjects { get { return (short)objects.Length; } } // 10
-        [JsonIgnore]
-        public short numberOfPlacableObjectQuotas { get { return (short)budget.Length; } } // 9
+        public short numberOfVariantObjects; // 10
+        public short numberOfPlacableObjectQuotas; // 9
         public int mapID;
         public bool builtIn;
         public WorldBounds worldBounds;
         public byte gameEngineSubtype;
-        public float maximumBudget;
-        public float spentBudget;
+        public int maximumBudget;
+        public int spentBudget;
         public VariantObject[] objects; // * 640
         public short[] objectTypes; // 9 * 14
         public VariantBudgetEntry[] budget; // * 256
@@ -45,7 +42,7 @@ namespace Sunrise.BlfTool
 
         public string GetName()
         {
-            return "mvar";
+            return "mapv";
         }
 
         public ushort GetVersion()
@@ -59,25 +56,23 @@ namespace Sunrise.BlfTool
             mapVariantVersion = hoppersStream.Read<byte>(8);
             mapVariantChecksum = hoppersStream.Read<int>(32);
             numberOfScenarioObjects = hoppersStream.Read<short>(10);
-            short numberOfVariantObjects = hoppersStream.Read<short>(10);
-            short numberOfPlacableObjectQuotas = hoppersStream.Read<short>(9);
+            numberOfVariantObjects = hoppersStream.Read<short>(10);
+            numberOfPlacableObjectQuotas = hoppersStream.Read<short>(9);
             mapID = hoppersStream.Read<int>(32);
             builtIn = hoppersStream.Read<byte>(1) > 0;
             worldBounds = new WorldBounds(ref hoppersStream);
             gameEngineSubtype = hoppersStream.Read<byte>(4);
-            maximumBudget = hoppersStream.ReadFloat(32);
-            spentBudget = hoppersStream.ReadFloat(32);
+            maximumBudget = hoppersStream.Read<int>(32);
+            spentBudget = hoppersStream.Read<int>(32);
 
-            List<VariantObject> objectsList = new List<VariantObject>();
+            objects = new VariantObject[numberOfVariantObjects];
             for (int i = 0; i < numberOfVariantObjects; i++)
             {
                 bool objectExists = hoppersStream.Read<byte>(1) > 0;
                 if (!objectExists)
                     continue;
-                objectsList.Add(new VariantObject(ref hoppersStream));
+                objects[i] = new VariantObject(ref hoppersStream);
             }
-
-            objects = objectsList.ToArray();
 
             objectTypes = new short[14];
             for (int i = 0; i < 14; ++i)
@@ -92,9 +87,6 @@ namespace Sunrise.BlfTool
             }
 
             hoppersStream.Seek(hoppersStream.NextByteIndex, 0);
-
-            if (mapVariantVersion == 13)
-                ConvertMCCMap();
         }
 
         public void WriteChunk(ref BitStream<StreamByteStream> hoppersStream)
@@ -148,34 +140,20 @@ namespace Sunrise.BlfTool
 
             public short flags;
             public int definitionIndex;
-            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-            public long? parentObjectIdentifier;
-            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
+            public long parentObjectIdentifier;
             public Position position;
-            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
             public Axes axis;
-            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-            public byte? propertiesCachedObjectType;
-            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-            public byte? propertiesFlags;
-            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-            public short? propertiesGameEngineFlags;
-            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-            public byte? propertiesSharedStorage;
-            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-            public byte? propertiesSpawnTime;
-            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-            public byte? propertiesTeamAffiliation;
-            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-            public SHAPE_TYPE? propertiesShapeType;
-            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-            public short? propertiesShapeRadiusWidth;
-            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-            public short? propertiesShapeDepth;
-            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-            public short? propertiesShapeTop;
-            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-            public short? propertiesShapeBottom;
+            public byte propertiesCachedObjectType;
+            public byte propertiesFlags;
+            public short propertiesGameEngineFlags;
+            public byte propertiesSharedStorage;
+            public byte propertiesSpawnTime;
+            public byte propertiesTeamAffiliation;
+            public SHAPE_TYPE propertiesShapeType;
+            public short propertiesShapeRadiusWidth;
+            public short propertiesShapeDepth;
+            public short propertiesShapeTop;
+            public short propertiesShapeBottom;
 
             public VariantObject() { }
 
@@ -192,6 +170,8 @@ namespace Sunrise.BlfTool
 
                 if (parentObjectExists)
                     parentObjectIdentifier = hoppersStream.Read<long>(64);
+                else
+                    parentObjectIdentifier = -1;
 
                 bool positionExists = hoppersStream.Read<byte>(1) > 0;
 
@@ -229,13 +209,12 @@ namespace Sunrise.BlfTool
 
         public class VariantBudgetEntry
         {
-            [JsonConverter(typeof(ObjectIndexConverter))]
-            public uint objectDefinitionIndex;
+            public int objectDefinitionIndex;
             public byte minimumCount;
             public byte maximumCount;
             public byte placedOnMap;
             public byte maximumAllowed;
-            public float pricePerItem;
+            public int pricePerItem;
 
             public VariantBudgetEntry() { }
 
@@ -246,12 +225,12 @@ namespace Sunrise.BlfTool
 
             public void Read(ref BitStream<StreamByteStream> hoppersStream)
             {
-                objectDefinitionIndex = hoppersStream.Read<uint>(32);
+                objectDefinitionIndex = hoppersStream.Read<int>(32);
                 minimumCount = hoppersStream.Read<byte>(8);
                 maximumCount = hoppersStream.Read<byte>(8);
                 placedOnMap = hoppersStream.Read<byte>(8);
                 maximumAllowed = hoppersStream.Read<byte>(8);
-                pricePerItem = hoppersStream.ReadFloat(32);
+                pricePerItem = hoppersStream.Read<int>(32);
             }
         }
 
@@ -299,35 +278,6 @@ namespace Sunrise.BlfTool
                 }
                 forwardAngle = hoppersStream.Read<byte>(8);
             }
-        }
-
-        private void ConvertMCCMap()
-        {
-            BudgetObjectIndexConverter objectIndexMap = new BudgetObjectIndexConverter(mapID);
-
-            List<VariantBudgetEntry> newBudget = new List<VariantBudgetEntry>();
-
-            foreach(VariantBudgetEntry entry in budget) {
-                short objectGroup = (short)(entry.objectDefinitionIndex >> 16);
-                short objectIndex = (short)(entry.objectDefinitionIndex & 0xffff);
-
-                if (objectGroup > 7)
-                    continue;
-
-                try
-                {
-                    entry.objectDefinitionIndex = objectIndexMap.Get360ObjectIndex(objectGroup, objectIndex);
-                } catch (Exception ex)
-                {
-                    Console.WriteLine(ex);
-                    Console.WriteLine($"Unknown 360 object index for [{objectGroup},{objectIndex}]");
-                }
-
-                newBudget.Add(entry);
-            }
-
-            budget = newBudget.ToArray();
-            mapVariantVersion = 12;
         }
     }
 }

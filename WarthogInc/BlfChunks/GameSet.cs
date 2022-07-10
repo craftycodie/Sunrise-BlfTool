@@ -100,6 +100,7 @@ namespace Sunrise.BlfTool
             public byte minimumPlayerCount;
             public bool skipAfterVeto;
             public bool optional; // not in the beta!
+            [JsonIgnore]
             public int mapID;
             [JsonIgnore]
             //[JsonConverter(typeof(HexStringConverter))]

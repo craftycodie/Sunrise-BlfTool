@@ -14,12 +14,12 @@ namespace Sunrise.BlfTool.Extensions
             }
         }
 
-        public static float ReadFloat(this BitStream<StreamByteStream> bitStream, int length)
+        public static float ReadFloat(this ref BitStream<StreamByteStream> bitStream, int length)
         {
             return BitConverter.ToSingle(BitConverter.GetBytes(bitStream.Read<int>(length)), 0);
         }
 
-        public static void WriteFloat(this BitStream<StreamByteStream> bitStream, float value, int length)
+        public static void WriteFloat(this ref BitStream<StreamByteStream> bitStream, float value, int length)
         {
             bitStream.Write(BitConverter.ToInt32(BitConverter.GetBytes(value)), length);
         }
