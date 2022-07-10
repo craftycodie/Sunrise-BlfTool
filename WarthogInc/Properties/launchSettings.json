@@ -2,7 +2,7 @@
   "profiles": {
     "Sunrise-BlfTool": {
       "commandName": "Project",
-      "commandLineArgs": "json \"D:\\Projects\\Local\\Halo 3 Matchmaking\\title storage\\title\\default_hoppers\" \"D:\\Projects\\GitHub\\Sunrise-Content\\Title Storage\\json\""
+      "commandLineArgs": "json \"D:\\Projects\\GitHub\\Sunrise-Content\\json\" \"D:\\Projects\\GitHub\\Sunrise-Content\\json\""
     }
   }
 }
