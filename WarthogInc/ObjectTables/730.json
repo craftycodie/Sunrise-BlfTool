@@ -579,6 +579,82 @@
     "0xE25100DB": {
       "objectGroup": "SPAWNS",
       "objectIndex": 18
+    },
+    "0xE23700C1": {
+      "objectGroup": "SCENERY_PALETTE",
+      "objectIndex": 1
+    },
+    "0xE25C00E6": {
+      "objectGroup": "SCENERY_PALETTE",
+      "objectIndex": 20
+    },
+    "0xEB4209CC": {
+      "objectGroup": "VEHICLE_PALETTE",
+      "objectIndex": 5
+    },
+    "0xF32111AB": {
+      "objectGroup": "WEAPONS_PALETTE",
+      "objectIndex": 17
+    },
+    "0xFC321ABC": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 10
+    },
+    "0xFC461AD0": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 18
+    },
+    "0xFC481AD2": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 20
+    },
+    "0xFC521ADC": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 25
+    },
+    "0xFC571AE1": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 26
+    },
+    "0xFC5B1AE5": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 27
+    },
+    "0xFC5F1AE9": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 28
+    },
+    "0xFC631AED": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 29
+    },
+    "0xFC671AF1": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 30
+    },
+    "0xFC6B1AF5": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 31
+    },
+    "0xFC6F1AF9": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 32
+    },
+    "0xFC731AFD": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 33
+    },
+    "0xFC771B01": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 34
+    },
+    "0xFC7B1B05": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 69
+    },
+    "0xFC7E1B08": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 71
     }
   }
 }

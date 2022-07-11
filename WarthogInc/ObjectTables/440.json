@@ -407,6 +407,94 @@
     "0xE25100DB": {
       "objectGroup": "SPAWNS",
       "objectIndex": 18
+    },
+    "0xE25500DF": {
+      "objectGroup": "SCENERY_PALETTE",
+      "objectIndex": 13
+    },
+    "0xE25900E3": {
+      "objectGroup": "SCENERY_PALETTE",
+      "objectIndex": 17
+    },
+    "0xE2760100": {
+      "objectGroup": "SCENERY_PALETTE",
+      "objectIndex": 18
+    },
+    "0xE2E80172": {
+      "objectGroup": "SCENERY_PALETTE",
+      "objectIndex": 19
+    },
+    "0xE2ED0177": {
+      "objectGroup": "SCENERY_PALETTE",
+      "objectIndex": 20
+    },
+    "0xE2F2017C": {
+      "objectGroup": "SCENERY_PALETTE",
+      "objectIndex": 21
+    },
+    "0xE30C0196": {
+      "objectGroup": "SCENERY_PALETTE",
+      "objectIndex": 22
+    },
+    "0xE33101BB": {
+      "objectGroup": "SCENERY_PALETTE",
+      "objectIndex": 23
+    },
+    "0xEAA0092A": {
+      "objectGroup": "VEHICLE_PALETTE",
+      "objectIndex": 4
+    },
+    "0xF12B0FB5": {
+      "objectGroup": "WEAPONS_PALETTE",
+      "objectIndex": 13
+    },
+    "0xF7BE1648": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 12
+    },
+    "0xF7BF1649": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 13
+    },
+    "0xF7C5164F": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 22
+    },
+    "0xF7CA1654": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 23
+    },
+    "0xF7CE1658": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 24
+    },
+    "0xF7D2165C": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 25
+    },
+    "0xF7D61660": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 26
+    },
+    "0xF7DA1664": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 27
+    },
+    "0xF7DE1668": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 28
+    },
+    "0xF7E2166C": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 29
+    },
+    "0xF7E61670": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 30
+    },
+    "0xF7EA1674": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 31
     }
   }
 }

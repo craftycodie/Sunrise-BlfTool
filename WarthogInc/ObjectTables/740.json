@@ -375,6 +375,58 @@
     "0xF483130D": {
       "objectGroup": "SPAWNS",
       "objectIndex": 18
+    },
+    "0xE25000DA": {
+      "objectGroup": "SCENERY_PALETTE",
+      "objectIndex": 17
+    },
+    "0xEF360DC0": {
+      "objectGroup": "WEAPONS_PALETTE",
+      "objectIndex": 17
+    },
+    "0xF48B1315": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 4
+    },
+    "0xF49A1324": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 12
+    },
+    "0xF49F1329": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 13
+    },
+    "0xF4A3132D": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 14
+    },
+    "0xF4A71331": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 15
+    },
+    "0xF4AB1335": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 16
+    },
+    "0xF4AF1339": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 17
+    },
+    "0xF4B3133D": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 18
+    },
+    "0xF4B71341": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 19
+    },
+    "0xF4BB1345": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 20
+    },
+    "0xF4BF1349": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 21
     }
   }
 }

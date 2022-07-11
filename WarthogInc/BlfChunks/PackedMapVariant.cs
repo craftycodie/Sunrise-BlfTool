@@ -417,8 +417,11 @@ namespace Sunrise.BlfTool
         {
             BudgetObjectIndexConverter objectIndexMap = new BudgetObjectIndexConverter(mapID);
 
-            List<VariantBudgetEntry> newBudget = new List<VariantBudgetEntry>();
-            List<VariantObject> newObjects = new List<VariantObject>(objects);
+            for (int i = 0; i < objects.Length; i++)
+            {
+                if (objects[i].axis?.forwardAngle == 0)
+                    objects[i].axis.forwardAngle = 254;
+            }
 
             for (int i = 0; i < budget.Length; i++)
             {
@@ -426,13 +429,9 @@ namespace Sunrise.BlfTool
                 short objectGroup = (short)(entry.objectDefinitionIndex >> 16);
                 short objectIndex = (short)(entry.objectDefinitionIndex & 0xffff);
 
-                if (objectGroup > 7)
-                    continue;
-
                 try
                 {
                     entry.objectDefinitionIndex = objectIndexMap.Get360ObjectIndex(objectGroup, objectIndex);
-                    newBudget.Add(entry);
                 }
                 catch (Exception ex)
                 {
@@ -441,17 +440,35 @@ namespace Sunrise.BlfTool
                         Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine($"Unknown 360 object definition index for {(ObjectDatumRelativeIndexMap.RelativeIndex.EObjectGroup)objectGroup} {objectIndex}, removing {entry.placedOnMap} placed objects.");
                     Console.ResetColor();
-                    newObjects = newObjects.Where(variantObject => variantObject.definitionIndex != i + 1).ToList();
-                    foreach(VariantObject variantObject in newObjects)
+
+                    entry.objectDefinitionIndex = objectIndexMap.Get360ObjectIndex((short)ObjectDatumRelativeIndexMap.RelativeIndex.EObjectGroup.SCENERY, 1);
+                    entry.maximumAllowed = 0;
+                    entry.maximumCount = 0;
+                    entry.minimumCount = 0;
+                    entry.placedOnMap = 0;
+                    entry.pricePerItem = -1;
+
+                    for (int j = 0; j < objects.Length; j++)
                     {
-                        if (variantObject.definitionIndex > i + 1)
-                            variantObject.definitionIndex -= 1;
+                        VariantObject variantObject = objects[j];
+                        if (variantObject.definitionIndex == i + 1)
+                        {
+                            variantObject = new VariantObject
+                            {
+                                definitionIndex = -1,
+                                flags = 41
+                            };
+                            objects[j] = variantObject;
+                        }
                     }
+
+                    //foreach(VariantObject variantObject in newObjects)
+                    //{
+                    //    if (variantObject.definitionIndex > i + 1)
+                    //        variantObject.definitionIndex -= 1;
+                    //}
                 }
             }
-
-            budget = newBudget.ToArray();
-            objects = newObjects.ToArray();
 
             mapVariantVersion = 12;
         }
