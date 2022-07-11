@@ -355,6 +355,90 @@
     "0xE34A01D4": {
       "objectGroup": "SPAWNS",
       "objectIndex": 18
+    },
+    "0xE1FD0087": {
+      "objectGroup": "SCENERY_PALETTE",
+      "objectIndex": 0
+    },
+    "0xE2DC0166": {
+      "objectGroup": "SCENERY_PALETTE",
+      "objectIndex": 18
+    },
+    "0xE31601A0": {
+      "objectGroup": "SCENERY_PALETTE",
+      "objectIndex": 19
+    },
+    "0xE32101AB": {
+      "objectGroup": "SCENERY_PALETTE",
+      "objectIndex": 20
+    },
+    "0xE32C01B6": {
+      "objectGroup": "SCENERY_PALETTE",
+      "objectIndex": 21
+    },
+    "0xE32D01B7": {
+      "objectGroup": "SCENERY_PALETTE",
+      "objectIndex": 22
+    },
+    "0xF5781402": {
+      "objectGroup": "VEHICLE_PALETTE",
+      "objectIndex": 0
+    },
+    "0xF62114AB": {
+      "objectGroup": "VEHICLE_PALETTE",
+      "objectIndex": 1
+    },
+    "0xECEA0B74": {
+      "objectGroup": "WEAPONS_PALETTE",
+      "objectIndex": 3
+    },
+    "0xF53E13C8": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 1
+    },
+    "0xF54013CA": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 2
+    },
+    "0xF54D13D7": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 28
+    },
+    "0xF55213DC": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 29
+    },
+    "0xF55613E0": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 30
+    },
+    "0xF55A13E4": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 31
+    },
+    "0xF55E13E8": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 32
+    },
+    "0xF56213EC": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 33
+    },
+    "0xF56613F0": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 34
+    },
+    "0xF56A13F4": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 35
+    },
+    "0xF56E13F8": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 36
+    },
+    "0xF57213FC": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 37
     }
   }
 }

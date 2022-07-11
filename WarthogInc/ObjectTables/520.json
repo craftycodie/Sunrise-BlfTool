@@ -403,6 +403,102 @@
     "0xE282010C": {
       "objectGroup": "SPAWNS",
       "objectIndex": 18
+    },
+    "0xE26900F3": {
+      "objectGroup": "SCENERY_PALETTE",
+      "objectIndex": 1
+    },
+    "0xE28E0118": {
+      "objectGroup": "SCENERY_PALETTE",
+      "objectIndex": 20
+    },
+    "0xE2AA0134": {
+      "objectGroup": "SCENERY_PALETTE",
+      "objectIndex": 21
+    },
+    "0xE2B70141": {
+      "objectGroup": "SCENERY_PALETTE",
+      "objectIndex": 22
+    },
+    "0xE2C0014A": {
+      "objectGroup": "SCENERY_PALETTE",
+      "objectIndex": 23
+    },
+    "0xE2CF0159": {
+      "objectGroup": "SCENERY_PALETTE",
+      "objectIndex": 24
+    },
+    "0xE2DC0166": {
+      "objectGroup": "SCENERY_PALETTE",
+      "objectIndex": 25
+    },
+    "0xE2E1016B": {
+      "objectGroup": "SCENERY_PALETTE",
+      "objectIndex": 26
+    },
+    "0xE72B05B5": {
+      "objectGroup": "EQUIPMENT_PALETTE",
+      "objectIndex": 6
+    },
+    "0xF66914F3": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 12
+    },
+    "0xF67514FF": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 13
+    },
+    "0xF67A1504": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 15
+    },
+    "0xF684150E": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 17
+    },
+    "0xF6891513": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 18
+    },
+    "0xF68D1517": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 19
+    },
+    "0xF691151B": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 20
+    },
+    "0xF695151F": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 21
+    },
+    "0xF6991523": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 22
+    },
+    "0xF69D1527": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 23
+    },
+    "0xF6A1152B": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 24
+    },
+    "0xF6A5152F": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 25
+    },
+    "0xF6A91533": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 26
+    },
+    "0xF6AD1537": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 27
+    },
+    "0xF6AE1538": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 28
     }
   }
 }

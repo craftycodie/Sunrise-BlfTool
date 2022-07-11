@@ -423,6 +423,130 @@
     "0xFB12199C": {
       "objectGroup": "SPAWNS",
       "objectIndex": 18
+    },
+    "0xE2A1012B": {
+      "objectGroup": "SCENERY_PALETTE",
+      "objectIndex": 15
+    },
+    "0xE2B2013C": {
+      "objectGroup": "SCENERY_PALETTE",
+      "objectIndex": 16
+    },
+    "0xE2B3013D": {
+      "objectGroup": "SCENERY_PALETTE",
+      "objectIndex": 17
+    },
+    "0xE2E60170": {
+      "objectGroup": "SCENERY_PALETTE",
+      "objectIndex": 18
+    },
+    "0xE305018F": {
+      "objectGroup": "SCENERY_PALETTE",
+      "objectIndex": 19
+    },
+    "0xEDA80C32": {
+      "objectGroup": "VEHICLE_PALETTE",
+      "objectIndex": 8
+    },
+    "0xF2D81162": {
+      "objectGroup": "WEAPONS_PALETTE",
+      "objectIndex": 4
+    },
+    "0xFB3D19C7": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 0
+    },
+    "0xFB4519CF": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 1
+    },
+    "0xFB4D19D7": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 2
+    },
+    "0xFB5419DE": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 9
+    },
+    "0xFB6019EA": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 10
+    },
+    "0xFB6419EE": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 11
+    },
+    "0xFB6819F2": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 12
+    },
+    "0xFB6C19F6": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 13
+    },
+    "0xFB7019FA": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 19
+    },
+    "0xFB7419FE": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 20
+    },
+    "0xFB7A1A04": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 21
+    },
+    "0xFB7E1A08": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 22
+    },
+    "0xFB891A13": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 23
+    },
+    "0xFB8E1A18": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 28
+    },
+    "0xFBB01A3A": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 29
+    },
+    "0xFBB51A3F": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 30
+    },
+    "0xFBB91A43": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 31
+    },
+    "0xFBBD1A47": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 32
+    },
+    "0xFBC11A4B": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 33
+    },
+    "0xFBC51A4F": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 34
+    },
+    "0xFBC91A53": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 35
+    },
+    "0xFBCD1A57": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 36
+    },
+    "0xFBD11A5B": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 37
+    },
+    "0xFBD51A5F": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 38
     }
   }
 }

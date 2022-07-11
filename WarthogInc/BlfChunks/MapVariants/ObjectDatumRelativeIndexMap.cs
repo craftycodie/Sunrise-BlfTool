@@ -17,7 +17,12 @@ namespace Sunrise.BlfTool
                 SCENERY,
                 TELEPORTERS,
                 GOALS,
-                SPAWNS
+                SPAWNS,
+                SCENERY_PALETTE,
+                VEHICLE_PALETTE,
+                WEAPONS_PALETTE,
+                EQUIPMENT_PALETTE,
+                CRATES_PALETTE
             }
 
             public RelativeIndex()

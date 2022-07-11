@@ -355,6 +355,110 @@
     "0xF4B91343": {
       "objectGroup": "SPAWNS",
       "objectIndex": 18
+    },
+    "0xE24F00D9": {
+      "objectGroup": "SCENERY_PALETTE",
+      "objectIndex": 15
+    },
+    "0xE2770101": {
+      "objectGroup": "SCENERY_PALETTE",
+      "objectIndex": 16
+    },
+    "0xE293011D": {
+      "objectGroup": "SCENERY_PALETTE",
+      "objectIndex": 17
+    },
+    "0xE2A60130": {
+      "objectGroup": "SCENERY_PALETTE",
+      "objectIndex": 18
+    },
+    "0xE2A70131": {
+      "objectGroup": "SCENERY_PALETTE",
+      "objectIndex": 19
+    },
+    "0xE2C3014D": {
+      "objectGroup": "SCENERY_PALETTE",
+      "objectIndex": 20
+    },
+    "0xE2C60150": {
+      "objectGroup": "SCENERY_PALETTE",
+      "objectIndex": 21
+    },
+    "0xF4BE1348": {
+      "objectGroup": "SCENERY_PALETTE",
+      "objectIndex": 22
+    },
+    "0xF4C61350": {
+      "objectGroup": "SCENERY_PALETTE",
+      "objectIndex": 23
+    },
+    "0xF4C91353": {
+      "objectGroup": "SCENERY_PALETTE",
+      "objectIndex": 24
+    },
+    "0xF4CC1356": {
+      "objectGroup": "SCENERY_PALETTE",
+      "objectIndex": 25
+    },
+    "0xF4CF1359": {
+      "objectGroup": "SCENERY_PALETTE",
+      "objectIndex": 26
+    },
+    "0xEEF00D7A": {
+      "objectGroup": "WEAPONS_PALETTE",
+      "objectIndex": 18
+    },
+    "0xF4D4135E": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 1
+    },
+    "0xF4DE1368": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 13
+    },
+    "0xF4E3136D": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 14
+    },
+    "0xF4E71371": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 15
+    },
+    "0xF4EB1375": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 16
+    },
+    "0xF4EF1379": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 17
+    },
+    "0xF4F3137D": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 18
+    },
+    "0xF4F71381": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 19
+    },
+    "0xF4FB1385": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 20
+    },
+    "0xF4FF1389": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 21
+    },
+    "0xF503138D": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 22
+    },
+    "0xF5071391": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 23
+    },
+    "0xF50D1397": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 24
     }
   }
 }
