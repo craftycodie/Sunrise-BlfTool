@@ -2,7 +2,7 @@
   "profiles": {
     "Sunrise-BlfTool": {
       "commandName": "Project",
-      "commandLineArgs": "json \"D:\\Projects\\GitHub\\Sunrise-Content\\mcc\\hopper_map_variants\" \"D:\\Projects\\GitHub\\Sunrise-Content\\mcc\\hopper_map_variants\""
+      "commandLineArgs": "json \"D:\\Projects\\GitHub\\Sunrise-Content\\map_temp\" \"D:\\Projects\\GitHub\\Sunrise-Content\\json\""
     }
   }
 }

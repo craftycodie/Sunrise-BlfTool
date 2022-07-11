@@ -367,6 +367,86 @@
     "0xF5B3143D": {
       "objectGroup": "SPAWNS",
       "objectIndex": 18
+    },
+    "0xE2CC0156": {
+      "objectGroup": "SCENERY_PALETTE",
+      "objectIndex": 12
+    },
+    "0xE32A01B4": {
+      "objectGroup": "SCENERY_PALETTE",
+      "objectIndex": 13
+    },
+    "0xE35401DE": {
+      "objectGroup": "SCENERY_PALETTE",
+      "objectIndex": 14
+    },
+    "0xE35501DF": {
+      "objectGroup": "SCENERY_PALETTE",
+      "objectIndex": 15
+    },
+    "0xE36101EB": {
+      "objectGroup": "SCENERY_PALETTE",
+      "objectIndex": 16
+    },
+    "0xF02B0EB5": {
+      "objectGroup": "WEAPONS_PALETTE",
+      "objectIndex": 18
+    },
+    "0xF5C4144E": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 5
+    },
+    "0xF5D1145B": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 13
+    },
+    "0xF5D71461": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 14
+    },
+    "0xF5DC1466": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 15
+    },
+    "0xF5E2146C": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 18
+    },
+    "0xF5E71471": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 19
+    },
+    "0xF5EB1475": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 20
+    },
+    "0xF5EF1479": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 21
+    },
+    "0xF5F3147D": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 22
+    },
+    "0xF5F71481": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 23
+    },
+    "0xF5FB1485": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 24
+    },
+    "0xF5FF1489": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 25
+    },
+    "0xF603148D": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 26
+    },
+    "0xF6071491": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 27
     }
   }
 }

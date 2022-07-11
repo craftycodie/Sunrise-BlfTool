@@ -367,6 +367,74 @@
     "0xF56713F1": {
       "objectGroup": "SPAWNS",
       "objectIndex": 18
+    },
+    "0xE22800B2": {
+      "objectGroup": "SCENERY_PALETTE",
+      "objectIndex": 12
+    },
+    "0xE24B00D5": {
+      "objectGroup": "SCENERY_PALETTE",
+      "objectIndex": 13
+    },
+    "0xF5A3142D": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 0
+    },
+    "0xF5AF1439": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 1
+    },
+    "0xF5BE1448": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 14
+    },
+    "0xF5C3144D": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 16
+    },
+    "0xF5C91453": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 24
+    },
+    "0xF5D1145B": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 26
+    },
+    "0xF5D61460": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 27
+    },
+    "0xF5DA1464": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 28
+    },
+    "0xF5DE1468": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 29
+    },
+    "0xF5E2146C": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 30
+    },
+    "0xF5E61470": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 31
+    },
+    "0xF5EA1474": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 32
+    },
+    "0xF5EE1478": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 33
+    },
+    "0xF5F2147C": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 34
+    },
+    "0xF5F61480": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 35
     }
   }
 }

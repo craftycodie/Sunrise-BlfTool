@@ -379,6 +379,174 @@
     "0xF9A2182C": {
       "objectGroup": "SPAWNS",
       "objectIndex": 18
+    },
+    "0xE202008C": {
+      "objectGroup": "SCENERY_PALETTE",
+      "objectIndex": 13
+    },
+    "0xE213009D": {
+      "objectGroup": "SCENERY_PALETTE",
+      "objectIndex": 14
+    },
+    "0xE21800A2": {
+      "objectGroup": "SCENERY_PALETTE",
+      "objectIndex": 15
+    },
+    "0xE22500AF": {
+      "objectGroup": "SCENERY_PALETTE",
+      "objectIndex": 16
+    },
+    "0xE22A00B4": {
+      "objectGroup": "SCENERY_PALETTE",
+      "objectIndex": 17
+    },
+    "0xE22F00B9": {
+      "objectGroup": "SCENERY_PALETTE",
+      "objectIndex": 18
+    },
+    "0xE23400BE": {
+      "objectGroup": "SCENERY_PALETTE",
+      "objectIndex": 19
+    },
+    "0xE23900C3": {
+      "objectGroup": "SCENERY_PALETTE",
+      "objectIndex": 20
+    },
+    "0xE23E00C8": {
+      "objectGroup": "SCENERY_PALETTE",
+      "objectIndex": 21
+    },
+    "0xE2B60140": {
+      "objectGroup": "SCENERY_PALETTE",
+      "objectIndex": 22
+    },
+    "0xE2C5014F": {
+      "objectGroup": "SCENERY_PALETTE",
+      "objectIndex": 23
+    },
+    "0xE2C70151": {
+      "objectGroup": "SCENERY_PALETTE",
+      "objectIndex": 24
+    },
+    "0xE2C80152": {
+      "objectGroup": "SCENERY_PALETTE",
+      "objectIndex": 25
+    },
+    "0xE2E4016E": {
+      "objectGroup": "SCENERY_PALETTE",
+      "objectIndex": 26
+    },
+    "0xE2E90173": {
+      "objectGroup": "SCENERY_PALETTE",
+      "objectIndex": 27
+    },
+    "0xE2EE0178": {
+      "objectGroup": "SCENERY_PALETTE",
+      "objectIndex": 28
+    },
+    "0xE2F3017D": {
+      "objectGroup": "SCENERY_PALETTE",
+      "objectIndex": 29
+    },
+    "0xE2F80182": {
+      "objectGroup": "SCENERY_PALETTE",
+      "objectIndex": 30
+    },
+    "0xE2FD0187": {
+      "objectGroup": "SCENERY_PALETTE",
+      "objectIndex": 31
+    },
+    "0xE302018C": {
+      "objectGroup": "SCENERY_PALETTE",
+      "objectIndex": 32
+    },
+    "0xE3070191": {
+      "objectGroup": "SCENERY_PALETTE",
+      "objectIndex": 33
+    },
+    "0xE30C0196": {
+      "objectGroup": "SCENERY_PALETTE",
+      "objectIndex": 34
+    },
+    "0xE311019B": {
+      "objectGroup": "VEHICLE_PALETTE",
+      "objectIndex": 0
+    },
+    "0xEDAC0C36": {
+      "objectGroup": "VEHICLE_PALETTE",
+      "objectIndex": 8
+    },
+    "0xF9B81842": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 3
+    },
+    "0xF9C61850": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 5
+    },
+    "0xF9CB1855": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 13
+    },
+    "0xF9CD1857": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 15
+    },
+    "0xF9D71861": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 17
+    },
+    "0xF9DF1869": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 29
+    },
+    "0xF9E91873": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 37
+    },
+    "0xF9EE1878": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 38
+    },
+    "0xF9F2187C": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 39
+    },
+    "0xF9F61880": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 40
+    },
+    "0xF9FA1884": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 41
+    },
+    "0xF9FE1888": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 42
+    },
+    "0xFA02188C": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 43
+    },
+    "0xFA061890": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 44
+    },
+    "0xFA0A1894": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 45
+    },
+    "0xFA0E1898": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 46
+    },
+    "0xFA12189C": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 47
+    },
+    "0xFA1A18A4": {
+      "objectGroup": "CRATES_PALETTE",
+      "objectIndex": 48
     }
   }
 }
