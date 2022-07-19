@@ -128,17 +128,17 @@ namespace Sunrise.BlfTool
                 configuration.experience_points_per_win = hoppersStream.Read<byte>(2);
                 configuration.experience_penalty_per_drop = hoppersStream.Read<byte>(2);
 
-                configuration.minimum_mu_per_level = new uint[49];
+                configuration.minimum_mu_per_level = new float[49];
                 for (int l = 0; l < 49; l++)
-                    configuration.minimum_mu_per_level[l] = hoppersStream.Read<uint>(32);
+                    configuration.minimum_mu_per_level[l] = hoppersStream.ReadFloat(32);
 
                 configuration.maximum_skill_level_match_delta = new byte[50];
                 for (int m = 0; m < 50; m++)
                     configuration.maximum_skill_level_match_delta[m] = hoppersStream.Read<byte>(6);
 
-                configuration.trueskill_sigma_multiplier = hoppersStream.Read<uint>(32);
-                configuration.trueskill_beta_performance_variation = hoppersStream.Read<uint>(32);
-                configuration.trueskill_tau_dynamics_factor = hoppersStream.Read<uint>(32);
+                configuration.trueskill_sigma_multiplier = hoppersStream.ReadFloat(32);
+                configuration.trueskill_beta_performance_variation = hoppersStream.ReadFloat(32);
+                configuration.trueskill_tau_dynamics_factor = hoppersStream.ReadFloat(32);
                 configuration.trueskill_adjust_tau_with_update_weight = hoppersStream.Read<byte>(1) > 0;
                 configuration.trueskill_draw_probability = hoppersStream.Read<byte>(7);
                 configuration.trueskill_hillclimb_w0 = hoppersStream.Read<byte>(7);
@@ -276,14 +276,14 @@ namespace Sunrise.BlfTool
                 hoppersStream.Write<byte>(configuration.experience_penalty_per_drop, 2);
 
                 for (int l = 0; l < 49; l++)
-                    hoppersStream.Write<uint>(configuration.minimum_mu_per_level[l], 32);
+                    hoppersStream.WriteFloat(configuration.minimum_mu_per_level[l], 32);
 
                 for (int m = 0; m < 50; m++)
                     hoppersStream.Write<byte>(configuration.maximum_skill_level_match_delta[m], 6);
 
-                hoppersStream.Write<uint>(configuration.trueskill_sigma_multiplier, 32);
-                hoppersStream.Write<uint>(configuration.trueskill_beta_performance_variation, 32);
-                hoppersStream.Write<uint>(configuration.trueskill_tau_dynamics_factor, 32);
+                hoppersStream.WriteFloat(configuration.trueskill_sigma_multiplier, 32);
+                hoppersStream.WriteFloat(configuration.trueskill_beta_performance_variation, 32);
+                hoppersStream.WriteFloat(configuration.trueskill_tau_dynamics_factor, 32);
                 hoppersStream.Write<byte>(configuration.trueskill_adjust_tau_with_update_weight ? (byte)1 : (byte)0, 1);
                 hoppersStream.Write<byte>(configuration.trueskill_draw_probability, 7);
                 hoppersStream.Write<byte>(configuration.trueskill_hillclimb_w0, 7);
@@ -395,12 +395,12 @@ namespace Sunrise.BlfTool
             public byte[] chance_of_gathering;
             public byte experience_points_per_win;
             public byte experience_penalty_per_drop;
-            public uint[] minimum_mu_per_level;
+            public float[] minimum_mu_per_level;
             [JsonConverter(typeof(ByteArrayConverter))]
             public byte[] maximum_skill_level_match_delta;
-            public uint trueskill_sigma_multiplier;
-            public uint trueskill_beta_performance_variation;
-            public uint trueskill_tau_dynamics_factor;
+            public float trueskill_sigma_multiplier;
+            public float trueskill_beta_performance_variation;
+            public float trueskill_tau_dynamics_factor;
             public bool trueskill_adjust_tau_with_update_weight;
             public byte trueskill_draw_probability;
             public byte trueskill_hillclimb_w0;
