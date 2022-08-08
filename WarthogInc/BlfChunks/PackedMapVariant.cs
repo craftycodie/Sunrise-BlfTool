@@ -17,7 +17,8 @@ namespace Sunrise.BlfTool
         public BaseGameVariant.VariantMetadata metadata;
         public byte mapVariantVersion;
         [JsonConverter(typeof(ObjectIndexConverter))]
-        public uint mapVariantChecksum; // 32
+        //[JsonIgnore]
+        public uint mapVariantChecksum { get { return mapChecksumMap[mapID]; } } // 32
         public short numberOfScenarioObjects; // 10
         [JsonIgnore]
         public short numberOfVariantObjects { get { return (short)objects.Length; } } // 10
@@ -32,6 +33,34 @@ namespace Sunrise.BlfTool
         public VariantObject[] objects; // * 640
         public short[] objectTypes; // 9 * 14
         public VariantBudgetEntry[] budget; // * 256
+
+        private static Dictionary<int, uint> mapChecksumMap = new Dictionary<int, uint>()
+        {
+            { 030, 0xA9494AE8 }, // Last Resort
+            { 300, 0x62C9F673 }, // Construct
+            { 310, 0xC9786BEC }, // High Ground
+            { 320, 0xBD822912 }, // Guardian 
+            { 330, 0x0F13C989 }, // Isolation
+            { 340, 0xF1A889B8 }, // Valhalla
+            { 350, 0x102B6C7A }, // Epitaph
+            { 360, 0xBF08D3D8 }, // Snowbound
+            { 380, 0x5490CC8F }, // Narrows
+            { 390, 0x17EA5C32 }, // The Pit
+            { 400, 0x3375A6F1 }, // Sandtrap
+            { 410, 0x23ADA720 }, // Standoff
+            { 440, 0xBCAFBE41 }, // Longshore
+            { 470, 0x1CC05515 }, // Avalanche
+            { 480, 0x65DC145C }, // Foundry
+            { 490, 0x55478205 }, // Assembly
+            { 500, 0xF025A6FA }, // Orbital
+            { 520, 0x31DA07AB }, // Blackout
+            { 580, 0xF1197F82 }, // Rats Nest
+            { 590, 0x2915FE0F }, // Ghost Town
+            { 600, 0xA468CD10 }, // Cold Storage
+            { 720, 0x6B465319 }, // Heretic
+            { 730, 0x59A2A65C }, // Sandbox
+            { 740, 0x6616ACC9 }, // Citadel
+        };
 
         public ushort GetAuthentication()
         {
@@ -59,7 +88,7 @@ namespace Sunrise.BlfTool
         {
             metadata = new BaseGameVariant.VariantMetadata(ref hoppersStream);
             mapVariantVersion = hoppersStream.Read<byte>(8);
-            mapVariantChecksum = hoppersStream.Read<uint>(32);
+            // mapVariantChecksum = hoppersStream.Read<uint>(32);
             numberOfScenarioObjects = hoppersStream.Read<short>(10);
             short numberOfVariantObjects = hoppersStream.Read<short>(10);
             short numberOfPlacableObjectQuotas = hoppersStream.Read<short>(9);
@@ -435,38 +464,17 @@ namespace Sunrise.BlfTool
                 }
                 catch (Exception ex)
                 {
-                    //Console.WriteLine(ex);
                     if (entry.placedOnMap > 0)
                         Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine($"Unknown 360 object definition index for {(ObjectDatumRelativeIndexMap.RelativeIndex.EObjectGroup)objectGroup} {objectIndex}, removing {entry.placedOnMap} placed objects.");
                     Console.ResetColor();
 
-                    entry.objectDefinitionIndex = objectIndexMap.Get360ObjectIndex((short)ObjectDatumRelativeIndexMap.RelativeIndex.EObjectGroup.SCENERY, 1);
+                    entry.objectDefinitionIndex = 0xFFFFFFFF;
                     entry.maximumAllowed = 0;
                     entry.maximumCount = 0;
                     entry.minimumCount = 0;
-                    entry.placedOnMap = 0;
+                    entry.placedOnMap = 0xFF;
                     entry.pricePerItem = -1;
-
-                    for (int j = 0; j < objects.Length; j++)
-                    {
-                        VariantObject variantObject = objects[j];
-                        if (variantObject.definitionIndex == i + 1)
-                        {
-                            variantObject = new VariantObject
-                            {
-                                definitionIndex = -1,
-                                flags = 41
-                            };
-                            objects[j] = variantObject;
-                        }
-                    }
-
-                    //foreach(VariantObject variantObject in newObjects)
-                    //{
-                    //    if (variantObject.definitionIndex > i + 1)
-                    //        variantObject.definitionIndex -= 1;
-                    //}
                 }
             }
 
