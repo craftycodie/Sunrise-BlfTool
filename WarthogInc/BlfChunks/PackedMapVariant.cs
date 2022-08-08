@@ -17,7 +17,7 @@ namespace Sunrise.BlfTool
         public BaseGameVariant.VariantMetadata metadata;
         public byte mapVariantVersion;
         [JsonConverter(typeof(ObjectIndexConverter))]
-        //[JsonIgnore]
+        [JsonIgnore]
         public uint mapVariantChecksum { get { return mapChecksumMap[mapID]; } } // 32
         public short numberOfScenarioObjects; // 10
         [JsonIgnore]
@@ -34,7 +34,7 @@ namespace Sunrise.BlfTool
         public short[] objectTypes; // 9 * 14
         public VariantBudgetEntry[] budget; // * 256
 
-        private static Dictionary<int, uint> mapChecksumMap = new Dictionary<int, uint>()
+        private static Dictionary<int, uint> mapChecksumMap = new()
         {
             { 030, 0xA9494AE8 }, // Last Resort
             { 300, 0x62C9F673 }, // Construct
@@ -88,7 +88,7 @@ namespace Sunrise.BlfTool
         {
             metadata = new BaseGameVariant.VariantMetadata(ref hoppersStream);
             mapVariantVersion = hoppersStream.Read<byte>(8);
-            // mapVariantChecksum = hoppersStream.Read<uint>(32);
+            /*mapVariantChecksum =*/ hoppersStream.Read<uint>(32);
             numberOfScenarioObjects = hoppersStream.Read<short>(10);
             short numberOfVariantObjects = hoppersStream.Read<short>(10);
             short numberOfPlacableObjectQuotas = hoppersStream.Read<short>(9);
@@ -452,6 +452,9 @@ namespace Sunrise.BlfTool
                     objects[i].axis.forwardAngle = 254;
             }
 
+            var newObjects = new LinkedList<VariantObject>();
+            var newBudget = new LinkedList<VariantBudgetEntry>();
+
             for (int i = 0; i < budget.Length; i++)
             {
                 VariantBudgetEntry entry = budget[i];
@@ -461,6 +464,7 @@ namespace Sunrise.BlfTool
                 try
                 {
                     entry.objectDefinitionIndex = objectIndexMap.Get360ObjectIndex(objectGroup, objectIndex);
+                    newBudget.AddLast(entry);
                 }
                 catch (Exception ex)
                 {
@@ -468,15 +472,28 @@ namespace Sunrise.BlfTool
                         Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine($"Unknown 360 object definition index for {(ObjectDatumRelativeIndexMap.RelativeIndex.EObjectGroup)objectGroup} {objectIndex}, removing {entry.placedOnMap} placed objects.");
                     Console.ResetColor();
-
-                    entry.objectDefinitionIndex = 0xFFFFFFFF;
-                    entry.maximumAllowed = 0;
-                    entry.maximumCount = 0;
-                    entry.minimumCount = 0;
-                    entry.placedOnMap = 0xFF;
-                    entry.pricePerItem = -1;
                 }
             }
+
+            for (int j = 0; j < objects.Length; j++)
+            {
+                VariantObject variantObject = objects[j];
+                if (variantObject.definitionIndex == null || variantObject.definitionIndex == -1)
+                {
+                    newObjects.AddLast(variantObject);
+                    continue;
+                }
+
+                VariantBudgetEntry budgetEntry = budget[variantObject.definitionIndex.Value];
+                if (newBudget.Contains(budgetEntry))
+                {
+                    variantObject.definitionIndex = newBudget.TakeWhile(b => b != budgetEntry).Count();
+                    newObjects.AddLast(variantObject);
+                }
+            }
+
+            budget = newBudget.ToArray();
+            objects = newObjects.ToArray();
 
             mapVariantVersion = 12;
         }
