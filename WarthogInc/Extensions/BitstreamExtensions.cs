@@ -23,5 +23,37 @@ namespace Sunrise.BlfTool.Extensions
         {
             bitStream.Write(BitConverter.ToInt32(BitConverter.GetBytes(value)), length);
         }
+
+        static uint[] long2doubleInt(ulong a)
+        {
+            uint a1 = (uint)(a & uint.MaxValue);
+            uint a2 = (uint)(a >> 32);
+            return new uint[] { a1, a2 };
+        }
+
+        static int[] long2doubleInt(long a)
+        {
+            int a1 = (int)(a & int.MaxValue);
+            int a2 = (int)(a >> 32);
+            return new int[] { a1, a2 };
+        }
+
+        public static void WriteLong(this ref BitStream<StreamByteStream> bitStream, long value, int length)
+        {
+            if (length != 64)
+                throw new NotImplementedException();
+
+            bitStream.Write(long2doubleInt(value)[1], 32);
+            bitStream.Write(long2doubleInt(value)[0], 32);
+        }
+
+        public static void WriteLong(this ref BitStream<StreamByteStream> bitStream, ulong value, int length)
+        {
+            if (length != 64)
+                throw new NotImplementedException();
+
+            bitStream.Write(long2doubleInt(value)[1], 32);
+            bitStream.Write(long2doubleInt(value)[0], 32);
+        }
     }
 }

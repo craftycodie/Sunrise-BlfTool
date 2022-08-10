@@ -63,66 +63,25 @@ namespace WarthogInc
                     continue;
                 }
 
-                IBLFChunk blfChunk = null;
+                BlfFile blfFile = BlfFile.FromJSON(File.ReadAllText(jsonFileEnumerator.Current));
 
-                switch(fileName)
+                if (fileName == "game_set_006.json")
+                    continue; // handle after variants
+
+                if (fileName == "matchmaking_hopper_011.json")
+                    continue; // Handle after game sets
+
+
+                blfFile.WriteFile(blfFolder + fileRelativePath.Replace(".json", ".bin"));
+
+                Console.WriteLine("Converted file: " + fileRelativePath);
+
+                if (blfFile.HasChunk<MatchmakingHopperDescriptions>()
+                    || blfFile.HasChunk<MatchmakingTips>()
+                    || blfFile.HasChunk<MapManifest>()
+                    || blfFile.HasChunk<MatchmakingBanhammerMessages>())
                 {
-                    case "game_set_006.json":
-                        continue; // handle after variants
-                    case "rsa_manifest.json":
-                        blfChunk = JsonConvert.DeserializeObject<MapManifest>(File.ReadAllText(jsonFileEnumerator.Current));
-                        break;
-                    case "matchmaking_hopper_011.json":
-                        continue; // Handle manually last.
-                    case "dynamic_hopper_statistics.json":
-                        blfChunk = JsonConvert.DeserializeObject<MatchmakingHopperStatistics>(File.ReadAllText(jsonFileEnumerator.Current));
-                        break;
-                    case "motd.json":
-                    case "black_motd.json":
-                    case "blue_motd.json":
-                        blfChunk = JsonConvert.DeserializeObject<MessageOfTheDay>(File.ReadAllText(jsonFileEnumerator.Current));
-                        break;
-                    case "motd_popup.json":
-                    case "black_motd_popup.json":
-                    case "blue_motd_popup.json":
-                        blfChunk = JsonConvert.DeserializeObject<MessageOfTheDayPopup>(File.ReadAllText(jsonFileEnumerator.Current));
-                        break;
-                    case "matchmaking_banhammer_messages.json":
-                        blfChunk = JsonConvert.DeserializeObject<MatchmakingBanhammerMessages>(File.ReadAllText(jsonFileEnumerator.Current));
-                        break;
-                    case "matchmaking_hopper_descriptions_003.json":
-                        blfChunk = JsonConvert.DeserializeObject<MatchmakingHopperDescriptions>(File.ReadAllText(jsonFileEnumerator.Current));
-                        break;
-                    case "matchmaking_tips.json":
-                        blfChunk = JsonConvert.DeserializeObject<MatchmakingTips>(File.ReadAllText(jsonFileEnumerator.Current));
-                        break;
-                }
-
-                // Game variants are the only file that end like this normally.
-                if (fileName.EndsWith("_010.json"))
-                    blfChunk = JsonConvert.DeserializeObject<PackedGameVariant>(File.ReadAllText(jsonFileEnumerator.Current));
-                // Map variants are the only file that end like this normally.
-                if (fileName.EndsWith("_012.json"))
-                    blfChunk = JsonConvert.DeserializeObject<PackedMapVariant>(File.ReadAllText(jsonFileEnumerator.Current));
-
-                if (blfChunk != null) {
-
-                    BlfFile blfFile = new BlfFile();
-                    blfFile.AddChunk(blfChunk);
-                    blfFile.WriteFile(blfFolder + fileRelativePath.Replace(".json", ".bin"));
-
-                    Console.WriteLine("Converted file: " + fileRelativePath);
-
-                    if (blfChunk is MatchmakingHopperDescriptions 
-                        || blfChunk is MatchmakingTips
-                        || blfChunk is MapManifest
-                        || blfChunk is MatchmakingBanhammerMessages)
-                    {
-                        fileHashes.Add("/title/default_hoppers/" + fileRelativePath.Replace("\\", "/").Replace(".json", ".bin"), ComputeHash(blfFolder + fileRelativePath.Replace(".json", ".bin")));
-                    }
-                } else
-                {
-                    Console.WriteLine("Unrecognized JSON file: " + fileRelativePath);
+                    fileHashes.Add("/title/default_hoppers/" + fileRelativePath.Replace("\\", "/").Replace(".json", ".bin"), ComputeHash(blfFolder + fileRelativePath.Replace(".json", ".bin")));
                 }
             }
 
@@ -150,14 +109,12 @@ namespace WarthogInc
                     continue;
                 }
 
+                BlfFile blfFile = BlfFile.FromJSON(File.ReadAllText(jsonFileEnumerator.Current));
+
                 IBLFChunk blfChunk = null;
 
-                switch (fileName)
-                {
-                    case "game_set_006.json":
-                        blfChunk = JsonConvert.DeserializeObject<GameSet>(File.ReadAllText(jsonFileEnumerator.Current));
-                        break;
-                }
+                if (fileName == "game_set_006.json")
+                    blfChunk = blfFile.GetChunk<GameSet>();
 
                 if (blfChunk != null)
                 {
@@ -181,8 +138,6 @@ namespace WarthogInc
                         }
                     }
 
-                    BlfFile blfFile = new BlfFile();
-                    blfFile.AddChunk(blfChunk);
                     blfFile.WriteFile(blfFolder + fileRelativePath.Replace(".json", ".bin"));
 
                     Console.WriteLine("Converted file: " + fileRelativePath);
@@ -191,7 +146,8 @@ namespace WarthogInc
 
             // And now for the manual ones!
             // First up, matchmaking playlists.
-            var mhcf = JsonConvert.DeserializeObject<HopperConfigurationTable>(File.ReadAllText(jsonFolder + "matchmaking_hopper_011.json"));
+            var hopperConfigurationTableBlfFile = BlfFile.FromJSON(File.ReadAllText(jsonFolder + "matchmaking_hopper_011.json"));
+            var mhcf = hopperConfigurationTableBlfFile.GetChunk<HopperConfigurationTable>();
 
             //We need to calculate the hash of every gameset.
             foreach (HopperConfigurationTable.HopperConfiguration hopperConfiguration in mhcf.configurations)
@@ -243,8 +199,6 @@ namespace WarthogInc
 
             var titleDirectoryEnumerator = Directory.EnumerateFiles(titleStorageFolder, "*.*", SearchOption.AllDirectories).GetEnumerator();
 
-            var jsonSettings = new JsonSerializerSettings { Converters = { new ByteArrayConverter(), new HexStringConverter() },  Formatting = Formatting.Indented };
-
             while (titleDirectoryEnumerator.MoveNext())
             {
                 // We remake the manifest on conversion back to BLF.
@@ -264,13 +218,12 @@ namespace WarthogInc
                     {
                         BlfFile blfFile = new BlfFile();
                         blfFile.ReadFile(titleDirectoryEnumerator.Current);
-                        var blfChunk = blfFile.GetChunk(1);
-                        string output = JsonConvert.SerializeObject(blfChunk, jsonSettings);
+                        string output = blfFile.ToJSON();
 
                         File.WriteAllText(jsonFolder + fileRelativePath.Replace(".bin", ".json").Replace(".mvar", ".json"), output);
                         Console.WriteLine("Converted file: " + fileRelativePath);
                     }
-                    catch (Exception ex)
+                    catch (KeyNotFoundException ex)
                     {
                         Console.WriteLine("Failed to convert file: " + titleDirectoryEnumerator.Current);
                         Console.WriteLine(ex.Message);
