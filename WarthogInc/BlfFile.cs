@@ -1,4 +1,5 @@
-﻿using Sewer56.BitStream;
+﻿using Newtonsoft.Json;
+using Sewer56.BitStream;
 using Sewer56.BitStream.ByteStreams;
 using System;
 using System.Collections.Generic;
@@ -8,31 +9,44 @@ using WarthogInc.BlfChunks;
 
 namespace Sunrise.BlfTool
 {
-    public class BlfFile
+    public class BlfFile 
     {
-        protected LinkedList<IBLFChunk> chunks;
+        [JsonConverter(typeof(BlfFileConverter))]
+        protected Dictionary<string, IBLFChunk> chunks;
+
+        public string ToJSON()
+        {
+            var jsonSettings = new JsonSerializerSettings { Converters = { new ByteArrayConverter(), new HexStringConverter(), new BlfFileConverter() }, Formatting = Formatting.Indented };
+            return JsonConvert.SerializeObject(chunks, jsonSettings);
+        }
+
+        public static BlfFile FromJSON(string json)
+        {
+            BlfFile blfFile = new BlfFile();
+            var jsonSettings = new JsonSerializerSettings { Converters = { new ByteArrayConverter(), new HexStringConverter(), new BlfFileConverter() }, Formatting = Formatting.Indented };
+            blfFile.chunks = JsonConvert.DeserializeObject<Dictionary<string, IBLFChunk>>(json, jsonSettings);
+            return blfFile;
+        }
 
         public BlfFile()
         {
-            chunks = new LinkedList<IBLFChunk>();
+            chunks = new Dictionary<string, IBLFChunk>();
         }
 
         public void AddChunk(IBLFChunk chunk)
         {
-            chunks.AddLast(chunk);
+            chunks.Add(chunk.GetName(), chunk);
         }
 
-        public T GetChunk<T>() {
-            foreach (IBLFChunk chunk in chunks)
-            {
-                if (chunk is T) return (T)chunk;
-            }
-            throw new Exception("Chunk not found.");
+        public T GetChunk<T>() where T : IBLFChunk, new() {
+            IBLFChunk chunk = new T();
+            return (T)chunks[chunk.GetName()];
         }
 
-        public IBLFChunk GetChunk(int index)
+        public bool HasChunk<T>() where T : IBLFChunk, new()
         {
-            return chunks.ElementAt(index);
+            IBLFChunk chunk = new T();
+            return chunks.ContainsKey(chunk.GetName());
         }
 
         public void ReadFile(string path)
@@ -48,8 +62,10 @@ namespace Sunrise.BlfTool
                     break;
                 if (chunk is StartOfFile)
                     continue;
+                if (chunk is Author)
+                    continue;
 
-                chunks.AddLast(chunk);
+                chunks.Add(chunk.GetName(), chunk);
             }
 
         }
@@ -62,7 +78,14 @@ namespace Sunrise.BlfTool
             BLFChunkWriter blfChunkWriter = new BLFChunkWriter();
             blfChunkWriter.WriteChunk(ref blfFileOut, new StartOfFile());
 
-            foreach (IBLFChunk chunk in chunks)
+            blfChunkWriter.WriteChunk(ref blfFileOut, new Author()
+            {
+                buildName = "Sunrise",
+                buildNumber = 12070,
+                shellVersion = "12070.08.09.05.2031.halo3_ship"
+            });
+
+            foreach (IBLFChunk chunk in chunks.Values)
             {
                 blfChunkWriter.WriteChunk(ref blfFileOut, chunk);
             }
