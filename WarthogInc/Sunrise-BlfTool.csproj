@@ -11,6 +11,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="BlfChunks\PackedMapVariant.cs~RF119eadb4.TMP" />
     <None Remove="BlfChunks\PackedMapVariant.cs~RF2844fded.TMP" />
     <None Remove="ObjectTables\30.json" />
     <None Remove="ObjectTables\300.json" />
