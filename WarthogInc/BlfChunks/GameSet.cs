@@ -95,7 +95,7 @@ namespace Sunrise.BlfTool
                 hoppersStream.WriteString(entry.gameVariantFileName, 32, Encoding.UTF8);
 
                 for (int j = 0; j < 20; j++)
-                    hoppersStream.Write<byte>(entry.gameVariantHash[j], 8);
+                    hoppersStream.Write(entry.gameVariantHash[j], 8);
 
                 hoppersStream.WriteString(entry.mapVariantFileName, 32, Encoding.UTF8);
 
