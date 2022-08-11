@@ -127,7 +127,8 @@ namespace WarthogInc
                         string mapJsonPath = jsonFolder + fileDirectoryRelativePath + "\\map_variants\\" + entry.mapVariantFileName + "_012.json";
                         try
                         {
-                            var map = JsonConvert.DeserializeObject<PackedMapVariant>(File.ReadAllText(mapJsonPath));
+                            var blfMapFile = BlfFile.FromJSON(File.ReadAllText(mapJsonPath));
+                            var map = blfMapFile.GetChunk<PackedMapVariant>();
                             entry.mapID = map.mapID;
                         }
                         catch (FileNotFoundException)
