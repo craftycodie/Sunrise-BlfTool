@@ -26,12 +26,10 @@ namespace WarthogInc.BlfChunks
             return 3;
         }
 
-        byte[] unknown = new byte[0x44];
-
-        public Author()
-        {
-            unknown = new byte[0x44];
-        }
+        public string buildName = "";
+        public ulong buildNumber;
+        public string shellVersion = "";
+        public string unknown40 = "";
 
         public uint GetLength()
         {
@@ -40,18 +38,72 @@ namespace WarthogInc.BlfChunks
 
         public void WriteChunk(ref BitStream<StreamByteStream> hoppersStream)
         {
-            foreach (byte item in unknown)
+            for (int i = 0; i < 16; i++)
             {
-                hoppersStream.Write(item, 8);
+                if (i < buildName.Length)
+                    hoppersStream.Write((byte)buildName[i], 8);
+                else
+                    hoppersStream.Write(0, 8);
+            }
+
+            hoppersStream.Write(buildNumber, 64);
+
+            for (int i = 0; i < 28; i++)
+            {
+                if (i < shellVersion.Length)
+                    hoppersStream.Write((byte)shellVersion[i], 8);
+                else
+                    hoppersStream.Write(0, 8);
+            }
+
+            for (int i = 0; i < 16; i++)
+            {
+                if (i < unknown40.Length)
+                    hoppersStream.Write((byte)unknown40[i], 8);
+                else
+                    hoppersStream.Write(0, 8);
             }
         }
 
         public void ReadChunk(ref BitStream<StreamByteStream> hoppersStream)
         {
-            for (int i = 0; i < 0x44; i++)
+            var buildNameBytes = new byte[16];
+            var buildNameLen = -1;
+            var shellVersionBytes = new byte[28];
+            var shellVersionLen = -1;
+            var unknown40Bytes = new byte[16];
+            var unknown40Len = -1;
+
+            
+
+            for (int i = 0; i < buildNameBytes.Length; i++)
             {
-                unknown[i] = hoppersStream.Read<byte>(8);
+                buildNameBytes[i] = hoppersStream.Read<byte>(8);
+                if (buildNameBytes[i] == 0 && buildNameLen == -1)
+                    buildNameLen = i;
             }
+
+            buildName = Encoding.UTF8.GetString(buildNameBytes).Substring(0, buildNameLen);
+
+            buildNumber = hoppersStream.Read<ulong>(64);
+
+            for (int i = 0; i < shellVersionBytes.Length; i++)
+            {
+                shellVersionBytes[i] = hoppersStream.Read<byte>(8);
+                if (shellVersionBytes[i] == 0 && shellVersionLen == -1)
+                    shellVersionLen = i;
+            }
+
+            shellVersion = Encoding.UTF8.GetString(shellVersionBytes).Substring(0, shellVersionLen);
+
+            for (int i = 0; i < unknown40Bytes.Length; i++)
+            {
+                unknown40Bytes[i] = hoppersStream.Read<byte>(8);
+                if (unknown40Bytes[i] == 0 && unknown40Len == -1)
+                    unknown40Len = i;
+            }
+
+            unknown40 = Encoding.UTF8.GetString(unknown40Bytes).Substring(0, unknown40Len);
         }
     }
 }

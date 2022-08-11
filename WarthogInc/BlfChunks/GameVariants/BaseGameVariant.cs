@@ -2,7 +2,7 @@
 using Newtonsoft.Json.Converters;
 using Sewer56.BitStream;
 using Sewer56.BitStream.ByteStreams;
-using System;
+using Sunrise.BlfTool.Extensions;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -98,25 +98,23 @@ namespace Sunrise.BlfTool.BlfChunks.GameEngineVariants
 
             public void Write(ref BitStream<StreamByteStream> hoppersStream)
             {
-                hoppersStream.Write(uniqueId, 64);
+                hoppersStream.WriteLong(uniqueId, 64);
                 hoppersStream.WriteString(name, 32, Encoding.BigEndianUnicode);
                 hoppersStream.Write(0, 8);
                 hoppersStream.WriteString(description, 128, Encoding.UTF8);
                 hoppersStream.WriteString(author, 16);
                 hoppersStream.Write((byte)fileType, 5);
                 hoppersStream.Write(authorIsXuidOnline ? 1 : 0, 1);
-                // I don't know why this is necessary and I've given up on trying to work out.
-                hoppersStream.Write(long2doubleInt(authorXuid)[1], 32);
-                hoppersStream.Write(long2doubleInt(authorXuid)[0], 32);
-                hoppersStream.Write(sizeInBytes, 64);
-                hoppersStream.Write(date, 64);
+                hoppersStream.WriteLong(authorXuid, 64);
+                hoppersStream.WriteLong(sizeInBytes, 64);
+                hoppersStream.WriteLong(date, 64);
                 hoppersStream.Write(lengthSeconds, 32);
                 hoppersStream.Write(campaignId, 32);
                 hoppersStream.Write(mapId, 32);
                 hoppersStream.Write((byte)gameEngineType, 4);
                 hoppersStream.Write(campaignDifficulty, 3);
                 hoppersStream.Write(hopperId, 16);
-                hoppersStream.Write(gameId, 64);
+                hoppersStream.WriteLong(gameId, 64);
             }
 
             public long uniqueId;

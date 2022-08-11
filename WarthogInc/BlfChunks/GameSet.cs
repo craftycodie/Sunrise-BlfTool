@@ -41,7 +41,7 @@ namespace Sunrise.BlfTool
 
         public void ReadChunk(ref BitStream<StreamByteStream> hoppersStream)
         {
-            int gameEntryCount = hoppersStream.Read<byte>(6);
+            byte gameEntryCount = hoppersStream.Read<byte>(6);
             gameEntries = new GameEntry[gameEntryCount];
             for (int i = 0; i < gameEntryCount; i++)
             {
@@ -70,9 +70,19 @@ namespace Sunrise.BlfTool
 
         public void WriteChunk(ref BitStream<StreamByteStream> hoppersStream)
         {
-            hoppersStream.Write<byte>(gameEntryCount, 6);
+            var count = gameEntryCount;
 
-            for (int i = 0; i < gameEntryCount; i++)
+            if (gameEntries.Length > 63)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Too many game entries! I can only write the first 63 :(");
+                Console.ResetColor();
+                count = 63;
+            }
+
+            hoppersStream.Write(count, 6);
+
+            for (int i = 0; i < count; i++)
             {
                 GameEntry entry = gameEntries[i];
 
@@ -85,7 +95,7 @@ namespace Sunrise.BlfTool
                 hoppersStream.WriteString(entry.gameVariantFileName, 32, Encoding.UTF8);
 
                 for (int j = 0; j < 20; j++)
-                    hoppersStream.Write<byte>(entry.gameVariantHash[j], 8);
+                    hoppersStream.Write(entry.gameVariantHash[j], 8);
 
                 hoppersStream.WriteString(entry.mapVariantFileName, 32, Encoding.UTF8);
 
