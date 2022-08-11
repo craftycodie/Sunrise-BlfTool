@@ -213,7 +213,7 @@ namespace WarthogInc
                     Directory.CreateDirectory(jsonFolder + fileDirectoryRelativePath);
                 }
 
-                if (titleDirectoryEnumerator.Current.EndsWith(".bin") || titleDirectoryEnumerator.Current.EndsWith(".mvar"))
+                if (titleDirectoryEnumerator.Current.EndsWith(".bin") || titleDirectoryEnumerator.Current.EndsWith(".mvar") || titleDirectoryEnumerator.Current.EndsWith(".blf"))
                 {
                     try
                     {
@@ -221,7 +221,7 @@ namespace WarthogInc
                         blfFile.ReadFile(titleDirectoryEnumerator.Current);
                         string output = blfFile.ToJSON();
 
-                        File.WriteAllText(jsonFolder + fileRelativePath.Replace(".bin", ".json").Replace(".mvar", ".json"), output);
+                        File.WriteAllText(jsonFolder + fileRelativePath.Replace(".bin", ".json").Replace(".mvar", ".json").Replace(".blf", ".json"), output);
                         Console.WriteLine("Converted file: " + fileRelativePath);
                     }
                     catch (Exception ex)
