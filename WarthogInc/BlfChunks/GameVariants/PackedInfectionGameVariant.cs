@@ -10,11 +10,11 @@ using System.Threading.Tasks;
 
 namespace Sunrise.BlfTool.BlfChunks.GameEngineVariants
 {
-    public class InfectionGameVariant : BaseGameVariant
+    public class PackedInfectionGameVariant : PackedBaseGameVariant
     {
-        public InfectionGameVariant() { }
+        public PackedInfectionGameVariant() { }
 
-        public InfectionGameVariant(ref BitStream<StreamByteStream> hoppersStream)
+        public PackedInfectionGameVariant(ref BitStream<StreamByteStream> hoppersStream)
         {
             Read(ref hoppersStream);
         }
@@ -43,8 +43,6 @@ namespace Sunrise.BlfTool.BlfChunks.GameEngineVariants
 
         public void Read(ref BitStream<StreamByteStream> hoppersStream)
         {
-            throw new NotImplementedException();
-
             base.Read(ref hoppersStream);
             respawnOnHavenMode = hoppersStream.Read<byte>(1) > 0;
             safeHavens = hoppersStream.Read<byte>(2);
@@ -65,8 +63,6 @@ namespace Sunrise.BlfTool.BlfChunks.GameEngineVariants
 
         public void Write(ref BitStream<StreamByteStream> hoppersStream)
         {
-            throw new NotImplementedException();
-
             base.Write(ref hoppersStream);
             hoppersStream.Write(respawnOnHavenMode ? 1 : 0, 1);
             hoppersStream.Write(safeHavens, 2);

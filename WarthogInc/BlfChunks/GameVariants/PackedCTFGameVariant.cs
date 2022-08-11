@@ -10,11 +10,11 @@ using System.Threading.Tasks;
 
 namespace Sunrise.BlfTool.BlfChunks.GameEngineVariants
 {
-    public class PackedCTFGameVariant : PackedBaseGameVariant
+    public class CTFGameVariant : BaseGameVariant
     {
-        public PackedCTFGameVariant() { }
+        public CTFGameVariant() { }
 
-        public PackedCTFGameVariant(ref BitStream<StreamByteStream> hoppersStream)
+        public CTFGameVariant(ref BitStream<StreamByteStream> hoppersStream)
         {
             Read(ref hoppersStream);
         }
@@ -35,8 +35,6 @@ namespace Sunrise.BlfTool.BlfChunks.GameEngineVariants
 
         public void Read(ref BitStream<StreamByteStream> hoppersStream)
         {
-            throw new NotImplementedException();
-
             base.Read(ref hoppersStream);
             flagAtHomeToScore = hoppersStream.Read<byte>(1) > 0;
             homeFlagWaypoint = (HomeFlagWaypoint)hoppersStream.Read<byte>(2);
@@ -51,8 +49,6 @@ namespace Sunrise.BlfTool.BlfChunks.GameEngineVariants
 
         public void Write(ref BitStream<StreamByteStream> hoppersStream)
         {
-            throw new NotImplementedException();
-
             base.Write(ref hoppersStream);
             hoppersStream.Write(flagAtHomeToScore ? 1 : 0, 1);
             hoppersStream.Write((byte)homeFlagWaypoint, 2);
