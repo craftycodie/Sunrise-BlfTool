@@ -16,14 +16,17 @@ namespace Sunrise.BlfTool
 
         public string ToJSON()
         {
-            var jsonSettings = new JsonSerializerSettings { Converters = { new ByteArrayConverter(), new HexStringConverter(), new BlfFileConverter() }, Formatting = Formatting.Indented };
+            if (chunks.Count < 1)
+                throw new Exception("There are no chunks to convert.");
+
+            var jsonSettings = new JsonSerializerSettings { Converters = { new ByteArrayConverter(), new HexStringConverter(), new BlfFileConverter(), new XUIDConverter() }, Formatting = Formatting.Indented };
             return JsonConvert.SerializeObject(chunks, jsonSettings);
         }
 
         public static BlfFile FromJSON(string json)
         {
             BlfFile blfFile = new BlfFile();
-            var jsonSettings = new JsonSerializerSettings { Converters = { new ByteArrayConverter(), new HexStringConverter(), new BlfFileConverter() }, Formatting = Formatting.Indented };
+            var jsonSettings = new JsonSerializerSettings { Converters = { new ByteArrayConverter(), new HexStringConverter(), new BlfFileConverter(), new XUIDConverter() }, Formatting = Formatting.Indented };
             blfFile.chunks = JsonConvert.DeserializeObject<Dictionary<string, IBLFChunk>>(json, jsonSettings);
             return blfFile;
         }
@@ -51,13 +54,16 @@ namespace Sunrise.BlfTool
 
         public void ReadFile(string path)
         {
-            var blfFileIn = new BitStream<StreamByteStream>(new StreamByteStream(new FileStream(path, FileMode.Open)));
+            var fs = new FileStream(path, FileMode.Open);
+            var blfFileIn = new BitStream<StreamByteStream>(new StreamByteStream(fs));
 
             BLFChunkReader chunkReader = new BLFChunkReader();
 
-            while (true) {
+            while (fs.Position < fs.Length) {
                 IBLFChunk chunk = chunkReader.ReadChunk(ref blfFileIn);
 
+                if (chunk == null)
+                    continue;
                 if (chunk is EndOfFile)
                     break;
                 if (chunk is StartOfFile)

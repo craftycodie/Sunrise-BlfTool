@@ -17,10 +17,9 @@ public class BlfFileConverter : JsonConverter
                     string keyValue = (string)reader.Value!;
 
                     IBLFChunk itemValue;
-                    BlfChunkNameMap chunkNameMap = new BlfChunkNameMap();
                     reader.Read();
 
-                    itemValue = (IBLFChunk)new JsonSerializer().Deserialize(reader, chunkNameMap.GetChunk(keyValue).GetType());
+                    itemValue = (IBLFChunk)new JsonSerializer().Deserialize(reader, BlfChunkNameMap.singleton.GetChunk(keyValue).GetType());
 
                     dictionary[keyValue] = itemValue;
                     break;
