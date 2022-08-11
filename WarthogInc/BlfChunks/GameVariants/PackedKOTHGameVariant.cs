@@ -10,11 +10,11 @@ using System.Threading.Tasks;
 
 namespace Sunrise.BlfTool.BlfChunks.GameEngineVariants
 {
-    public class PackedKOTHGameVariant : PackedBaseGameVariant
+    public class KOTHGameVariant : BaseGameVariant
     {
-        public PackedKOTHGameVariant() { }
+        public KOTHGameVariant() { }
 
-        public PackedKOTHGameVariant(ref BitStream<StreamByteStream> hoppersStream)
+        public KOTHGameVariant(ref BitStream<StreamByteStream> hoppersStream)
         {
             Read(ref hoppersStream);
         }
@@ -35,8 +35,6 @@ namespace Sunrise.BlfTool.BlfChunks.GameEngineVariants
 
         public void Read(ref BitStream<StreamByteStream> hoppersStream)
         {
-            throw new NotImplementedException();
-
             base.Read(ref hoppersStream);
             opaqueHill = hoppersStream.Read<byte>(1) > 0;
             scoreToWin = hoppersStream.Read<byte>(10);
@@ -51,8 +49,6 @@ namespace Sunrise.BlfTool.BlfChunks.GameEngineVariants
 
         public void Write(ref BitStream<StreamByteStream> hoppersStream)
         {
-            throw new NotImplementedException();
-
             base.Write(ref hoppersStream);
             hoppersStream.Write(opaqueHill ? 1 : 0, 1);
             hoppersStream.Write(scoreToWin, 10);

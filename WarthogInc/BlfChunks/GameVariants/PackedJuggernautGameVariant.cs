@@ -10,11 +10,11 @@ using System.Threading.Tasks;
 
 namespace Sunrise.BlfTool.BlfChunks.GameEngineVariants
 {
-    public class JuggernautGameVariant : BaseGameVariant
+    public class PackedJuggernautGameVariant : PackedBaseGameVariant
     {
-        public JuggernautGameVariant() { }
+        public PackedJuggernautGameVariant() { }
 
-        public JuggernautGameVariant(ref BitStream<StreamByteStream> hoppersStream)
+        public PackedJuggernautGameVariant(ref BitStream<StreamByteStream> hoppersStream)
         {
             Read(ref hoppersStream);
         }
@@ -44,8 +44,6 @@ namespace Sunrise.BlfTool.BlfChunks.GameEngineVariants
 
         public void Read(ref BitStream<StreamByteStream> hoppersStream)
         {
-            throw new NotImplementedException();
-
             base.Read(ref hoppersStream);
             alliedAgainstJuggernaut = hoppersStream.Read<byte>(1) > 0;
             respawnOnLoneJuggernaut = hoppersStream.Read<byte>(1) > 0;
@@ -67,8 +65,6 @@ namespace Sunrise.BlfTool.BlfChunks.GameEngineVariants
 
         public void Write(ref BitStream<StreamByteStream> hoppersStream)
         {
-            throw new NotImplementedException();
-
             base.Write(ref hoppersStream);
             hoppersStream.Write(alliedAgainstJuggernaut ? 1 : 0, 1);
             hoppersStream.Write(respawnOnLoneJuggernaut ? 1 : 0, 1);

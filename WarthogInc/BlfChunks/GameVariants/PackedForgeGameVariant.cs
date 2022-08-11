@@ -10,11 +10,11 @@ using System.Threading.Tasks;
 
 namespace Sunrise.BlfTool.BlfChunks.GameEngineVariants
 {
-    public class ForgeGameVariant : BaseGameVariant
+    public class PackedForgeGameVariant : PackedBaseGameVariant
     {
-        public ForgeGameVariant() { }
+        public PackedForgeGameVariant() { }
 
-        public ForgeGameVariant(ref BitStream<StreamByteStream> hoppersStream)
+        public PackedForgeGameVariant(ref BitStream<StreamByteStream> hoppersStream)
         {
             Read(ref hoppersStream);
         }
@@ -26,8 +26,6 @@ namespace Sunrise.BlfTool.BlfChunks.GameEngineVariants
 
         public void Read(ref BitStream<StreamByteStream> hoppersStream)
         {
-            throw new NotImplementedException();
-
             base.Read(ref hoppersStream);
             openChannelVoice = hoppersStream.Read<byte>(1) > 0;
             editMode = hoppersStream.Read<byte>(2);
@@ -37,8 +35,6 @@ namespace Sunrise.BlfTool.BlfChunks.GameEngineVariants
 
         public void Write(ref BitStream<StreamByteStream> hoppersStream)
         {
-            throw new NotImplementedException();
-
             base.Write(ref hoppersStream);
             hoppersStream.Write(openChannelVoice ? 1 : 0, 1);
             hoppersStream.Write(editMode, 2);

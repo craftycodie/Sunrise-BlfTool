@@ -152,7 +152,7 @@ namespace WarthogInc.BlfChunks
             gameEngineType = hoppersStream.Read<int>(32);
             campaignDifficulty = hoppersStream.Read<int>(32);
             hopperId = hoppersStream.Read<short>(16);
-            hoppersStream.Seek(2);
+            hoppersStream.SeekRelative(2);
             gameId = hoppersStream.Read<long>(64);
         }
     }
