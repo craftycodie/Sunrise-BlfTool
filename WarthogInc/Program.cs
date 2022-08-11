@@ -224,7 +224,7 @@ namespace WarthogInc
                         File.WriteAllText(jsonFolder + fileRelativePath.Replace(".bin", ".json").Replace(".mvar", ".json"), output);
                         Console.WriteLine("Converted file: " + fileRelativePath);
                     }
-                    catch (KeyNotFoundException ex)
+                    catch (Exception ex)
                     {
                         Console.WriteLine("Failed to convert file: " + titleDirectoryEnumerator.Current);
                         Console.WriteLine(ex.Message);
