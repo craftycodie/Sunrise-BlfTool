@@ -59,6 +59,10 @@ namespace Sunrise.BlfTool
 
             BLFChunkReader chunkReader = new BLFChunkReader();
 
+            // If it has an x360 save content header skip to blf
+            if (blfFileIn.Read<uint>(32) == 0x434F4E20)
+                blfFileIn.Seek(0xD000);
+
             while (fs.Position < fs.Length) {
                 IBLFChunk chunk = chunkReader.ReadChunk(ref blfFileIn);
 
