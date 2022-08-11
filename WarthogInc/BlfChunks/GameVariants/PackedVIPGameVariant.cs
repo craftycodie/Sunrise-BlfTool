@@ -3,14 +3,18 @@ using Newtonsoft.Json.Converters;
 using Sewer56.BitStream;
 using Sewer56.BitStream.ByteStreams;
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Sunrise.BlfTool.BlfChunks.GameEngineVariants
 {
-    public class VIPGameVariant : BaseGameVariant
+    public class PackedVIPGameVariant : PackedBaseGameVariant
     {
-        public VIPGameVariant() { }
+        public PackedVIPGameVariant() { }
 
-        public VIPGameVariant(ref BitStream<StreamByteStream> hoppersStream)
+        public PackedVIPGameVariant(ref BitStream<StreamByteStream> hoppersStream)
         {
             Read(ref hoppersStream);
         }
@@ -45,8 +49,6 @@ namespace Sunrise.BlfTool.BlfChunks.GameEngineVariants
 
         public void Read(ref BitStream<StreamByteStream> hoppersStream)
         {
-            throw new NotImplementedException();
-
             base.Read(ref hoppersStream);
             singleVip = hoppersStream.Read<byte>(1) > 0;
             zonesEnabled = hoppersStream.Read<byte>(1) > 0;
@@ -71,8 +73,6 @@ namespace Sunrise.BlfTool.BlfChunks.GameEngineVariants
 
         public void Write(ref BitStream<StreamByteStream> hoppersStream)
         {
-            throw new NotImplementedException();
-
             base.Write(ref hoppersStream);
             hoppersStream.Write(singleVip ? 1 : 0, 1);
             hoppersStream.Write(zonesEnabled ? 1 : 0, 1);

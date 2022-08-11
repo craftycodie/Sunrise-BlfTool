@@ -10,11 +10,11 @@ using System.Threading.Tasks;
 
 namespace Sunrise.BlfTool.BlfChunks.GameEngineVariants
 {
-    public class TerritoriesGameVariant : BaseGameVariant
+    public class PackedTerritoriesGameVariant : PackedBaseGameVariant
     {
-        public TerritoriesGameVariant() { }
+        public PackedTerritoriesGameVariant() { }
 
-        public TerritoriesGameVariant(ref BitStream<StreamByteStream> hoppersStream)
+        public PackedTerritoriesGameVariant(ref BitStream<StreamByteStream> hoppersStream)
         {
             Read(ref hoppersStream);
         }
@@ -30,8 +30,6 @@ namespace Sunrise.BlfTool.BlfChunks.GameEngineVariants
 
         public void Read(ref BitStream<StreamByteStream> hoppersStream)
         {
-            throw new NotImplementedException();
-
             base.Read(ref hoppersStream);
             oneSided = hoppersStream.Read<byte>(1) > 0;
             lockAfterFirstCapture = hoppersStream.Read<byte>(1) > 0;
@@ -44,8 +42,6 @@ namespace Sunrise.BlfTool.BlfChunks.GameEngineVariants
 
         public void Write(ref BitStream<StreamByteStream> hoppersStream)
         {
-            throw new NotImplementedException();
-
             base.Write(ref hoppersStream);
             hoppersStream.Write(oneSided ? 1 : 0, 1);
             hoppersStream.Write(lockAfterFirstCapture ? 1 : 0, 1);

@@ -10,11 +10,11 @@ using System.Threading.Tasks;
 
 namespace Sunrise.BlfTool.BlfChunks.GameEngineVariants
 {
-    public class PackedOddballGameVariant : PackedBaseGameVariant
+    public class OddballGameVariant : BaseGameVariant
     {
-        public PackedOddballGameVariant() { }
+        public OddballGameVariant() { }
 
-        public PackedOddballGameVariant(ref BitStream<StreamByteStream> hoppersStream)
+        public OddballGameVariant(ref BitStream<StreamByteStream> hoppersStream)
         {
             Read(ref hoppersStream);
         }
@@ -37,8 +37,6 @@ namespace Sunrise.BlfTool.BlfChunks.GameEngineVariants
 
         public void Read(ref BitStream<StreamByteStream> hoppersStream)
         {
-            throw new NotImplementedException();
-
             base.Read(ref hoppersStream);
             autoBallPickup = hoppersStream.Read<byte>(1) > 0;
             ballEffectEnabled = hoppersStream.Read<byte>(1) > 0;
@@ -55,8 +53,6 @@ namespace Sunrise.BlfTool.BlfChunks.GameEngineVariants
 
         public void Write(ref BitStream<StreamByteStream> hoppersStream)
         {
-            throw new NotImplementedException();
-
             base.Write(ref hoppersStream);
             hoppersStream.Write(autoBallPickup ? 1 : 0, 1);
             hoppersStream.Write(ballEffectEnabled ? 1 : 0, 1);

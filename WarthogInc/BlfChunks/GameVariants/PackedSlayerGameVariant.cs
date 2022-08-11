@@ -10,11 +10,11 @@ using System.Threading.Tasks;
 
 namespace Sunrise.BlfTool.BlfChunks.GameEngineVariants
 {
-    public class SlayerGameVariant : BaseGameVariant
+    public class PackedSlayerGameVariant : PackedBaseGameVariant
     {
-        public SlayerGameVariant() { }
+        public PackedSlayerGameVariant() { }
 
-        public SlayerGameVariant(ref BitStream<StreamByteStream> hoppersStream)
+        public PackedSlayerGameVariant(ref BitStream<StreamByteStream> hoppersStream)
         {
             Read(ref hoppersStream);
         }
@@ -50,8 +50,6 @@ namespace Sunrise.BlfTool.BlfChunks.GameEngineVariants
 
         public void Read(ref BitStream<StreamByteStream> hoppersStream)
         {
-            throw new NotImplementedException();
-
             base.Read(ref hoppersStream);
             scoreToWin = hoppersStream.Read<short>(10);
             killPoints = (Points)hoppersStream.Read<byte>(5);
@@ -72,8 +70,6 @@ namespace Sunrise.BlfTool.BlfChunks.GameEngineVariants
 
         public void Write(ref BitStream<StreamByteStream> hoppersStream)
         {
-            throw new NotImplementedException();
-
             base.Write(ref hoppersStream);
             hoppersStream.Write(scoreToWin, 10);
             hoppersStream.Write((byte)killPoints, 5);

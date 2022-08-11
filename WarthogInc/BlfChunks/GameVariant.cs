@@ -8,7 +8,7 @@ using WarthogInc.BlfChunks;
 
 namespace Sunrise.BlfTool
 {
-    public class PackedGameVariant : IBLFChunk
+    public class GameVariant : IBLFChunk
     {
         public enum VariantGameEngine : byte {
             CTF = 1,
@@ -52,25 +52,25 @@ namespace Sunrise.BlfTool
         }
 
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-        public PackedSlayerGameVariant slayer;
+        public SlayerGameVariant slayer;
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-        public PackedCTFGameVariant captureTheFlag;
+        public CTFGameVariant captureTheFlag;
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-        public PackedOddballGameVariant oddball;
+        public OddballGameVariant oddball;
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-        public PackedAssaultGameVariant assault;
+        public AssaultGameVariant assault;
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-        public PackedInfectionGameVariant infection;
+        public InfectionGameVariant infection;
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-        public PackedKOTHGameVariant kingOfTheHill;
+        public KOTHGameVariant kingOfTheHill;
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-        public PackedTerritoriesGameVariant territories;
+        public TerritoriesGameVariant territories;
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-        public PackedVIPGameVariant vip;
+        public VIPGameVariant vip;
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-        public PackedJuggernautGameVariant juggernaut;
+        public JuggernautGameVariant juggernaut;
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-        public PackedForgeGameVariant forge;
+        public ForgeGameVariant forge;
 
         public ushort GetAuthentication()
         {
@@ -86,48 +86,50 @@ namespace Sunrise.BlfTool
 
         public string GetName()
         {
-            return "gvar";
+            return "mpvr";
         }
 
         public ushort GetVersion()
         {
-            return 10;
+            return 3;
         }
 
         public void ReadChunk(ref BitStream<StreamByteStream> hoppersStream)
         {
+            throw new NotImplementedException();
+
             VariantGameEngine variantGameEngineIndex = (VariantGameEngine)hoppersStream.Read<byte>(4);
             switch (variantGameEngineIndex)
             {
                 case VariantGameEngine.SLAYER:
-                    slayer = new PackedSlayerGameVariant(ref hoppersStream);
+                    slayer = new SlayerGameVariant(ref hoppersStream);
                     break;
                 case VariantGameEngine.CTF:
-                    captureTheFlag = new PackedCTFGameVariant(ref hoppersStream);
+                    captureTheFlag = new CTFGameVariant(ref hoppersStream);
                     break;
                 case VariantGameEngine.ODDBALL:
-                    oddball = new PackedOddballGameVariant(ref hoppersStream);
+                    oddball = new OddballGameVariant(ref hoppersStream);
                     break;
                 case VariantGameEngine.ASSAULT:
-                    assault = new PackedAssaultGameVariant(ref hoppersStream);
+                    assault = new AssaultGameVariant(ref hoppersStream);
                     break;
                 case VariantGameEngine.INFECTION:
-                    infection = new PackedInfectionGameVariant(ref hoppersStream);
+                    infection = new InfectionGameVariant(ref hoppersStream);
                     break;
                 case VariantGameEngine.KOTH:
-                    kingOfTheHill = new PackedKOTHGameVariant(ref hoppersStream);
+                    kingOfTheHill = new KOTHGameVariant(ref hoppersStream);
                     break;
                 case VariantGameEngine.TERRITORIES:
-                    territories = new PackedTerritoriesGameVariant(ref hoppersStream);
+                    territories = new TerritoriesGameVariant(ref hoppersStream);
                     break;
                 case VariantGameEngine.VIP:
-                    vip = new PackedVIPGameVariant(ref hoppersStream);
+                    vip = new VIPGameVariant(ref hoppersStream);
                     break;
                 case VariantGameEngine.JUGGERNAUT:
-                    juggernaut = new PackedJuggernautGameVariant(ref hoppersStream);
+                    juggernaut = new JuggernautGameVariant(ref hoppersStream);
                     break;
                 case VariantGameEngine.FORGE:
-                    forge = new PackedForgeGameVariant(ref hoppersStream);
+                    forge = new ForgeGameVariant(ref hoppersStream);
                     break;
                 default:
                     throw new Exception("Unsupported game engine " + variantGameEngineIndex.ToString());
@@ -137,6 +139,8 @@ namespace Sunrise.BlfTool
 
         public void WriteChunk(ref BitStream<StreamByteStream> hoppersStream)
         {
+            throw new NotImplementedException();
+
             hoppersStream.Write((byte)variantGameEngineIndex, 4);
             switch (variantGameEngineIndex)
             {

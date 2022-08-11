@@ -12,15 +12,28 @@ namespace WarthogInc.BlfChunks
 {
     public class BLFChunkReader
     {
-        BlfChunkNameMap chunkNameMap = new BlfChunkNameMap();
-
         public IBLFChunk ReadChunk(ref BitStream<StreamByteStream> outputStream)
         {
             BLFChunkHeader header = new BLFChunkHeader();
             header.ReadHeader(ref outputStream);
-            IBLFChunk chunk = chunkNameMap.GetChunk(header.blfChunkName);
-            chunk.ReadChunk(ref outputStream);
-            return chunk;
+
+            if (header.chunkLength <= header.GetLength())
+                throw new InvalidDataException("Bad chunk length!");
+
+            try
+            {
+                IBLFChunk chunk = BlfChunkNameMap.singleton.GetChunk(header.blfChunkName);
+                chunk.ReadChunk(ref outputStream);
+                return chunk;
+            } catch(KeyNotFoundException knf)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine($"Unrecognized chunk {header.blfChunkName}, skipping...");
+                Console.ResetColor();
+                outputStream.SeekRelative((int)(header.chunkLength - header.GetLength()));
+
+                return null;
+            }
         }
     }
 }

@@ -3,14 +3,13 @@ using Newtonsoft.Json.Converters;
 using Sewer56.BitStream;
 using Sewer56.BitStream.ByteStreams;
 using Sunrise.BlfTool.Extensions;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
 namespace Sunrise.BlfTool.BlfChunks.GameEngineVariants
 {
-    public class BaseGameVariant : IGameVariant
+    public class PackedBaseGameVariant : IGameVariant
     {
         public VariantMetadata metadata;
         public bool builtIn; 
@@ -57,8 +56,6 @@ namespace Sunrise.BlfTool.BlfChunks.GameEngineVariants
 
             public void Read(ref BitStream<StreamByteStream> hoppersStream)
             {
-                throw new NotImplementedException();
-
                 uniqueId = hoppersStream.Read<long>(64);
 
                 LinkedList<byte> nameBytes = new LinkedList<byte>();
@@ -78,44 +75,45 @@ namespace Sunrise.BlfTool.BlfChunks.GameEngineVariants
                 //name = hoppersStream.ReadString(32, Encoding.BigEndianUnicode);
                 description = hoppersStream.ReadString(128, Encoding.UTF8);
                 author = hoppersStream.ReadString(16);
-                fileType = (FileType)hoppersStream.Read<int>(32);
-                authorIsXuidOnline = hoppersStream.Read<byte>(8) > 0;
-                hoppersStream.SeekRelative(3);
+                fileType = (FileType)hoppersStream.Read<byte>(5);
+                authorIsXuidOnline = hoppersStream.Read<byte>(1) > 0;
                 authorXuid = hoppersStream.Read<ulong>(64);
                 sizeInBytes = hoppersStream.Read<long>(64);
                 date = hoppersStream.Read<long>(64);
                 lengthSeconds = hoppersStream.Read<int>(32);
                 campaignId = hoppersStream.Read<int>(32);
                 mapId = hoppersStream.Read<int>(32);
-                gameEngineType = (PackedGameVariant.VariantGameEngine)hoppersStream.Read<int>(32);
-                campaignDifficulty = hoppersStream.Read<int>(32);
+                gameEngineType = (PackedGameVariant.VariantGameEngine)hoppersStream.Read<byte>(4);
+                campaignDifficulty = hoppersStream.Read<byte>(3);
                 hopperId = hoppersStream.Read<short>(16);
-                hoppersStream.SeekRelative(2);
                 gameId = hoppersStream.Read<long>(64);
+            }
+
+            static uint[] long2doubleInt(ulong a)
+            {
+                uint a1 = (uint)(a & uint.MaxValue);
+                uint a2 = (uint)(a >> 32);
+                return new uint[] { a1, a2 };
             }
 
             public void Write(ref BitStream<StreamByteStream> hoppersStream)
             {
-                throw new NotImplementedException();
-
                 hoppersStream.WriteLong(uniqueId, 64);
                 hoppersStream.WriteString(name, 32, Encoding.BigEndianUnicode);
                 hoppersStream.Write(0, 8);
                 hoppersStream.WriteString(description, 128, Encoding.UTF8);
                 hoppersStream.WriteString(author, 16);
-                hoppersStream.Write(fileType, 32);
-                hoppersStream.Write(authorIsXuidOnline ? 1 : 0, 8);
-                hoppersStream.Write(0, 24);
+                hoppersStream.Write((byte)fileType, 5);
+                hoppersStream.Write(authorIsXuidOnline ? 1 : 0, 1);
                 hoppersStream.WriteLong(authorXuid, 64);
                 hoppersStream.WriteLong(sizeInBytes, 64);
                 hoppersStream.WriteLong(date, 64);
                 hoppersStream.Write(lengthSeconds, 32);
                 hoppersStream.Write(campaignId, 32);
                 hoppersStream.Write(mapId, 32);
-                hoppersStream.Write((int)gameEngineType, 32);
-                hoppersStream.Write(campaignDifficulty, 32);
+                hoppersStream.Write((byte)gameEngineType, 4);
+                hoppersStream.Write(campaignDifficulty, 3);
                 hoppersStream.Write(hopperId, 16);
-                hoppersStream.Write(0, 16);
                 hoppersStream.WriteLong(gameId, 64);
             }
 
@@ -135,7 +133,7 @@ namespace Sunrise.BlfTool.BlfChunks.GameEngineVariants
             public int mapId;
             [JsonConverter(typeof(StringEnumConverter))]
             public PackedGameVariant.VariantGameEngine gameEngineType;
-            public int campaignDifficulty;
+            public byte campaignDifficulty;
             public short hopperId;
             public long gameId;
 
@@ -170,8 +168,6 @@ namespace Sunrise.BlfTool.BlfChunks.GameEngineVariants
 
             public void Read(ref BitStream<StreamByteStream> hoppersStream)
             {
-                throw new NotImplementedException();
-
                 damageResistance = (DamageResistance)hoppersStream.Read<byte>(4);
                 shieldRechargeRate = (ShieldRechargeRate)hoppersStream.Read<byte>(4);
                 vampirism = (Vampirism)hoppersStream.Read<byte>(3);
@@ -197,9 +193,6 @@ namespace Sunrise.BlfTool.BlfChunks.GameEngineVariants
 
             public void Write(ref BitStream<StreamByteStream> hoppersStream)
             {
-                throw new NotImplementedException();
-
-
                 hoppersStream.Write((byte)damageResistance, 4);
                 hoppersStream.Write((byte)shieldRechargeRate, 4);
                 hoppersStream.Write((byte)vampirism, 3);
@@ -486,9 +479,6 @@ namespace Sunrise.BlfTool.BlfChunks.GameEngineVariants
 
             public void Read(ref BitStream<StreamByteStream> hoppersStream)
             {
-                throw new NotImplementedException();
-
-
                 teams = hoppersStream.Read<byte>(1) > 0;
                 roundResetPlayers = hoppersStream.Read<byte>(1) > 0;
                 roundResetMap = hoppersStream.Read<byte>(1) > 0;
@@ -499,9 +489,6 @@ namespace Sunrise.BlfTool.BlfChunks.GameEngineVariants
 
             public void Write(ref BitStream<StreamByteStream> hoppersStream)
             {
-                throw new NotImplementedException();
-
-
                 hoppersStream.Write(teams ? 1 : 0, 1);
                 hoppersStream.Write(roundResetPlayers ? 1 : 0, 1);
                 hoppersStream.Write(roundResetMap ? 1 : 0, 1);
@@ -529,9 +516,6 @@ namespace Sunrise.BlfTool.BlfChunks.GameEngineVariants
 
             public void Read(ref BitStream<StreamByteStream> hoppersStream)
             {
-                throw new NotImplementedException();
-
-
                 inheritRespawnTime = hoppersStream.Read<byte>(1) > 0;
                 respawnWithTeammate = hoppersStream.Read<byte>(1) > 0;
                 respawnAtLocation = hoppersStream.Read<byte>(1) > 0;
@@ -548,9 +532,6 @@ namespace Sunrise.BlfTool.BlfChunks.GameEngineVariants
 
             public void Write(ref BitStream<StreamByteStream> hoppersStream)
             {
-                throw new NotImplementedException();
-
-
                 hoppersStream.Write(inheritRespawnTime ? 1 : 0, 1);
                 hoppersStream.Write(respawnWithTeammate ? 1 : 0, 1);
                 hoppersStream.Write(respawnAtLocation ? 1 : 0, 1);
@@ -590,9 +571,6 @@ namespace Sunrise.BlfTool.BlfChunks.GameEngineVariants
 
             public void Read(ref BitStream<StreamByteStream> hoppersStream)
             {
-                throw new NotImplementedException();
-
-
                 observers = hoppersStream.Read<byte>(1) > 0;
                 teamChanging = hoppersStream.Read<byte>(2);
                 friendlyFire = hoppersStream.Read<byte>(1) > 0;
@@ -604,9 +582,6 @@ namespace Sunrise.BlfTool.BlfChunks.GameEngineVariants
 
             public void Write(ref BitStream<StreamByteStream> hoppersStream)
             {
-                throw new NotImplementedException();
-
-
                 hoppersStream.Write(observers ? 1 : 0, 1);
                 hoppersStream.Write(teamChanging, 2);
                 hoppersStream.Write(friendlyFire ? 1 : 0, 1);
@@ -643,9 +618,6 @@ namespace Sunrise.BlfTool.BlfChunks.GameEngineVariants
 
             public void Read(ref BitStream<StreamByteStream> hoppersStream)
             {
-                throw new NotImplementedException();
-
-
                 grenadesOnMap = hoppersStream.Read<byte>(1) > 0;
                 indestructibleVehicles = hoppersStream.Read<byte>(1) > 0;
                 baseTraits = new PlayerTraits(ref hoppersStream);
@@ -661,9 +633,6 @@ namespace Sunrise.BlfTool.BlfChunks.GameEngineVariants
 
             public void Write(ref BitStream<StreamByteStream> hoppersStream)
             {
-                throw new NotImplementedException();
-
-
                 hoppersStream.Write(grenadesOnMap ? 1 : 0, 1);
                 hoppersStream.Write(indestructibleVehicles ? 1 : 0, 1);
                 baseTraits.Write(ref hoppersStream);
@@ -725,9 +694,6 @@ namespace Sunrise.BlfTool.BlfChunks.GameEngineVariants
 
         public void Read(ref BitStream<StreamByteStream> hoppersStream)
         {
-            throw new NotImplementedException();
-
-
             metadata = new VariantMetadata(ref hoppersStream);
             builtIn = hoppersStream.Read<byte>(1) > 0;
             miscellaneousOptions = new MiscellaneousOptions(ref hoppersStream);
@@ -739,9 +705,6 @@ namespace Sunrise.BlfTool.BlfChunks.GameEngineVariants
 
         public void Write(ref BitStream<StreamByteStream> hoppersStream)
         {
-            throw new NotImplementedException();
-
-
             metadata.Write(ref hoppersStream);
             hoppersStream.Write(builtIn ? 1 : 0, 1);
             miscellaneousOptions.Write(ref hoppersStream);
