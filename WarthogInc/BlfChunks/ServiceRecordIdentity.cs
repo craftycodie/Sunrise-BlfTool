@@ -1,4 +1,6 @@
-﻿using Sewer56.BitStream;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using Sewer56.BitStream;
 using Sewer56.BitStream.ByteStreams;
 using System;
 using System.Collections.Generic;
@@ -185,7 +187,7 @@ namespace WarthogInc.BlfChunks
             hoppersStream.Write((byte)eliteBody, 8);
             //hoppersStream.WriteString(serviceTag, 10, Encoding.BigEndianUnicode);
 
-            byte[] serviceTagOut = Encoding.BigEndianUnicode.GetBytes(playerName);
+            byte[] serviceTagOut = Encoding.BigEndianUnicode.GetBytes(serviceTag);
 
             for (int i = 0; i < 10; i++)
             {
@@ -199,37 +201,54 @@ namespace WarthogInc.BlfChunks
             hoppersStream.Write(highestSkill, 32);
             hoppersStream.Write(totalEXP, 32);
             hoppersStream.Write(unknownInsignia, 32);
-            hoppersStream.Write((byte)rank, 32);
-            hoppersStream.Write((byte)grade, 32);
+            hoppersStream.Write((int)rank, 32);
+            hoppersStream.Write((int)grade, 32);
             hoppersStream.Write(unknownInsignia2, 32);
         }
 
         public string playerName; // wide, 16 chars
         public byte appearanceFlags; // includes gender i think
+        [JsonConverter(typeof(StringEnumConverter))]
         public Color primaryColor;
+        [JsonConverter(typeof(StringEnumConverter))]
         public Color secondaryColor;
+        [JsonConverter(typeof(StringEnumConverter))]
         public Color tertiaryColor;
+        [JsonConverter(typeof(StringEnumConverter))]
         public PlayerModel isElite;
         public byte foregroundEmblem;
         public byte backgroundEmblem;
         public byte emblemFlags; // Whether the secondary layer is shown or not.
+        [JsonConverter(typeof(StringEnumConverter))]
         public Color emblemPrimaryColor;
+        [JsonConverter(typeof(StringEnumConverter))]
         public Color emblemSecondaryColor;
+        [JsonConverter(typeof(StringEnumConverter))]
         public Color emblemBackgroundColor;
+        [JsonConverter(typeof(StringEnumConverter))]
         public SpartanHelmet spartanHelmet;
+        [JsonConverter(typeof(StringEnumConverter))]
         public SpartanShoulder spartanLeftShounder;
+        [JsonConverter(typeof(StringEnumConverter))]
         public SpartanShoulder spartanRightShoulder;
+        [JsonConverter(typeof(StringEnumConverter))]
         public SpartanBody spartanBody;
+        [JsonConverter(typeof(StringEnumConverter))]
         public EliteArmour eliteHelmet;
+        [JsonConverter(typeof(StringEnumConverter))]
         public EliteArmour eliteLeftShoulder;
+        [JsonConverter(typeof(StringEnumConverter))]
         public EliteArmour eliteRightShoulder;
+        [JsonConverter(typeof(StringEnumConverter))]
         public EliteArmour eliteBody;
         public string serviceTag; // wide, 5 characters long for some reason
         public int campaignProgress;
         public int highestSkill;
         public int totalEXP;
         public int unknownInsignia;
+        [JsonConverter(typeof(StringEnumConverter))]
         public Rank rank;
+        [JsonConverter(typeof(StringEnumConverter))]
         public Grade grade;
         public int unknownInsignia2;
     }
