@@ -1,17 +1,25 @@
-﻿using Sewer56.BitStream;
+﻿using Newtonsoft.Json;
+using Sewer56.BitStream;
 using Sewer56.BitStream.ByteStreams;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace WarthogInc.BlfChunks
 {
-    public class fupd : IBLFChunk
+    public class UserPlayerData : IBLFChunk
     {
-        public int unknown0;
-        public int bungieUserRole;
+        [Flags]
+        public enum BungieUserRole : int
+        {
+            None = 0,
+            SeventhColumn = 1 << 0,
+            Pro = 1 << 1,
+            Bungie = 1 << 2,
+            Recon = 1 << 3
+        }
+
+        public int hopperAccess;
+        public BungieUserRole bungieUserRole;
         public int highestSkill;
         public string hopperDirectory; // 32 characters
 
@@ -42,8 +50,8 @@ namespace WarthogInc.BlfChunks
 
         public void WriteChunk(ref BitStream<StreamByteStream> hoppersStream)
         {
-            hoppersStream.Write(unknown0, 32);
-            hoppersStream.Write(bungieUserRole, 32);
+            hoppersStream.Write(hopperAccess, 32);
+            hoppersStream.Write((int)bungieUserRole, 32);
             hoppersStream.Write(highestSkill, 32);
 
             byte[] hopperDirectoryOut = Encoding.UTF8.GetBytes(hopperDirectory);

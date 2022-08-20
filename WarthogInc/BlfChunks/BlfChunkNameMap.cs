@@ -27,7 +27,7 @@ namespace SunriseBlfTool.BlfChunks
             RegisterChunk<EndOfFile>();
             RegisterChunk<HopperConfigurationTable>();
             RegisterChunk<MatchmakingHopperDescriptions>();
-            RegisterChunk<fupd>();
+            RegisterChunk<UserBanhammer>();
             RegisterChunk<Author>();
             RegisterChunk<ServiceRecordIdentity>();
             RegisterChunk<MessageOfTheDayPopup>();
@@ -42,6 +42,10 @@ namespace SunriseBlfTool.BlfChunks
             RegisterChunk<PackedGameVariant>();
             RegisterChunk<PackedMapVariant>();
             RegisterChunk<ContentHeader>();
+            RegisterChunk<FileQueue>();
+            RegisterChunk<UserPlayerData>();
+            RegisterChunk<RecentPlayers>();
+            RegisterChunk<MachineNetworkStatistics>();
         }
 
         private void RegisterChunk<T>() where T : IBLFChunk, new()
