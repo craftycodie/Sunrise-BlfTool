@@ -103,9 +103,6 @@ namespace WarthogInc
 
                 if (fileName.EndsWith(".bin") || fileName.EndsWith(".jpg"))
                 {
-                    File.Copy(jsonFileEnumerator.Current, blfFolder + fileRelativePath, true);
-                    Console.WriteLine("Copied file: " + fileRelativePath);
-
                     continue;
                 }
 
@@ -168,7 +165,7 @@ namespace WarthogInc
             Console.WriteLine("Converted file: matchmaking_hopper_011.json");
 
             fileHashes.Add("/title/default_hoppers/matchmaking_hopper_011.bin", ComputeHash(blfFolder + "\\matchmaking_hopper_011.bin"));
-            fileHashes.Add("/title/default_hoppers/network_configuration_135.bin", Convert.FromHexString("9D5AF6BC38270765C429F4776A9639D1A0E87319"));
+            fileHashes.Add("/title/default_hoppers/network_configuration_135.bin", ComputeHash(blfFolder + "\\network_configuration_135.bin"));
 
             Manifest.FileEntry[] fileEntries = new Manifest.FileEntry[fileHashes.Count];
             int i = 0;

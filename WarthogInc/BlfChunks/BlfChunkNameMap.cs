@@ -38,14 +38,15 @@ namespace SunriseBlfTool.BlfChunks
             RegisterChunk<MatchmakingBanhammerMessages>();
             RegisterChunk<MapManifest>();
             RegisterChunk<MatchmakingHopperStatistics>();
-            RegisterChunk<NetworkConfiguration>();
+            //RegisterChunk<NetworkConfiguration>();
             RegisterChunk<PackedGameVariant>();
             RegisterChunk<PackedMapVariant>();
             RegisterChunk<ContentHeader>();
             RegisterChunk<FileQueue>();
             RegisterChunk<UserPlayerData>();
-            RegisterChunk<RecentPlayers>();
+            RegisterChunk<RecentPlayers>(); 
             RegisterChunk<MachineNetworkStatistics>();
+            RegisterChunk<MessageOfTheDay>();
         }
 
         private void RegisterChunk<T>() where T : IBLFChunk, new()

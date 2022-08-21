@@ -10,11 +10,11 @@ using System.Threading.Tasks;
 
 namespace Sunrise.BlfTool.BlfChunks.GameEngineVariants
 {
-    public class PackedOddballGameVariant : PackedBaseGameVariant
+    public class OddballGameVariant : BaseGameVariant
     {
-        public PackedOddballGameVariant() { }
+        public OddballGameVariant() { }
 
-        public PackedOddballGameVariant(ref BitStream<StreamByteStream> hoppersStream)
+        public OddballGameVariant(ref BitStream<StreamByteStream> hoppersStream)
         {
             Read(ref hoppersStream);
         }

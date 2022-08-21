@@ -38,7 +38,7 @@ namespace WarthogInc.BlfChunks
         [JsonConverter(typeof(XUIDConverter))]
         public ulong authorXuid;
         public long size;
-        public long date;
+        public DateTime date;
         public int lengthSeconds;
         public int campaignId;
         public int mapId;
@@ -89,7 +89,7 @@ namespace WarthogInc.BlfChunks
             hoppersStream.Write(0, 24);
             hoppersStream.WriteLong(authorXuid, 64);
             hoppersStream.WriteLong(size, 64);
-            hoppersStream.WriteLong(date, 64);
+            hoppersStream.WriteDate(date, 64);
             hoppersStream.Write(lengthSeconds, 32);
             hoppersStream.Write(campaignId, 32);
             hoppersStream.Write(mapId, 32);
@@ -145,7 +145,7 @@ namespace WarthogInc.BlfChunks
             hoppersStream.SeekRelative(3);
             authorXuid = hoppersStream.Read<ulong>(64);
             size = hoppersStream.Read<long>(64);
-            date = hoppersStream.Read<long>(64);
+            date = hoppersStream.ReadDate(64);
             lengthSeconds = hoppersStream.Read<int>(32);
             campaignId = hoppersStream.Read<int>(32);
             mapId = hoppersStream.Read<int>(32);

@@ -67,8 +67,8 @@ namespace Sunrise.BlfTool
 
                 hoppersStream.Write(entry.banType, 32);
                 hoppersStream.Write(entry.banMessageIndex, 32);
-                hoppersStream.WriteLong(entry.startTime, 64);
-                hoppersStream.WriteLong(entry.endTime, 64);
+                hoppersStream.WriteDate(entry.startTime, 64);
+                hoppersStream.WriteDate(entry.endTime, 64);
             }
         }
 
@@ -88,8 +88,8 @@ namespace Sunrise.BlfTool
 
             public int banType;
             public int banMessageIndex;
-            public long startTime;
-            public long endTime;
+            public DateTime startTime;
+            public DateTime endTime;
         }
     }
 }

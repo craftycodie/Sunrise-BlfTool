@@ -47,6 +47,24 @@ namespace Sunrise.BlfTool.Extensions
             bitStream.Write(long2doubleInt(value)[0], 32);
         }
 
+        public static void WriteDate(this ref BitStream<StreamByteStream> bitStream, DateTime value, int length)
+        {
+            if (length != 64)
+                throw new NotImplementedException();
+
+            bitStream.WriteLong((long)value.Subtract(new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc)).TotalSeconds, length);
+        }
+
+        public static DateTime ReadDate(this ref BitStream<StreamByteStream> bitStream, int length)
+        {
+            if (length != 64)
+                throw new NotImplementedException();
+
+            long seconds = bitStream.Read<long>(length);
+
+            return new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc).AddSeconds(seconds);
+        }
+
         public static void WriteLong(this ref BitStream<StreamByteStream> bitStream, ulong value, int length)
         {
             if (length != 64)

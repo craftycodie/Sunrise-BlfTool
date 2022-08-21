@@ -12,7 +12,7 @@ namespace WarthogInc.BlfChunks
     public class MessageOfTheDay : IBLFChunk
     {
         [JsonIgnore]
-        public uint motdLength { get { return (uint)motdText.Length; } }
+        public uint motdLength { get { return (uint)Encoding.UTF8.GetBytes(motdText).Length; } }
         public string motdText;
 
         public ushort GetAuthentication()
@@ -22,7 +22,7 @@ namespace WarthogInc.BlfChunks
 
         public uint GetLength()
         {
-            return (uint)motdText.Length + 4;
+            return motdLength + 4;
         }
 
         public string GetName()

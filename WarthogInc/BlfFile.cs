@@ -19,14 +19,14 @@ namespace Sunrise.BlfTool
             if (chunks.Count < 1)
                 throw new Exception("There are no chunks to convert.");
 
-            var jsonSettings = new JsonSerializerSettings { Converters = { new ByteArrayConverter(), new HexStringConverter(), new BlfFileConverter(), new XUIDConverter() }, Formatting = Formatting.Indented };
+            var jsonSettings = new JsonSerializerSettings { Converters = { new ByteArrayConverter(), new HexStringConverter(), new BlfFileConverter() }, Formatting = Formatting.Indented };
             return JsonConvert.SerializeObject(chunks, jsonSettings);
         }
 
         public static BlfFile FromJSON(string json)
         {
             BlfFile blfFile = new BlfFile();
-            var jsonSettings = new JsonSerializerSettings { Converters = { new ByteArrayConverter(), new HexStringConverter(), new BlfFileConverter(), new XUIDConverter() }, Formatting = Formatting.Indented };
+            var jsonSettings = new JsonSerializerSettings { Converters = { new ByteArrayConverter(), new HexStringConverter(), new BlfFileConverter() }, Formatting = Formatting.Indented };
             blfFile.chunks = JsonConvert.DeserializeObject<Dictionary<string, IBLFChunk>>(json, jsonSettings);
             return blfFile;
         }
@@ -61,7 +61,12 @@ namespace Sunrise.BlfTool
 
             // If it has an x360 save content header skip to blf
             if (blfFileIn.Read<uint>(32) == 0x434F4E20)
+            {
                 blfFileIn.Seek(0xD000);
+            } else
+            {
+                blfFileIn.Seek(0);
+            }
 
             while (fs.Position < fs.Length) {
                 IBLFChunk chunk = chunkReader.ReadChunk(ref blfFileIn);

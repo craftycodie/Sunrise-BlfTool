@@ -10,11 +10,11 @@ using System.Threading.Tasks;
 
 namespace Sunrise.BlfTool.BlfChunks.GameEngineVariants
 {
-    public class PackedKOTHGameVariant : PackedBaseGameVariant
+    public class KOTHGameVariant : BaseGameVariant
     {
-        public PackedKOTHGameVariant() { }
+        public KOTHGameVariant() { }
 
-        public PackedKOTHGameVariant(ref BitStream<StreamByteStream> hoppersStream)
+        public KOTHGameVariant(ref BitStream<StreamByteStream> hoppersStream)
         {
             Read(ref hoppersStream);
         }

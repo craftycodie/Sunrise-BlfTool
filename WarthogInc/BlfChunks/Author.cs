@@ -83,6 +83,9 @@ namespace WarthogInc.BlfChunks
                     buildNameLen = i;
             }
 
+            if (buildNameLen == -1)
+                buildNameLen = buildNameBytes.Length;
+
             buildName = Encoding.UTF8.GetString(buildNameBytes).Substring(0, buildNameLen);
 
             buildNumber = hoppersStream.Read<ulong>(64);
@@ -94,6 +97,9 @@ namespace WarthogInc.BlfChunks
                     shellVersionLen = i;
             }
 
+            if (shellVersionLen == -1)
+                shellVersionLen = shellVersionBytes.Length;
+
             shellVersion = Encoding.UTF8.GetString(shellVersionBytes).Substring(0, shellVersionLen);
 
             for (int i = 0; i < unknown40Bytes.Length; i++)
@@ -102,6 +108,9 @@ namespace WarthogInc.BlfChunks
                 if (unknown40Bytes[i] == 0 && unknown40Len == -1)
                     unknown40Len = i;
             }
+
+            if (unknown40Len == -1)
+                unknown40Len = unknown40Bytes.Length;
 
             unknown40 = Encoding.UTF8.GetString(unknown40Bytes).Substring(0, unknown40Len);
         }
