@@ -2,7 +2,7 @@
   "profiles": {
     "Sunrise-BlfTool": {
       "commandName": "Project",
-      "commandLineArgs": "blf \"D:\\Projects\\GitHub\\Sunrise-Content\\json\" \"D:\\Projects\\GitHub\\Sunrise-Content\\blf\""
+      "commandLineArgs": "json \"D:\\Projects\\GitHub\\Sunrise-Webserver\\uploads\\multi\\decode\" \"D:\\Projects\\GitHub\\Sunrise-Webserver\\uploads\\multi\\decode\""
     }
   }
 }

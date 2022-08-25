@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace WarthogInc.BlfChunks
 {
-    class ServiceRecordIdentity : IBLFChunk
+    public class ServiceRecordIdentity : IBLFChunk
     {
         public ushort GetAuthentication()
         {

@@ -47,6 +47,7 @@ namespace SunriseBlfTool.BlfChunks
             RegisterChunk<RecentPlayers>(); 
             RegisterChunk<MachineNetworkStatistics>();
             RegisterChunk<MessageOfTheDay>();
+            RegisterChunk<MultiplayerPlayers>();
         }
 
         private void RegisterChunk<T>() where T : IBLFChunk, new()

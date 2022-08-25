@@ -90,13 +90,6 @@ namespace Sunrise.BlfTool.BlfChunks.GameEngineVariants
                 gameId = hoppersStream.Read<long>(64);
             }
 
-            static uint[] long2doubleInt(ulong a)
-            {
-                uint a1 = (uint)(a & uint.MaxValue);
-                uint a2 = (uint)(a >> 32);
-                return new uint[] { a1, a2 };
-            }
-
             public void Write(ref BitStream<StreamByteStream> hoppersStream)
             {
                 hoppersStream.WriteLong(uniqueId, 64);
