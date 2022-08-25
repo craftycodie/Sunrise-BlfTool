@@ -193,6 +193,13 @@ namespace Sunrise.BlfTool
             hoppersStream.Write<byte>(categoryCount, 3);
             bool validCategoriesCount = categoryCount >= 0 && categoryCount <= 4;
 
+            if (!validCategoriesCount)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine($"Too many hopper categories to convert! ${categoryCount}/4");
+                throw new InvalidDataException("Too many hopper categories to convert!");
+            }
+
             for (int i = 0; validCategoriesCount && i < categoryCount; i++)
             {
                 HopperCategory category = categories[i];
@@ -206,6 +213,13 @@ namespace Sunrise.BlfTool
             }
 
             bool validConfigurationsCount = configurationsCount >= 0 && configurationsCount <= 32;
+
+            if (!validConfigurationsCount)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine($"Too many hopper configurations to convert! ${configurationsCount}/32");
+                throw new InvalidDataException("Too many hopper configurations to convert!");
+            }
 
             hoppersStream.Write<byte>(configurationsCount, 6);
 
