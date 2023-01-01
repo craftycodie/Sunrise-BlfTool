@@ -22,7 +22,7 @@ namespace WarthogInc.BlfChunks
 
             try
             {
-                IBLFChunk chunk = BlfChunkNameMap.singleton.GetChunk(header.blfChunkName);
+                IBLFChunk chunk = BlfChunkNameMap12070.singleton.GetChunk(header.blfChunkName);
                 chunk.ReadChunk(ref outputStream);
                 return chunk;
             } catch(KeyNotFoundException knf)

@@ -12,7 +12,7 @@ using Sunrise.BlfTool.Extensions;
 
 namespace Sunrise.BlfTool
 {
-    class HopperConfigurationTable : IBLFChunk
+    class HopperConfigurationTable11 : IBLFChunk
     {
         [JsonIgnore]
         public byte configurationsCount { get { return (byte)configurations.Length; } }

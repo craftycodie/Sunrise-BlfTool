@@ -6,6 +6,13 @@ using WarthogInc.BlfChunks;
 
 public class BlfFileConverter : JsonConverter
 {
+    private readonly AbstractBlfChunkNameMap chunkNameMap;
+
+    public BlfFileConverter(AbstractBlfChunkNameMap _chunkNameMap)
+    {
+        this.chunkNameMap = _chunkNameMap;
+    }
+
     private object PopulateDictionary(IDictionary<string, IBLFChunk> dictionary, JsonReader reader)
     {
         bool finished = false;
@@ -19,7 +26,7 @@ public class BlfFileConverter : JsonConverter
                     IBLFChunk itemValue;
                     reader.Read();
 
-                    itemValue = (IBLFChunk)new JsonSerializer().Deserialize(reader, BlfChunkNameMap.singleton.GetChunk(keyValue).GetType());
+                    itemValue = (IBLFChunk)new JsonSerializer().Deserialize(reader, chunkNameMap.GetChunk(keyValue).GetType());
 
                     dictionary[keyValue] = itemValue;
                     break;

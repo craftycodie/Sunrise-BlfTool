@@ -11,7 +11,7 @@ using WarthogInc.BlfChunks;
 
 namespace Sunrise.BlfTool
 {
-    class MatchmakingHopperDescriptions : IBLFChunk
+    class MatchmakingHopperDescriptions3 : IBLFChunk
     {
         [JsonIgnore]
         public byte descriptionCount { get { return (byte)descriptions.Length; } }
