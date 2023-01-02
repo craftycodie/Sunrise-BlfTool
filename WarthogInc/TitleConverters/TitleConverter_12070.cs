@@ -112,12 +112,12 @@ namespace Sunrise.BlfTool.TitleConverters
                     IBLFChunk blfChunk = null;
 
                     if (fileName == "game_set_006.json")
-                        blfChunk = blfFile.GetChunk<GameSet>();
+                        blfChunk = blfFile.GetChunk<GameSet6>();
 
                     if (blfChunk != null)
                     {
 
-                        foreach (GameSet.GameEntry entry in (blfChunk as GameSet).gameEntries)
+                        foreach (GameSet6.GameEntry entry in (blfChunk as GameSet6).gameEntries)
                         {
                             entry.gameVariantHash = BlfFile.ComputeHash(blfFolder + fileDirectoryRelativePath + "\\" + entry.gameVariantFileName + "_010.bin");
                             entry.mapVariantHash = BlfFile.ComputeHash(blfFolder + fileDirectoryRelativePath + "\\map_variants\\" + entry.mapVariantFileName + "_012.bin");

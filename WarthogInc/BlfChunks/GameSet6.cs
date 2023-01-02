@@ -11,7 +11,7 @@ using WarthogInc.BlfChunks;
 
 namespace Sunrise.BlfTool
 {
-    public class GameSet : IBLFChunk
+    public class GameSet6 : IBLFChunk
     {
         [JsonIgnore]
         public byte gameEntryCount { get { return (byte)gameEntries.Length; } }

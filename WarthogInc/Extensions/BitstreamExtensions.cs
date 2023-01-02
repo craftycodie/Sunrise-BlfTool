@@ -1,11 +1,135 @@
 ﻿using Sewer56.BitStream;
 using Sewer56.BitStream.ByteStreams;
 using System;
+using System.Text;
 
 namespace Sunrise.BlfTool.Extensions
 {
     static class BitstreamExtensions
     {
+        public static string Reverse(this string s)
+        {
+            char[] charArray = s.ToCharArray();
+            Array.Reverse(charArray);
+            return new string(charArray);
+        }
+
+        private static sbyte SwapBits(sbyte value, int numBits)
+        {
+            int bitcount = 8;
+            string binaryString = Convert.ToString(value, 2).PadLeft(bitcount, '0');
+            string swapSect = binaryString.Substring(binaryString.Length - numBits);
+            string swappedSect = swapSect.Reverse();
+            string output = swappedSect.PadLeft(bitcount, '0');
+            return Convert.ToSByte(output, 2);
+        }
+
+        private static byte SwapBits(byte value, int numBits)
+        {
+            int bitcount = 8;
+            string binaryString = Convert.ToString(value, 2).PadLeft(bitcount, '0');
+            string swapSect = binaryString.Substring(binaryString.Length - numBits);
+            string swappedSect = swapSect.Reverse();
+            string output = swappedSect.PadLeft(bitcount, '0');
+            return Convert.ToByte(output, 2);
+        }
+
+        private static short SwapBits(short value, int numBits)
+        {
+            int bitcount = 16;
+            string binaryString = Convert.ToString(value, 2).PadLeft(bitcount, '0');
+            string swapSect = binaryString.Substring(binaryString.Length - numBits);
+            string swappedSect = swapSect.Reverse();
+            string output = swappedSect.PadLeft(bitcount, '0');
+            return Convert.ToInt16(output, 2);
+        }
+
+        private static ushort SwapBits(ushort value, int numBits)
+        {
+            int bitcount = 16;
+            string binaryString = Convert.ToString(value, 2).PadLeft(bitcount, '0');
+            string swapSect = binaryString.Substring(binaryString.Length - numBits);
+            string swappedSect = swapSect.Reverse();
+            string output = swappedSect.PadLeft(bitcount, '0');
+            return Convert.ToUInt16(output, 2);
+        }
+
+        private static int SwapBits(int value, int numBits)
+        {
+            int bitcount = 32;
+            string binaryString = Convert.ToString(value, 2).PadLeft(bitcount, '0');
+            string swapSect = binaryString.Substring(binaryString.Length - numBits);
+            string swappedSect = swapSect.Reverse();
+            string output = swappedSect.PadLeft(bitcount, '0');
+            return Convert.ToInt32(output, 2);
+        }
+
+        private static uint SwapBits(uint value, int numBits)
+        {
+            int bitcount = 32;
+            string binaryString = Convert.ToString(value, 2).PadLeft(bitcount, '0');
+            string swapSect = binaryString.Substring(binaryString.Length - numBits);
+            string swappedSect = swapSect.Reverse();
+            string output = swappedSect.PadLeft(bitcount, '0');
+            return Convert.ToUInt32(output, 2);
+        }
+
+        private static long SwapBits(long value, int numBits)
+        {
+            int bitcount = 64;
+            string binaryString = Convert.ToString(value, 2).PadLeft(bitcount, '0');
+            string swapSect = binaryString.Substring(binaryString.Length - numBits);
+            string swappedSect = swapSect.Reverse();
+            string output = swappedSect.PadLeft(bitcount, '0');
+            return Convert.ToInt64(output, 2);
+        }
+
+        //private static ulong SwapBits(ulong value, int numBits)
+        //{
+        //    int bitcount = 64;
+        //    string binaryString = Convert.ToString(value, 2).PadLeft(bitcount, '0');
+        //    string swapSect = binaryString.Substring(binaryString.Length - numBits);
+        //    string swappedSect = swapSect.Reverse();
+        //    string output = swappedSect.PadLeft(bitcount, '0');
+        //    return Convert.ToUInt64(output, 2);
+        //}
+
+        public static void WriteBitswappedString(ref this BitStream<StreamByteStream> hoppersStream, string text, int maxLengthBytes, Encoding encoding)
+        {
+            if (encoding != Encoding.UTF8)
+                throw new NotImplementedException("Bitswapped encoding not implemented");
+
+            char[] characters = text.ToCharArray();
+
+            for (int characterIndex = 0; characterIndex < characters.Length; characterIndex++)
+                hoppersStream.Write(SwapBits((byte)characters[characterIndex], 8));
+
+            if (text.Length < maxLengthBytes)
+                hoppersStream.Write(0, 8);
+
+            //string swappedString = new(swappedCharacters);
+
+            //hoppersStream.WriteString(swappedString, maxLengthBytes, encoding);
+        }
+
+        public static void WriteBitswapped<T>(ref this BitStream<StreamByteStream> hoppersStream, T value, int numBits)
+        {
+            if (typeof(T) == typeof(byte)) hoppersStream.Write(SwapBits((byte)Convert.ChangeType(value, typeof(byte)), numBits), numBits);
+            else if (typeof(T) == typeof(sbyte)) hoppersStream.Write<sbyte>(SwapBits((sbyte)Convert.ChangeType(value, typeof(sbyte)), numBits), numBits);
+
+            else if (typeof(T) == typeof(short)) hoppersStream.Write<short>(SwapBits((short)Convert.ChangeType(value, typeof(short)), numBits), numBits);
+            else if (typeof(T) == typeof(ushort)) hoppersStream.Write<ushort>(SwapBits((ushort)Convert.ChangeType(value, typeof(ushort)), numBits), numBits);
+
+            else if (typeof(T) == typeof(int)) hoppersStream.Write<int>(SwapBits((int)Convert.ChangeType(value, typeof(int)), numBits), numBits);
+            else if (typeof(T) == typeof(uint)) hoppersStream.Write<uint>(SwapBits((uint)Convert.ChangeType(value, typeof(uint)), numBits), numBits);
+
+            else if (typeof(T) == typeof(long)) hoppersStream.Write<long>(SwapBits((long)Convert.ChangeType(value, typeof(long)), numBits), numBits);
+            //else if (typeof(T) == typeof(ulong)) hoppersStream.Write<ulong>(SwapBits((ulong)Convert.ChangeType(value, typeof(ulong)), numBits));
+
+            // Debug-only because exceptions prevent inlining.
+            else throw new InvalidCastException();
+        }
+
         public static void WriteArray<T>(this BitStream<StreamByteStream> bitStream, T[] array, int bitLength)
         {
             foreach(T item in array)

@@ -12,7 +12,7 @@ namespace WarthogInc.BlfChunks
 {
     public class BLFChunkReader
     {
-        public IBLFChunk ReadChunk(ref BitStream<StreamByteStream> outputStream)
+        public IBLFChunk ReadChunk(ref BitStream<StreamByteStream> outputStream, AbstractBlfChunkNameMap chunkNameMap)
         {
             BLFChunkHeader header = new BLFChunkHeader();
             header.ReadHeader(ref outputStream);
@@ -22,7 +22,7 @@ namespace WarthogInc.BlfChunks
 
             try
             {
-                IBLFChunk chunk = BlfChunkNameMap12070.singleton.GetChunk(header.blfChunkName);
+                IBLFChunk chunk = chunkNameMap.GetChunk(header.blfChunkName);
                 chunk.ReadChunk(ref outputStream);
                 return chunk;
             } catch(KeyNotFoundException knf)

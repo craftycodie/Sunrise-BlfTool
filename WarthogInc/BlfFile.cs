@@ -54,7 +54,7 @@ namespace Sunrise.BlfTool
             return chunks.ContainsKey(chunk.GetName());
         }
 
-        public void ReadFile(string path)
+        public void ReadFile(string path, AbstractBlfChunkNameMap chunkNameMap)
         {
             var fs = new FileStream(path, FileMode.Open);
             var blfFileIn = new BitStream<StreamByteStream>(new StreamByteStream(fs));
@@ -71,7 +71,7 @@ namespace Sunrise.BlfTool
             }
 
             while (fs.Position < fs.Length) {
-                IBLFChunk chunk = chunkReader.ReadChunk(ref blfFileIn);
+                IBLFChunk chunk = chunkReader.ReadChunk(ref blfFileIn, chunkNameMap);
 
                 if (chunk == null)
                     continue;
@@ -94,13 +94,6 @@ namespace Sunrise.BlfTool
 
             BLFChunkWriter blfChunkWriter = new BLFChunkWriter();
             blfChunkWriter.WriteChunk(ref blfFileOut, new StartOfFile());
-
-            blfChunkWriter.WriteChunk(ref blfFileOut, new Author()
-            {
-                buildName = "Sunrise",
-                buildNumber = 12070,
-                shellVersion = "12070.08.09.05.2031.halo3_ship"
-            });
 
             foreach (IBLFChunk chunk in chunks.Values)
             {

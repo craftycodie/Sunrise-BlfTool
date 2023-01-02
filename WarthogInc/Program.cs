@@ -16,10 +16,11 @@ namespace WarthogInc
     {
         static void Main(string[] args)
         {
-            if (args.Length == 4) {
+            if (args.Length == 4)
+            {
                 if (args[0].Equals("json"))
                 {
-                    ConvertBlfToJson(args[1], args[2]);
+                    ConvertBlfToJson(args[1], args[2], args[3]);
                 }
                 if (args[0].Equals("blf"))
                 {
@@ -44,55 +45,16 @@ namespace WarthogInc
             titleConverter.ConvertJsonToBlf(jsonFolder, blfFolder);
         }
 
-        public static void ConvertBlfToJson(string titleStorageFolder, string jsonFolder)
+        public static void ConvertBlfToJson(string titleStorageFolder, string jsonFolder, string version)
         {
-            Console.WriteLine("Converting BLF files to JSON...");
+            var titleConverter = TitleConverterVersionMap.singleton.GetConverter(version);
 
-            var titleDirectoryEnumerator = Directory.EnumerateFiles(titleStorageFolder, "*.*", SearchOption.AllDirectories).GetEnumerator();
-
-            while (titleDirectoryEnumerator.MoveNext())
+            if (titleConverter == null)
             {
-                // We remake the manifest on conversion back to BLF.
-                if (titleDirectoryEnumerator.Current.EndsWith("manifest_001.bin"))
-                    continue;
-
-                string fileRelativePath = titleDirectoryEnumerator.Current.Replace(titleStorageFolder, "");
-                if (fileRelativePath.Contains("\\"))
-                {
-                    string fileDirectoryRelativePath = fileRelativePath.Substring(0, fileRelativePath.LastIndexOf("\\"));
-                    Directory.CreateDirectory(jsonFolder + fileDirectoryRelativePath);
-                }
-
-                if (titleDirectoryEnumerator.Current.EndsWith(".bin") 
-                    || titleDirectoryEnumerator.Current.EndsWith(".mvar") 
-                    || titleDirectoryEnumerator.Current.EndsWith(".blf")
-                    || !titleDirectoryEnumerator.Current.Contains('.')
-                ) {
-                    Console.WriteLine("Converting file: " + fileRelativePath);
-
-                    try
-                    {
-                        BlfFile blfFile = new BlfFile();
-                        blfFile.ReadFile(titleDirectoryEnumerator.Current);
-                        string output = blfFile.ToJSON();
-
-                        File.WriteAllText(jsonFolder + fileRelativePath.Replace(".bin", "").Replace(".mvar", "").Replace(".blf", "") + ".json", output);
-                        //Console.WriteLine("Converted file: " + fileRelativePath);
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine("Failed to convert file: " + titleDirectoryEnumerator.Current);
-                        Console.WriteLine(ex.Message);
-                        //File.Copy(titleDirectoryEnumerator.Current, jsonFolder + fileRelativePath, true);
-                    }
-                }
-                else if (titleDirectoryEnumerator.Current.EndsWith(".jpg"))
-                {
-                    if (titleDirectoryEnumerator.Current.Equals(jsonFolder + fileRelativePath))
-                        continue;
-                    File.Copy(titleDirectoryEnumerator.Current, jsonFolder + fileRelativePath, true);
-                }
+                throw new NotImplementedException("No converter for version " + version);
             }
+
+            titleConverter.ConvertBlfToJson(titleStorageFolder, jsonFolder);
         }
     }
 }
