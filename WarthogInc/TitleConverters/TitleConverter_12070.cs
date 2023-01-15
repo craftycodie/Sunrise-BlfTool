@@ -14,7 +14,54 @@ namespace Sunrise.BlfTool.TitleConverters
         private static readonly AbstractBlfChunkNameMap chunkNameMap = new BlfChunkNameMap12070();
         public void ConvertBlfToJson(string blfFolder, string jsonFolder)
         {
-            throw new NotImplementedException();
+            Console.WriteLine("Converting BLF files to JSON...");
+
+            var titleDirectoryEnumerator = Directory.EnumerateFiles(blfFolder, "*.*", SearchOption.AllDirectories).GetEnumerator();
+
+            while (titleDirectoryEnumerator.MoveNext())
+            {
+                // We remake the manifest on conversion back to BLF.
+                if (titleDirectoryEnumerator.Current.EndsWith("manifest_001.bin"))
+                    continue;
+
+                string fileRelativePath = titleDirectoryEnumerator.Current.Replace(blfFolder, "");
+                if (fileRelativePath.Contains("\\"))
+                {
+                    string fileDirectoryRelativePath = fileRelativePath.Substring(0, fileRelativePath.LastIndexOf("\\"));
+                    Directory.CreateDirectory(jsonFolder + fileDirectoryRelativePath);
+                }
+
+                if (titleDirectoryEnumerator.Current.EndsWith(".bin")
+                    || titleDirectoryEnumerator.Current.EndsWith(".mvar")
+                    || titleDirectoryEnumerator.Current.EndsWith(".blf")
+                    || !titleDirectoryEnumerator.Current.Contains('.')
+                )
+                {
+                    Console.WriteLine("Converting file: " + fileRelativePath);
+
+                    try
+                    {
+                        BlfFile blfFile = new BlfFile();
+                        blfFile.ReadFile(titleDirectoryEnumerator.Current, chunkNameMap);
+                        string output = blfFile.ToJSON();
+
+                        File.WriteAllText(jsonFolder + fileRelativePath.Replace(".bin", "").Replace(".mvar", "").Replace(".blf", "") + ".json", output);
+                        Console.WriteLine("Converted file: " + fileRelativePath);
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("Failed to convert file: " + titleDirectoryEnumerator.Current);
+                        Console.WriteLine(ex.Message);
+                        //File.Copy(titleDirectoryEnumerator.Current, jsonFolder + fileRelativePath, true);
+                    }
+                }
+                else if (titleDirectoryEnumerator.Current.EndsWith(".jpg"))
+                {
+                    if (titleDirectoryEnumerator.Current.Equals(jsonFolder + fileRelativePath))
+                        continue;
+                    File.Copy(titleDirectoryEnumerator.Current, jsonFolder + fileRelativePath, true);
+                }
+            }
         }
 
         public string GetVersion()
