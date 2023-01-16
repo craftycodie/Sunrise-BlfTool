@@ -143,6 +143,11 @@ namespace Sunrise.BlfTool.Extensions
             return BitConverter.ToSingle(BitConverter.GetBytes(bitStream.Read<int>(length)), 0);
         }
 
+        public static void WriteBitswappedFloat(this ref BitStream<StreamByteStream> bitStream, float value, int length)
+        {
+            bitStream.WriteBitswapped(BitConverter.ToInt32(BitConverter.GetBytes(value)), length);
+        }
+
         public static void WriteFloat(this ref BitStream<StreamByteStream> bitStream, float value, int length)
         {
             bitStream.Write(BitConverter.ToInt32(BitConverter.GetBytes(value)), length);
