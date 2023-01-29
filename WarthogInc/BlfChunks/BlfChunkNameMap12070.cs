@@ -40,7 +40,7 @@ namespace SunriseBlfTool.BlfChunks
             RegisterChunk<RecentPlayers>();
             RegisterChunk<MachineNetworkStatistics>();
             RegisterChunk<MessageOfTheDay>();
-            //RegisterChunk<MultiplayerPlayers>();
+            RegisterChunk<MultiplayerPlayers>();
             RegisterChunk<MatchmakingOptions>();
         }
 
