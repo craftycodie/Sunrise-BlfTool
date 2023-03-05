@@ -14,7 +14,7 @@ namespace Sunrise.BlfTool
 {
     public class PackedMapVariant : IBLFChunk
     {
-        public PackedBaseGameVariant.VariantMetadata metadata;
+        public PackedBaseGameVariant10.VariantMetadata metadata;
         public byte mapVariantVersion;
         [JsonConverter(typeof(ObjectIndexConverter))]
         [JsonIgnore]
@@ -86,7 +86,7 @@ namespace Sunrise.BlfTool
 
         public void ReadChunk(ref BitStream<StreamByteStream> hoppersStream)
         {
-            metadata = new PackedBaseGameVariant.VariantMetadata(ref hoppersStream);
+            metadata = new PackedBaseGameVariant10.VariantMetadata(ref hoppersStream);
             mapVariantVersion = hoppersStream.Read<byte>(8);
             /*mapVariantChecksum =*/ hoppersStream.Read<uint>(32);
             numberOfScenarioObjects = hoppersStream.Read<short>(10);

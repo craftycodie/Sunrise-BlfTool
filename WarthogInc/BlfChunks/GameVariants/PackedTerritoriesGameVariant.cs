@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Sunrise.BlfTool.BlfChunks.GameEngineVariants
 {
-    public class PackedTerritoriesGameVariant : PackedBaseGameVariant
+    public class PackedTerritoriesGameVariant : PackedBaseGameVariant10
     {
         public PackedTerritoriesGameVariant() { }
 

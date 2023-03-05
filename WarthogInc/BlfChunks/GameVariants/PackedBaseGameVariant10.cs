@@ -10,7 +10,7 @@ using System.Text;
 
 namespace Sunrise.BlfTool.BlfChunks.GameEngineVariants
 {
-    public class PackedBaseGameVariant : IGameVariant
+    public class PackedBaseGameVariant10 : IGameVariant
     {
         public VariantMetadata metadata;
         public bool builtIn; 
@@ -84,7 +84,7 @@ namespace Sunrise.BlfTool.BlfChunks.GameEngineVariants
                 lengthSeconds = hoppersStream.Read<int>(32);
                 campaignId = hoppersStream.Read<int>(32);
                 mapId = hoppersStream.Read<int>(32);
-                gameEngineType = (PackedGameVariant.VariantGameEngine)hoppersStream.Read<byte>(4);
+                gameEngineType = (PackedGameVariant10.VariantGameEngine)hoppersStream.Read<byte>(4);
                 campaignDifficulty = hoppersStream.Read<byte>(3);
                 hopperId = hoppersStream.Read<short>(16);
                 gameId = hoppersStream.Read<long>(64);
@@ -127,7 +127,7 @@ namespace Sunrise.BlfTool.BlfChunks.GameEngineVariants
             public int campaignId;
             public int mapId;
             [JsonConverter(typeof(StringEnumConverter))]
-            public PackedGameVariant.VariantGameEngine gameEngineType;
+            public PackedGameVariant10.VariantGameEngine gameEngineType;
             public byte campaignDifficulty;
             public short hopperId;
             public long gameId;

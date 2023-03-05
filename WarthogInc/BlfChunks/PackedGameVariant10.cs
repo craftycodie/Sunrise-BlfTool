@@ -8,7 +8,7 @@ using WarthogInc.BlfChunks;
 
 namespace Sunrise.BlfTool
 {
-    public class PackedGameVariant : IBLFChunk
+    public class PackedGameVariant10 : IBLFChunk
     {
         public enum VariantGameEngine : byte {
             CTF = 1,
@@ -52,7 +52,7 @@ namespace Sunrise.BlfTool
         }
 
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-        public PackedSlayerGameVariant slayer;
+        public PackedSlayerGameVariant10 slayer;
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
         public PackedCTFGameVariant captureTheFlag;
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
@@ -100,7 +100,7 @@ namespace Sunrise.BlfTool
             switch (variantGameEngineIndex)
             {
                 case VariantGameEngine.SLAYER:
-                    slayer = new PackedSlayerGameVariant(ref hoppersStream);
+                    slayer = new PackedSlayerGameVariant10(ref hoppersStream);
                     break;
                 case VariantGameEngine.CTF:
                     captureTheFlag = new PackedCTFGameVariant(ref hoppersStream);

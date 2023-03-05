@@ -32,7 +32,7 @@ namespace SunriseBlfTool.BlfChunks
             RegisterChunk<MapManifest>();
             RegisterChunk<MatchmakingHopperStatistics>();
             //RegisterChunk<NetworkConfiguration>();
-            RegisterChunk<PackedGameVariant>();
+            RegisterChunk<PackedGameVariant10>();
             RegisterChunk<PackedMapVariant>();
             RegisterChunk<ContentHeader>();
             RegisterChunk<FileQueue>();

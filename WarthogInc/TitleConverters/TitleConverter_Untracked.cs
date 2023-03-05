@@ -9,9 +9,10 @@ using WarthogInc.BlfChunks;
 
 namespace Sunrise.BlfTool.TitleConverters
 {
-    public class TitleConverter_12070 : ITitleConverter
+    public class TitleConverter_Untracked : ITitleConverter
     {
-        private static readonly AbstractBlfChunkNameMap chunkNameMap = new BlfChunkNameMap12070();
+        private static readonly AbstractBlfChunkNameMap chunkNameMap = new BlfChunkNameMapUntracked();
+        private static readonly byte[] untrackedHash = Array.Empty<byte>();
         public void ConvertBlfToJson(string blfFolder, string jsonFolder)
         {
             Console.WriteLine("Converting BLF files to JSON...");
@@ -66,7 +67,7 @@ namespace Sunrise.BlfTool.TitleConverters
 
         public string GetVersion()
         {
-            return "12070";
+            return "Untracked";
         }
 
         public void ConvertJsonToBlf(string jsonFolder, string blfFolder)
@@ -129,7 +130,7 @@ namespace Sunrise.BlfTool.TitleConverters
                         || blfFile.HasChunk<MapManifest>()
                         || blfFile.HasChunk<MatchmakingBanhammerMessages>())
                     {
-                        fileHashes.Add($"/title/{hopperFolderName}/" + fileRelativePath.Replace("\\", "/").Replace(".json", ".bin"), BlfFile.ComputeHash(blfFolder + fileRelativePath.Replace(".json", ".bin")));
+                        fileHashes.Add("/title/default_hoppers/" + fileRelativePath.Replace("\\", "/").Replace(".json", ".bin"), BlfFile.ComputeHash(blfFolder + fileRelativePath.Replace(".json", ".bin"), untrackedHash));
                     }
                 }
 
@@ -192,22 +193,22 @@ namespace Sunrise.BlfTool.TitleConverters
 
                 // And now for the manual ones!
                 // First up, matchmaking playlists.
-                var hopperConfigurationTableBlfFile = BlfFile.FromJSON(File.ReadAllText(jsonFolder + $"{hopperFolderName}\\matchmaking_hopper_011.json"), chunkNameMap);
+                var hopperConfigurationTableBlfFile = BlfFile.FromJSON(File.ReadAllText(jsonFolder + "default_hoppers\\matchmaking_hopper_011.json"), chunkNameMap);
                 var mhcf = hopperConfigurationTableBlfFile.GetChunk<HopperConfigurationTable11>();
 
                 //We need to calculate the hash of every gameset.
                 foreach (HopperConfigurationTable11.HopperConfiguration hopperConfiguration in mhcf.configurations)
                 {
-                    hopperConfiguration.gameSetHash = BlfFile.ComputeHash(blfFolder + $"\\{hopperFolderName}\\" + hopperConfiguration.identifier.ToString("D5") + "\\game_set_006.bin");
+                    hopperConfiguration.gameSetHash = BlfFile.ComputeHash(blfFolder + "\\default_hoppers\\" + hopperConfiguration.identifier.ToString("D5") + "\\game_set_006.bin", untrackedHash);
                 }
                 BlfFile hoppersFile = new BlfFile();
                 hoppersFile.AddChunk(mhcf);
-                hoppersFile.WriteFile(blfFolder + $"\\{hopperFolderName}\\matchmaking_hopper_011.bin");
+                hoppersFile.WriteFile(blfFolder + "\\default_hoppers\\matchmaking_hopper_011.bin");
 
-                Console.WriteLine($"Converted file: {hopperFolderName}\\matchmaking_hopper_011.json");
+                Console.WriteLine("Converted file: default_hoppers\\matchmaking_hopper_011.json");
 
-                fileHashes.Add($"/title/{hopperFolderName}/matchmaking_hopper_011.bin", BlfFile.ComputeHash(blfFolder + $"\\{hopperFolderName}\\matchmaking_hopper_011.bin"));
-                fileHashes.Add($"/title/{hopperFolderName}/network_configuration_135.bin", BlfFile.ComputeHash(blfFolder + $"\\{hopperFolderName}\\network_configuration_135.bin"));
+                fileHashes.Add("/title/default_hoppers/matchmaking_hopper_011.bin", BlfFile.ComputeHash(blfFolder + "\\default_hoppers\\matchmaking_hopper_011.bin", untrackedHash));
+                fileHashes.Add("/title/default_hoppers/network_configuration_141.bin", BlfFile.ComputeHash(blfFolder + "\\default_hoppers\\network_configuration_141.bin", untrackedHash));
 
                 Manifest.FileEntry[] fileEntries = new Manifest.FileEntry[fileHashes.Count];
                 int i = 0;
@@ -228,7 +229,7 @@ namespace Sunrise.BlfTool.TitleConverters
 
                 BlfFile manifestFile = new BlfFile();
                 manifestFile.AddChunk(onfm);
-                manifestFile.WriteFile(blfFolder + $"\\{hopperFolderName}\\manifest_001.bin");
+                manifestFile.WriteFile(blfFolder + "\\default_hoppers\\manifest_001.bin");
 
                 Console.WriteLine("Created file: manifest_001.bin");
             }

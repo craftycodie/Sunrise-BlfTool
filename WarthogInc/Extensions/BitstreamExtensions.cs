@@ -14,6 +14,10 @@ namespace Sunrise.BlfTool.Extensions
             return new string(charArray);
         }
 
+        public static ushort SwapBytes(ushort x)
+        {
+            return (ushort)((ushort)((x & 0xff) << 8) | ((x >> 8) & 0xff));
+        }
         private static sbyte SwapBits(sbyte value, int numBits)
         {
             int bitcount = 8;
@@ -94,18 +98,32 @@ namespace Sunrise.BlfTool.Extensions
         //    return Convert.ToUInt64(output, 2);
         //}
 
-        public static void WriteBitswappedString(ref this BitStream<StreamByteStream> hoppersStream, string text, int maxLengthBytes, Encoding encoding)
+        public static void WriteBitswappedString(ref this BitStream<StreamByteStream> hoppersStream, string text, int maxLengthCharacters, Encoding encoding)
         {
-            if (encoding != Encoding.UTF8)
-                throw new NotImplementedException("Bitswapped encoding not implemented");
+            if (encoding == Encoding.UTF8)
+            {
+                char[] characters = text.ToCharArray();
 
-            char[] characters = text.ToCharArray();
+                for (int characterIndex = 0; characterIndex < characters.Length; characterIndex++)
+                    hoppersStream.Write(SwapBits((byte)characters[characterIndex], 8));
 
-            for (int characterIndex = 0; characterIndex < characters.Length; characterIndex++)
-                hoppersStream.Write(SwapBits((byte)characters[characterIndex], 8));
+                if (text.Length < maxLengthCharacters)
+                    hoppersStream.Write(0, 8);
+            }
+            else if (encoding == Encoding.BigEndianUnicode) {
+                char[] characters = text.ToCharArray();
 
-            if (text.Length < maxLengthBytes)
-                hoppersStream.Write(0, 8);
+                for (int characterIndex = 0; characterIndex < characters.Length && characterIndex < maxLengthCharacters - 1; characterIndex++) {
+                    ushort byteswapped = SwapBytes((ushort)characters[characterIndex]);
+                    ushort bitswapped = SwapBits(byteswapped, 16);
+                    hoppersStream.Write(bitswapped, 16);
+                }
+
+                hoppersStream.Write(maxLengthCharacters - (characters.Length - 1));
+            }
+            else throw new NotImplementedException("Bitswapped encoding not implemented");
+
+
 
             //string swappedString = new(swappedCharacters);
 

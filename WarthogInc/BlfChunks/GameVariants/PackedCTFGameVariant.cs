@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Sunrise.BlfTool.BlfChunks.GameEngineVariants
 {
-    public class PackedCTFGameVariant : PackedBaseGameVariant
+    public class PackedCTFGameVariant : PackedBaseGameVariant10
     {
         public PackedCTFGameVariant() { }
 

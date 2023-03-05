@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Sunrise.BlfTool.BlfChunks.GameEngineVariants
 {
-    public class PackedForgeGameVariant : PackedBaseGameVariant
+    public class PackedForgeGameVariant : PackedBaseGameVariant10
     {
         public PackedForgeGameVariant() { }
 

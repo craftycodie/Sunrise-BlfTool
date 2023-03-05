@@ -20,10 +20,6 @@ namespace Sunrise.BlfTool.TitleConverters
 
             while (titleDirectoryEnumerator.MoveNext())
             {
-                // We remake the manifest on conversion back to BLF.
-                if (titleDirectoryEnumerator.Current.EndsWith("manifest_001.bin"))
-                    continue;
-
                 string fileRelativePath = titleDirectoryEnumerator.Current.Replace(blfFolder, "");
                 if (fileRelativePath.Contains("\\"))
                 {
@@ -32,7 +28,6 @@ namespace Sunrise.BlfTool.TitleConverters
                 }
 
                 if (titleDirectoryEnumerator.Current.EndsWith(".bin")
-                    || titleDirectoryEnumerator.Current.EndsWith(".mvar")
                     || titleDirectoryEnumerator.Current.EndsWith(".blf")
                     || !titleDirectoryEnumerator.Current.Contains('.')
                 )
@@ -85,10 +80,9 @@ namespace Sunrise.BlfTool.TitleConverters
                     fileName = fileName.Substring(fileName.LastIndexOf("\\") + 1);
 
                 string fileRelativePath = jsonFileEnumerator.Current.Replace(jsonFolder, "");
-                string fileDirectoryRelativePath = null;
                 if (fileRelativePath.Contains("\\"))
                 {
-                    fileDirectoryRelativePath = fileRelativePath.Substring(0, fileRelativePath.LastIndexOf("\\"));
+                    string fileDirectoryRelativePath = fileRelativePath.Substring(0, fileRelativePath.LastIndexOf("\\"));
                     Directory.CreateDirectory(blfFolder + fileDirectoryRelativePath);
                 }
 
@@ -101,32 +95,6 @@ namespace Sunrise.BlfTool.TitleConverters
                 }
 
                 BlfFile blfFile = BlfFile.FromJSON(File.ReadAllText(jsonFileEnumerator.Current), chunkNameMap);
-
-                if (fileName == "game_set_001.json")
-                {
-                    GameSet1 gameSet = blfFile.GetChunk<GameSet1>();
-
-                    if (gameSet != null)
-                    {
-
-                        foreach (GameSet1.GameEntry entry in gameSet.gameEntries)
-                        {
-                            string mapJsonPath = jsonFolder + fileDirectoryRelativePath + "\\map_variants\\" + entry.mapVariantFileName + "_012.json";
-                            try
-                            {
-                                var blfMapFile = BlfFile.FromJSON(File.ReadAllText(mapJsonPath), chunkNameMap);
-                                var map = blfMapFile.GetChunk<PackedMapVariant>();
-                                entry.mapID = map.mapID;
-                            }
-                            catch (FileNotFoundException)
-                            {
-                                Console.ForegroundColor = ConsoleColor.Red;
-                                Console.WriteLine("File Not Found: " + mapJsonPath, ConsoleColor.Red);
-                                Console.ResetColor();
-                            }
-                        }
-                    }
-                }
 
                 blfFile.WriteFile(blfFolder + fileRelativePath.Replace(".json", ".bin"));
 
