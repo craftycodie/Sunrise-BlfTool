@@ -95,6 +95,21 @@ namespace Sunrise.BlfTool
             BLFChunkWriter blfChunkWriter = new BLFChunkWriter();
             blfChunkWriter.WriteChunk(ref blfFileOut, new StartOfFile());
 
+            try
+            {
+                GetChunk<Author>();
+            }
+            catch
+            {
+                blfChunkWriter.WriteChunk(ref blfFileOut, new Author()
+                {
+                    buildName = "",
+                    buildNumber = 1,
+                    shellVersion = "",
+                    unknown40 = "",
+                });
+            }
+
             foreach (IBLFChunk chunk in chunks.Values)
             {
                 blfChunkWriter.WriteChunk(ref blfFileOut, chunk);
@@ -105,14 +120,20 @@ namespace Sunrise.BlfTool
             fileStream.Close();
         }
 
+        // Used from halo 3 public beta up to and including reach.
         static byte[] halo3salt = Convert.FromHexString("EDD43009666D5C4A5C3657FAB40E022F535AC6C9EE471F01F1A44756B7714F1C36EC");
 
         public static byte[] ComputeHash(string path)
         {
+            return ComputeHash(path, halo3salt);
+        }
+
+        public static byte[] ComputeHash(string path, byte[] salt)
+        {
 
             var memoryStream = new MemoryStream();
             var blfFileOut = new BitStream<StreamByteStream>(new StreamByteStream(memoryStream));
-            foreach (byte saltByte in halo3salt)
+            foreach (byte saltByte in salt)
             {
                 blfFileOut.Write(saltByte, 8);
             }
