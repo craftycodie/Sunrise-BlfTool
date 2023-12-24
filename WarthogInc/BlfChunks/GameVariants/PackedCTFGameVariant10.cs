@@ -10,11 +10,11 @@ using System.Threading.Tasks;
 
 namespace Sunrise.BlfTool.BlfChunks.GameEngineVariants
 {
-    public class PackedCTFGameVariant : PackedBaseGameVariant10
+    public class PackedCTFGameVariant10 : PackedBaseGameVariant10
     {
-        public PackedCTFGameVariant() { }
+        public PackedCTFGameVariant10() { }
 
-        public PackedCTFGameVariant(ref BitStream<StreamByteStream> hoppersStream)
+        public PackedCTFGameVariant10(ref BitStream<StreamByteStream> hoppersStream)
         {
             Read(ref hoppersStream);
         }

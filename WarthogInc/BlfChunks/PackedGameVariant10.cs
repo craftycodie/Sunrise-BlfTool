@@ -54,23 +54,23 @@ namespace Sunrise.BlfTool
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
         public PackedSlayerGameVariant10 slayer;
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-        public PackedCTFGameVariant captureTheFlag;
+        public PackedCTFGameVariant10 captureTheFlag;
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-        public PackedOddballGameVariant oddball;
+        public PackedOddballGameVariant10 oddball;
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-        public PackedAssaultGameVariant assault;
+        public PackedAssaultGameVariant10 assault;
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-        public PackedInfectionGameVariant infection;
+        public PackedInfectionGameVariant10 infection;
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-        public PackedKOTHGameVariant kingOfTheHill;
+        public PackedKOTHGameVariant10 kingOfTheHill;
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-        public PackedTerritoriesGameVariant territories;
+        public PackedTerritoriesGameVariant10 territories;
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-        public PackedVIPGameVariant vip;
+        public PackedVIPGameVariant10 vip;
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-        public PackedJuggernautGameVariant juggernaut;
+        public PackedJuggernautGameVariant10 juggernaut;
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-        public PackedForgeGameVariant forge;
+        public PackedForgeGameVariant10 forge;
 
         public ushort GetAuthentication()
         {
@@ -103,31 +103,31 @@ namespace Sunrise.BlfTool
                     slayer = new PackedSlayerGameVariant10(ref hoppersStream);
                     break;
                 case VariantGameEngine.CTF:
-                    captureTheFlag = new PackedCTFGameVariant(ref hoppersStream);
+                    captureTheFlag = new PackedCTFGameVariant10(ref hoppersStream);
                     break;
                 case VariantGameEngine.ODDBALL:
-                    oddball = new PackedOddballGameVariant(ref hoppersStream);
+                    oddball = new PackedOddballGameVariant10(ref hoppersStream);
                     break;
                 case VariantGameEngine.ASSAULT:
-                    assault = new PackedAssaultGameVariant(ref hoppersStream);
+                    assault = new PackedAssaultGameVariant10(ref hoppersStream);
                     break;
                 case VariantGameEngine.INFECTION:
-                    infection = new PackedInfectionGameVariant(ref hoppersStream);
+                    infection = new PackedInfectionGameVariant10(ref hoppersStream);
                     break;
                 case VariantGameEngine.KOTH:
-                    kingOfTheHill = new PackedKOTHGameVariant(ref hoppersStream);
+                    kingOfTheHill = new PackedKOTHGameVariant10(ref hoppersStream);
                     break;
                 case VariantGameEngine.TERRITORIES:
-                    territories = new PackedTerritoriesGameVariant(ref hoppersStream);
+                    territories = new PackedTerritoriesGameVariant10(ref hoppersStream);
                     break;
                 case VariantGameEngine.VIP:
-                    vip = new PackedVIPGameVariant(ref hoppersStream);
+                    vip = new PackedVIPGameVariant10(ref hoppersStream);
                     break;
                 case VariantGameEngine.JUGGERNAUT:
-                    juggernaut = new PackedJuggernautGameVariant(ref hoppersStream);
+                    juggernaut = new PackedJuggernautGameVariant10(ref hoppersStream);
                     break;
                 case VariantGameEngine.FORGE:
-                    forge = new PackedForgeGameVariant(ref hoppersStream);
+                    forge = new PackedForgeGameVariant10(ref hoppersStream);
                     break;
                 default:
                     throw new Exception("Unsupported game engine " + variantGameEngineIndex.ToString());

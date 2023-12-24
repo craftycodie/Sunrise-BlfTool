@@ -10,16 +10,16 @@ using System.Threading.Tasks;
 
 namespace Sunrise.BlfTool.BlfChunks.GameEngineVariants
 {
-    public class PackedInfectionGameVariant : PackedBaseGameVariant10
+    public class PackedInfectionGameVariant10 : PackedBaseGameVariant10
     {
-        public PackedInfectionGameVariant() { }
+        public PackedInfectionGameVariant10() { }
 
-        public PackedInfectionGameVariant(ref BitStream<StreamByteStream> hoppersStream)
+        public PackedInfectionGameVariant10(ref BitStream<StreamByteStream> hoppersStream)
         {
             Read(ref hoppersStream);
         }
 
-        public bool respawnOnHavenMode;
+        public bool respawnOnHavenMove;
         public byte safeHavens; // 2
         public byte nextZombie; // 2
         public byte initialZombieCount; // 5
@@ -44,7 +44,7 @@ namespace Sunrise.BlfTool.BlfChunks.GameEngineVariants
         public void Read(ref BitStream<StreamByteStream> hoppersStream)
         {
             base.Read(ref hoppersStream);
-            respawnOnHavenMode = hoppersStream.Read<byte>(1) > 0;
+            respawnOnHavenMove = hoppersStream.Read<byte>(1) > 0;
             safeHavens = hoppersStream.Read<byte>(2);
             nextZombie = hoppersStream.Read<byte>(2);
             initialZombieCount = hoppersStream.Read<byte>(5);
@@ -64,7 +64,7 @@ namespace Sunrise.BlfTool.BlfChunks.GameEngineVariants
         public void Write(ref BitStream<StreamByteStream> hoppersStream)
         {
             base.Write(ref hoppersStream);
-            hoppersStream.Write(respawnOnHavenMode ? 1 : 0, 1);
+            hoppersStream.Write(respawnOnHavenMove ? 1 : 0, 1);
             hoppersStream.Write(safeHavens, 2);
             hoppersStream.Write(nextZombie, 2);
             hoppersStream.Write(initialZombieCount, 5);

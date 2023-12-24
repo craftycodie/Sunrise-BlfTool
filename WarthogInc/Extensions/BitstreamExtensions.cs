@@ -114,12 +114,12 @@ namespace Sunrise.BlfTool.Extensions
                 char[] characters = text.ToCharArray();
 
                 for (int characterIndex = 0; characterIndex < characters.Length && characterIndex < maxLengthCharacters - 1; characterIndex++) {
-                    ushort byteswapped = SwapBytes((ushort)characters[characterIndex]);
-                    ushort bitswapped = SwapBits(byteswapped, 16);
+                    ushort bitswapped = SwapBits(characters[characterIndex], 16);
                     hoppersStream.Write(bitswapped, 16);
                 }
 
-                hoppersStream.Write(maxLengthCharacters - (characters.Length - 1));
+                if (text.Length < maxLengthCharacters)
+                    hoppersStream.Write(0, 16);
             }
             else throw new NotImplementedException("Bitswapped encoding not implemented");
 
