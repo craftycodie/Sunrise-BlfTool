@@ -64,7 +64,7 @@ namespace Sunrise.BlfTool.TitleConverters
             }
         }
 
-        public string GetVersion()
+        public virtual string GetVersion()
         {
             return "12070";
         }

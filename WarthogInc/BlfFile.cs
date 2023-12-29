@@ -120,7 +120,7 @@ namespace Sunrise.BlfTool
             fileStream.Close();
         }
 
-        // Used from halo 3 public beta up to and including reach.
+        // Used from halo 3 public beta up to and including reach and even halo online.
         static byte[] halo3salt = Convert.FromHexString("EDD43009666D5C4A5C3657FAB40E022F535AC6C9EE471F01F1A44756B7714F1C36EC");
 
         public static byte[] ComputeHash(string path)
