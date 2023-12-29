@@ -104,7 +104,7 @@ namespace Sunrise.BlfTool.Extensions
             {
                 char[] characters = text.ToCharArray();
 
-                for (int characterIndex = 0; characterIndex < characters.Length; characterIndex++)
+                for (int characterIndex = 0; characterIndex < characters.Length && characterIndex <= maxLengthCharacters; characterIndex++)
                     hoppersStream.Write(SwapBits((byte)characters[characterIndex], 8));
 
                 if (text.Length < maxLengthCharacters)
@@ -113,7 +113,7 @@ namespace Sunrise.BlfTool.Extensions
             else if (encoding == Encoding.BigEndianUnicode) {
                 char[] characters = text.ToCharArray();
 
-                for (int characterIndex = 0; characterIndex < characters.Length && characterIndex < maxLengthCharacters - 1; characterIndex++) {
+                for (int characterIndex = 0; characterIndex < characters.Length && characterIndex <= maxLengthCharacters; characterIndex++) {
                     ushort bitswapped = SwapBits(characters[characterIndex], 16);
                     hoppersStream.Write(bitswapped, 16);
                 }
@@ -122,12 +122,6 @@ namespace Sunrise.BlfTool.Extensions
                     hoppersStream.Write(0, 16);
             }
             else throw new NotImplementedException("Bitswapped encoding not implemented");
-
-
-
-            //string swappedString = new(swappedCharacters);
-
-            //hoppersStream.WriteString(swappedString, maxLengthBytes, encoding);
         }
 
         public static void WriteBitswapped<T>(ref this BitStream<StreamByteStream> hoppersStream, T value, int numBits)
