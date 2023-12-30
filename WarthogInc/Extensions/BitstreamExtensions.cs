@@ -38,16 +38,6 @@ namespace Sunrise.BlfTool.Extensions
             return Convert.ToByte(output, 2);
         }
 
-        private static byte SwapBits(char value, int numBits)
-        {
-            int bitcount = 8;
-            string binaryString = Convert.ToString((byte)value, 2).PadLeft(bitcount, '0');
-            string swapSect = binaryString.Substring(binaryString.Length - numBits);
-            string swappedSect = swapSect.Reverse();
-            string output = swappedSect.PadLeft(bitcount, '0');
-            return Convert.ToByte(output, 2);
-        }
-
         private static short SwapBits(short value, int numBits)
         {
             int bitcount = 16;
@@ -114,7 +104,7 @@ namespace Sunrise.BlfTool.Extensions
                 char[] characters = text.ToCharArray();
 
                 for (int characterIndex = 0; characterIndex < characters.Length && characterIndex < maxLengthCharacters; characterIndex++)
-                    hoppersStream.Write(SwapBits(characters[characterIndex], 8));
+                    hoppersStream.Write(SwapBits((byte)characters[characterIndex], 8));
 
                 if (text.Length < maxLengthCharacters)
                     hoppersStream.Write(0, 8);
@@ -123,7 +113,7 @@ namespace Sunrise.BlfTool.Extensions
                 char[] characters = text.ToCharArray();
 
                 for (int characterIndex = 0; characterIndex < characters.Length && characterIndex < maxLengthCharacters; characterIndex++) {
-                    ushort bitswapped = SwapBits(characters[characterIndex], 16);
+                    ushort bitswapped = SwapBits((ushort)characters[characterIndex], 16);
                     hoppersStream.Write(bitswapped, 16);
                 }
 
