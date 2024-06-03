@@ -3,7 +3,7 @@ using Sewer56.BitStream.ByteStreams;
 using System;
 using System.Text;
 
-namespace Sunrise.BlfTool.Extensions
+namespace SunriseBlfTool.Extensions
 {
     static class BitstreamExtensions
     {

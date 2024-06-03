@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sunrise.BlfTool.BlfChunks.GameEngineVariants
+namespace SunriseBlfTool.BlfChunks.GameEngineVariants
 {
     public class ForgeGameVariant : BaseGameVariant
     {

@@ -1,16 +1,16 @@
 ﻿using Newtonsoft.Json;
 using Sewer56.BitStream;
 using Sewer56.BitStream.ByteStreams;
-using Sunrise.BlfTool;
-using Sunrise.BlfTool.TitleConverters;
+using SunriseBlfTool;
+using SunriseBlfTool.TitleConverters;
 using SunriseBlfTool.BlfChunks;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Security.Cryptography;
-using WarthogInc.BlfChunks;
+using SunriseBlfTool.BlfChunks;
 
-namespace WarthogInc
+namespace SunriseBlfTool
 {
     class Program
     {

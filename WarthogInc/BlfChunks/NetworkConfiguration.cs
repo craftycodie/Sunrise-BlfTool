@@ -1,8 +1,8 @@
 ﻿using Sewer56.BitStream;
 using Sewer56.BitStream.ByteStreams;
-using Sunrise.BlfTool.Extensions;
+using SunriseBlfTool.Extensions;
 
-namespace WarthogInc.BlfChunks
+namespace SunriseBlfTool.BlfChunks
 {
     class NetworkConfiguration : IBLFChunk
     {

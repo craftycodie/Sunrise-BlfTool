@@ -4,7 +4,7 @@ using Sewer56.BitStream;
 using Sewer56.BitStream.ByteStreams;
 using System;
 
-namespace Sunrise.BlfTool.BlfChunks.GameEngineVariants
+namespace SunriseBlfTool.BlfChunks.GameEngineVariants
 {
     public class VIPGameVariant : BaseGameVariant
     {

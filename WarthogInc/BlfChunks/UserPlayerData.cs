@@ -4,7 +4,7 @@ using Sewer56.BitStream.ByteStreams;
 using System;
 using System.Text;
 
-namespace WarthogInc.BlfChunks
+namespace SunriseBlfTool.BlfChunks
 {
     public class UserPlayerData : IBLFChunk
     {

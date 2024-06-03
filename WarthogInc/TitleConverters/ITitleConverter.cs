@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sunrise.BlfTool.TitleConverters
+namespace SunriseBlfTool.TitleConverters
 {
     public interface ITitleConverter
     {

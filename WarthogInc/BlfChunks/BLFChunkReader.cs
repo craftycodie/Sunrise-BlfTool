@@ -1,6 +1,6 @@
 ﻿using Sewer56.BitStream;
 using Sewer56.BitStream.ByteStreams;
-using SunriseBlfTool.BlfChunks;
+using SunriseBlfTool.BlfChunks.ChunkNameMaps;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WarthogInc.BlfChunks
+namespace SunriseBlfTool.BlfChunks
 {
     public class BLFChunkReader
     {

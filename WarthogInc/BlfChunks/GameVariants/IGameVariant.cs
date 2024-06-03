@@ -1,7 +1,7 @@
 ﻿using Sewer56.BitStream;
 using Sewer56.BitStream.ByteStreams;
 
-namespace Sunrise.BlfTool.BlfChunks
+namespace SunriseBlfTool.BlfChunks
 {
     interface IGameVariant
     {

@@ -1,16 +1,17 @@
 ﻿using Newtonsoft.Json;
 using Sewer56.BitStream;
 using Sewer56.BitStream.ByteStreams;
-using Sunrise.BlfTool.BlfChunks.GameEngineVariants;
 using System;
 using System.IO;
-using WarthogInc.BlfChunks;
-using Sunrise.BlfTool.Extensions;
+using SunriseBlfTool.BlfChunks;
+using SunriseBlfTool.Extensions;
 using Newtonsoft.Json.Converters;
 using System.Collections.Generic;
 using System.Linq;
+using SunriseBlfTool.BlfChunks.GameVariants.PackedV10;
+using SunriseBlfTool.BlfChunks.MapVariants;
 
-namespace Sunrise.BlfTool
+namespace SunriseBlfTool
 {
     public class PackedMapVariant : IBLFChunk
     {

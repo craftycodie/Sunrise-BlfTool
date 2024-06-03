@@ -1,8 +1,7 @@
 {
   "profiles": {
     "Sunrise-BlfTool": {
-      "commandName": "Project",
-      "commandLineArgs": "blf \"D:\\Projects\\GitHub\\sunrise-content\\json\\storage\\title\\tracked\\08172\" \"D:\\Projects\\GitHub\\sunrise-content\\blf\\storage\\title\\tracked\\08172\" 08172"
+      "commandName": "Project"
     }
   }
 }

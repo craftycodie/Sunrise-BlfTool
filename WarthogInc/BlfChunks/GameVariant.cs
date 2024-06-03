@@ -1,12 +1,12 @@
 ﻿using Newtonsoft.Json;
 using Sewer56.BitStream;
 using Sewer56.BitStream.ByteStreams;
-using Sunrise.BlfTool.BlfChunks.GameEngineVariants;
+using SunriseBlfTool.BlfChunks.GameEngineVariants;
 using System;
 using System.IO;
-using WarthogInc.BlfChunks;
+using SunriseBlfTool.BlfChunks;
 
-namespace Sunrise.BlfTool
+namespace SunriseBlfTool
 {
     public class GameVariant : IBLFChunk
     {

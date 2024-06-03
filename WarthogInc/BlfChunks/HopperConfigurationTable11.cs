@@ -7,10 +7,10 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using WarthogInc.BlfChunks;
-using Sunrise.BlfTool.Extensions;
+using SunriseBlfTool.BlfChunks;
+using SunriseBlfTool.Extensions;
 
-namespace Sunrise.BlfTool
+namespace SunriseBlfTool
 {
     class HopperConfigurationTable11 : IBLFChunk
     {

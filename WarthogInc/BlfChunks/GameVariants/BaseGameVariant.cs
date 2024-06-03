@@ -2,13 +2,13 @@
 using Newtonsoft.Json.Converters;
 using Sewer56.BitStream;
 using Sewer56.BitStream.ByteStreams;
-using Sunrise.BlfTool.Extensions;
+using SunriseBlfTool.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Sunrise.BlfTool.BlfChunks.GameEngineVariants
+namespace SunriseBlfTool.BlfChunks.GameEngineVariants
 {
     public class BaseGameVariant : IGameVariant
     {

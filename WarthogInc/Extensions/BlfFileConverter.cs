@@ -2,7 +2,7 @@
 using SunriseBlfTool.BlfChunks;
 using System;
 using System.Collections.Generic;
-using WarthogInc.BlfChunks;
+using SunriseBlfTool.BlfChunks.ChunkNameMaps;
 
 public class BlfFileConverter : JsonConverter
 {

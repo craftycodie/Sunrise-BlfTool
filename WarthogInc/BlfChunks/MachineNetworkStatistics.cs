@@ -1,11 +1,11 @@
 ﻿using Newtonsoft.Json;
 using Sewer56.BitStream;
 using Sewer56.BitStream.ByteStreams;
-using Sunrise.BlfTool.Extensions;
+using SunriseBlfTool.Extensions;
 using System;
 using System.Text;
 
-namespace WarthogInc.BlfChunks
+namespace SunriseBlfTool.BlfChunks
 {
     public class MachineNetworkStatistics : IBLFChunk
     {

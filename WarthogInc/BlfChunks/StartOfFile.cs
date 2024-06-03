@@ -1,13 +1,13 @@
 ﻿using Sewer56.BitStream;
 using Sewer56.BitStream.ByteStreams;
-using Sunrise.BlfTool.Extensions;
+using SunriseBlfTool.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WarthogInc.BlfChunks
+namespace SunriseBlfTool.BlfChunks
 {
     class StartOfFile : IBLFChunk
     {

@@ -2,7 +2,7 @@
 using Newtonsoft.Json.Converters;
 using System.Collections.Generic;
 
-namespace Sunrise.BlfTool
+namespace SunriseBlfTool.BlfChunks.MapVariants
 {
     public class ObjectDatumRelativeIndexMap
     {

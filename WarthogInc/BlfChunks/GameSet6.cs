@@ -7,9 +7,9 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using WarthogInc.BlfChunks;
+using SunriseBlfTool.BlfChunks;
 
-namespace Sunrise.BlfTool
+namespace SunriseBlfTool
 {
     public class GameSet6 : IBLFChunk
     {

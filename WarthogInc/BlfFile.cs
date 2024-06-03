@@ -7,9 +7,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
-using WarthogInc.BlfChunks;
+using SunriseBlfTool.BlfChunks.ChunkNameMaps;
 
-namespace Sunrise.BlfTool
+namespace SunriseBlfTool
 {
     public class BlfFile 
     {
