@@ -28,31 +28,31 @@ namespace SunriseBlfTool.BlfChunks
             INFECTION
         }
 
-        [JsonProperty(/*Could not decode attribute arguments.*/)]
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
         public PackedSlayerGameVariant2 slayer;
 
-        [JsonProperty(/*Could not decode attribute arguments.*/)]
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
         public PackedCTFGameVariant2 captureTheFlag;
 
-        [JsonProperty(/*Could not decode attribute arguments.*/)]
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
         public PackedOddballGameVariant2 oddball;
 
-        [JsonProperty(/*Could not decode attribute arguments.*/)]
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
         public PackedAssaultGameVariant2 assault;
 
-        [JsonProperty(/*Could not decode attribute arguments.*/)]
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
         public PackedInfectionGameVariant2 infection;
 
-        [JsonProperty(/*Could not decode attribute arguments.*/)]
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
         public PackedKOTHGameVariant2 kingOfTheHill;
 
-        [JsonProperty(/*Could not decode attribute arguments.*/)]
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
         public PackedTerritoriesGameVariant2 territories;
 
-        [JsonProperty(/*Could not decode attribute arguments.*/)]
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
         public PackedVIPGameVariant2 vip;
 
-        [JsonProperty(/*Could not decode attribute arguments.*/)]
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
         public PackedJuggernautGameVariant2 juggernaut;
 
         public byte descriptionIndex;
