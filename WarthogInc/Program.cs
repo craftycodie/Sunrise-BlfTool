@@ -1,14 +1,4 @@
-﻿using Newtonsoft.Json;
-using Sewer56.BitStream;
-using Sewer56.BitStream.ByteStreams;
-using SunriseBlfTool;
-using SunriseBlfTool.TitleConverters;
-using SunriseBlfTool.BlfChunks;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Security.Cryptography;
-using SunriseBlfTool.BlfChunks;
+﻿using SunriseBlfTool.TitleConverters;
 
 namespace SunriseBlfTool
 {
@@ -26,10 +16,14 @@ namespace SunriseBlfTool
                 {
                     ConvertJsonToBlf(args[1], args[2], args[3]);
                 }
+                else
+                {
+                    Console.WriteLine("Invalid command.");
+                }
             }
             else
             {
-                //ConvertJsonToBlf(@"D:\Projects\GitHub\Sunrise-Content\Title Storage\json\", @"D:\Projects\GitHub\Sunrise-Content\Title Storage\blf\");
+                Console.WriteLine("Not enough arguments provided.");
             }
         }
 
