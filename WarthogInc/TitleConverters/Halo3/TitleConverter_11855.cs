@@ -1,6 +1,9 @@
 ﻿using SunriseBlfTool.BlfChunks;
 using SunriseBlfTool.BlfChunks.ChunkNameMaps.Halo3;
 using SunriseBlfTool.BlfChunks.ChunkNameMaps;
+using System;
+using System.Collections.Generic;
+using System.IO;
 
 namespace SunriseBlfTool.TitleConverters.Halo3
 {

@@ -1,13 +1,5 @@
-﻿using Newtonsoft.Json;
-using Sewer56.BitStream;
-using Sewer56.BitStream.ByteStreams;
-using SunriseBlfTool;
-using SunriseBlfTool.TitleConverters;
-using SunriseBlfTool.BlfChunks;
+﻿using SunriseBlfTool.TitleConverters;
 using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Security.Cryptography;
 
 namespace SunriseBlfTool
 {
