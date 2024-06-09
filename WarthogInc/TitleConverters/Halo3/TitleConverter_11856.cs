@@ -14,7 +14,7 @@ namespace SunriseBlfTool.TitleConverters.Halo3
 {
     public class TitleConverter_11856 : TitleConverter_11855
     {
-        public virtual string GetVersion()
+        public override string GetVersion()
         {
             return "11856";
         }

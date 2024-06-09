@@ -11,7 +11,7 @@ namespace SunriseBlfTool.TitleConverters.Halo3
     {
         private static readonly AbstractBlfChunkNameMap chunkNameMap = new BlfChunkNameMap12070();
 
-        public string GetVersion()
+        public virtual string GetVersion()
         {
             return "11855";
         }
