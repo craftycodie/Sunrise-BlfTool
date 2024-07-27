@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SunriseBlfTool.BlfChunks.ChunkNameMaps;
+using SunriseBlfTool.BlfChunks;
 
 namespace SunriseBlfTool.TitleConverters.HaloReach
 {
@@ -117,6 +118,20 @@ namespace SunriseBlfTool.TitleConverters.HaloReach
                     try
                     {
                         BlfFile blfFile = BlfFile.FromJSON(File.ReadAllText(jsonFileEnumerator.Current), chunkNameMap);
+
+                        GameSet15 gameSet = null;
+                        if (fileName == "game_set_015.json")
+                            gameSet = blfFile.GetChunk<GameSet15>();
+
+                        if (gameSet != null)
+                        {
+
+                            foreach (GameSet15.GameEntry entry in gameSet.gameEntries)
+                            {
+                                entry.gameVariantHash = BlfFile.ComputeHash(blfFolder + "default_hoppers\\" + entry.gameVariantFileName + "_054.bin");
+                                entry.mapVariantHash = BlfFile.ComputeHash(blfFolder + "default_hoppers\\map_variants\\" + entry.mapVariantFileName + "_031.bin");
+                            }
+                        }
 
                         blfFile.WriteFile(blfFolder + fileRelativePath.Replace(".json", ".bin"));
 

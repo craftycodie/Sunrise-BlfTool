@@ -128,6 +128,8 @@ namespace SunriseBlfTool
             return ComputeHash(path, halo3salt);
         }
 
+        private static byte[] fake_hash = Convert.FromHexString("FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF");
+
         public static byte[] ComputeHash(string path, byte[] salt)
         {
 
@@ -155,14 +157,14 @@ namespace SunriseBlfTool
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("File Not Found: " + path);
                 Console.ResetColor();
-                return new byte[20];
+                return fake_hash;
             }
             catch (DirectoryNotFoundException)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("File Not Found: " + path);
                 Console.ResetColor();
-                return new byte[20];
+                return fake_hash;
             }
         }
     }

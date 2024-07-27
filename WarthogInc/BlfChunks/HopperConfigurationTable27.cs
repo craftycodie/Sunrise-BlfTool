@@ -64,7 +64,6 @@ namespace SunriseBlfTool
 
         private void WriteCompressedHopperData(ref BitStream<StreamByteStream> hoppersStream, byte[] hopperData)
         {
-            File.WriteAllBytes(@"C:\Users\stell\Desktop\test_out", hopperData);
             // save this for later...
             int chunkStartPosition = hoppersStream.ByteOffset;
             hoppersStream.Write(0, 14);
