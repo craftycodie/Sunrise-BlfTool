@@ -23,6 +23,7 @@ namespace SunriseBlfTool.BlfChunks.ChunkNameMaps.HaloReach
             RegisterChunk<MatchmakingBanhammerMessages>();
             RegisterChunk<MatchmakingHopperDescriptions3>();
             RegisterChunk<MapManifest>();
+            RegisterChunk<HopperConfigurationTable27>();
         }
 
         public override string GetVersion()

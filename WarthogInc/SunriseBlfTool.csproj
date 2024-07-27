@@ -70,5 +70,6 @@
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="Sewer56.BitStream" Version="1.2.1" />
+    <PackageReference Include="ZLibDotNet" Version="0.1.1" />
   </ItemGroup>
 </Project>

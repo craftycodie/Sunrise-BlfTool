@@ -9,7 +9,7 @@ using SunriseBlfTool.BlfChunks.ChunkNameMaps;
 
 namespace SunriseBlfTool.TitleConverters.HaloReach
 {
-    public class TitleConverter_12065 : ITitleConverter
+    public class TitleConverter_11860 : ITitleConverter
     {
         private static readonly AbstractBlfChunkNameMap chunkNameMap = new BlfChunks.ChunkNameMaps.HaloReach.BlfChunkNameMap_12065();
         public void ConvertBlfToJson(string blfFolder, string jsonFolder)
@@ -66,7 +66,7 @@ namespace SunriseBlfTool.TitleConverters.HaloReach
 
         public string GetVersion()
         {
-            return "reach_12065";
+            return "reach_11860";
         }
 
         public void ConvertJsonToBlf(string jsonFolder, string blfFolder)
@@ -111,9 +111,6 @@ namespace SunriseBlfTool.TitleConverters.HaloReach
                         continue;
                     }
 
-                    if (fileName == "matchmaking_hopper_027.json")
-                        continue; // Handle manually, after game sets.
-
                     try
                     {
                         BlfFile blfFile = BlfFile.FromJSON(File.ReadAllText(jsonFileEnumerator.Current), chunkNameMap);
@@ -136,24 +133,10 @@ namespace SunriseBlfTool.TitleConverters.HaloReach
                     }
                 }
 
-                var hopperConfigurationTableBlfFile = BlfFile.FromJSON(File.ReadAllText(jsonFolder + $"{hopperFolderName}\\matchmaking_hopper_027.json"), chunkNameMap);
-                var mhcf = hopperConfigurationTableBlfFile.GetChunk<HopperConfigurationTable27>();
-
-                //We need to calculate the hash of every gameset.
-                foreach (HopperConfigurationTable27.HopperConfiguration hopperConfiguration in mhcf.configurations)
-                {
-                    hopperConfiguration.gameSetHash = BlfFile.ComputeHash(blfFolder + $"\\{hopperFolderName}\\" + hopperConfiguration.identifier.ToString("D5") + "\\game_set_015.bin");
-                }
-                BlfFile hoppersFile = new BlfFile();
-                hoppersFile.AddChunk(mhcf);
-                hoppersFile.WriteFile(blfFolder + $"\\{hopperFolderName}\\matchmaking_hopper_027.bin");
-
-                Console.WriteLine($"Converted file: {hopperFolderName}\\matchmaking_hopper_027.json");
-
                 fileHashes.Add("/dlc_map_manifest.bin", BlfFile.ComputeHash(blfFolder + "\\default_hoppers\\dlc_map_manifest.bin"));
                 fileHashes.Add("/matchmaking_hopper_027.bin", BlfFile.ComputeHash(blfFolder + "\\default_hoppers\\matchmaking_hopper_027.bin"));
                 fileHashes.Add("/network_configuration_241.bin", BlfFile.ComputeHash(blfFolder + "\\default_hoppers\\network_configuration_241.bin"));
-                fileHashes.Add("/network_configuration_245.bin", BlfFile.ComputeHash(blfFolder + "\\default_hoppers\\network_configuration_245.bin"));
+                //fileHashes.Add("/network_configuration_245.bin", BlfFile.ComputeHash(blfFolder + "\\default_hoppers\\network_configuration_245.bin"));
                 fileHashes.Add("/en/file_megalo_categories.bin", BlfFile.ComputeHash(blfFolder + "\\default_hoppers\\en\\file_megalo_categories.bin"));
                 fileHashes.Add("/en/file_predefined_queries.bin", BlfFile.ComputeHash(blfFolder + "\\default_hoppers\\en\\file_predefined_queries.bin"));
                 //fileHashes.Add("/en/matchmaking_banhammer_messages.bin", BlfFile.ComputeHash(blfFolder + "\\default_hoppers\\en\\matchmaking_banhammer_messages.bin"));

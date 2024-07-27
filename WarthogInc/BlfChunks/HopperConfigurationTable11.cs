@@ -240,8 +240,8 @@ namespace SunriseBlfTool
                 hoppersStream.Write<byte>(configuration.imageIndex, 6);
                 hoppersStream.Write<byte>(configuration.xLastIndex, 5);
                 hoppersStream.Write<ushort>(configuration.richPresenceId, 16);
-                hoppersStream.Write<ulong>(configuration.startTime, 64);
-                hoppersStream.Write<ulong>(configuration.endTime, 64);
+                hoppersStream.WriteLong(configuration.startTime, 64);
+                hoppersStream.WriteLong(configuration.endTime, 64);
                 hoppersStream.Write<uint>(configuration.regions, 32);
                 hoppersStream.Write<uint>(configuration.minimumBaseXp, 17);
                 hoppersStream.Write<uint>(configuration.maximumBaseXp, 17);

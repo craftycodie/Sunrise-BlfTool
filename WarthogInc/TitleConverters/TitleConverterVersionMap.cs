@@ -37,6 +37,7 @@ namespace SunriseBlfTool.TitleConverters
             RegisterTitle<Halo3.TitleConverter_12065>();
             RegisterTitle<Halo3.TitleConverter_12070>();
             RegisterTitle<Halo3ODST.TitleConverter_13895>();
+            RegisterTitle<HaloReach.TitleConverter_11860>();
             RegisterTitle<HaloReach.TitleConverter_12065>();
             RegisterTitle<HaloOnline.TitleConverter_106708>();
         }
