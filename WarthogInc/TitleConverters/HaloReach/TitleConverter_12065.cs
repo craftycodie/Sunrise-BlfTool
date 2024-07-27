@@ -114,6 +114,49 @@ namespace SunriseBlfTool.TitleConverters.HaloReach
 
                     if (fileName == "matchmaking_hopper_027.json")
                         continue; // Handle manually, after game sets.
+                    if (fileName == "game_set_015.json")
+                        continue; // Handle manually, after variants.
+
+                    try
+                    {
+                        BlfFile blfFile = BlfFile.FromJSON(File.ReadAllText(jsonFileEnumerator.Current), chunkNameMap);
+
+                        blfFile.WriteFile(blfFolder + fileRelativePath.Replace(".json", ".bin"));
+
+                        Console.WriteLine("Converted file: " + fileRelativePath);
+
+                        if (blfFile.HasChunk<MatchmakingHopperDescriptions3>()
+                            || blfFile.HasChunk<MatchmakingTips>()
+                            || blfFile.HasChunk<MapManifest>()
+                            || blfFile.HasChunk<MatchmakingBanhammerMessages>())
+                        {
+                            fileHashes.Add("/title/default_hoppers/" + fileRelativePath.Replace("\\", "/").Replace(".json", ".bin"), BlfFile.ComputeHash(blfFolder + fileRelativePath.Replace(".json", ".bin")));
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("FAILED TO CONVERT FILE " + fileRelativePath);
+                    }
+                }
+
+                jsonFileEnumerator = Directory.EnumerateFiles(hopperFolder, "*.*", SearchOption.AllDirectories).GetEnumerator();
+
+                while (jsonFileEnumerator.MoveNext())
+                {
+                    string fileName = jsonFileEnumerator.Current;
+                    if (fileName.Contains("\\"))
+                        fileName = fileName.Substring(fileName.LastIndexOf("\\") + 1);
+
+                    string fileRelativePath = jsonFileEnumerator.Current.Replace(jsonFolder, "");
+                    string fileDirectoryRelativePath = "";
+                    if (fileRelativePath.Contains("\\"))
+                    {
+                        fileDirectoryRelativePath = fileRelativePath.Substring(0, fileRelativePath.LastIndexOf("\\"));
+                        Directory.CreateDirectory(blfFolder + fileDirectoryRelativePath);
+                    }
+
+                    if (fileName == "matchmaking_hopper_027.json")
+                        continue; // Handle manually, after game sets.
 
                     try
                     {
@@ -138,18 +181,10 @@ namespace SunriseBlfTool.TitleConverters.HaloReach
                                 else
                                     entry.mapVariantHash = new byte[20];
                             }
-                        }
 
-                        blfFile.WriteFile(blfFolder + fileRelativePath.Replace(".json", ".bin"));
+                            blfFile.WriteFile(blfFolder + fileRelativePath.Replace(".json", ".bin"));
 
-                        Console.WriteLine("Converted file: " + fileRelativePath);
-
-                        if (blfFile.HasChunk<MatchmakingHopperDescriptions3>()
-                            || blfFile.HasChunk<MatchmakingTips>()
-                            || blfFile.HasChunk<MapManifest>()
-                            || blfFile.HasChunk<MatchmakingBanhammerMessages>())
-                        {
-                            fileHashes.Add("/title/default_hoppers/" + fileRelativePath.Replace("\\", "/").Replace(".json", ".bin"), BlfFile.ComputeHash(blfFolder + fileRelativePath.Replace(".json", ".bin")));
+                            Console.WriteLine("Converted file: " + fileRelativePath);
                         }
                     }
                     catch (Exception ex)
