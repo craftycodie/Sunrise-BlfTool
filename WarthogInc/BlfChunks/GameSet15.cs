@@ -108,7 +108,7 @@ namespace SunriseBlfTool
                 gameSet.dword3C = decompressedStream.Read<uint>(32);
                 gameSet.gap40 = decompressedStream.Read<uint>(32);
                 gameSet.mapId = decompressedStream.Read<uint>(32);
-                gameSet.unknown1 = decompressedStream.Read<byte>(8);
+                bool hasGameVariant = decompressedStream.Read<byte>(8) > 0;
                 gameSet.gameName = decompressedStream.ReadString(16);
                 decompressedStream.SeekRelative(16 - gameSet.gameName.Length - 1);
                 gameSet.gameVariantFileName = decompressedStream.ReadString(32);
@@ -116,7 +116,7 @@ namespace SunriseBlfTool
                 gameSet.gameVariantHash = new byte[20];
                 for (int j = 0; j < 20; j++)
                     gameSet.gameVariantHash[j] = decompressedStream.Read<byte>(8);
-                gameSet.unknown2 = decompressedStream.Read<byte>(8);
+                bool hasMapVariant = decompressedStream.Read<byte>(8) > 0;
                 gameSet.mapName = decompressedStream.ReadString(16);
                 decompressedStream.SeekRelative(16 - gameSet.mapName.Length - 1);
                 gameSet.mapVariantFileName = decompressedStream.ReadString(32);
@@ -163,7 +163,7 @@ namespace SunriseBlfTool
                 compressedStream.Write(gameSet.dword3C, 32);
                 compressedStream.Write(gameSet.gap40, 32);
                 compressedStream.Write(gameSet.mapId, 32);
-                compressedStream.Write(gameSet.unknown1, 8);
+                compressedStream.Write(gameSet.hasGameVariant ? (byte)1 : (byte)0, 8);
                 compressedStream.WriteString(gameSet.gameName, 16);
                 compressedStream.SeekRelative(16 - gameSet.gameName.Length - 1);
                 compressedStream.WriteString(gameSet.gameVariantFileName, 32);
@@ -172,7 +172,7 @@ namespace SunriseBlfTool
                 for (int j = 0; j < 20; j++)
                     compressedStream.Write(gameSet.gameVariantHash[j], 8);
 
-                compressedStream.Write(gameSet.unknown2, 8);
+                compressedStream.Write(gameSet.hasMapVariant ? (byte)1 : (byte)0, 8);
                 compressedStream.WriteString(gameSet.mapName, 16);
                 compressedStream.SeekRelative(16 - gameSet.mapName.Length - 1);
                 compressedStream.WriteString(gameSet.mapVariantFileName, 32);
@@ -208,8 +208,10 @@ namespace SunriseBlfTool
             public uint dword3C;
             public uint gap40;
             public uint mapId;
-            public byte unknown1; // game provided
-            public byte unknown2; // map provided
+            [JsonIgnore]
+            public bool hasGameVariant { get { return gameVariantFileName != null && gameVariantFileName.Length > 0; } }
+            [JsonIgnore]
+            public bool hasMapVariant { get { return mapVariantFileName != null && mapVariantFileName.Length > 0; } }
             public string gameName;
             [JsonIgnore]
             //[JsonConverter(typeof(HexStringConverter))]

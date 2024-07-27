@@ -128,8 +128,15 @@ namespace SunriseBlfTool.TitleConverters.HaloReach
 
                             foreach (GameSet15.GameEntry entry in gameSet.gameEntries)
                             {
-                                entry.gameVariantHash = BlfFile.ComputeHash(blfFolder + "default_hoppers\\" + entry.gameVariantFileName + "_054.bin");
-                                entry.mapVariantHash = BlfFile.ComputeHash(blfFolder + "default_hoppers\\map_variants\\" + entry.mapVariantFileName + "_031.bin");
+                                if (entry.hasGameVariant)
+                                    entry.gameVariantHash = BlfFile.ComputeHash(blfFolder + "default_hoppers\\" + entry.gameVariantFileName + "_054.bin");
+                                else
+                                    entry.gameVariantHash = new byte[20];
+
+                                if (entry.hasMapVariant)
+                                    entry.mapVariantHash = BlfFile.ComputeHash(blfFolder + "default_hoppers\\map_variants\\" + entry.mapVariantFileName + "_031.bin");
+                                else
+                                    entry.mapVariantHash = new byte[20];
                             }
                         }
 
@@ -167,7 +174,7 @@ namespace SunriseBlfTool.TitleConverters.HaloReach
 
                 fileHashes.Add("/dlc_map_manifest.bin", BlfFile.ComputeHash(blfFolder + "\\default_hoppers\\dlc_map_manifest.bin"));
                 fileHashes.Add("/matchmaking_hopper_027.bin", BlfFile.ComputeHash(blfFolder + "\\default_hoppers\\matchmaking_hopper_027.bin"));
-                fileHashes.Add("/network_configuration_241.bin", BlfFile.ComputeHash(blfFolder + "\\default_hoppers\\network_configuration_241.bin"));
+                //fileHashes.Add("/network_configuration_241.bin", BlfFile.ComputeHash(blfFolder + "\\default_hoppers\\network_configuration_241.bin"));
                 fileHashes.Add("/network_configuration_245.bin", BlfFile.ComputeHash(blfFolder + "\\default_hoppers\\network_configuration_245.bin"));
                 fileHashes.Add("/en/file_megalo_categories.bin", BlfFile.ComputeHash(blfFolder + "\\default_hoppers\\en\\file_megalo_categories.bin"));
                 fileHashes.Add("/en/file_predefined_queries.bin", BlfFile.ComputeHash(blfFolder + "\\default_hoppers\\en\\file_predefined_queries.bin"));
