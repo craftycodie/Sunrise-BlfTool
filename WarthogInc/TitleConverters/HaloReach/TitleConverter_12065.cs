@@ -97,7 +97,7 @@ namespace SunriseBlfTool.TitleConverters.HaloReach
                         fileName = fileName.Substring(fileName.LastIndexOf("\\") + 1);
 
                     string fileRelativePath = jsonFileEnumerator.Current.Replace(jsonFolder, "");
-                    string fileDirectoryRelativePath;
+                    string fileDirectoryRelativePath = "";
                     if (fileRelativePath.Contains("\\"))
                     {
                         fileDirectoryRelativePath = fileRelativePath.Substring(0, fileRelativePath.LastIndexOf("\\"));
@@ -129,12 +129,12 @@ namespace SunriseBlfTool.TitleConverters.HaloReach
                             foreach (GameSet15.GameEntry entry in gameSet.gameEntries)
                             {
                                 if (entry.hasGameVariant)
-                                    entry.gameVariantHash = BlfFile.ComputeHash(blfFolder + "default_hoppers\\" + entry.gameVariantFileName + "_054.bin");
+                                    entry.gameVariantHash = BlfFile.ComputeHash(blfFolder + fileDirectoryRelativePath + "\\" + entry.gameVariantFileName + "_054.bin");
                                 else
                                     entry.gameVariantHash = new byte[20];
 
                                 if (entry.hasMapVariant)
-                                    entry.mapVariantHash = BlfFile.ComputeHash(blfFolder + "default_hoppers\\map_variants\\" + entry.mapVariantFileName + "_031.bin");
+                                    entry.mapVariantHash = BlfFile.ComputeHash(blfFolder + fileDirectoryRelativePath + "\\map_variants\\" + entry.mapVariantFileName + "_031.bin");
                                 else
                                     entry.mapVariantHash = new byte[20];
                             }
