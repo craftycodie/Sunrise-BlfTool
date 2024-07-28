@@ -52,8 +52,6 @@ namespace SunriseBlfTool
 
             new ZLib().Uncompress(decompressedHopperTable, out decompressedHopperTableLength, compressedHopperTable, compressedHopperTableLength);
 
-            File.WriteAllBytes("C:\\Users\\stell\\Desktop\\game_set_decomp", decompressedHopperTable);
-
             MemoryStream ms = new MemoryStream(decompressedHopperTable);
             StreamByteStream sbs = new StreamByteStream(ms);
 
@@ -124,7 +122,7 @@ namespace SunriseBlfTool
                 gameSet.mapVariantHash = new byte[20];
                 for (int j = 0; j < 20; j++)
                     gameSet.mapVariantHash[j] = decompressedStream.Read<byte>(8);
-                gameSet.unlnown3 = decompressedStream.Read<ushort>(16);
+                gameSet.unknown3 = decompressedStream.Read<ushort>(16);
 
                 gameEntries[i] = gameSet;
             }
@@ -181,7 +179,7 @@ namespace SunriseBlfTool
                 for (int j = 0; j < 20; j++)
                     compressedStream.Write(gameSet.mapVariantHash[j], 8);
 
-                compressedStream.Write(gameSet.unlnown3, 16);
+                compressedStream.Write(gameSet.unknown3, 16);
             }
 
             WriteCompressedHopperData(ref hoppersStream, ms.ToArray());
@@ -222,7 +220,7 @@ namespace SunriseBlfTool
             //[JsonConverter(typeof(HexStringConverter))]
             public byte[] mapVariantHash;
             public string mapVariantFileName;
-            public ushort unlnown3;
+            public ushort unknown3;
         }
     }
 }
