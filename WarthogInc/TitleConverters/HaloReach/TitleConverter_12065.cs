@@ -158,13 +158,14 @@ namespace SunriseBlfTool.TitleConverters.HaloReach
                     if (fileName == "matchmaking_hopper_027.json")
                         continue; // Handle manually, after game sets.
 
+                    if (fileName != "game_set_015.json")
+                        continue;
+
                     try
                     {
                         BlfFile blfFile = BlfFile.FromJSON(File.ReadAllText(jsonFileEnumerator.Current), chunkNameMap);
 
-                        GameSet15 gameSet = null;
-                        if (fileName == "game_set_015.json")
-                            gameSet = blfFile.GetChunk<GameSet15>();
+                        GameSet15 gameSet = blfFile.GetChunk<GameSet15>();
 
                         if (gameSet != null)
                         {
