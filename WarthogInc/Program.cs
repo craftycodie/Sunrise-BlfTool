@@ -7,7 +7,11 @@ namespace SunriseBlfTool
     {
         static void Main(string[] args)
         {
-            if (args.Length == 4)
+            if (args.Length == 3 & args[0] == "reach_variant")
+            {
+                ReachGvarConverter.ConvertMpvrFolder(args[1], args[2]);
+            }
+            else if (args.Length == 4)
             {
                 if (args[0].Equals("json"))
                 {
