@@ -6,13 +6,14 @@ using SunriseBlfTool.BlfChunks.ChunkNameMaps.HaloReach;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.IO.Compression;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace SunriseBlfTool
 {
-    public class ReachGvarConverter
+    public class ReachVariantConverter
     {
         class NoConversionNecessaryException : Exception
         {
@@ -73,6 +74,45 @@ namespace SunriseBlfTool
             }
         }
 
+        class FakeChdr : IBLFChunk
+        {
+            public FakeChdr()
+            {
+
+            }
+
+
+            public ushort GetAuthentication()
+            {
+                return 1;
+            }
+
+            public uint GetLength()
+            {
+                return 0x2C0;
+            }
+
+            public string GetName()
+            {
+                return "chdr";
+            }
+
+            public ushort GetVersion()
+            {
+                return 10;
+            }
+
+            public void ReadChunk(ref BitStream<StreamByteStream> hoppersStream)
+            {
+                //
+            }
+
+            public void WriteChunk(ref BitStream<StreamByteStream> hoppersStream)
+            {
+                //
+            }
+        }
+
         class MpvrChunk : IBLFChunk
         {
             public byte[] gametypeData;
@@ -116,18 +156,74 @@ namespace SunriseBlfTool
             }
         }
 
-        public static BlfFile CreateGvarFile(byte[] gvarData)
+        class MvarChunk : IBLFChunk
         {
-            BlfFile blfFile = new BlfFile();
-            blfFile.AddChunk(new Author()
+            public byte[] mapHash;
+            public byte[] mapData;
+
+            public MvarChunk()
             {
-                buildName = "blftool mcc mpvr",
-                buildNumber = 12065,
-                shellVersion = "",
-                unknown40 = "",
-            });
-            blfFile.AddChunk(new GvarChunk(gvarData));
-            return blfFile;
+
+            }
+
+            public MvarChunk(byte[] mapData)
+            {
+                this.mapData = mapData;
+            }
+
+
+            public ushort GetAuthentication()
+            {
+                return 1;
+            }
+
+            public uint GetLength()
+            {
+                var ms = new BitStream<StreamByteStream>(new StreamByteStream(new MemoryStream()));
+                WriteChunk(ref ms);
+                return (uint)ms.NextByteIndex;
+            }
+
+            public string GetName()
+            {
+                return "mvar";
+            }
+
+            public ushort GetVersion()
+            {
+                return 31;
+            }
+
+            public void ReadChunk(ref BitStream<StreamByteStream> hoppersStream)
+            {
+                mapHash = new byte[20];
+                for (uint i = 0; i < 20; i++)
+                {
+                    mapHash[i] = hoppersStream.Read<byte>(8);
+                }
+
+                uint length = hoppersStream.Read<uint>(32);
+                mapData = new byte[length];
+                for (uint i = 0; i < length; i++)
+                {
+                    mapData[i] = hoppersStream.Read<byte>(8);
+                }
+            }
+
+            public void WriteChunk(ref BitStream<StreamByteStream> hoppersStream)
+            {
+                foreach (byte b in mapHash)
+                {
+                    hoppersStream.Write(b, 8);
+                }
+
+                hoppersStream.Write(mapData.Length, 32);
+
+                foreach (byte _byte in mapData)
+                {
+                    hoppersStream.Write(_byte, 8);
+                }
+            }
         }
 
         class ConversionChunkNameMap : AbstractBlfChunkNameMap
@@ -144,6 +240,8 @@ namespace SunriseBlfTool
                 RegisterChunk<Author>();
                 RegisterChunk<GvarChunk>();
                 RegisterChunk<MpvrChunk>();
+                RegisterChunk<MvarChunk>();
+                RegisterChunk<FakeChdr>();
             }
 
             public override string GetVersion()
@@ -154,14 +252,54 @@ namespace SunriseBlfTool
 
         static AbstractBlfChunkNameMap chunkNameMap = new ConversionChunkNameMap();
 
-        public static void ConvertMpvrToGvar(string inputPath, string outputPath)
+        public static void ConvertVariant(string inputPath, string outputPath)
         {
             try
             {
-                BlfFile mpvrFile = new BlfFile();
-                mpvrFile.ReadFile(inputPath, chunkNameMap);
-                BlfFile converted = CreateGvarFile(mpvrFile.GetChunk<MpvrChunk>().gametypeData);
-                converted.WriteFile(outputPath);
+                BlfFile blfFile = new BlfFile();
+                blfFile.ReadFile(inputPath, chunkNameMap);
+
+                BlfFile convertedBlf = new BlfFile();
+                convertedBlf.AddChunk(new Author()
+                {
+                    buildName = "blftool variant",
+                    buildNumber = 12065,
+                    shellVersion = "",
+                    unknown40 = "",
+                });
+                
+                if (blfFile.HasChunk<MpvrChunk>())
+                {
+                    convertedBlf.AddChunk(new GvarChunk(blfFile.GetChunk<MpvrChunk>().gametypeData));
+                }
+
+                if (blfFile.HasChunk<MvarChunk>())
+                {
+                    convertedBlf.AddChunk(blfFile.GetChunk<MvarChunk>());
+                }
+
+                string fileName = Path.GetFileName(outputPath);
+                if (!fileName.Contains("."))
+                {
+                    IBLFChunk convertedChunk = null;
+                    // if there's no extension, make one.
+                    if (convertedBlf.HasChunk<GvarChunk>())
+                    {
+                        convertedChunk = convertedBlf.GetChunk<GvarChunk>();
+                    }
+                    if (convertedBlf.HasChunk<MvarChunk>())
+                    {
+                        convertedChunk = convertedBlf.GetChunk<MvarChunk>();
+                    }
+
+                    if (convertedChunk != null)
+                    {
+                        outputPath = outputPath + $"_{convertedChunk.GetVersion().ToString("D3")}.bin";
+                    }
+                }
+
+                convertedBlf.WriteFile(outputPath);
+
             }
             catch (NoConversionNecessaryException)
             {
@@ -170,25 +308,25 @@ namespace SunriseBlfTool
             }
         }
 
-        public static void ConvertMpvrFolder(string inputPath, string outputPath)
+        public static void ConvertVariantFolder(string inputPath, string outputPath)
         {
             int succeededCount = 0;
             foreach (string filePath in Directory.EnumerateFiles(inputPath))
             {
                 string fileName = Path.GetFileName(filePath);
 
+
                 if (!File.Exists(filePath))
                 {
                     Console.WriteLine("Warning: Tried to convert a non-existent file somehow - " + fileName);
                     continue;
                 }
-                if (!filePath.EndsWith("_054.bin"))
+                if (fileName.EndsWith(".bak"))
                 {
-                    Console.WriteLine("Skipping non-variant file - " + fileName);
-                    continue;
+                    Console.WriteLine("Skipping .bak file " + fileName);
                 }
 
-                ConvertMpvrToGvar(filePath, outputPath + Path.DirectorySeparatorChar + fileName);
+                ConvertVariant(filePath, outputPath + Path.DirectorySeparatorChar + fileName.Replace(".mvar", ".bin"));
                 Console.WriteLine("Successfully converted file: " + fileName);
                 succeededCount++;
             }

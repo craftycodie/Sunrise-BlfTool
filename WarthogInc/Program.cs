@@ -7,9 +7,9 @@ namespace SunriseBlfTool
     {
         static void Main(string[] args)
         {
-            if (args.Length == 3 & args[0] == "reach_variant")
+            if (args.Length == 3 & args[0] == "reach_variants")
             {
-                ReachGvarConverter.ConvertMpvrFolder(args[1], args[2]);
+                ReachVariantConverter.ConvertVariantFolder(args[1], args[2]);
             }
             else if (args.Length == 4)
             {

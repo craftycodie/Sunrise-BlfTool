@@ -43,6 +43,12 @@ namespace SunriseBlfTool
             chunks.Add(chunk.GetName(), chunk);
         }
 
+        public void RemoveChunk<T>() where T : IBLFChunk, new()
+        {
+            IBLFChunk chunk = new T();
+            chunks.Remove(chunk.GetName());
+        }
+
         public T GetChunk<T>() where T : IBLFChunk, new() {
             IBLFChunk chunk = new T();
             return (T)chunks[chunk.GetName()];
@@ -128,7 +134,7 @@ namespace SunriseBlfTool
             return ComputeHash(path, halo3salt);
         }
 
-        private static byte[] fake_hash = Convert.FromHexString("FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF");
+        private static readonly byte[] fake_hash = Convert.FromHexString("FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF");
 
         public static byte[] ComputeHash(string path, byte[] salt)
         {
@@ -166,6 +172,31 @@ namespace SunriseBlfTool
                 Console.ResetColor();
                 return fake_hash;
             }
+        }
+
+        public static byte[] ComputeHash(byte[] data)
+        {
+            return ComputeHash(data, halo3salt);
+        }
+
+        public static byte[] ComputeHash(byte[] data, byte[] salt)
+        {
+
+            var memoryStream = new MemoryStream();
+            var blfFileOut = new BitStream<StreamByteStream>(new StreamByteStream(memoryStream));
+            foreach (byte saltByte in salt)
+            {
+                blfFileOut.Write(saltByte, 8);
+            }
+            foreach (byte blfByte in data)
+            {
+                blfFileOut.Write(blfByte, 8);
+            }
+            memoryStream.Flush();
+
+            byte[] saltedBlf = memoryStream.ToArray();
+            memoryStream.Close();
+            return new SHA1Managed().ComputeHash(saltedBlf);
         }
     }
 }
