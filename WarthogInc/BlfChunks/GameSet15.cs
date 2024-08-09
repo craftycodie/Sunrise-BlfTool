@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using SunriseBlfTool.BlfChunks;
 using ZLibDotNet;
+using SunriseBlfTool.Extensions;
 
 namespace SunriseBlfTool
 {
@@ -102,9 +103,12 @@ namespace SunriseBlfTool
                 gameSet.word2E = decompressedStream.Read<ushort>(16);
                 gameSet.dword30 = decompressedStream.Read<uint>(32);
                 gameSet.dword34 = decompressedStream.Read<uint>(32);
-                gameSet.dword38 = decompressedStream.Read<uint>(32);
-                gameSet.dword3C = decompressedStream.Read<uint>(32);
-                gameSet.gap40 = decompressedStream.Read<uint>(32);
+                gameSet.float38 = decompressedStream.ReadFloat(32);
+                gameSet.float3C = decompressedStream.ReadFloat(32);
+                gameSet.byte40 = decompressedStream.Read<byte>(8);
+                gameSet.gap41 = decompressedStream.Read<byte>(8);
+                gameSet.gap42 = decompressedStream.Read<byte>(8);
+                gameSet.gap43 = decompressedStream.Read<byte>(8);
                 gameSet.mapId = decompressedStream.Read<uint>(32);
                 bool hasGameVariant = decompressedStream.Read<byte>(8) > 0;
                 gameSet.gameName = decompressedStream.ReadString(16);
@@ -157,9 +161,12 @@ namespace SunriseBlfTool
                 compressedStream.Write(gameSet.word2E, 16);
                 compressedStream.Write(gameSet.dword30, 32);
                 compressedStream.Write(gameSet.dword34, 32);
-                compressedStream.Write(gameSet.dword38, 32);
-                compressedStream.Write(gameSet.dword3C, 32);
-                compressedStream.Write(gameSet.gap40, 32);
+                compressedStream.WriteFloat(gameSet.float38, 32);
+                compressedStream.WriteFloat(gameSet.float3C, 32);
+                compressedStream.Write(gameSet.byte40, 8);
+                compressedStream.Write(gameSet.gap41, 8);
+                compressedStream.Write(gameSet.gap42, 8);
+                compressedStream.Write(gameSet.gap43, 8);
                 compressedStream.Write(gameSet.mapId, 32);
                 compressedStream.Write(gameSet.hasGameVariant ? (byte)1 : (byte)0, 8);
                 compressedStream.WriteString(gameSet.gameName, 16);
@@ -202,9 +209,12 @@ namespace SunriseBlfTool
             public ushort word2E;
             public uint dword30;
             public uint dword34;
-            public uint dword38;
-            public uint dword3C;
-            public uint gap40;
+            public float float38;
+            public float float3C;
+            public byte byte40;
+            public byte gap41;
+            public byte gap42;
+            public byte gap43;
             public uint mapId;
             [JsonIgnore]
             public bool hasGameVariant { get { return gameVariantFileName != null && gameVariantFileName.Length > 0; } }
