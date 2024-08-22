@@ -25,7 +25,7 @@ namespace SunriseBlfTool.BlfChunks.ChunkNameMaps.HaloOnline
             RegisterChunk<MessageOfTheDayPopup_PC>();
             RegisterChunk<NagMessage>();
             RegisterChunk<GameSet6>();
-            RegisterChunk<Manifest>();
+            RegisterChunk<Manifest_PC>();
             RegisterChunk<MatchmakingTips>();
             RegisterChunk<MatchmakingBanhammerMessages>();
             RegisterChunk<MapManifest>();
