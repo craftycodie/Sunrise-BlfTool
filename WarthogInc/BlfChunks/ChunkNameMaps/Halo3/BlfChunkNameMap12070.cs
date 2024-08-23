@@ -38,6 +38,7 @@ namespace SunriseBlfTool.BlfChunks.ChunkNameMaps.Halo3
             RegisterChunk<MachineNetworkStatistics>();
             RegisterChunk<MessageOfTheDay>();
             RegisterChunk<MultiplayerPlayers>();
+            RegisterChunk<MultiplayerTeams>();
             RegisterChunk<MatchmakingOptions>();
         }
 
