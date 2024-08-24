@@ -100,7 +100,7 @@ namespace SunriseBlfTool.BlfChunks
             hoppersStream.WriteLong(gameId, 64);
         }
 
-        public void ReadChunk(ref BitStream<StreamByteStream> hoppersStream)
+        public void ReadChunk(ref BitStream<StreamByteStream> hoppersStream, BLFChunkReader reader)
         {
             buildNumber = hoppersStream.Read<short>(16);
             mapVersion = hoppersStream.Read<short>(16);

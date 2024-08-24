@@ -175,7 +175,7 @@ namespace SunriseBlfTool.BlfChunks
             return 2;
         }
 
-        public void ReadChunk(ref BitStream<StreamByteStream> hoppersStream)
+        public void ReadChunk(ref BitStream<StreamByteStream> hoppersStream, BLFChunkReader reader)
         {
             throw new NotImplementedException();
         }

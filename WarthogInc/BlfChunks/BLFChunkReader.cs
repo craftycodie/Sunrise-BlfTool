@@ -12,7 +12,14 @@ namespace SunriseBlfTool.BlfChunks
 {
     public class BLFChunkReader
     {
-        public IBLFChunk ReadChunk(ref BitStream<StreamByteStream> outputStream, AbstractBlfChunkNameMap chunkNameMap)
+        AbstractBlfChunkNameMap chunkNameMap;
+
+        public BLFChunkReader(AbstractBlfChunkNameMap chunkNameMap)
+        {
+            this.chunkNameMap = chunkNameMap;
+        }
+
+        public IBLFChunk ReadChunk(ref BitStream<StreamByteStream> outputStream)
         {
             int chunkStartOffset = outputStream.ByteOffset;
             BLFChunkHeader header = new BLFChunkHeader();
@@ -24,7 +31,7 @@ namespace SunriseBlfTool.BlfChunks
             try
             {
                 IBLFChunk chunk = chunkNameMap.GetChunk(header.blfChunkName);
-                chunk.ReadChunk(ref outputStream);
+                chunk.ReadChunk(ref outputStream, this);
 
                 // In case the full chunk isn't read (perhaps it's zero-padded), we ensure we're moved on to the next chunk.
                 outputStream.Seek(chunkStartOffset + (int)header.chunkLength);

@@ -65,7 +65,7 @@ namespace SunriseBlfTool
             var fs = new FileStream(path, FileMode.Open);
             var blfFileIn = new BitStream<StreamByteStream>(new StreamByteStream(fs));
 
-            BLFChunkReader chunkReader = new BLFChunkReader();
+            BLFChunkReader chunkReader = new BLFChunkReader(chunkNameMap);
 
             // If it has an x360 save content header skip to blf
             if (blfFileIn.Read<uint>(32) == 0x434F4E20)
@@ -77,7 +77,7 @@ namespace SunriseBlfTool
             }
 
             while (fs.Position < fs.Length) {
-                IBLFChunk chunk = chunkReader.ReadChunk(ref blfFileIn, chunkNameMap);
+                IBLFChunk chunk = chunkReader.ReadChunk(ref blfFileIn);
 
                 if (chunk == null)
                     continue;

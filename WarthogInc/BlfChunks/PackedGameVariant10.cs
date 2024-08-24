@@ -94,7 +94,7 @@ namespace SunriseBlfTool
             return 10;
         }
 
-        public void ReadChunk(ref BitStream<StreamByteStream> hoppersStream)
+        public void ReadChunk(ref BitStream<StreamByteStream> hoppersStream, BLFChunkReader reader)
         {
             VariantGameEngine variantGameEngineIndex = (VariantGameEngine)hoppersStream.Read<byte>(4);
             switch (variantGameEngineIndex)

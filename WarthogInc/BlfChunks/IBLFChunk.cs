@@ -15,6 +15,6 @@ namespace SunriseBlfTool.BlfChunks
         public string GetName();
         public uint GetLength();
         public void WriteChunk(ref BitStream<StreamByteStream> hoppersStream);
-        public void ReadChunk(ref BitStream<StreamByteStream> hoppersStream);
+        public void ReadChunk(ref BitStream<StreamByteStream> hoppersStream, BLFChunkReader reader);
     }
 }

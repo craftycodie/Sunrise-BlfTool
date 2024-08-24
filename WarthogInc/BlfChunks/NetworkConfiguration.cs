@@ -26,7 +26,7 @@ namespace SunriseBlfTool.BlfChunks
             return 8300;
         }
 
-        public void ReadChunk(ref BitStream<StreamByteStream> hopperStream)
+        public void ReadChunk(ref BitStream<StreamByteStream> hopperStream, BLFChunkReader reader)
         {
             unknown0 = hopperStream.Read<int>(32);
             unknown4 = hopperStream.Read<int>(32);

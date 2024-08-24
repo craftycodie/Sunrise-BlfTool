@@ -37,7 +37,7 @@ namespace SunriseBlfTool
             return 1;
         }
 
-        public void ReadChunk(ref BitStream<StreamByteStream> hoppersStream)
+        public void ReadChunk(ref BitStream<StreamByteStream> hoppersStream, BLFChunkReader reader)
         {
             int mapCount = hoppersStream.Read<int>(32);
             mapRSAs = new MapEntry[mapCount];

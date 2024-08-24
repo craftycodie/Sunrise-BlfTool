@@ -85,7 +85,7 @@ namespace SunriseBlfTool
             return 12;
         }
 
-        public void ReadChunk(ref BitStream<StreamByteStream> hoppersStream)
+        public void ReadChunk(ref BitStream<StreamByteStream> hoppersStream, BLFChunkReader reader)
         {
             metadata = new PackedBaseGameVariant10.VariantMetadata(ref hoppersStream);
             mapVariantVersion = hoppersStream.Read<byte>(8);

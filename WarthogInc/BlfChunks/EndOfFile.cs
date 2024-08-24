@@ -37,7 +37,7 @@ namespace SunriseBlfTool.BlfChunks
             //hoppersStream.Seek(hoppersStream.NextByteIndex);
         }
 
-        public void ReadChunk(ref BitStream<StreamByteStream> hoppersStream)
+        public void ReadChunk(ref BitStream<StreamByteStream> hoppersStream, BLFChunkReader reader)
         {
             lengthUpToEOF = hoppersStream.Read<int>(32);
             unknown = hoppersStream.Read<byte>(8);

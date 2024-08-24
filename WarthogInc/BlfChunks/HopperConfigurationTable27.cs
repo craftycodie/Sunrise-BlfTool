@@ -80,7 +80,7 @@ namespace SunriseBlfTool
             hoppersStream.SeekRelative(compressedHopperTableLength + 4);
         }
 
-        public void ReadChunk(ref BitStream<StreamByteStream> hoppersStream)
+        public void ReadChunk(ref BitStream<StreamByteStream> hoppersStream, BLFChunkReader reader)
         {
             var decompressedStream = ReadCompressedHopperData(ref hoppersStream);
 

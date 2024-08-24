@@ -57,7 +57,7 @@ namespace SunriseBlfTool.BlfChunks
             return 4;
         }
 
-        public void ReadChunk(ref BitStream<StreamByteStream> hoppersStream)
+        public void ReadChunk(ref BitStream<StreamByteStream> hoppersStream, BLFChunkReader reader)
         {
             motdIdentifier = hoppersStream.Read<uint>(32);
             acceptWaitMilliseconds = hoppersStream.Read<uint>(32);

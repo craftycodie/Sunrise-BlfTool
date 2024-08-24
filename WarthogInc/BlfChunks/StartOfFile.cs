@@ -55,7 +55,7 @@ namespace SunriseBlfTool.BlfChunks
             }
         }
 
-        public void ReadChunk(ref BitStream<StreamByteStream> hoppersStream)
+        public void ReadChunk(ref BitStream<StreamByteStream> hoppersStream, BLFChunkReader reader)
         {
             byteOrder = (ByteOrder)hoppersStream.Read<ushort>(16);
             for (int i = 0; i < 0x22; i++)

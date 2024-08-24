@@ -37,7 +37,7 @@ namespace SunriseBlfTool
             return 1;
         }
 
-        public void ReadChunk(ref BitStream<StreamByteStream> hoppersStream)
+        public void ReadChunk(ref BitStream<StreamByteStream> hoppersStream, BLFChunkReader reader)
         {
             int tipCount = hoppersStream.Read<int>(32);
             tips = new string[tipCount];

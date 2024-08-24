@@ -2,6 +2,7 @@
 using Newtonsoft.Json.Converters;
 using Sewer56.BitStream;
 using Sewer56.BitStream.ByteStreams;
+using SunriseBlfTool.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,11 +18,11 @@ namespace SunriseBlfTool.BlfChunks
         public bool isRanked;
         public bool teamsEnabled;
         public string hopperName;
-        public ulong drawProbability;
-        public ulong beta;
-        public ulong tau;
-        public ulong expBaseIncrement;
-        public ulong expPenaltyDecrement;
+        public int drawProbability;
+        public float beta;
+        public float tau;
+        public int expBaseIncrement;
+        public int expPenaltyDecrement;
 
         public ushort GetAuthentication()
         {
@@ -43,20 +44,16 @@ namespace SunriseBlfTool.BlfChunks
             return 0x5C;
         }
 
-        public void ReadChunk(ref BitStream<StreamByteStream> hoppersStream)
+        public void ReadChunk(ref BitStream<StreamByteStream> hoppersStream, BLFChunkReader reader)
         {
-            Console.ForegroundColor = ConsoleColor.DarkYellow;
-            Console.WriteLine("Warning: mpmo chunk definition is incomplete.");
-            Console.ResetColor();
-
             hopperIdentifier = hoppersStream.Read<ushort>(16);
 
             LinkedList<byte> nameBytes = new LinkedList<byte>();
-            for (int si = 0; si < 16; si++)
+            for (int si = 0; si < 32; si++)
             {
                 byte left = hoppersStream.Read<byte>(8);
                 byte right = hoppersStream.Read<byte>(8);
-                if (((left == 0 && right == 0) || si == 16) && hopperName == null)
+                if (((left == 0 && right == 0) || si == 32) && hopperName == null)
                 {
                     hopperName = Encoding.BigEndianUnicode.GetString(nameBytes.ToArray());
                 }
@@ -64,7 +61,15 @@ namespace SunriseBlfTool.BlfChunks
                 nameBytes.AddLast(right);
             }
 
-            hoppersStream.SeekRelative(0x3A);
+            isRanked = hoppersStream.Read<byte>(8) > 0;
+            teamsEnabled = hoppersStream.Read<byte>(8) > 0;
+            xLastIndex = hoppersStream.Read<byte>(8);
+            drawProbability = hoppersStream.Read<int>(32);
+            beta = hoppersStream.ReadFloat(32);
+            tau = hoppersStream.ReadFloat(32);
+            expBaseIncrement = hoppersStream.Read<int>(32);
+            expPenaltyDecrement = hoppersStream.Read<int>(32);
+
         }
         public void WriteChunk(ref BitStream<StreamByteStream> hoppersStream)
         {

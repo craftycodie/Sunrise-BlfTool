@@ -65,7 +65,7 @@ namespace SunriseBlfTool.BlfChunks
             }
         }
 
-        public void ReadChunk(ref BitStream<StreamByteStream> hoppersStream)
+        public void ReadChunk(ref BitStream<StreamByteStream> hoppersStream, BLFChunkReader reader)
         {
             var buildNameBytes = new byte[16];
             var buildNameLen = -1;
