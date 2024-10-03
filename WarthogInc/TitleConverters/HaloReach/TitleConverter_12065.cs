@@ -130,7 +130,7 @@ namespace SunriseBlfTool.TitleConverters.HaloReach
                             || blfFile.HasChunk<MapManifest>()
                             || blfFile.HasChunk<MatchmakingBanhammerMessages>())
                         {
-                            fileHashes.Add("/title/default_hoppers/" + fileRelativePath.Replace("\\", "/").Replace(".json", ".bin"), BlfFile.ComputeHash(blfFolder + fileRelativePath.Replace(".json", ".bin")));
+                            fileHashes.Add(fileRelativePath.Replace("\\", "/").Replace(".json", ".bin"), BlfFile.ComputeHash(blfFolder + fileRelativePath.Replace(".json", ".bin")));
                         }
                     }
                     catch (Exception ex)
